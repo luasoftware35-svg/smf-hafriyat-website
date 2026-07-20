@@ -1,0 +1,106 @@
+"use client";
+
+import Image from "next/image";
+import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Card } from "@/components/ui/Card";
+import { Section, SectionHeading } from "@/components/ui/SectionHeading";
+import { ContactForm } from "@/components/sections/ContactForm";
+import { FadeIn } from "@/components/motion/FadeIn";
+import { contactInfo } from "@/lib/constants/site";
+import { siteImages } from "@/lib/constants/images";
+
+export function ContactSection() {
+  return (
+    <Section id="iletisim" variant="muted">
+      <Container>
+        <FadeIn>
+          <SectionHeading
+            eyebrow="İletişim"
+            title="Projeniz için hemen teklif alın"
+            description="Hafriyat sahası keşfi, ekskavatör teklifi ve yıkım planlaması için hemen iletişime geçin."
+            className="mb-14"
+          />
+        </FadeIn>
+
+        <div className="grid gap-10 lg:grid-cols-5">
+          <FadeIn delay={0.1} className="lg:col-span-3">
+            <Card hover={false} className="overflow-hidden">
+              <div className="relative h-2 gradient-accent-bar" aria-hidden="true" />
+              <div className="p-6 sm:p-8">
+                <ContactForm />
+              </div>
+            </Card>
+          </FadeIn>
+
+          <div className="flex flex-col gap-6 lg:col-span-2">
+            <FadeIn delay={0.2}>
+              <Card hover={false} className="group overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={siteImages.contact}
+                    alt="SMF Hafriyat saha ekibi — Denizli"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="400px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-accent-foreground/40 to-transparent" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading text-lg text-text-primary">İletişim Bilgileri</h3>
+                  <ul className="mt-4 space-y-4 text-sm text-text-secondary">
+                    <li className="flex items-start gap-3">
+                      <MapPin size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+                      <span>{contactInfo.address.full}</span>
+                    </li>
+                    <li>
+                      <a href={contactInfo.phoneHref} className="flex items-center gap-3 hover:text-accent">
+                        <Phone size={18} className="shrink-0 text-accent" aria-hidden="true" />
+                        <span className="font-mono font-medium">{contactInfo.phoneDisplay}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={contactInfo.phoneSecondaryHref} className="flex items-center gap-3 hover:text-accent">
+                        <Phone size={18} className="shrink-0 text-accent" aria-hidden="true" />
+                        <span className="font-mono font-medium">{contactInfo.phoneSecondary}</span>
+                      </a>
+                    </li>
+                    <li className="text-text-secondary">
+                      <span className="font-medium text-text-primary">{contactInfo.contactPerson}</span> — İletişim Sorumlusu
+                    </li>
+                    <li>
+                      <a href={contactInfo.emailHref} className="flex items-center gap-3 hover:text-accent">
+                        <Mail size={18} className="shrink-0 text-accent" aria-hidden="true" />
+                        <span>{contactInfo.email}</span>
+                      </a>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Clock size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+                      <div>
+                        <p>{contactInfo.workingHours.weekdays}</p>
+                        <p>{contactInfo.workingHours.sunday}</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </Card>
+            </FadeIn>
+
+            <FadeIn delay={0.3}>
+              <Card hover={false} className="overflow-hidden">
+                <iframe
+                  src={contactInfo.mapEmbedUrl}
+                  title="SMF Hafriyat konum haritası — Denizli"
+                  className="h-56 w-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </Card>
+            </FadeIn>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
+}

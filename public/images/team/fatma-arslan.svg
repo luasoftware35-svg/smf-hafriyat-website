@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img">
+  <rect width="400" height="400" fill="#fafaf7"/>
+  <circle cx="200" cy="160" r="80" fill="#ffffff" stroke="#f5a020" stroke-width="4"/>
+  <text x="200" y="175" text-anchor="middle" fill="#f5a020" font-family="Arial Black,sans-serif" font-size="48">FA</text>
+  <rect y="280" width="400" height="120" fill="#f5f2ea"/>
+</svg>

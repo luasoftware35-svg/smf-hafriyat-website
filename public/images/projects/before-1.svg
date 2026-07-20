@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Proje 1 — Öncesi">
+  <rect width="800" height="500" fill="#f0ebe3"/>
+  <rect y="320" width="800" height="180" fill="#e8e0d4"/>
+  <ellipse cx="400" cy="340" rx="280" ry="60" fill="#ddd4c8" opacity="0.9"/>
+  <rect x="120" y="180" width="200" height="120" fill="#e0d8cc" opacity="0.9" stroke="#ece8e1" stroke-width="2"/>
+  <text x="40" y="60" fill="#c4a574" font-family="Arial,sans-serif" font-size="28" font-weight="700">Proje 1 — Öncesi</text>
+  <text x="40" y="95" fill="#6b6560" font-family="Arial,sans-serif" font-size="18">Dağınık saha, ham toprak</text>
+</svg>
