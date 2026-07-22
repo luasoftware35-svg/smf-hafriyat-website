@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { FadeIn } from "@/components/motion/FadeIn";
@@ -67,6 +68,29 @@ export function ProjectsPageContent() {
                       <Link href={`/projeler/${project.slug}`} className="hover:text-accent">{project.title}</Link>
                     </h2>
                     <p className="mt-2 text-sm text-text-secondary">{project.description}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <span className="rounded-full border border-surface bg-bg-secondary/70 px-3 py-1 text-xs font-medium text-text-secondary">
+                        Teslim ciktilari gorunur
+                      </span>
+                      <span className="rounded-full border border-surface bg-bg-secondary/70 px-3 py-1 text-xs font-medium text-text-secondary">
+                        Kurumsal saha uygulamasi
+                      </span>
+                    </div>
+                    <div className="mt-5 flex items-center gap-4">
+                      <Link
+                        href={`/projeler/${project.slug}`}
+                        className="inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent-secondary"
+                      >
+                        Proje detayini gor
+                        <ArrowRight size={14} aria-hidden="true" />
+                      </Link>
+                      <Link
+                        href="/iletisim"
+                        className="text-sm font-medium text-text-secondary transition-colors hover:text-accent"
+                      >
+                        Benzer proje icin teklif iste
+                      </Link>
+                    </div>
                   </div>
                 </Card>
               </motion.div>

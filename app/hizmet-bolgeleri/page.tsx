@@ -6,15 +6,18 @@ import { Card } from "@/components/ui/Card";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { localSeo } from "@/lib/seo/local";
 import { serviceAreas } from "@/lib/constants/content";
 import { getServiceAreaImage, siteImages } from "@/lib/constants/images";
 import { contactInfo } from "@/lib/constants/site";
 
 export const metadata = createPageMetadata({
-  title: "Hizmet Bölgeleri",
-  description: "SMF Hafriyat hizmet bölgeleri — Denizli, Honaz, Acıpayam ve Ege Bölgesi'nde ekskavatör hafriyat, yıkım ve kanal kazısı.",
+  title: "Denizli Hafriyat Hizmet Bölgeleri",
+  description:
+    "Denizli hafriyat firması SMF Hafriyat; Merkezefendi, Pamukkale, Honaz, Acıpayam ve Ege Bölgesi'nde ekskavatör hafriyat, yıkım ve kanal kazısı hizmeti sunar.",
   path: "/hizmet-bolgeleri",
   image: siteImages.areasHero,
+  keywords: ["denizli hafriyat bölgeleri", "merkezefendi hafriyat", "denizli hafriyat firması", ...localSeo.defaultKeywords],
 });
 
 export default function ServiceAreasPage() {
@@ -28,8 +31,8 @@ export default function ServiceAreasPage() {
       />
       <PageHero
         eyebrow="Hizmet Bölgeleri"
-        title="Ege Bölgesi'nde ekskavatör hafriyat hizmeti"
-        description="Denizli merkezli kepçe filomuzla çevre il ve ilçelerde hafriyat kazısı, yıkım ve enkaz kaldırma."
+        title="Denizli ve Ege Bölgesi'nde hafriyat hizmeti"
+        description="Denizli merkezli SMF Hafriyat; Merkezefendi, Pamukkale ve çevre ilçelerde ekskavatör hafriyat, yıkım ve enkaz kaldırma."
         image={siteImages.areasHero}
         imageAlt="Ekskavatör hafriyat sahası — SMF hizmet bölgeleri"
       />

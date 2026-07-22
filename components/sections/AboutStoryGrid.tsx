@@ -5,12 +5,15 @@ import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { TextReveal } from "@/components/motion/TextReveal";
 import { aboutContent } from "@/lib/constants/content";
+import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 const sections = [
   {
     key: "history" as const,
+    id: "tarihce",
     title: "Tarihçe",
     subtitle: "1998'den bugüne",
     content: aboutContent.history,
@@ -18,15 +21,17 @@ const sections = [
   },
   {
     key: "mission" as const,
+    id: "misyon",
     title: "Misyon",
-    subtitle: "Sahayı tuval gibi",
+    subtitle: "Vazgeçilmez ilkeler",
     content: aboutContent.mission,
     alt: "Bina yıkımı ekskavatör — SMF Hafriyat misyon",
   },
   {
     key: "vision" as const,
+    id: "vizyon",
     title: "Vizyon",
-    subtitle: "Ege'nin referans markası",
+    subtitle: "Geleceğe bakış",
     content: aboutContent.vision,
     alt: "Havadan ekskavatör kazısı — SMF Hafriyat vizyon",
   },
@@ -36,18 +41,20 @@ export function AboutStoryGrid() {
   return (
     <Container className="py-16 lg:py-24">
       <FadeIn className="mb-14 max-w-2xl">
-        <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent">Kurumsal Kimlik</p>
-        <h2 className="mt-4 font-heading text-3xl leading-tight text-text-primary sm:text-4xl">
-          Toprağın altında bıraktığımız imza
-        </h2>
-        <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-          Hafriyat bir meslek değil, bizim için bir disiplin. Her kazıda, her yıkımda aynı özen.
-        </p>
+        <p className="font-mono text-sm uppercase tracking-[0.2em] text-accent">{brand.sections.aboutStory.eyebrow}</p>
+        <TextReveal
+          as="h2"
+          text={brand.sections.aboutStory.title}
+          className="mt-4 font-heading text-3xl leading-tight text-text-primary sm:text-4xl"
+          delay={0.05}
+        />
+        <p className="mt-4 text-lg leading-relaxed text-text-secondary">{brand.sections.aboutStory.description}</p>
       </FadeIn>
 
       <StaggerGrid className="grid gap-8 lg:grid-cols-3">
         {sections.map((section) => (
           <StaggerItem key={section.key}>
+            <div id={section.id} className="scroll-mt-32">
             <Card hover={false} className="group flex h-full flex-col overflow-hidden">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
@@ -68,6 +75,7 @@ export function AboutStoryGrid() {
                 <div className="mt-6 h-px w-12 bg-accent/40" aria-hidden="true" />
               </div>
             </Card>
+            </div>
           </StaggerItem>
         ))}
       </StaggerGrid>

@@ -8,6 +8,7 @@ import { Loader2, Send, CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea, Select } from "@/components/ui/Input";
 import { cn } from "@/lib/utils";
+import { brand } from "@/lib/constants/brand";
 import { contactInfo } from "@/lib/constants/site";
 import {
   contactFormSchema,
@@ -67,7 +68,7 @@ export function ContactForm({ className }: ContactFormProps) {
         </div>
         <h3 className="font-heading text-xl text-text-primary">Talebiniz alındı!</h3>
         <p className="mt-2 max-w-sm text-sm text-text-secondary">
-          En kısa sürede sizinle iletişime geçeceğiz. Acil durumlar için {contactInfo.phoneDisplay} numarasını arayabilirsiniz.
+          Ekibimiz talebinizi inceliyor. Ayni gun geri donus hedefiyle sizinle iletisime gececegiz. Acil durumlar icin {contactInfo.phoneDisplay} numarasini arayabilirsiniz.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           {whatsappUrl && (
@@ -86,6 +87,23 @@ export function ContactForm({ className }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cn("space-y-5", className)} noValidate>
+      <div className="rounded-xl border border-surface bg-bg-secondary/70 p-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Kesif Bilgisi</p>
+        <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+          Formu doldurmak icin proje adresi, is tipi ve kisa detay yeterlidir. Kesif sonrasi net metraj, makine plani ve resmi teklif tarafimizdan hazirlanir.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {brand.contactPromises.map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-surface bg-bg-primary px-3 py-1.5 text-xs font-medium text-text-secondary"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <Input label="Ad Soyad *" autoComplete="name" error={errors.name?.message} {...register("name")} />
         <Input label="Telefon *" type="tel" autoComplete="tel" placeholder="05XX XXX XX XX" error={errors.phone?.message} {...register("phone")} />
@@ -144,6 +162,10 @@ export function ContactForm({ className }: ContactFormProps) {
           </>
         )}
       </Button>
+
+      <p className="text-sm text-text-secondary">
+        Acil talepler icin formu beklemeden <Link href={contactInfo.phoneHref} className="font-medium text-accent hover:underline">{contactInfo.phoneDisplay}</Link> uzerinden dogrudan arayabilirsiniz.
+      </p>
 
       {status === "error" && (
         <p className="rounded-md border border-red-400/30 bg-red-50 px-4 py-3 text-sm text-red-600" role="alert">

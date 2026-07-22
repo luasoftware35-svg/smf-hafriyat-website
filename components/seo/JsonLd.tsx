@@ -3,16 +3,22 @@ import { services } from "@/lib/constants/services";
 import { projects } from "@/lib/constants/projects";
 import { contactInfo, siteConfig } from "@/lib/constants/site";
 import { siteImages } from "@/lib/constants/images";
+import { localSeo } from "@/lib/seo/local";
 import { absoluteUrl } from "@/lib/seo/urls";
 
 const orgId = `${siteConfig.url}/#organization`;
 const ogImage = absoluteUrl(siteImages.og);
 
-export function FaqJsonLd() {
+type FaqJsonLdItem = {
+  question: string;
+  answer: string;
+};
+
+export function FaqJsonLd({ items = faqItems }: { items?: readonly FaqJsonLdItem[] }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqItems.map((item) => ({
+    mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
@@ -28,11 +34,11 @@ export function FaqJsonLd() {
 export function JsonLd() {
   const localBusiness = {
     "@context": "https://schema.org",
-    "@type": "GeneralContractor",
+    "@type": ["LocalBusiness", "GeneralContractor"],
     "@id": orgId,
     name: siteConfig.name,
     legalName: siteConfig.legalName,
-    alternateName: siteConfig.tradeName,
+    alternateName: [siteConfig.tradeName, "SMF Denizli Hafriyat"],
     foundingDate: "1998",
     founder: { "@type": "Person", name: "Ramiz Ramizoğlu" },
     employee: { "@type": "Person", name: contactInfo.contactPerson, jobTitle: "CEO" },
@@ -42,9 +48,23 @@ export function JsonLd() {
     logo: absoluteUrl("/logo.svg"),
     telephone: contactInfo.phone,
     email: contactInfo.email,
+    priceRange: "$$",
+    hasMap: contactInfo.mapLink,
+    knowsAbout: localSeo.knowAbout,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        telephone: contactInfo.phone,
+        email: contactInfo.email,
+        areaServed: "TR",
+        availableLanguage: ["Turkish"],
+      },
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: contactInfo.address.street,
+      addressNeighborhood: contactInfo.address.neighborhood,
       addressLocality: contactInfo.address.city,
       addressRegion: contactInfo.address.region,
       postalCode: contactInfo.address.postalCode,
@@ -52,8 +72,8 @@ export function JsonLd() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 37.7765,
-      longitude: 29.0875,
+      latitude: localSeo.geo.latitude,
+      longitude: localSeo.geo.longitude,
     },
     openingHoursSpecification: [
       {
@@ -65,22 +85,35 @@ export function JsonLd() {
     ],
     areaServed: [
       { "@type": "City", name: "Denizli" },
+      { "@type": "AdministrativeArea", name: "Merkezefendi" },
+      { "@type": "AdministrativeArea", name: "Pamukkale" },
+      { "@type": "AdministrativeArea", name: "Honaz" },
       { "@type": "AdministrativeArea", name: "Ege Bölgesi" },
     ],
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: localSeo.geo.latitude,
+        longitude: localSeo.geo.longitude,
+      },
+      geoRadius: 120000,
+    },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Hafriyat ve Yıkım Hizmetleri",
+      name: "Denizli Hafriyat ve Yıkım Hizmetleri",
       itemListElement: services.map((service) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: service.title,
+          name: `${service.title} — Denizli`,
           description: service.shortDescription,
           url: absoluteUrl(`/hizmetler/${service.slug}`),
+          areaServed: { "@type": "City", name: "Denizli" },
         },
       })),
     },
-    sameAs: ["https://www.smfhafriyat.com"],
+    sameAs: [siteConfig.url],
   };
 
   const website = {
@@ -88,7 +121,7 @@ export function JsonLd() {
     "@type": "WebSite",
     "@id": `${siteConfig.url}/#website`,
     url: siteConfig.url,
-    name: siteConfig.name,
+    name: `${siteConfig.name} — Denizli Hafriyat`,
     description: siteConfig.description,
     inLanguage: "tr-TR",
     publisher: { "@id": orgId },
@@ -146,9 +179,9 @@ export function ContactPageJsonLd() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "İletişim — SMF Hafriyat",
+    name: "İletişim — Denizli Hafriyat SMF Hafriyat",
     url: absoluteUrl("/iletisim"),
-    description: "Denizli hafriyat firması SMF Hafriyat iletişim ve teklif formu.",
+    description: "Denizli hafriyat firması SMF Hafriyat iletişim, keşif talebi ve teklif formu.",
     mainEntity: { "@id": orgId },
   };
 
@@ -166,12 +199,15 @@ export function ServiceJsonLd({ title, description, slug, image }: ServiceJsonLd
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: title,
+    name: `${title} — Denizli`,
     description,
     url: absoluteUrl(`/hizmetler/${slug}`),
     image: absoluteUrl(image),
     provider: { "@id": orgId },
-    areaServed: { "@type": "Place", name: "Denizli ve Ege Bölgesi" },
+    areaServed: [
+      { "@type": "City", name: "Denizli" },
+      { "@type": "AdministrativeArea", name: "Ege Bölgesi" },
+    ],
   };
 
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
@@ -205,7 +241,7 @@ export function ProjectJsonLd({ title, description, slug, location, image, compl
 export function ProjectsItemListJsonLd() {
   return (
     <ItemListJsonLd
-      name="SMF Hafriyat Projeleri"
+      name="SMF Hafriyat Denizli Projeleri"
       items={projects.map((p) => ({
         name: p.title,
         url: `/projeler/${p.slug}`,
@@ -218,9 +254,9 @@ export function ProjectsItemListJsonLd() {
 export function ServicesItemListJsonLd() {
   return (
     <ItemListJsonLd
-      name="SMF Hafriyat Hizmetleri"
+      name="Denizli Hafriyat Hizmetleri — SMF Hafriyat"
       items={services.map((s) => ({
-        name: s.title,
+        name: `${s.title} Denizli`,
         url: `/hizmetler/${s.slug}`,
         description: s.shortDescription,
       }))}

@@ -4,15 +4,23 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
+import { brand } from "@/lib/constants/brand";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { faqItems } from "@/lib/constants/content";
 import { siteImages } from "@/lib/constants/images";
 import { cn } from "@/lib/utils";
 
-export function FaqSection() {
+type FaqSectionProps = {
+  limit?: number;
+  showContactLink?: boolean;
+};
+
+export function FaqSection({ limit, showContactLink = false }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const displayedFaq = limit ? faqItems.slice(0, limit) : faqItems;
 
   return (
     <Section id="sss" variant="muted" className="mesh-muted">
@@ -20,9 +28,9 @@ export function FaqSection() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
           <FadeIn>
             <SectionHeading
-              eyebrow="Sık Sorulan Sorular"
-              title="Merak ettikleriniz"
-              description="Hafriyat kazısı, yıkım enkaz kaldırma, derin temel ve teklif süreçleri hakkında sık sorulan sorular."
+              eyebrow={brand.sections.faq.eyebrow}
+              title={brand.sections.faq.title}
+              description={brand.sections.faq.description}
             />
             <div className="relative mt-8 hidden overflow-hidden rounded-lg border border-surface shadow-card-hover lg:block">
               <div className="relative aspect-[4/5]">
@@ -43,8 +51,10 @@ export function FaqSection() {
           </FadeIn>
 
           <div className="space-y-3">
-            {faqItems.map((item, index) => {
+            {displayedFaq.map((item, index) => {
               const isOpen = openIndex === index;
+              const panelId = `faq-panel-${index}`;
+              const buttonId = `faq-button-${index}`;
               return (
                 <FadeIn key={item.question} delay={index * 0.05}>
                   <div className="overflow-hidden rounded-md border border-surface bg-bg-primary shadow-card transition-shadow hover:shadow-card-hover">
@@ -52,7 +62,9 @@ export function FaqSection() {
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? null : index)}
                       className="flex min-h-11 w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-6 sm:py-5"
+                      id={buttonId}
                       aria-expanded={isOpen}
+                      aria-controls={panelId}
                     >
                       <span className="font-heading text-base text-text-primary sm:text-lg">{item.question}</span>
                       <ChevronDown
@@ -64,6 +76,9 @@ export function FaqSection() {
                     <AnimatePresence initial={false}>
                       {isOpen && (
                         <motion.div
+                          id={panelId}
+                          role="region"
+                          aria-labelledby={buttonId}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
@@ -79,6 +94,15 @@ export function FaqSection() {
                 </FadeIn>
               );
             })}
+            {showContactLink && (
+              <FadeIn delay={displayedFaq.length * 0.05}>
+                <div className="pt-4">
+                  <AnimatedButton href="/iletisim" variant="secondary" glow={false} className="w-full sm:w-auto">
+                    Sorularınız için iletişime geçin
+                  </AnimatedButton>
+                </div>
+              </FadeIn>
+            )}
           </div>
         </div>
       </Container>

@@ -3,13 +3,16 @@ import { ProjectsPageContent } from "@/components/sections/ProjectsPageContent";
 import { ImageMarquee } from "@/components/sections/ImageMarquee";
 import { BreadcrumbJsonLd, ProjectsItemListJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { localSeo, pageSeoDescription } from "@/lib/seo/local";
+import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export const metadata = createPageMetadata({
-  title: "Projelerimiz",
-  description: "Denizli ve Ege Bölgesi'nde tamamladığımız hafriyat, yıkım ve altyapı projeleri. Öncesi/sonrası görselleri.",
+  title: "Denizli Hafriyat Projeleri",
+  description: pageSeoDescription(brand.pages.projects.description),
   path: "/projeler",
   image: siteImages.fleetHero,
+  keywords: ["denizli hafriyat projeleri", ...localSeo.defaultKeywords],
 });
 
 export default function ProjectsPage() {
@@ -19,8 +22,8 @@ export default function ProjectsPage() {
       <ProjectsItemListJsonLd />
       <PageHero
         eyebrow="Projeler"
-        title="Tamamlanan hafriyat ve yıkım projeleri"
-        description="Ekskavatör kazısı, enkaz kaldırma ve kepçe tesviye — öncesi/sonrası saha görselleri."
+        title={brand.pages.projects.title}
+        description={brand.pages.projects.description}
         image={siteImages.fleetHero}
         imageAlt="Ekskavatör hafriyat projesi — SMF Hafriyat"
       />

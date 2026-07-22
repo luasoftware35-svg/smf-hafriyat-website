@@ -12,6 +12,7 @@ import {
   ctaLinks,
   companyLegal,
 } from "@/lib/constants/site";
+import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export function Footer() {
@@ -28,11 +29,11 @@ export function Footer() {
         <Container className="relative py-12 lg:py-16">
           <div className="flex flex-col items-center text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
             <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-accent">Hemen Başlayın</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-accent">{brand.sections.footerCta.eyebrow}</p>
               <h2 className="mt-2 font-heading text-2xl text-white sm:text-3xl">
-                Projeniz için ücretsiz keşif planlayın
+                {brand.sections.footerCta.title}
               </h2>
-              <p className="mt-2 text-sm text-white/70">Denizli ve Ege Bölgesi&apos;nde aynı gün geri dönüş</p>
+              <p className="mt-2 text-sm text-white/70">{brand.sections.footerCta.description}</p>
             </div>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:mt-0">
               <Button href={ctaLinks.quote.href}>
@@ -61,10 +62,17 @@ export function Footer() {
               </span>
               <div>
                 <p className="font-heading text-lg text-text-primary">{siteConfig.name}</p>
-                <p className="text-sm text-text-secondary">Denizli · Ege Bölgesi</p>
+                <p className="text-sm text-text-secondary">Denizli Hafriyat · Merkezefendi</p>
               </div>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-text-secondary">{siteConfig.description}</p>
+            <ul className="mt-4 space-y-2">
+              {brand.proofStrip.map((item) => (
+                <li key={item} className="text-sm text-text-secondary">
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
@@ -111,6 +119,9 @@ export function Footer() {
                   <Mail size={16} className="shrink-0 text-accent" aria-hidden="true" />
                   <span>{contactInfo.email}</span>
                 </Link>
+              </li>
+              <li className="rounded-lg border border-surface bg-bg-primary/60 px-4 py-3 text-xs leading-relaxed text-text-secondary">
+                Ayni gun geri donus, resmi sozlesme ve belgeli saha sureci ile calisiyoruz.
               </li>
             </ul>
 

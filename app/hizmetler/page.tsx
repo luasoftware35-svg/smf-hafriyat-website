@@ -2,13 +2,16 @@ import { PageHero } from "@/components/ui/PageHero";
 import { ServicesGridAnimated } from "@/components/sections/ServicesPageGrid";
 import { BreadcrumbJsonLd, ServicesItemListJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { localSeo, pageSeoDescription } from "@/lib/seo/local";
+import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export const metadata = createPageMetadata({
-  title: "Hizmetlerimiz",
-  description: "Derin temel kazısı, yıkım enkaz kaldırma, ekskavatör kiralama, kanal kazısı ve moloz nakliyesi. Denizli ve Ege Bölgesi.",
+  title: "Denizli Hafriyat Hizmetleri",
+  description: pageSeoDescription(brand.pages.services.description),
   path: "/hizmetler",
   image: siteImages.hero,
+  keywords: ["denizli hafriyat hizmetleri", ...localSeo.defaultKeywords],
 });
 
 export default function ServicesPage() {
@@ -18,8 +21,8 @@ export default function ServicesPage() {
       <ServicesItemListJsonLd />
       <PageHero
         eyebrow="Hizmetler"
-        title="Ekskavatör ile hafriyat ve yıkım hizmetleri"
-        description="Derin temelli enkaz kaldırma, kepçe kazısı, kanal hafriyatı ve moloz nakliyesi — 10 hizmet kategorisinde kendi filomuzla."
+        title={brand.pages.services.title}
+        description={brand.pages.services.description}
         image={siteImages.hero}
         imageAlt="Ekskavatör kepçe ile hafriyat kazısı — SMF Hafriyat"
       />

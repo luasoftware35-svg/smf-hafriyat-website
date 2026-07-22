@@ -7,6 +7,7 @@ import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { fleet } from "@/lib/constants/content";
+import { brand } from "@/lib/constants/brand";
 import { getFleetImage } from "@/lib/constants/images";
 
 export function FleetGrid() {
@@ -16,8 +17,8 @@ export function FleetGrid() {
         <FadeIn>
           <SectionHeading
             eyebrow="Filo & Ekipman"
-            title="Ekskavatör, loder ve damper filomuz"
-            description="Hafriyat kazısı, yıkım enkaz kaldırma ve moloz nakliyesi için bakımlı kepçe parkurumuz."
+            title={brand.pages.fleet.title}
+            description={brand.pages.fleet.description}
             className="mb-14"
           />
         </FadeIn>

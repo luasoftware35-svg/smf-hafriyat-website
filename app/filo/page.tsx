@@ -3,13 +3,16 @@ import { FleetGrid } from "@/components/sections/FleetGrid";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { localSeo, pageSeoDescription } from "@/lib/seo/local";
+import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export const metadata = createPageMetadata({
-  title: "Filo & Ekipman",
-  description: "SMF Hafriyat ekskavatör filosu — kepçe, loder, damper, mini ekskavatör. Hafriyat, yıkım ve enkaz kaldırma için Denizli.",
+  title: "Denizli Hafriyat Ekskavatör Filosu",
+  description: pageSeoDescription(brand.pages.fleet.description),
   path: "/filo",
   image: siteImages.fleetHero,
+  keywords: ["denizli ekskavatör kiralama", "denizli hafriyat filo", ...localSeo.defaultKeywords],
 });
 
 export default function FleetPage() {
@@ -18,8 +21,8 @@ export default function FleetPage() {
       <BreadcrumbJsonLd items={[{ name: "Ana Sayfa", path: "/" }, { name: "Filo", path: "/filo" }]} />
       <PageHero
         eyebrow="Filo & Ekipman"
-        title="Ekskavatör, kepçe ve damper filomuz"
-        description="Hafriyat kazısı, yıkım enkaz kaldırma ve moloz nakliyesi için bakımlı, sigortalı ve operatörlü makineler — taşeron yok."
+        title={brand.pages.fleet.title}
+        description={brand.pages.fleet.description}
         image={siteImages.fleetHero}
         imageAlt="Ekskavatör hafriyat filosu — SMF Hafriyat"
       />

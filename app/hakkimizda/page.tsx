@@ -1,4 +1,5 @@
 import { PageHero } from "@/components/ui/PageHero";
+import { ClientReferencesSection } from "@/components/sections/ClientReferencesSection";
 import { TeamGrid } from "@/components/sections/TeamGrid";
 import { CertificatesSection } from "@/components/sections/CertificatesSection";
 import { StatsCounter } from "@/components/sections/StatsCounter";
@@ -6,14 +7,16 @@ import { AboutStoryGrid } from "@/components/sections/AboutStoryGrid";
 import { ImageMarquee } from "@/components/sections/ImageMarquee";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
-import { aboutContent } from "@/lib/constants/content";
+import { localSeo, pageSeoDescription } from "@/lib/seo/local";
+import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export const metadata = createPageMetadata({
-  title: "Hakkımızda",
-  description: "SMF Hafriyat — Denizli'de ekskavatör ile hafriyat, yıkım, derin temel kazısı ve enkaz kaldırma. 1998'den bu yana Ege Bölgesi.",
+  title: "Denizli Hafriyat Firması — Hakkımızda",
+  description: pageSeoDescription(brand.pages.about.description),
   path: "/hakkimizda",
   image: siteImages.about,
+  keywords: ["denizli hafriyat firması", "smf hafriyat denizli", ...localSeo.defaultKeywords],
 });
 
 export default function AboutPage() {
@@ -22,13 +25,14 @@ export default function AboutPage() {
       <BreadcrumbJsonLd items={[{ name: "Ana Sayfa", path: "/" }, { name: "Hakkımızda", path: "/hakkimizda" }]} />
       <PageHero
         eyebrow="Hakkımızda"
-        title="Toprağın altında bıraktığımız imza"
-        description={`${aboutContent.foundedYear}'den bu yana ekskavatör filomuzla derin temel kazısı, yıkım ve enkaz kaldırma — Ege'nin güvenilir hafriyat markası.`}
+        title={brand.pages.about.title}
+        description={brand.pages.about.description}
         image={siteImages.about}
         imageAlt="Ekskavatör hafriyat sahası — SMF Hafriyat Denizli"
       />
       <StatsCounter />
       <AboutStoryGrid />
+      <ClientReferencesSection />
       <ImageMarquee />
       <TeamGrid />
       <CertificatesSection />

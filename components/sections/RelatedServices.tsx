@@ -15,7 +15,7 @@ export function RelatedServices({ currentSlug }: RelatedServicesProps) {
 
   return (
     <div className="mt-20">
-      <h2 className="font-heading text-2xl text-text-primary">Diğer Hizmetlerimiz</h2>
+      <h2 className="font-heading text-2xl text-text-primary">Benzer Ihtiyaclar Icin Diger Hizmetler</h2>
       <div className="mt-2 h-1 w-16 gradient-accent-bar" />
       <StaggerGrid className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {related.map((service) => (
@@ -34,8 +34,9 @@ export function RelatedServices({ currentSlug }: RelatedServicesProps) {
                 </div>
                 <div className="p-4">
                   <h3 className="font-heading text-base text-text-primary group-hover:text-accent">{service.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">{service.shortDescription}</p>
                   <span className="mt-2 inline-flex items-center gap-1 text-sm text-accent">
-                    İncele <ArrowRight size={14} />
+                    Teklif Akisina Gec <ArrowRight size={14} />
                   </span>
                 </div>
               </Link>

@@ -135,6 +135,199 @@ export const siteImages = {
   },
 } as const;
 
+export const showcaseSlides = [
+  {
+    src: core.excavatorAerial,
+    alt: "Ekskavatör ile havadan hafriyat kazısı — SMF Hafriyat",
+    tag: "Hafriyat Operasyonları",
+    title: "Stratejik temel kazısı ve saha hafriyatı",
+    subtitle: "Dekapaj, dolgu ve büyük metrajlı projelerde kurumsal filo disiplini ve ölçülebilir performans.",
+  },
+  {
+    src: core.buildingDemolition,
+    alt: "Kontrollü bina yıkımı — ekskavatör enkaz kaldırma",
+    tag: "Kontrollü Yıkım",
+    title: "Mühendis onaylı yıkım ve enkaz yönetimi",
+    subtitle: "Planlı yıkım, ayrıştırma ve belgeli damper nakliyesi — kurumsal İSG standartlarıyla.",
+  },
+  {
+    src: core.deepExcavator,
+    alt: "Derin temel kazısı — ekskavatör hafriyat",
+    tag: "Derin Kazı",
+    title: "Derin temelli altyapı operasyonları",
+    subtitle: "Bodrum, otopark ve endüstriyel temellerde iksa destekli, güvenli hafriyat çözümleri.",
+  },
+  {
+    src: core.excavatorDumpTruck,
+    alt: "Ekskavatör moloz yükleme — damper nakliyesi",
+    tag: "Lojistik Entegrasyon",
+    title: "Entegre yükleme ve belgeli nakliye",
+    subtitle: "Hafriyat molozu ve yıkım enkazında şeffaf tartım, irsaliye ve mevzuata uygun taşıma.",
+  },
+  {
+    src: core.rubbleExcavator,
+    alt: "Enkaz arasında kepçe operasyonu — kanal kazısı",
+    tag: "Altyapı",
+    title: "Altyapı hatlarında kurumsal saha gücü",
+    subtitle: "Kanalizasyon, yağmursuyu ve isale projelerinde ekskavatör ile hassas kazı operasyonları.",
+  },
+  {
+    src: core.bulldozerDemolition,
+    alt: "Dozer ile yıkım sahası tesviye — SMF Hafriyat",
+    tag: "Filo Kapasitesi",
+    title: "Çok disiplinli iş makinesi filosu",
+    subtitle: "Dar alan ve geniş metraj projelerinde operatörlü dozer, loder ve mini kepçe desteği.",
+  },
+] as const;
+
+export type PromoSlide = {
+  src: string;
+  alt: string;
+  tag: string;
+  title: string;
+  subtitle: string;
+};
+
+export const midPagePromoSlides: PromoSlide[] = [
+  {
+    src: core.bulldozerDemolition,
+    alt: "Dozer ile yıkım sahası — SMF Hafriyat filo",
+    tag: "Kurumsal Filo",
+    title: "Operatörlü ekskavatör, dozer ve damper — tek çatı",
+    subtitle: "Taşeron modeli yerine kendi filomuzla hafriyat, yıkım ve enkaz yönetiminde kurumsal güvence.",
+  },
+  {
+    src: core.debrisLoading,
+    alt: "Enkaz yükleme kepçe — moloz nakliyesi",
+    tag: "Belgeli Süreç",
+    title: "Enkaz yönetiminde şeffaflık ve mevzuat uyumu",
+    subtitle: "Yıkım ve hafriyat molozunda tartım fişi, irsaliye ve resmi sözleşme ile kurumsal teslim.",
+  },
+  {
+    src: core.rubbleExcavator,
+    alt: "Kanal kazısı ekskavatör — altyapı hafriyat",
+    tag: "Altyapı Ortaklığı",
+    title: "Altyapı projelerinde stratejik saha ortağı",
+    subtitle: "Kanal, isale ve yağmursuyu hatlarında mini kepçe ve büyük ekskavatör kapasitesi.",
+  },
+];
+
+export const ctaPromoSlides: PromoSlide[] = [
+  {
+    src: core.excavatorAerial,
+    alt: "Havadan hafriyat kazısı — SMF Hafriyat teklif",
+    tag: "Stratejik Ortaklık",
+    title: "Projeniz için kurumsal keşif planlayın",
+    subtitle: "Denizli ve Ege Bölgesi'nde aynı gün geri dönüş — şeffaf metraj, resmi sözleşme.",
+  },
+  {
+    src: core.buildingDemolition,
+    alt: "Kontrollü yıkım sahası — SMF Hafriyat",
+    tag: "Keşif Talep Edin",
+    title: "Sahaya inmeden net metraj, net plan",
+    subtitle: "Keşif sonrası ekskavatör ihtiyacınızı mühendis onaylı süreçle planlıyoruz.",
+  },
+  {
+    src: core.deepExcavator,
+    alt: "Derin temel kazısı — SMF Hafriyat",
+    tag: "0533 353 22 53",
+    title: "Büyük metraj ve derin kazı projelerinde yanınızdayız",
+    subtitle: "Telefon veya WhatsApp ile hızlı koordinasyon — Pzt–Cmt 08:00–18:00.",
+  },
+];
+
+export const whyUsSpotlightSlides: PromoSlide[] = [
+  {
+    src: core.siteExcavator,
+    alt: "Saha ekskavatör operasyonu — SMF Hafriyat",
+    tag: "Kurumsal Model",
+    title: "Kendi filomuz, kendi operatörlerimiz",
+    subtitle: "Taşeron yok — her saha operasyonunda doğrudan SMF kurumsal ekibi.",
+  },
+  {
+    src: core.enkazTurkey,
+    alt: "Yıkım sonrası enkaz kaldırma — SMF Hafriyat",
+    tag: "İş Güvenliği",
+    title: "İSG ve mevzuat uyumu vazgeçilmez standart",
+    subtitle: "Ruhsata uygun, belgeli ve emniyet odaklı hafriyat operasyonları.",
+  },
+  {
+    src: core.excavatorDumpTruck,
+    alt: "Ekskavatör damper yükleme — hızlı sevkiyat",
+    tag: "Operasyonel Çeviklik",
+    title: "Büyük metrajda hızlı filo sevkiyatı",
+    subtitle: "Derin temel, yıkım enkazı ve moloz nakliyesinde proaktif saha koordinasyonu.",
+  },
+];
+
+export const actionSpotlights = [
+  {
+    src: core.excavatorAerial,
+    alt: "Hafriyat kazısı ekskavatör — SMF hizmetler",
+    tag: "Hizmet Portföyü",
+    title: "Entegre hafriyat ve yıkım çözümleri",
+    subtitle: "10 kategoride kurumsal saha operasyonları.",
+    href: "/hizmetler",
+    ctaLabel: "Portföyü incele",
+  },
+  {
+    src: core.bulldozerDemolition,
+    alt: "Dozer filo — SMF ekipman",
+    tag: "Kurumsal Filo",
+    title: "Operasyonel güvence sunan makine parkı",
+    subtitle: "Operatörlü kiralama ve proje bazlı saha desteği.",
+    href: "/filo",
+    ctaLabel: "Filoyu keşfet",
+  },
+  {
+    src: core.debrisLoading,
+    alt: "Enkaz kaldırma sahası — SMF projeler",
+    tag: "Referanslar",
+    title: "900+ tamamlanan kurumsal proje",
+    subtitle: "Öncesi/sonrası ile kanıtlanmış saha performansı.",
+    href: "/projeler",
+    ctaLabel: "Referansları gör",
+  },
+] as const;
+
+export const heroBanners = [
+  {
+    src: core.excavatorAerial,
+    alt: "Denizli hafriyat ekskavatör kazısı — SMF Hafriyat",
+    tag: "Denizli Hafriyat",
+    slogan: "Denizli'nin güvenilir hafriyat ve yıkım markası",
+    highlight: "Yeni Mah. Menderes Bulvarı merkezli — ekskavatör ile temel kazısı, yıkım ve derin kazı",
+  },
+  {
+    src: core.buildingDemolition,
+    alt: "Kontrollü bina yıkımı — SMF Hafriyat enkaz kaldırma",
+    tag: "Kontrollü Yıkım",
+    slogan: "Planlı yıkım, belgeli teslim, sürdürülebilir saha yönetimi",
+    highlight: "Mühendis onaylı süreç — enkaz kaldırma ve kurumsal İSG standartları",
+  },
+  {
+    src: core.deepExcavator,
+    alt: "Derin temel kazısı — ekskavatör hafriyat sahası",
+    tag: "Derin Kazı",
+    slogan: "Derin temellerde operasyonel mükemmellik",
+    highlight: "Bodrum, otopark ve endüstriyel temellerde iksa destekli kurumsal hafriyat",
+  },
+  {
+    src: core.excavatorDumpTruck,
+    alt: "Ekskavatör ve damper — moloz nakliyesi SMF Hafriyat",
+    tag: "Kurumsal Filo",
+    slogan: "Entegre filo, kesintisiz operasyon, tek sorumlu ekip",
+    highlight: "Taşeronsuz model — operatörlü ekskavatör, loder ve damper filosu",
+  },
+  {
+    src: core.enkazTurkey,
+    alt: "Yıkım sonrası enkaz kaldırma — SMF Hafriyat Türkiye sahası",
+    tag: "1998'den Beri",
+    slogan: "21 yıllık kurumsal tecrübe, 900+ referans proje",
+    highlight: "Denizli merkezli — Ege Bölgesi'nde stratejik saha ortağı",
+  },
+] as const;
+
 export const marqueeImages = [
   { src: core.excavatorAerial, alt: "Ekskavatör hafriyat kazısı" },
   { src: core.buildingDemolition, alt: "Yıkım sahası kepçe çalışması" },

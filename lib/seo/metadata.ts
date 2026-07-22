@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/constants/site";
 import { siteImages } from "@/lib/constants/images";
+import { localSeo } from "@/lib/seo/local";
 import { absoluteUrl } from "@/lib/seo/urls";
 
 type PageMetadataOptions = {
@@ -29,19 +30,20 @@ export function createPageMetadata({
   const url = absoluteUrl(path);
   const imageUrl = absoluteUrl(image);
   const socialTitle = buildSocialTitle(title, path);
+  const mergedKeywords = keywords ?? [...localSeo.defaultKeywords];
 
   return {
     title: path === "/" ? { absolute: title } : title,
     description,
-    keywords: keywords ?? [
-      "hafriyat denizli",
-      "ekskavatör kazı",
-      "yıkım denizli",
-      "enkaz kaldırma",
-      "SMF Hafriyat",
-    ],
+    keywords: mergedKeywords,
     alternates: { canonical: url },
     robots: noIndex ? { index: false, follow: true } : { index: true, follow: true },
+    other: {
+      "geo.region": "TR-20",
+      "geo.placename": `${localSeo.city}, ${localSeo.country}`,
+      "geo.position": `${localSeo.geo.latitude};${localSeo.geo.longitude}`,
+      ICBM: `${localSeo.geo.latitude}, ${localSeo.geo.longitude}`,
+    },
     openGraph: {
       title: socialTitle,
       description,
@@ -59,3 +61,5 @@ export function createPageMetadata({
     },
   };
 }
+
+export { localSeo };

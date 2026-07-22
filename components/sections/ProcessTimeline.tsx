@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Search, FileCheck, HardHat, CheckCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
+import { brand } from "@/lib/constants/brand";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { processSteps } from "@/lib/constants/content";
 import { siteImages } from "@/lib/constants/images";
@@ -17,9 +18,9 @@ export function ProcessTimeline() {
       <Container>
         <FadeIn>
           <SectionHeading
-            eyebrow="Süreç"
-            title="Keşiften teslimata dört adım"
-            description="Her hafriyat projesinde aynı disiplin — şeffaf iletişim, belgeli süreç, zamanında teslim."
+            eyebrow={brand.sections.process.eyebrow}
+            title={brand.sections.process.title}
+            description={brand.sections.process.description}
             className="mb-14"
           />
         </FadeIn>

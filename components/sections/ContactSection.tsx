@@ -8,6 +8,7 @@ import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { contactInfo } from "@/lib/constants/site";
+import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export function ContactSection() {
@@ -17,11 +18,22 @@ export function ContactSection() {
         <FadeIn>
           <SectionHeading
             eyebrow="İletişim"
-            title="Projeniz için hemen teklif alın"
-            description="Hafriyat sahası keşfi, ekskavatör teklifi ve yıkım planlaması için hemen iletişime geçin."
+            title={brand.pages.contact.title}
+            description={brand.pages.contact.description}
             className="mb-14"
           />
         </FadeIn>
+
+        <div className="mb-8 flex flex-wrap gap-3">
+          {brand.contactPromises.map((item) => (
+            <div
+              key={item}
+              className="rounded-full border border-surface bg-bg-primary/85 px-4 py-2 text-sm text-text-secondary shadow-sm"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
 
         <div className="grid gap-10 lg:grid-cols-5">
           <FadeIn delay={0.1} className="lg:col-span-3">
@@ -48,6 +60,9 @@ export function ContactSection() {
                 </div>
                 <div className="p-6">
                   <h3 className="font-heading text-lg text-text-primary">İletişim Bilgileri</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                    Denizli merkezli ekibimiz; hafriyat, yikim ve derin kazi taleplerinizi dogru makine ve surec planiyla hizli sekilde degerlendirir.
+                  </p>
                   <ul className="mt-4 space-y-4 text-sm text-text-secondary">
                     <li className="flex items-start gap-3">
                       <MapPin size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
@@ -80,6 +95,9 @@ export function ContactSection() {
                         <p>{contactInfo.workingHours.weekdays}</p>
                         <p>{contactInfo.workingHours.sunday}</p>
                       </div>
+                    </li>
+                    <li className="rounded-lg border border-surface bg-bg-secondary/70 px-4 py-3">
+                      Kesif, resmi teklif ve proje koordinasyonu ayni iletisim hatti uzerinden yonetilir.
                     </li>
                   </ul>
                 </div>

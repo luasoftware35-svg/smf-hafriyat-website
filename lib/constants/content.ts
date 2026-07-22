@@ -8,23 +8,23 @@ export const stats = [
 export const processSteps = [
   {
     step: 1,
-    title: "Keşif & Teklif",
-    description: "Sahayı inceliyor, kazı metrajını ölçüyor ve ekskavatör ihtiyacınız için net bir teklif sunuyoruz.",
+    title: "Stratejik Keşif",
+    description: "Saha analizi, metraj hesabı ve operasyonel yol haritası — şeffaf, belgeli ve net teklif sunuyoruz.",
   },
   {
     step: 2,
-    title: "Planlama & Ruhsat",
-    description: "Mühendislerimiz yıkım ve hafriyat planını onaylar; ruhsat süreçlerini sizin adınıza koordine ederiz.",
+    title: "Kurumsal Planlama",
+    description: "Mühendis onaylı yıkım ve hafriyat planı; ruhsat, İSG ve çevre gerekliliklerinin koordinasyonu.",
   },
   {
     step: 3,
-    title: "Uygulama",
-    description: "Kepçe ve ekskavatör filomuz sahaya iner — İSG kurallarına bağlı, disiplinli operasyon başlar.",
+    title: "Disiplinli Uygulama",
+    description: "Kendi ekskavatör filomuz sahaya iner — kurumsal İSG standartlarına bağlı, kesintisiz operasyon.",
   },
   {
     step: 4,
-    title: "Teslim & Temizlik",
-    description: "Enkaz kaldırılır, saha tesviye edilir; belgeli teslim ile projeniz kusursuz kapanır.",
+    title: "Belgeli Teslim",
+    description: "Enkaz kaldırma, tesviye ve saha temizliği — projenizin bir sonraki aşamasına hazır zemin.",
   },
 ] as const;
 
@@ -105,49 +105,59 @@ export const teamMembers = [
 
 export const aboutContent = {
   history:
-    "1998'de toprağın altına uzanan ilk kepçemizle yola çıktık. Ege'nin siluetini yeniden şekillendiren her kazı, her yıkım, her enkaz hattı bizim için bir imza. 2010'da SMF Yıkım Hafriyat Ltd. Şti. olarak Denizli Merkezefendi'nde kurumsal kimliğimizi taçlandırdık — ve o günden bu yana sahadaki her operasyonu aynı özenle yürütüyoruz.",
+    "1998 yılında Denizli'de attığımız ilk adımla Ege Bölgesi'nin altyapı haritasını şekillendirmeye başladık. Her kazı, her yıkım ve her enkaz hattı bizim için kurumsal bir taahhüttür. 2010'da SMF Yıkım Hafriyat Ltd. Şti. unvanıyla kurumsal kimliğimizi güçlendirdik; bugün 900'ü aşkın projeyle sektörün güvenilir referans markalarından biriyiz.",
   mission:
-    "Sahayı bir tuval, ekskavatörü bir fırça gibi kullanıyoruz. Güvenlik, dürüstlük ve çevreye saygı — vazgeçilmez üçlümüz. Yasal mevzuattan taviz vermeden, insanlara ve toprağa huzur bırakan hafriyat ve yıkım işleri üretmek misyonumuzun özüdür.",
+    "Her saha operasyonunda güvenlik, dürüstlük ve çevreye saygıyı vazgeçilmez ilke kabul ediyoruz. Yasal mevzuattan taviz vermeden, paydaşlarımıza ve toprağa kalıcı değer bırakan hafriyat ve yıkım hizmetleri sunmak kurumsal misyonumuzun özüdür.",
   vision:
-    "Ege Bölgesi'nde hafriyat denince akla gelen ilk isim olmak; uluslararası standartlarda, disiplinli ve zarif saha operasyonlarıyla sektörün referans markası haline gelmek.",
+    "Ege Bölgesi'nde hafriyat ve yıkım denince akla gelen ilk kurumsal marka olmak; uluslararası standartlarda disiplin, şeffaflık ve operasyonel mükemmellikle sektöre yön vermek.",
   whatWeDo:
-    "Yıkım ve hafriyat sanatında 21 yılı aşkın tecrübemizle 150'nin üzerinde firmaya, 900'ün üzerinde projede eşlik ettik — derin temel kazısından enkaz kaldırmaya, kontrollü yıkımdan altyapı hattına kadar.",
+    "21 yılı aşkın kurumsal tecrübemizle 150'nin üzerinde firmaya, 900'ün üzerinde projede stratejik saha ortağı olduk — derin temel kazısından kontrollü yıkıma, altyapı hattından enkaz kaldırmaya kadar.",
   foundedYear: 1998,
 } as const;
 
 export const whyUsItems = [
   {
     icon: "HardHat",
-    title: "Kendi Filomuz",
-    description: "Taşeron değil — ekskavatör, loder, damper ve mini kepçe ile hafriyat ve yıkım sahasında doğrudan hizmet.",
+    title: "Kurumsal Filo Modeli",
+    description: "Taşeron yok — ekskavatör, loder, damper ve mini kepçe ile doğrudan, kurumsal saha yönetimi.",
   },
   {
     icon: "ShieldCheck",
-    title: "İş Güvenliği",
-    description: "İş güvenliği ve emniyet her projede ön planda; yasal mevzuata tam uyum.",
+    title: "İş Güvenliği Standartları",
+    description: "İSG ve emniyet her projenin temel taahhüdü; yasal mevzuata tam uyum, sıfır tolerans politikası.",
   },
   {
     icon: "Timer",
-    title: "Hızlı Çözüm",
-    description: "Büyük metrajlı hafriyat, derin temel kazısı ve yıkım enkaz kaldırma işlerinize hızlı ekskavatör sevkiyatı.",
+    title: "Operasyonel Çeviklik",
+    description: "Büyük metrajlı hafriyat ve derin kazı projelerinde hızlı filo sevkiyatı ve proaktif saha koordinasyonu.",
   },
   {
     icon: "Users",
-    title: "Uzman Kadro",
-    description: "Ramizoğlu ailesi liderliğinde deneyimli hafriyat uzmanları, kepçe operatörleri ve saha ekibi.",
+    title: "Uzman Saha Kadrosu",
+    description: "Ramizoğlu ailesi liderliğinde deneyimli hafriyat uzmanları, operatörler ve proje koordinatörleri.",
   },
 ] as const;
 
 export const faqItems = [
   {
+    question: "Denizli'de hafriyat firması arıyorum, SMF Hafriyat nerede?",
+    answer:
+      "Merkez ofisimiz Yeni Mah. Menderes Bulvarı No:7/A D:3, Merkezefendi, Denizli adresindedir. Denizli hafriyat, yıkım ve ekskavatör kazı ihtiyaçlarınız için 0533 353 22 53 numarasından veya hello@genuadigital.com adresinden bize ulaşabilirsiniz.",
+  },
+  {
+    question: "Denizli hafriyat fiyatları nasıl belirlenir?",
+    answer:
+      "Denizli hafriyat fiyatları; kazı metrajı, derinlik, zemin durumu, makine ihtiyacı ve nakliye mesafesine göre keşif sonrası belirlenir. SMF Hafriyat olarak şeffaf metraj ve resmi sözleşme ile teklif sunuyoruz.",
+  },
+  {
     question: "Keşif ve teklif süreci ne kadar sürer?",
     answer:
-      "Denizli ve çevre illerde hafriyat sahası keşfi planlayabiliyoruz. Ekskavatör metrajı ve kazı derinliği analizi sonrası teklif sunuyoruz. Hızlı teklif için 0533 353 22 53 numarasından arayabilirsiniz.",
+      "Denizli ve çevre illerde stratejik saha keşfi planlıyoruz. Ekskavatör metrajı ve kazı derinliği analizi sonrası şeffaf, belgeli teklif sunuyoruz. Hızlı koordinasyon için 0533 353 22 53 numarasından ulaşabilirsiniz.",
   },
   {
     question: "Hangi bölgelere hizmet veriyorsunuz?",
     answer:
-      "Merkez ofisimiz Denizli Merkezefendi'de olup Ege Bölgesi'nin tamamına — Aydın, Muğla, Uşak, Afyon ve çevre illere hizmet veriyoruz.",
+      "Merkez ofisimiz Yeni Mah. Menderes Bulvarı, Merkezefendi, Denizli'de olup Ege Bölgesi'nin tamamına — Aydın, Muğla, Uşak, Afyon ve çevre illere kurumsal saha hizmeti veriyoruz.",
   },
   {
     question: "İş makinesi kiralama yapıyor musunuz?",
@@ -157,17 +167,17 @@ export const faqItems = [
   {
     question: "Moloz taşıma belgeleriniz var mı?",
     answer:
-      "Yıkım enkazı ve hafriyat molozu kepçe ile yüklenir, damper ile mevzuata uygun taşınır; tartım fişi ve irsaliye düzenlenir.",
+      "Yıkım enkazı ve hafriyat molozu kepçe ile yüklenir, damper ile mevzuata uygun taşınır; tartım fişi, irsaliye ve resmi sözleşme ile kurumsal süreç yürütülür.",
   },
   {
     question: "Ödeme ve fatura koşullarınız nedir?",
     answer:
-      "Proje büyüklüğüne göre esnek ödeme planları sunuyoruz. Tüm işlemler faturalı ve resmi sözleşmeli yürütülür.",
+      "Proje büyüklüğüne göre esnek ödeme planları sunuyoruz. Tüm işlemler faturalı, resmi sözleşmeli ve şeffaf metraj esaslı yürütülür.",
   },
 ] as const;
 
 export const serviceAreas = [
-  { name: "Denizli Merkez", districts: "Merkezefendi, Pamukkale", description: "Merkez ofis — Bozburun Mah. Menderes Bulvarı" },
+  { name: "Denizli Merkez", districts: "Merkezefendi, Pamukkale", description: "Merkez ofis — Yeni Mah. Menderes Bulvarı No:7/A D:3" },
   { name: "Honaz", districts: "Organize Sanayi Bölgesi", description: "Fabrika derin temel kazısı ve ekskavatör dolgu" },
   { name: "Acıpayam", districts: "Acıpayam, Çameli", description: "Kanal kazısı ve yağmur suyu hattı hafriyatı" },
   { name: "Çivril & Tavas", districts: "Çivril, Tavas, Baklan", description: "Kırsal hafriyat ve kepçe kazı işleri" },

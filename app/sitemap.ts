@@ -13,9 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/hizmetler`, lastModified: BUILD_DATE, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/filo`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/projeler`, lastModified: BUILD_DATE, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/hizmet-bolgeleri`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/hizmet-bolgeleri`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.95 },
     { url: `${base}/hakkimizda`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/iletisim`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/iletisim`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.95 },
   ];
 
   const servicePages = services.map((service) => ({

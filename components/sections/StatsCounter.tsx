@@ -1,35 +1,11 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { AnimatedCounter } from "@/components/motion/AnimatedCounter";
 import { stats } from "@/lib/constants/content";
 import { siteImages } from "@/lib/constants/images";
-
-function Counter({ value, suffix }: { value: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { stiffness: 80, damping: 20 });
-  const display = useTransform(springValue, (latest) => Math.round(latest));
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
-  useEffect(() => {
-    if (isInView) motionValue.set(value);
-  }, [isInView, motionValue, value]);
-
-  useEffect(() => {
-    return display.on("change", (latest) => {
-      if (ref.current) ref.current.textContent = `${latest}${suffix}`;
-    });
-  }, [display, suffix]);
-
-  return (
-    <span ref={ref} className="font-mono text-4xl font-bold text-accent sm:text-5xl">
-      0{suffix}
-    </span>
-  );
-}
 
 export function StatsCounter() {
   return (
@@ -58,7 +34,11 @@ export function StatsCounter() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 + index * 0.08, duration: 0.5 }}
               />
-              <Counter value={stat.value} suffix={stat.suffix} />
+              <AnimatedCounter
+                value={stat.value}
+                suffix={stat.suffix}
+                className="font-mono text-4xl font-bold text-accent sm:text-5xl"
+              />
               <p className="mt-2 text-sm font-medium text-text-secondary">{stat.label}</p>
             </motion.div>
           ))}

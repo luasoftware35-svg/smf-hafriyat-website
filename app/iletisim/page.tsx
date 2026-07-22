@@ -3,13 +3,16 @@ import { PageHero } from "@/components/ui/PageHero";
 import { ImageMarquee } from "@/components/sections/ImageMarquee";
 import { BreadcrumbJsonLd, ContactPageJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
+import { localSeo, pageSeoDescription } from "@/lib/seo/local";
+import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export const metadata = createPageMetadata({
-  title: "İletişim",
-  description: "SMF Hafriyat ile iletişime geçin — hafriyat, yıkım ve derin temel kazısı için ekskavatör keşfi planlayın.",
+  title: "Denizli Hafriyat İletişim",
+  description: pageSeoDescription(`${brand.pages.contact.description} Adres: Yeni Mah. Menderes Bulvarı No:7/A D:3, Merkezefendi, Denizli.`),
   path: "/iletisim",
   image: siteImages.contact,
+  keywords: ["denizli hafriyat iletişim", "denizli hafriyat telefon", ...localSeo.defaultKeywords],
 });
 
 export default function ContactPage() {
@@ -19,8 +22,8 @@ export default function ContactPage() {
       <ContactPageJsonLd />
       <PageHero
         eyebrow="İletişim"
-        title="Hafriyat projeniz için teklif alın"
-        description="Derin temel kazısı, yıkım enkaz kaldırma veya kepçe kiralama — form, telefon veya WhatsApp ile ulaşın."
+        title={brand.pages.contact.title}
+        description={brand.pages.contact.description}
         image={siteImages.contact}
         imageAlt="Kepçe ile enkaz kaldırma — SMF Hafriyat iletişim"
       />

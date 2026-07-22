@@ -9,6 +9,7 @@ import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/constants/site";
 import { absoluteUrl } from "@/lib/seo/urls";
+import { localSeo } from "@/lib/seo/local";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -42,21 +43,12 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "SMF Hafriyat | Denizli Hafriyat ve Kazı Hizmetleri",
-    template: "%s | SMF Hafriyat",
+    default: localSeo.homeTitle,
+    template: "%s | SMF Hafriyat Denizli",
   },
-  description: siteConfig.description,
+  description: localSeo.homeDescription,
   metadataBase: new URL(siteConfig.url),
-  keywords: [
-    "hafriyat denizli",
-    "ekskavatör kazı",
-    "derin temel kazısı",
-    "enkaz kaldırma",
-    "yıkım denizli",
-    "kepçe kiralama",
-    "moloz nakliyesi",
-    "SMF Hafriyat",
-  ],
+  keywords: [...localSeo.defaultKeywords],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
@@ -66,19 +58,25 @@ export const metadata: Metadata = {
     apple: [{ url: "/logo.svg", type: "image/svg+xml" }],
   },
   robots: { index: true, follow: true },
+  other: {
+    "geo.region": "TR-20",
+    "geo.placename": `${localSeo.city}, ${localSeo.country}`,
+    "geo.position": `${localSeo.geo.latitude};${localSeo.geo.longitude}`,
+    ICBM: `${localSeo.geo.latitude}, ${localSeo.geo.longitude}`,
+  },
   openGraph: {
-    title: "SMF Hafriyat | Denizli Hafriyat ve Kazı Hizmetleri",
-    description: siteConfig.description,
+    title: localSeo.homeTitle,
+    description: localSeo.homeDescription,
     url: siteConfig.url,
     locale: siteConfig.locale,
     type: "website",
-    siteName: siteConfig.name,
-    images: [{ url: absoluteUrl("/images/hafriyat/haf-001.jpg"), width: 1200, height: 630, alt: siteConfig.name }],
+    siteName: `${siteConfig.name} — Denizli Hafriyat`,
+    images: [{ url: absoluteUrl("/images/hafriyat/haf-001.jpg"), width: 1200, height: 630, alt: "Denizli hafriyat — SMF Hafriyat" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SMF Hafriyat | Denizli Hafriyat ve Kazı Hizmetleri",
-    description: siteConfig.description,
+    title: localSeo.homeTitle,
+    description: localSeo.homeDescription,
     images: [absoluteUrl("/images/hafriyat/haf-001.jpg")],
   },
   alternates: { canonical: siteConfig.url },

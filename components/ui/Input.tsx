@@ -19,7 +19,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "w-full rounded-md border border-surface bg-bg-primary px-4 py-3 text-sm text-text-primary shadow-sm transition-all placeholder:text-text-secondary/50",
+            "w-full rounded-lg border border-surface bg-bg-primary/95 px-4 py-3.5 text-sm text-text-primary shadow-sm transition-all placeholder:text-text-secondary/50",
             "hover:border-accent/30 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20",
             error && "border-red-400 focus:border-red-400 focus:ring-red-400/20",
             className,
@@ -57,7 +57,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "w-full resize-y rounded-md border border-surface bg-bg-primary px-4 py-3 text-sm text-text-primary shadow-sm transition-all placeholder:text-text-secondary/50",
+            "w-full resize-y rounded-lg border border-surface bg-bg-primary/95 px-4 py-3.5 text-sm text-text-primary shadow-sm transition-all placeholder:text-text-secondary/50",
             "hover:border-accent/30 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20",
             error && "border-red-400 focus:border-red-400 focus:ring-red-400/20",
             className,
@@ -95,7 +95,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "w-full rounded-md border border-surface bg-bg-primary px-4 py-3 text-sm text-text-primary shadow-sm transition-all",
+            "w-full rounded-lg border border-surface bg-bg-primary/95 px-4 py-3.5 text-sm text-text-primary shadow-sm transition-all",
             "hover:border-accent/30 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20",
             error && "border-red-400 focus:border-red-400 focus:ring-red-400/20",
             className,
