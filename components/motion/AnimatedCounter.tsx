@@ -2,14 +2,21 @@
 
 import { useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 type AnimatedCounterProps = {
   value: number;
-  suffix: string;
+  suffix?: string;
   className?: string;
+  suffixClassName?: string;
 };
 
-export function AnimatedCounter({ value, suffix, className }: AnimatedCounterProps) {
+export function AnimatedCounter({
+  value,
+  suffix = "",
+  className,
+  suffixClassName = "text-accent",
+}: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, { stiffness: 80, damping: 20 });
@@ -22,13 +29,14 @@ export function AnimatedCounter({ value, suffix, className }: AnimatedCounterPro
 
   useEffect(() => {
     return display.on("change", (latest) => {
-      if (ref.current) ref.current.textContent = `${latest}${suffix}`;
+      if (ref.current) ref.current.textContent = String(latest);
     });
-  }, [display, suffix]);
+  }, [display]);
 
   return (
-    <span ref={ref} className={className ?? "font-mono text-3xl font-bold text-accent sm:text-4xl"}>
-      0{suffix}
+    <span className={cn(className ?? "font-mono text-3xl font-bold text-text-primary sm:text-4xl")}>
+      <span ref={ref} aria-label={`${value}${suffix}`} />
+      {suffix ? <span className={suffixClassName}>{suffix}</span> : null}
     </span>
   );
 }

@@ -14,7 +14,7 @@ import {
   Waves,
   type LucideIcon,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { TextReveal } from "@/components/motion/TextReveal";
@@ -36,7 +36,13 @@ const iconMap: Record<string, LucideIcon> = {
   Container: ContainerIcon,
 };
 
+const pillVariants: Variants = {
+  hidden: { opacity: 0, y: 10, scale: 0.96 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
 export function ServicesGridAnimated() {
+  const reduceMotion = useReducedMotion();
   const sorted = [...services].sort((a, b) => a.orderIndex - b.orderIndex);
 
   return (
@@ -56,7 +62,15 @@ export function ServicesGridAnimated() {
 
       <Container className="relative py-16 lg:py-24">
         <FadeIn className="mx-auto mb-14 max-w-3xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">{brand.sections.servicesPage.eyebrow}</p>
+          <motion.p
+            initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="font-mono text-xs uppercase tracking-[0.22em] text-accent"
+          >
+            {brand.sections.servicesPage.eyebrow}
+          </motion.p>
           <TextReveal
             as="h2"
             text={brand.sections.servicesPage.title}
@@ -64,17 +78,34 @@ export function ServicesGridAnimated() {
             delay={0.05}
             highlightLast={2}
           />
-          <p className="mt-4 text-lg leading-relaxed text-text-secondary">{brand.sections.servicesPage.description}</p>
-          <div className="mt-5 flex flex-wrap justify-center gap-2">
+          <motion.p
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.12 }}
+            className="mt-4 text-lg leading-relaxed text-text-secondary"
+          >
+            {brand.sections.servicesPage.description}
+          </motion.p>
+          <motion.ul
+            className="mt-5 flex flex-wrap justify-center gap-2"
+            variants={reduceMotion ? undefined : { hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.2 } } }}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
+            viewport={{ once: true }}
+          >
             {brand.proofStrip.map((item) => (
-              <span
+              <motion.li
                 key={item}
-                className="rounded-full border border-surface bg-bg-primary/85 px-3 py-1.5 text-xs font-medium text-text-secondary"
+                variants={reduceMotion ? undefined : pillVariants}
+                whileHover={reduceMotion ? undefined : { y: -2, scale: 1.03 }}
               >
-                {item}
-              </span>
+                <span className="block rounded-full border border-surface bg-bg-primary/85 px-3 py-1.5 text-xs font-medium text-text-secondary transition-colors duration-300 hover:border-accent/25 hover:text-text-primary">
+                  {item}
+                </span>
+              </motion.li>
             ))}
-          </div>
+          </motion.ul>
         </FadeIn>
 
         <div className="flex flex-col gap-10 lg:gap-14">

@@ -121,7 +121,7 @@ export function Footer() {
                 </Link>
               </li>
               <li className="rounded-lg border border-surface bg-bg-primary/60 px-4 py-3 text-xs leading-relaxed text-text-secondary">
-                Ayni gun geri donus, resmi sozlesme ve belgeli saha sureci ile calisiyoruz.
+                Aynı gün geri dönüş, resmi sözleşme ve belgeli saha süreci ile çalışıyoruz.
               </li>
             </ul>
 

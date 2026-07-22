@@ -1,5 +1,5 @@
 export const stats = [
-  { label: "Sektör Deneyimi", value: 21, suffix: "+ Yıl", orderIndex: 1 },
+  { label: "Sektör Deneyimi", value: 28, suffix: "+ Yıl", orderIndex: 1 },
   { label: "Tamamlanan Proje", value: 900, suffix: "+", orderIndex: 2 },
   { label: "Hizmet Verilen Firma", value: 150, suffix: "+", orderIndex: 3 },
   { label: "Uzman Kadro", value: 7, suffix: "", orderIndex: 4 },
@@ -9,36 +9,50 @@ export const processSteps = [
   {
     step: 1,
     title: "Stratejik Keşif",
+    shortLabel: "Saha analizi · net metraj · teklif",
     description: "Saha analizi, metraj hesabı ve operasyonel yol haritası — şeffaf, belgeli ve net teklif sunuyoruz.",
   },
   {
     step: 2,
     title: "Kurumsal Planlama",
+    shortLabel: "Ruhsat · İSG · mühendis onayı",
     description: "Mühendis onaylı yıkım ve hafriyat planı; ruhsat, İSG ve çevre gerekliliklerinin koordinasyonu.",
   },
   {
     step: 3,
     title: "Disiplinli Uygulama",
+    shortLabel: "Kendi filo · sahada operasyon",
     description: "Kendi ekskavatör filomuz sahaya iner — kurumsal İSG standartlarına bağlı, kesintisiz operasyon.",
   },
   {
     step: 4,
     title: "Belgeli Teslim",
+    shortLabel: "Tesviye · enkaz · saha kapanışı",
     description: "Enkaz kaldırma, tesviye ve saha temizliği — projenizin bir sonraki aşamasına hazır zemin.",
   },
 ] as const;
 
-/** smfhafriyat.com — temel iş makinesi filosu (4 ana grup) */
+export const fleetHighlights = [
+  "Taşeronsuz model — sahada kendi operatör kadromuz",
+  "Bakımlı, sigortalı iş makineleri",
+  "Keşiften teslime tek ekip koordinasyonu",
+] as const;
+
+/** smfhafriyat.com — temel iş makinesi filosu */
 export const fleet = [
   { name: "Ekskavatör", capacity: "20–22 ton", specs: "Hafriyat, temel kazısı, derin kazı", icon: "Excavator" },
   { name: "Yükleyici (Loder)", capacity: "3 m³", specs: "Dolgu, tesviye ve yükleme işleri", icon: "Loader" },
   { name: "Damper Kamyon", capacity: "16–20 m³", specs: "Moloz, hafriyat ve toprak nakliyesi", icon: "Truck" },
   { name: "Mini Ekskavatör", capacity: "5 ton", specs: "Dar alan kazıları ve kanal çalışmaları", icon: "MiniExcavator" },
+  { name: "Derin Kazı Ekskavatör", capacity: "22 ton+", specs: "Fabrika temeli ve sanayi derin kazısı", icon: "Excavator" },
+  { name: "Dozer", capacity: "Bulldozer", specs: "Dekapaj, tesviye ve saha düzleme", icon: "Bulldozer" },
+  { name: "Enkaz Yükleme", capacity: "Kepçe + damper", specs: "Yıkım sonrası enkaz yükleme ve nakliye", icon: "Loader" },
+  { name: "Yıkım Sahası", capacity: "OSB & sanayi", specs: "Kontrollü yıkım ve saha temizliği", icon: "Hammer" },
 ] as const;
 
 export const trustHighlights = [
   {
-    title: "21 Yılı Aşkın Tecrübe",
+    title: "28 Yılı Aşkın Tecrübe",
     text: "1998'den bu yana Ege'nin toprağına dokunan her projede aynı disiplin — yıkım, hafriyat ve enkaz kaldırma.",
   },
   {
@@ -75,7 +89,7 @@ export const teamMembers = [
     name: "Ferhat Ramizoğlu",
     role: "Genel Müdür",
     bio: "Saha operasyonları, proje planlama ve ekip koordinasyonundan sorumludur.",
-    photo: "/images/smf/12-proje-1.png",
+    photo: "/images/hafriyat/haf-003.jpg",
   },
   {
     name: "Umut Avcı",
@@ -87,7 +101,7 @@ export const teamMembers = [
     name: "Murat Ramizoğlu",
     role: "Hafriyat Uzmanı",
     bio: "Hafriyat ve kazı projelerinde saha deneyimi; operatör ekibi koordinasyonu.",
-    photo: "/images/smf/13-proje-2.png",
+    photo: "/images/hafriyat/haf-006.jpg",
   },
   {
     name: "Serkan Ramizoğlu",
@@ -99,7 +113,7 @@ export const teamMembers = [
     name: "Polat Ramizoğlu",
     role: "Hafriyat Uzmanı",
     bio: "Altyapı ve kanal kazı projelerinde saha operasyonlarından sorumlu.",
-    photo: "/images/smf/17-proje-6.png",
+    photo: "/images/hafriyat/haf-004.jpg",
   },
 ] as const;
 
@@ -111,7 +125,7 @@ export const aboutContent = {
   vision:
     "Ege Bölgesi'nde hafriyat ve yıkım denince akla gelen ilk kurumsal marka olmak; uluslararası standartlarda disiplin, şeffaflık ve operasyonel mükemmellikle sektöre yön vermek.",
   whatWeDo:
-    "21 yılı aşkın kurumsal tecrübemizle 150'nin üzerinde firmaya, 900'ün üzerinde projede stratejik saha ortağı olduk — derin temel kazısından kontrollü yıkıma, altyapı hattından enkaz kaldırmaya kadar.",
+    "28 yılı aşkın kurumsal tecrübemizle 150'nin üzerinde firmaya, 900'ün üzerinde projede stratejik saha ortağı olduk — derin temel kazısından kontrollü yıkıma, altyapı hattından enkaz kaldırmaya kadar.",
   foundedYear: 1998,
 } as const;
 
@@ -136,13 +150,41 @@ export const whyUsItems = [
     title: "Uzman Saha Kadrosu",
     description: "Ramizoğlu ailesi liderliğinde deneyimli hafriyat uzmanları, operatörler ve proje koordinatörleri.",
   },
+  {
+    icon: "FileText",
+    title: "Şeffaf Metraj ve Teklif",
+    description: "Keşif sonrası net hacim, makine ihtiyacı ve maliyet kalemleri yazılı olarak paylaşılır; sürpriz metraj riski minimize edilir.",
+  },
+  {
+    icon: "BadgeCheck",
+    title: "Resmi Sözleşme ve Belgeli Teslim",
+    description: "Her proje resmi sözleşme, saha tutanağı ve teslim protokolü ile kapanır; kurumsal süreç şeffaflığı korunur.",
+  },
 ] as const;
 
+export const HOME_FAQ_COUNT = 8;
+
+/** Kurumsal öncelik sırası — ana sayfada ilk 8 soru gösterilir */
 export const faqItems = [
+  {
+    question: "Denizli kazı hizmeti veriyor musunuz?",
+    answer:
+      "Evet. Denizli kazı, temel kazısı, derin kazı ve altyapı hattı projelerinde operatörlü ekskavatör filomuzla hizmet veriyoruz. Detaylar için Denizli kazı sayfamızı inceleyebilir veya 0533 353 22 53 hattından bize ulaşabilirsiniz.",
+  },
+  {
+    question: "Denizli inşaat firmalarına hafriyat hizmeti sunuyor musunuz?",
+    answer:
+      "Müteahhit ve inşaat firmalarına konut, ticari ve sanayi projelerinde hafriyat, temel kazısı, yıkım ve enkaz kaldırma hizmeti sunuyoruz. Keşif sonrası net metraj ve resmi sözleşme ile çalışırız.",
+  },
   {
     question: "Denizli'de hafriyat firması arıyorum, SMF Hafriyat nerede?",
     answer:
-      "Merkez ofisimiz Yeni Mah. Menderes Bulvarı No:7/A D:3, Merkezefendi, Denizli adresindedir. Denizli hafriyat, yıkım ve ekskavatör kazı ihtiyaçlarınız için 0533 353 22 53 numarasından veya hello@genuadigital.com adresinden bize ulaşabilirsiniz.",
+      "Merkez ofisimiz Yeni Mah. Menderes Bulvarı No:7/A D:3, Merkezefendi, Denizli adresindedir. Denizli hafriyat, yıkım ve ekskavatör kazı ihtiyaçlarınız için 0533 353 22 53 numarasından veya info@smfhafriyat.com adresinden bize ulaşabilirsiniz.",
+  },
+  {
+    question: "Kendi filonuz ve operatör kadronuz var mı?",
+    answer:
+      "Evet. Taşeronsuz modelle çalışıyoruz — ekskavatör, loder, damper ve mini kepçe filomuz ile operatörlü saha ekibimiz doğrudan projeye atanır.",
   },
   {
     question: "Denizli hafriyat fiyatları nasıl belirlenir?",
@@ -160,9 +202,9 @@ export const faqItems = [
       "Merkez ofisimiz Yeni Mah. Menderes Bulvarı, Merkezefendi, Denizli'de olup Ege Bölgesi'nin tamamına — Aydın, Muğla, Uşak, Afyon ve çevre illere kurumsal saha hizmeti veriyoruz.",
   },
   {
-    question: "İş makinesi kiralama yapıyor musunuz?",
+    question: "Yıkım ve hafriyat ruhsat sürecinde destek veriyor musunuz?",
     answer:
-      "Evet. Hafriyat, yıkım ve kazı projeleri için ekskavatör, loder, damper ve mini kepçe kiralama hizmetimiz mevcuttur. Operatörlü ve operatörsüz seçenekler sunuyoruz.",
+      "Mühendis onaylı yıkım planı, İSG dokümantasyonu ve belediye ruhsat koordinasyonunda deneyimli ekibimiz süreci uçtan uca yönetir.",
   },
   {
     question: "Moloz taşıma belgeleriniz var mı?",
@@ -174,20 +216,104 @@ export const faqItems = [
     answer:
       "Proje büyüklüğüne göre esnek ödeme planları sunuyoruz. Tüm işlemler faturalı, resmi sözleşmeli ve şeffaf metraj esaslı yürütülür.",
   },
+  {
+    question: "Derin temel kazısı ve sanayi projelerinde çalışıyor musunuz?",
+    answer:
+      "Honaz OSB ve Denizli sanayi projelerinde derin kazı, fabrika temeli ve geniş metrajlı hafriyat işlerinde referans tecrübemiz vardır.",
+  },
+  {
+    question: "İş makinesi kiralama yapıyor musunuz?",
+    answer:
+      "Evet. Hafriyat, yıkım ve kazı projeleri için ekskavatör, loder, damper ve mini kepçe kiralama hizmetimiz mevcuttur. Operatörlü ve operatörsüz seçenekler sunuyoruz.",
+  },
+  {
+    question: "Acil saha müdahalesi ve aynı gün keşif mümkün mü?",
+    answer:
+      "Denizli merkez ve çevre ilçelerde aynı gün keşif planlayabiliyoruz. Acil yıkım, enkaz kaldırma ve saha müdahalesi için 0533 353 22 53 hattından ulaşın.",
+  },
+  {
+    question: "Hangi belgelerle çalışıyorsunuz?",
+    answer:
+      "Resmi sözleşme, metraj tutanağı, moloz nakliye irsaliyesi ve tartım fişi ile belgeli süreç yürütürüz. Kamu ve özel sektör ihalelerine uygun evrak seti sunarız.",
+  },
+  {
+    question: "Çalışma saatleriniz nedir?",
+    answer:
+      "Hafta içi ve Cumartesi 08:00–18:00 arası ofis ve saha koordinasyonu yapıyoruz. Proje takvimine göre vardiyalı saha operasyonu planlanabilir.",
+  },
+] as const;
+
+/** Ege Bölgesi illeri — ana sayfa hizmet bandı */
+export const egeRegionProvinces = [
+  "Afyonkarahisar",
+  "Aydın",
+  "Denizli",
+  "Kütahya",
+  "Manisa",
+  "Muğla",
+  "Uşak",
 ] as const;
 
 export const serviceAreas = [
-  { name: "Denizli Merkez", districts: "Merkezefendi, Pamukkale", description: "Merkez ofis — Yeni Mah. Menderes Bulvarı No:7/A D:3" },
-  { name: "Honaz", districts: "Organize Sanayi Bölgesi", description: "Fabrika derin temel kazısı ve ekskavatör dolgu" },
-  { name: "Acıpayam", districts: "Acıpayam, Çameli", description: "Kanal kazısı ve yağmur suyu hattı hafriyatı" },
-  { name: "Çivril & Tavas", districts: "Çivril, Tavas, Baklan", description: "Kırsal hafriyat ve kepçe kazı işleri" },
-  { name: "Aydın", districts: "Efeler, Nazilli, Söke", description: "Sanayi yıkımı ve enkaz kaldırma" },
-  { name: "Muğla", districts: "Menteşe, Fethiye", description: "Turizm projelerinde hafriyat kazısı" },
+  { name: "Merkezefendi", districts: "Yeni Mah., Kınıklı, Servergazi", description: "Merkez ofis · Menderes Bulvarı · aynı gün keşif" },
+  { name: "Pamukkale", districts: "Pamukkale, Gözler, Karahayıt", description: "Konut temel kazısı · kanal ve altyapı hattı" },
+  { name: "Honaz", districts: "OSB, Kaklık, Honaz Merkez", description: "Fabrika derin temel kazısı · sanayi tesviye" },
+  { name: "Acıpayam", districts: "Acıpayam, Yeşilyuva, Çameli", description: "Yağmur suyu hattı · kırsal hafriyat kazısı" },
+  { name: "Çivril & Tavas", districts: "Çivril, Tavas, Baklan, Beyağaç", description: "Geniş parsel dolgu · kepçe tesviye işleri" },
+  { name: "Buldan & Sarayköy", districts: "Buldan, Sarayköy, Babadağ", description: "Köprü altı kazı · dere ıslah hafriyatı" },
+  { name: "Aydın", districts: "Efeler, Nazilli, Söke, Kuşadası", description: "Sanayi yıkımı · enkaz kaldırma · moloz nakliye" },
+  { name: "Muğla", districts: "Menteşe, Fethiye, Milas, Bodrum", description: "Turizm projeleri · villa temel kazısı" },
 ] as const;
+
+/** Ege Bölgesi ilçeleri — ana sayfa bandı (sadece ilçe adları) */
+export const egeRegionDistricts = [
+  "Merkezefendi",
+  "Pamukkale",
+  "Honaz",
+  "Acıpayam",
+  "Çivril",
+  "Tavas",
+  "Buldan",
+  "Sarayköy",
+  "Babadağ",
+  "Baklan",
+  "Beyağaç",
+  "Çameli",
+  "Efeler",
+  "Nazilli",
+  "Söke",
+  "Kuşadası",
+  "Menteşe",
+  "Fethiye",
+  "Milas",
+  "Bodrum",
+  "Yunusemre",
+  "Şehzadeler",
+  "Turgutlu",
+  "Salihli",
+] as const;
+
+/** Ana sayfa Ege bandı — yalnızca iller + ilçeler */
+export const egeServiceBandItems = [...egeRegionProvinces, ...egeRegionDistricts];
 
 export const industrySectors = [
   { sector: "İnşaat & Müteahhitlik", description: "Konut, ticari ve karma projelerde hafriyat ve temel kazısı" },
   { sector: "Sanayi & Fabrika", description: "Fabrika yıkımı, enkaz kaldırma ve OSB projeleri" },
   { sector: "Altyapı & Belediye", description: "Kanalizasyon, yağmur suyu ve isale hatları kazısı" },
   { sector: "Kamu & Kurumsal", description: "Okul, tesis ve kamu yapıları yıkım ve hafriyat işleri" },
+] as const;
+
+/** Google Haritalar / yerel güven sinyali */
+export const googleBusiness = {
+  title: "Google Haritalar'da SMF Hafriyat",
+  description: "Denizli hafriyat hizmetimizi deneyimlediyseniz Google üzerinden değerlendirmenizi paylaşabilirsiniz.",
+  cta: "Google'da görüntüle",
+  href: "https://maps.google.com/?q=Yeni+Mah.+Menderes+Bulvar%C4%B1+No+7%2FA+Merkezefendi+Denizli",
+} as const;
+
+export const clientProof = [
+  { sector: "Organize Sanayi", project: "Honaz OSB fabrika temel kazısı", type: "Derin hafriyat" },
+  { sector: "Konut & Müteahhit", project: "Merkezefendi kontrollü yıkım", type: "Yıkım & enkaz" },
+  { sector: "Belediye Altyapı", project: "Pamukkale kanalizasyon hattı", type: "Kanal kazısı" },
+  { sector: "Sanayi Yatırım", project: "Denizli sanayi sitesi tesviye", type: "Dolgu & tesviye" },
 ] as const;

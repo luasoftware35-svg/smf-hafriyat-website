@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CheckCircle, ShieldCheck, ArrowRight, Phone, MapPin } from "lucide-react";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { Card } from "@/components/ui/Card";
@@ -52,18 +53,26 @@ export default async function ServiceDetailPage({ params }: Props) {
       <ServiceJsonLd title={service.title} description={service.shortDescription} slug={slug} image={image} />
       <PageHero
         eyebrow="Hizmet Detayı"
-        title={service.title}
-        description={service.shortDescription}
+        title={serviceSeoTitle(service.title)}
+        description={serviceSeoDescription(service.shortDescription)}
         image={image}
         imageAlt={`${service.title} — SMF Hafriyat Denizli`}
       />
       <Container className="py-16 lg:py-24">
+        <Breadcrumbs
+          className="mb-8"
+          items={[
+            { name: "Ana Sayfa", path: "/" },
+            { name: "Hizmetler", path: "/hizmetler" },
+            { name: service.title },
+          ]}
+        />
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <div className="grid gap-3 sm:grid-cols-3">
               <div className="rounded-lg border border-surface bg-bg-secondary/75 px-4 py-3 text-sm text-text-secondary">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">Kesif</p>
-                <p className="mt-2 font-medium text-text-primary">Ayni gun geri donus</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">Keşif</p>
+                <p className="mt-2 font-medium text-text-primary">Aynı gün geri dönüş</p>
               </div>
               <div className="rounded-lg border border-surface bg-bg-secondary/75 px-4 py-3 text-sm text-text-secondary">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">Filo</p>
@@ -114,7 +123,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <AnimatedButton href={ctaLinks.quote.href} glow>
-                Bu Is Icin Teklif Al
+                Bu İş İçin Teklif Al
                 <ArrowRight size={18} aria-hidden="true" />
               </AnimatedButton>
               <AnimatedButton href={contactInfo.phoneHref} variant="secondary" glow={false}>
@@ -141,14 +150,14 @@ export default async function ServiceDetailPage({ params }: Props) {
             <div className="space-y-4 border-t border-surface p-6">
               <div className="flex items-start gap-3 text-sm text-text-secondary">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-                <span>Yeni Mah. Menderes Bulvari No:7/A D:3, Merkezefendi, Denizli</span>
+                <span>{contactInfo.address.full}</span>
               </div>
               <div className="flex items-start gap-3 text-sm text-text-secondary">
                 <Phone size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-                <span>{contactInfo.phoneDisplay} · Kesif ve proje koordinasyonu</span>
+                <span>{contactInfo.phoneDisplay} · Keşif ve proje koordinasyonu</span>
               </div>
               <div className="rounded-lg border border-surface bg-bg-secondary/70 px-4 py-3 text-sm text-text-secondary">
-                Bu hizmet icin gerekli saha, metraj ve makine planlamasini kesif sonrasi netlestiriyoruz.
+                Bu hizmet için gerekli saha, metraj ve makine planlamasını keşif sonrası netleştiriyoruz.
               </div>
             </div>
           </Card>

@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { handleHashLinkClick } from "@/lib/utils/hash";
 import type { NavLink } from "@/lib/constants/site";
 
 type NavDropdownProps = {
@@ -11,6 +13,8 @@ type NavDropdownProps = {
 };
 
 export function NavDropdown({ link, isActive }: NavDropdownProps) {
+  const pathname = usePathname();
+
   if (!link.children?.length) {
     return (
       <Link
@@ -55,6 +59,7 @@ export function NavDropdown({ link, isActive }: NavDropdownProps) {
             <Link
               key={child.href}
               href={child.href}
+              onClick={(event) => handleHashLinkClick(event, child.href, pathname)}
               className="block rounded-sm px-3 py-2.5 transition-colors hover:bg-accent/10 hover:text-accent"
             >
               <span className="block text-sm font-medium text-text-primary">{child.label}</span>

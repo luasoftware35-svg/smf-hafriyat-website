@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { ctaLinks, navLinks, contactInfo } from "@/lib/constants/site";
 import { brand } from "@/lib/constants/brand";
 import { Button } from "@/components/ui/Button";
+import { handleHashLinkClick } from "@/lib/utils/hash";
 
 type MobileNavProps = {
   isOpen: boolean;
@@ -130,7 +131,10 @@ export function MobileNav({ isOpen, onClose, pathname }: MobileNavProps) {
                               <li key={child.href}>
                                 <Link
                                   href={child.href}
-                                  onClick={onClose}
+                                  onClick={(event) => {
+                                    handleHashLinkClick(event, child.href, pathname, onClose);
+                                    if (!event.defaultPrevented) onClose();
+                                  }}
                                   className="block rounded-md px-3 py-2.5 text-sm text-text-secondary transition-colors hover:bg-accent/10 hover:text-accent"
                                 >
                                   {child.label}

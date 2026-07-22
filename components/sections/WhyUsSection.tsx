@@ -2,25 +2,29 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { HardHat, ShieldCheck, Timer, Users, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Section, SectionHeading } from "@/components/ui/SectionHeading";
+import { Section } from "@/components/ui/SectionHeading";
+import { SectionIntro } from "@/components/ui/SectionIntro";
 import { brand } from "@/lib/constants/brand";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { whyUsItems } from "@/lib/constants/content";
 import { whyUsSpotlightSlides } from "@/lib/constants/images";
 import { cn } from "@/lib/utils";
 
-const iconMap = { HardHat, ShieldCheck, Timer, Users };
-const SLIDE_MS = 6500;
+const SLIDE_MS = 8000;
 
 export function WhyUsSection() {
   const [active, setActive] = useState(0);
   const slideCount = whyUsSpotlightSlides.length;
   const reduceMotion = useReducedMotion();
+
+  const goTo = useCallback((index: number) => {
+    setActive((index + slideCount) % slideCount);
+  }, [slideCount]);
 
   const next = useCallback(() => setActive((prev) => (prev + 1) % slideCount), [slideCount]);
 
@@ -33,105 +37,129 @@ export function WhyUsSection() {
   const slide = whyUsSpotlightSlides[active];
 
   return (
-    <Section id="neden-biz">
+    <Section id="neden-biz" variant="muted" className="py-16 lg:py-24">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-14">
           <FadeIn>
-            <SectionHeading
-              eyebrow={brand.sections.whyUs.eyebrow}
+            <SectionIntro
+              label={brand.sections.whyUs.eyebrow}
               title={brand.sections.whyUs.title}
               description={brand.sections.whyUs.description}
             />
-            <div className="relative mt-8 overflow-hidden rounded-lg border border-surface shadow-card-hover">
-              <div className="relative aspect-[16/10] min-h-[220px]">
+
+            <div className="mt-8 overflow-hidden rounded-sm border border-surface/80 bg-bg-primary shadow-card">
+              <div className="relative aspect-[4/3] min-h-[240px]">
                 <AnimatePresence mode="popLayout">
                   <motion.div
                     key={active}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.75 }}
+                    transition={{ duration: 0.8 }}
                     className="absolute inset-0"
                   >
-                    <motion.div
-                      className="relative h-full w-full"
-                      initial={{ scale: 1 }}
-                      animate={{ scale: reduceMotion ? 1 : 1.04 }}
-                      transition={{ duration: SLIDE_MS / 1000, ease: "linear" }}
-                    >
-                      <Image src={slide.src} alt={slide.alt} fill className="object-cover" sizes="600px" />
-                    </motion.div>
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      className="object-cover object-center saturate-[0.92] contrast-[1.02]"
+                      sizes="(max-width: 1024px) 100vw, 560px"
+                    />
                   </motion.div>
                 </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-t from-accent-foreground/85 via-accent-foreground/25 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-accent-foreground/35 via-transparent to-transparent" />
+              </div>
+
+              <div className="border-t border-surface/80 bg-bg-primary px-5 py-4 sm:px-6 sm:py-5">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={active}
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.4 }}
-                    className="absolute bottom-0 left-0 right-0 p-5 sm:p-6"
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.35 }}
                   >
-                    <p className="font-mono text-xs uppercase tracking-widest text-accent">{slide.tag}</p>
-                    <p className="mt-1 font-heading text-xl text-white sm:text-2xl">{slide.title}</p>
-                    <p className="mt-2 text-sm text-white/80">{slide.subtitle}</p>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">{slide.tag}</p>
+                    <p className="mt-2 font-heading text-lg text-text-primary sm:text-xl">{slide.title}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-text-secondary">{slide.subtitle}</p>
                   </motion.div>
                 </AnimatePresence>
-                <div className="absolute left-4 top-4 flex gap-1.5">
-                  {whyUsSpotlightSlides.map((_, index) => (
-                    <span
-                      key={whyUsSpotlightSlides[index].src}
+
+                <div className="mt-4 flex items-center gap-3">
+                  {whyUsSpotlightSlides.map((item, index) => (
+                    <button
+                      key={item.src}
+                      type="button"
+                      onClick={() => goTo(index)}
                       className={cn(
-                        "h-1.5 rounded-full transition-all duration-300",
-                        index === active ? "w-6 bg-accent" : "w-1.5 bg-white/40",
+                        "h-px flex-1 transition-colors duration-300",
+                        index === active ? "bg-accent" : "bg-surface hover:bg-accent/40",
                       )}
-                      aria-hidden="true"
+                      aria-label={`Görsel ${index + 1}`}
+                      aria-current={index === active ? "true" : undefined}
                     />
                   ))}
                 </div>
               </div>
             </div>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {brand.proofStrip.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-surface bg-bg-secondary/70 px-3 py-1.5 text-xs font-medium text-text-secondary"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-            <div className="mt-6">
-              <AnimatedButton href="/hakkimizda" variant="secondary">
-                Hakkımızda
-                <ArrowRight size={16} aria-hidden="true" />
-              </AnimatedButton>
-            </div>
+
+            <Link
+              href="/hakkimizda"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-text-primary transition-colors hover:text-accent"
+            >
+              Kurumsal profilimizi inceleyin
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
           </FadeIn>
 
-          <StaggerGrid className="grid gap-4 sm:grid-cols-2">
-            {whyUsItems.map((item) => {
-              const Icon = iconMap[item.icon as keyof typeof iconMap] ?? HardHat;
-              return (
-                <StaggerItem key={item.title}>
-                  <motion.div
-                    whileHover={{ y: -6, scale: 1.02 }}
-                    className="group h-full rounded-md border border-surface bg-bg-secondary/50 p-6 transition-all duration-300 hover:border-accent/40 hover:bg-bg-primary hover:shadow-card"
+          <StaggerGrid className="divide-y divide-surface border-y border-surface bg-bg-primary/70" stagger={0.1}>
+            {whyUsItems.map((item, index) => (
+              <StaggerItem key={item.title}>
+                <motion.article
+                  className="group relative grid gap-4 overflow-hidden px-1 py-7 sm:grid-cols-[3.5rem_1fr] sm:px-2"
+                  whileHover={reduceMotion ? undefined : { x: 4 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <motion.span
+                    className="absolute inset-y-0 left-0 w-0.5 origin-top bg-accent"
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    aria-hidden="true"
+                  />
+                  <motion.p
+                    className="font-mono text-sm text-accent/80 transition-colors duration-300 group-hover:text-accent"
+                    initial={{ opacity: 0, x: -8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
                   >
-                    <motion.div
-                      className="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-accent/15 text-accent transition-all group-hover:bg-accent group-hover:text-accent-foreground group-hover:shadow-glow"
-                      whileHover={{ rotate: [0, -8, 8, 0] }}
-                      transition={{ duration: 0.45 }}
+                    {String(index + 1).padStart(2, "0")}
+                  </motion.p>
+                  <div>
+                    <motion.h3
+                      className="font-heading text-xl text-text-primary transition-colors duration-300 group-hover:text-accent"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ duration: 0.45, delay: 0.05 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <Icon size={22} aria-hidden="true" />
-                    </motion.div>
-                    <h3 className="font-heading text-lg text-text-primary">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-text-secondary">{item.description}</p>
-                  </motion.div>
-                </StaggerItem>
-              );
-            })}
+                      {item.title}
+                    </motion.h3>
+                    <motion.p
+                      className="mt-2 text-sm leading-relaxed text-text-secondary"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ duration: 0.45, delay: 0.1 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      {item.description}
+                    </motion.p>
+                  </div>
+                </motion.article>
+              </StaggerItem>
+            ))}
           </StaggerGrid>
         </div>
       </Container>

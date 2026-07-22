@@ -3,23 +3,23 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { Container } from "@/components/ui/Container";
 import { brand } from "@/lib/constants/brand";
-import { ctaLinks } from "@/lib/constants/site";
-import { heroBanners } from "@/lib/constants/images";
+import { ctaLinks, contactInfo, siteConfig } from "@/lib/constants/site";
+import { homeHeroBanners } from "@/lib/constants/images";
 import { cn } from "@/lib/utils";
 
 const SLIDE_MS = 6000;
 
 export function DiggerHero() {
   const [active, setActive] = useState(0);
-  const slideCount = heroBanners.length;
+  const slideCount = homeHeroBanners.length;
   const reduceMotion = useReducedMotion();
   const heroStats = [
-    { label: "Tecrübe", value: "21+ Yıl" },
+    { label: "Tecrübe", value: `${siteConfig.yearsInBusiness}+ Yıl` },
     { label: "Proje", value: "900+" },
     { label: "Firma", value: "150+" },
     { label: "Kuruluş", value: "1998" },
@@ -42,7 +42,7 @@ export function DiggerHero() {
     return () => clearInterval(timer);
   }, [next, reduceMotion]);
 
-  const slide = heroBanners[active];
+  const slide = homeHeroBanners[active];
 
   return (
     <section className="relative overflow-hidden border-b border-surface">
@@ -85,6 +85,9 @@ export function DiggerHero() {
         />
 
         <Container className="relative z-10 flex min-h-[min(92vh,880px)] flex-col justify-end pb-8 pt-28 sm:min-h-[min(88vh,920px)] sm:justify-center sm:pb-12 sm:pt-32 lg:pb-16">
+          <h1 className="sr-only">
+            Denizli hafriyat, Denizli kazı ve inşaat hafriyat hizmetleri — {siteConfig.name}
+          </h1>
           <div className="max-w-3xl">
             <AnimatePresence mode="wait">
               <motion.div
@@ -96,7 +99,7 @@ export function DiggerHero() {
               >
                 <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent sm:text-sm">{slide.tag}</p>
                 <TextReveal
-                  as="h1"
+                  as="p"
                   text={slide.slogan}
                   className="mt-4 font-heading text-[2rem] leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl"
                   delay={0.05}
@@ -120,21 +123,19 @@ export function DiggerHero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
+              className="mt-8"
             >
               <AnimatedButton href={ctaLinks.quote.href} glow className="shadow-[0_12px_40px_rgba(245,160,32,0.28)]">
                 {ctaLinks.quote.label}
                 <ArrowRight size={18} aria-hidden="true" />
               </AnimatedButton>
-              <AnimatedButton
-                href={ctaLinks.call.href}
-                variant="secondary"
-                glow={false}
-                className="border-white/20 bg-white/8 text-white/92 hover:border-accent hover:bg-white/12 hover:text-white"
-              >
-                <Phone size={18} aria-hidden="true" />
-                {ctaLinks.call.label}
-              </AnimatedButton>
+              <p className="mt-4 text-sm text-white/70">
+                veya{" "}
+                <a href={ctaLinks.call.href} className="font-semibold text-white underline-offset-4 hover:text-accent hover:underline">
+                  {contactInfo.phoneDisplay}
+                </a>{" "}
+                numarasından hemen ulaşın
+              </p>
             </motion.div>
 
             <motion.dl
@@ -159,9 +160,9 @@ export function DiggerHero() {
 
           <div className="mt-8 flex items-end justify-end sm:mt-10">
             <div className="flex items-center gap-2 sm:gap-2.5">
-              {heroBanners.map((_, index) => (
+              {homeHeroBanners.map((_, index) => (
                 <button
-                  key={heroBanners[index].src}
+                  key={homeHeroBanners[index].src}
                   type="button"
                   onClick={() => goTo(index)}
                   className={cn(

@@ -18,9 +18,10 @@ import {
 
 type ContactFormProps = {
   className?: string;
+  variant?: "default" | "compact";
 };
 
-export function ContactForm({ className }: ContactFormProps) {
+export function ContactForm({ className, variant = "default" }: ContactFormProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null);
@@ -68,7 +69,7 @@ export function ContactForm({ className }: ContactFormProps) {
         </div>
         <h3 className="font-heading text-xl text-text-primary">Talebiniz alındı!</h3>
         <p className="mt-2 max-w-sm text-sm text-text-secondary">
-          Ekibimiz talebinizi inceliyor. Ayni gun geri donus hedefiyle sizinle iletisime gececegiz. Acil durumlar icin {contactInfo.phoneDisplay} numarasini arayabilirsiniz.
+          Ekibimiz talebinizi inceliyor. Aynı gün geri dönüş hedefiyle sizinle iletişime geçeceğiz. Acil durumlar için {contactInfo.phoneDisplay} numarasını arayabilirsiniz.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           {whatsappUrl && (
@@ -87,22 +88,24 @@ export function ContactForm({ className }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cn("space-y-5", className)} noValidate>
-      <div className="rounded-xl border border-surface bg-bg-secondary/70 p-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Kesif Bilgisi</p>
-        <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-          Formu doldurmak icin proje adresi, is tipi ve kisa detay yeterlidir. Kesif sonrasi net metraj, makine plani ve resmi teklif tarafimizdan hazirlanir.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {brand.contactPromises.map((item) => (
-            <span
-              key={item}
-              className="rounded-full border border-surface bg-bg-primary px-3 py-1.5 text-xs font-medium text-text-secondary"
-            >
-              {item}
-            </span>
-          ))}
+      {variant === "default" ? (
+        <div className="rounded-xl border border-surface bg-bg-secondary/70 p-5">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Keşif Bilgisi</p>
+          <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+            Formu doldurmak için proje adresi, iş tipi ve kısa detay yeterlidir. Keşif sonrası net metraj, makine planı ve resmi teklif tarafımızdan hazırlanır.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {brand.contactPromises.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-surface bg-bg-primary px-3 py-1.5 text-xs font-medium text-text-secondary"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Input label="Ad Soyad *" autoComplete="name" error={errors.name?.message} {...register("name")} />
@@ -136,7 +139,7 @@ export function ContactForm({ className }: ContactFormProps) {
         <Input label="Tercih Edilen Keşif Tarihi" type="date" error={errors.siteVisitDate?.message} {...register("siteVisitDate")} />
       </div>
 
-      <Textarea label="Proje Detayı *" rows={5} placeholder="Kazı derinliği, yıkım yapısı, süre beklentisi..." error={errors.message?.message} {...register("message")} />
+      <Textarea label="Proje Detayı *" rows={variant === "compact" ? 4 : 5} placeholder="Kazı derinliği, yıkım yapısı, süre beklentisi..." error={errors.message?.message} {...register("message")} />
 
       <div>
         <label className="flex items-start gap-3 rounded-md border border-surface bg-bg-secondary/50 p-4 text-sm text-text-secondary transition-colors hover:border-accent/30">
@@ -164,7 +167,7 @@ export function ContactForm({ className }: ContactFormProps) {
       </Button>
 
       <p className="text-sm text-text-secondary">
-        Acil talepler icin formu beklemeden <Link href={contactInfo.phoneHref} className="font-medium text-accent hover:underline">{contactInfo.phoneDisplay}</Link> uzerinden dogrudan arayabilirsiniz.
+        Acil talepler için formu beklemeden <Link href={contactInfo.phoneHref} className="font-medium text-accent hover:underline">{contactInfo.phoneDisplay}</Link> üzerinden doğrudan arayabilirsiniz.
       </p>
 
       {status === "error" && (

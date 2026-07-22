@@ -6,8 +6,10 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { siteImages } from "@/lib/constants/images";
 
+import { siteConfig } from "@/lib/constants/site";
+
 const items = [
-  { icon: Shield, label: "1998'den Beri", sub: "21+ yıl sektör deneyimi" },
+  { icon: Shield, label: "1998'den Beri", sub: `${siteConfig.yearsInBusiness}+ yıl sektör deneyimi` },
   { icon: Truck, label: "Kendi Filomuz", sub: "Ekskavatör, loder, damper" },
   { icon: Clock, label: "Hızlı Teklif", sub: "0533 353 22 53" },
   { icon: Award, label: "900+ Proje", sub: "150+ firmaya hizmet" },

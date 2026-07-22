@@ -113,7 +113,12 @@ export function JsonLd() {
         },
       })),
     },
-    sameAs: [siteConfig.url],
+    sameAs: [
+      siteConfig.url,
+      contactInfo.instagram,
+      contactInfo.mapLink,
+      ...(process.env.NEXT_PUBLIC_GOOGLE_MAPS_REVIEW_URL ? [process.env.NEXT_PUBLIC_GOOGLE_MAPS_REVIEW_URL] : []),
+    ].filter(Boolean),
   };
 
   const website = {

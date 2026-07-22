@@ -1,18 +1,17 @@
 import { DiggerHero } from "@/components/hero/DiggerHero";
-import { FieldShowcaseSection } from "@/components/sections/FieldShowcaseSection";
-import { ActionSpotlightCards } from "@/components/sections/ActionSpotlightCards";
-import { ImagePromoBanner } from "@/components/sections/ImagePromoBanner";
 import { WhyUsSection } from "@/components/sections/WhyUsSection";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
+import { FleetMiniSection } from "@/components/sections/FleetMiniSection";
+import { ServiceAreasBand } from "@/components/sections/ServiceAreasBand";
+import { SocialProofSection } from "@/components/sections/SocialProofSection";
 import { ProjectGallery } from "@/components/sections/ProjectGallery";
-import { CtaBanner } from "@/components/sections/CtaBanner";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { HomeContactSection } from "@/components/sections/HomeContactSection";
+import { HomeSeoIntro } from "@/components/sections/HomeSeoIntro";
 import { FaqJsonLd } from "@/components/seo/JsonLd";
-import { faqItems } from "@/lib/constants/content";
+import { faqItems, HOME_FAQ_COUNT } from "@/lib/constants/content";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo } from "@/lib/seo/local";
-import { midPagePromoSlides } from "@/lib/constants/images";
 
 export const metadata = createPageMetadata({
   title: localSeo.homeTitle,
@@ -24,17 +23,17 @@ export const metadata = createPageMetadata({
 export default function HomePage() {
   return (
     <>
-      <FaqJsonLd items={faqItems.slice(0, 4)} />
+      <FaqJsonLd items={faqItems.slice(0, HOME_FAQ_COUNT)} />
       <DiggerHero />
+      <HomeSeoIntro />
       <WhyUsSection />
       <ServicesGrid limit={6} showAllLink />
-      <ProcessTimeline />
+      <FleetMiniSection />
+      <ServiceAreasBand />
+      <SocialProofSection />
       <ProjectGallery limit={2} showFilters={false} />
-      <FieldShowcaseSection />
-      <ImagePromoBanner slides={midPagePromoSlides} size="md" align="left" />
-      <ActionSpotlightCards />
-      <FaqSection limit={4} showContactLink />
-      <CtaBanner />
+      <FaqSection limit={HOME_FAQ_COUNT} showContactLink={false} />
+      <HomeContactSection />
     </>
   );
 }

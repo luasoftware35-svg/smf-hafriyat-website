@@ -1,149 +1,191 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ArrowDown, Container as ContainerIcon, Droplets, Hammer, HardHat, Mountain, Package, Shovel, Truck, Waves, type LucideIcon } from "lucide-react";
-import { AnimatedButton } from "@/components/motion/AnimatedButton";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Card } from "@/components/ui/Card";
-import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { brand } from "@/lib/constants/brand";
-import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { services, type Service } from "@/lib/constants/services";
-import { getServiceGallery } from "@/lib/constants/images";
-
-const iconMap: Record<string, LucideIcon> = {
-  Shovel, Hammer, HardHat, Truck, ArrowDown, Package, Mountain, Waves, Droplets, Container: ContainerIcon,
-};
+import { getServiceImage } from "@/lib/constants/images";
+import { cn } from "@/lib/utils";
 
 type ServicesGridProps = {
   limit?: number;
   showAllLink?: boolean;
 };
 
-function ServiceGridCard({ service, Icon }: { service: Service; Icon: LucideIcon }) {
-  const images = getServiceGallery(service.slug);
-  const [active, setActive] = useState(0);
-  const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    if (!hovered || images.length <= 1) {
-      setActive(0);
-      return;
-    }
-    const timer = setInterval(() => setActive((prev) => (prev + 1) % images.length), 2200);
-    return () => clearInterval(timer);
-  }, [hovered, images.length]);
-
-  return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 280, damping: 22 }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <Card className="group flex h-full flex-col overflow-hidden rounded-xl">
-        <Link href={`/hizmetler/${service.slug}`} className="flex flex-1 flex-col">
-          <div className="relative aspect-[16/10] overflow-hidden">
-            <AnimatePresence mode="popLayout">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: hovered ? 1.06 : 1.02 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={images[active]}
-                  alt={`${service.title} — SMF Hafriyat`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width:768px) 100vw, 33vw"
-                />
-              </motion.div>
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-accent-foreground/85 via-accent-foreground/25 to-transparent" />
-            <motion.div
-              className="absolute inset-0 bg-accent/0 transition-colors duration-500 group-hover:bg-accent/10"
-              aria-hidden="true"
-            />
-            <div className="absolute left-3 top-3 rounded-sm bg-accent/90 px-2 py-0.5 font-mono text-[10px] font-bold text-accent-foreground">
-              {String(service.orderIndex).padStart(2, "0")}
-            </div>
-            <motion.div
-              className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-sm bg-accent text-accent-foreground shadow-glow"
-              animate={hovered ? { rotate: 360 } : { rotate: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <Icon size={20} aria-hidden="true" />
-            </motion.div>
-            <div className="absolute inset-x-0 bottom-0 p-4">
-              <p className="font-heading text-lg text-white">{service.title}</p>
-              <p className="mt-1 text-xs text-white/72">Denizli ve çevresinde operatörlü saha çözümü</p>
-              <div className="mt-2 flex gap-1">
-                {images.map((img, i) => (
-                  <span
-                    key={img}
-                    className={`h-1 rounded-full transition-all ${i === active ? "w-4 bg-accent" : "w-1 bg-white/40"}`}
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-1 flex-col p-5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent/90">Uygun İş Tipleri</p>
-            <p className="flex-1 text-sm leading-relaxed text-text-secondary">{service.shortDescription}</p>
-            <span className="mt-4 inline-flex w-fit items-center gap-1 rounded-full border border-accent/20 bg-accent/8 px-3 py-1.5 text-sm font-semibold text-accent transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-accent-foreground">
-              Bu İş İçin Teklif Al
-              <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            </span>
-          </div>
-        </Link>
-      </Card>
-    </motion.div>
-  );
-}
-
 export function ServicesGrid({ limit, showAllLink = false }: ServicesGridProps) {
+  const reduceMotion = useReducedMotion();
   const displayedServices = [...services]
     .sort((a, b) => a.orderIndex - b.orderIndex)
     .slice(0, limit ?? services.length);
 
+  const [activeService, setActiveService] = useState(displayedServices[0]?.slug ?? services[0].slug);
+
   return (
-    <Section id="hizmetler">
-      <Container>
+    <section
+      id="hizmetler"
+      aria-labelledby="services-heading"
+      className="relative overflow-hidden border-y border-white/10 bg-accent-foreground text-white"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40"
+        aria-hidden="true"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(245,160,32,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(245,160,32,0.07) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(245,160,32,0.14),transparent_60%)]" />
+
+      <Container className="relative py-16 lg:py-20">
         <FadeIn>
-          <div className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading
-              eyebrow={brand.sections.services.eyebrow}
-              title={brand.sections.services.title}
-              description={brand.sections.services.description}
-            />
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-xl">
+              <p className="text-sm text-white/55">{brand.sections.services.eyebrow}</p>
+              <h2 id="services-heading" className="mt-2 font-heading text-3xl leading-tight sm:text-4xl">
+                {brand.sections.services.title}
+              </h2>
+              <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/65 sm:text-base">
+                {brand.sections.services.description}
+              </p>
+            </div>
             {showAllLink && (
-              <AnimatedButton href="/hizmetler" variant="secondary" glow={false}>
+              <Link
+                href="/hizmetler"
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-accent hover:text-accent"
+              >
                 Tüm hizmetler
                 <ArrowRight size={16} aria-hidden="true" />
-              </AnimatedButton>
+              </Link>
             )}
           </div>
         </FadeIn>
 
-        <StaggerGrid className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {displayedServices.map((service) => {
-            const Icon = iconMap[service.icon] ?? Shovel;
-            return (
-              <StaggerItem key={service.slug}>
-                <ServiceGridCard service={service} Icon={Icon} />
-              </StaggerItem>
-            );
-          })}
-        </StaggerGrid>
+        <div className="mt-10 hidden h-[min(440px,52vh)] gap-2 lg:flex">
+          {displayedServices.map((service) => (
+            <ServicePanel
+              key={service.slug}
+              service={service}
+              active={service.slug === activeService}
+              onActivate={() => setActiveService(service.slug)}
+              reduceMotion={!!reduceMotion}
+            />
+          ))}
+        </div>
+
+        <div className="mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 lg:hidden">
+          {displayedServices.map((service) => (
+            <MobileServiceCard key={service.slug} service={service} />
+          ))}
+        </div>
       </Container>
-    </Section>
+    </section>
+  );
+}
+
+function ServicePanel({
+  service,
+  active,
+  onActivate,
+  reduceMotion,
+}: {
+  service: Service;
+  active: boolean;
+  onActivate: () => void;
+  reduceMotion: boolean;
+}) {
+  const image = getServiceImage(service.slug);
+
+  return (
+    <motion.button
+      type="button"
+      layout={!reduceMotion}
+      onMouseEnter={onActivate}
+      onFocus={onActivate}
+      onClick={onActivate}
+      aria-current={active ? "true" : undefined}
+      aria-label={service.title}
+      transition={{ layout: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }}
+      className={cn(
+        "group relative h-full min-w-0 overflow-hidden rounded-sm border text-left transition-[flex,border-color] duration-500",
+        active ? "flex-[3.4] border-accent/40" : "flex-1 border-white/10 hover:border-white/25",
+      )}
+    >
+      <Image
+        src={image}
+        alt={service.title}
+        fill
+        className={cn(
+          "object-cover transition-all duration-700",
+          active ? "scale-100 opacity-90" : "scale-110 opacity-35 group-hover:opacity-50",
+        )}
+        sizes={active ? "40vw" : "8vw"}
+      />
+
+      <div
+        className={cn(
+          "absolute inset-0 transition-opacity duration-500",
+          active
+            ? "bg-gradient-to-t from-accent-foreground via-accent-foreground/45 to-accent-foreground/15"
+            : "bg-gradient-to-t from-accent-foreground/90 via-accent-foreground/50 to-accent-foreground/20",
+        )}
+      />
+
+      <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+        <span className="font-mono text-[11px] text-accent">{String(service.orderIndex).padStart(2, "0")}</span>
+
+        {active ? (
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+          >
+            <p className="mt-1 font-heading text-xl text-white sm:text-2xl">{service.title}</p>
+            <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-white/72 sm:text-sm">{service.shortDescription}</p>
+            <Link
+              href={`/hizmetler/${service.slug}`}
+              onClick={(event) => event.stopPropagation()}
+              className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-accent transition-colors hover:text-white"
+            >
+              Detayı incele
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </Link>
+          </motion.div>
+        ) : (
+          <p
+            className="mt-3 font-heading text-sm text-white/85 [writing-mode:vertical-rl] rotate-180"
+            style={{ maxHeight: "220px" }}
+          >
+            {service.title}
+          </p>
+        )}
+      </div>
+    </motion.button>
+  );
+}
+
+function MobileServiceCard({ service }: { service: Service }) {
+  const image = getServiceImage(service.slug);
+
+  return (
+    <Link
+      href={`/hizmetler/${service.slug}`}
+      className="relative w-[72vw] max-w-[300px] shrink-0 snap-center overflow-hidden rounded-sm border border-white/10"
+    >
+      <div className="relative aspect-[4/5]">
+        <Image src={image} alt={service.title} fill className="object-cover" sizes="300px" />
+        <div className="absolute inset-0 bg-gradient-to-t from-accent-foreground via-accent-foreground/35 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 p-5">
+          <span className="font-mono text-[11px] text-accent">{String(service.orderIndex).padStart(2, "0")}</span>
+          <p className="mt-1 font-heading text-xl text-white">{service.title}</p>
+          <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-white/72">{service.shortDescription}</p>
+        </div>
+      </div>
+    </Link>
   );
 }

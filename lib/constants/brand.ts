@@ -3,7 +3,8 @@ export const brand = {
   tagline: "Denizli merkezli hafriyat, yıkım ve derin kazı",
   description:
     "1998'den bu yana kendi ekskavatör filomuz ve uzman kadromuzla hafriyat, yıkım, derin temel kazısı ve altyapı operasyonlarında Ege Bölgesi'nin kurumsal referans markası.",
-  topBar: "Denizli hafriyat · Yeni Mah. Menderes Bulvarı · Aynı gün keşif",
+  topBar: "Gelecek, sağlam temeller üzerinde.",
+  topBarTicker: ["Gelecek, sağlam temeller üzerinde.", "Sektörde öncü."],
   heroTrustPoints: ["Stratejik keşif", "Kurumsal filo", "Belgeli operasyon", "Zamanında teslim"],
   trustPills: ["1998'den beri", "Kendi filomuz", "Taşeronsuz model", "Belgeli teslim"],
   proofStrip: [
@@ -34,16 +35,14 @@ export const brand = {
       title: "Teklif kararını hızlandıran net hizmet başlıkları",
     },
     whyUs: {
-      eyebrow: "Kurumsal Fark",
-      title: "Denizli'de güven inşa eden saha disiplini",
-      description:
-        "Taşeron modeli yerine kendi filomuz ve operatörlerimizle — her projede aynı kurumsal standart.",
+      eyebrow: "Neden biz",
+      title: "Denizli'de güvenilir saha ekibi",
+      description: "Kendi filomuz ve operatörlerimizle; planlama, İSG ve teslim aynı standartta.",
     },
     services: {
-      eyebrow: "Hizmet Portföyü",
-      title: "İşinize uygun hafriyat ve yıkım çözümleri",
-      description:
-        "Tek çatı altında planlama, uygulama ve teslim. Hangi işe hangi makine ve süreç gerektiğini net şekilde gösteriyoruz.",
+      eyebrow: "Hizmetler",
+      title: "Hafriyat ve yıkım çözümleri",
+      description: "Keşiften teslime tek ekip, net süreç.",
     },
     servicesPage: {
       eyebrow: "10 Hizmet Kategorisi",
@@ -58,16 +57,14 @@ export const brand = {
         "Şeffaf iletişim, mühendis onaylı planlama ve belgeli teslim — projenizin her aşamasında yanınızdayız.",
     },
     projects: {
-      eyebrow: "Referans Portföyü",
-      title: "Sahada kanıtlanmış kurumsal başarılar",
-      description:
-        "Derin temel kazısından enkaz kaldırmaya — ekskavatör filomuzla tamamlanan projelerin öncesi ve sonrası.",
+      eyebrow: "Projeler",
+      title: "Tamamlanan işlerden örnekler",
+      description: "Derin kazı, yıkım ve altyapı projelerinden seçilmiş referanslar.",
     },
     faq: {
-      eyebrow: "Kurumsal Destek",
-      title: "Merak edilenler",
-      description:
-        "Hafriyat, yıkım ve proje süreçlerine dair sık sorulan sorular — şeffaf ve net yanıtlar.",
+      eyebrow: "SSS",
+      title: "Sık sorulan sorular",
+      description: "Hafriyat ve yıkım süreçlerine dair kısa yanıtlar.",
     },
     aboutStory: {
       eyebrow: "Kurumsal Kimlik",

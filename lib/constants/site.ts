@@ -9,6 +9,7 @@ export const siteConfig = {
   locale: "tr_TR",
   foundedYear: 1998,
   companyRegisteredYear: 2010,
+  yearsInBusiness: new Date().getFullYear() - 1998,
 } as const;
 
 export const companyLegal = {
@@ -22,8 +23,8 @@ export const contactInfo = {
   phoneHref: "tel:+905333532253",
   phoneSecondary: "0551 124 53 06",
   phoneSecondaryHref: "tel:+905511245306",
-  email: "hello@genuadigital.com",
-  emailHref: "mailto:hello@genuadigital.com",
+  email: "info@smfhafriyat.com",
+  emailHref: "mailto:info@smfhafriyat.com",
   whatsapp: "905333532253",
   whatsappHref:
     "https://wa.me/905333532253?text=Merhaba%2C%20SMF%20Hafriyat%20%C3%BCzerinden%20yaz%C4%B1yorum.%20Hafriyat%20%2F%20y%C4%B1k%C4%B1m%20projem%20i%C3%A7in%20teklif%20almak%20istiyorum.",
@@ -45,6 +46,7 @@ export const contactInfo = {
   mapEmbedUrl:
     "https://maps.google.com/maps?q=Yeni+Mah.+Menderes+Bulvar%C4%B1+7%2FA+Merkezefendi+Denizli&hl=tr&z=16&output=embed",
   mapLink: "https://maps.google.com/?q=Yeni+Mah.+Menderes+Bulvar%C4%B1+No+7%2FA+Merkezefendi+Denizli",
+  instagram: "https://www.instagram.com/smfhafriyat/",
 } as const;
 
 export type NavChildLink = {
@@ -100,6 +102,8 @@ export const footerServices = [
 
 export const footerPages = [
   { label: "Ana Sayfa", href: "/" },
+  { label: "Denizli Kazı", href: "/denizli-kazi" },
+  { label: "Denizli İnşaat Hafriyat", href: "/denizli-insaat-hafriyat" },
   { label: "Filo & Ekipman", href: "/filo" },
   { label: "Projeler", href: "/projeler" },
   { label: "Hizmet Bölgeleri", href: "/hizmet-bolgeleri" },
@@ -111,6 +115,14 @@ export const footerPages = [
 
 export const socialLinks = [
   { label: "Web Sitesi", href: "https://www.smfhafriyat.com" },
+  { label: "Instagram", href: contactInfo.instagram },
+  { label: "Google Haritalar", href: contactInfo.mapLink },
+] as const;
+
+export const quickContactChannels = [
+  { label: "WhatsApp", href: contactInfo.whatsappHref, icon: "whatsapp" },
+  { label: "Instagram", href: contactInfo.instagram, icon: "instagram" },
+  { label: "Telefon", href: contactInfo.phoneHref, icon: "phone" },
 ] as const;
 
 export const ctaLinks = {

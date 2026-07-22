@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { getServiceGallery } from "@/lib/constants/images";
@@ -44,6 +44,11 @@ type ServiceShowcaseCardProps = {
   Icon: LucideIcon;
 };
 
+const featureVariants: Variants = {
+  hidden: { opacity: 0, x: -8 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
 export function ServiceShowcaseCard({ service, index, Icon }: ServiceShowcaseCardProps) {
   const images = getServiceGallery(service.slug);
   const [active, setActive] = useState(0);
@@ -64,15 +69,16 @@ export function ServiceShowcaseCard({ service, index, Icon }: ServiceShowcaseCar
       initial={{ opacity: 0, y: 48 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.55, delay: reduceMotion ? 0 : Math.min(index * 0.04, 0.24), ease: [0.22, 1, 0.36, 1] }}
+      whileHover={reduceMotion ? undefined : { y: -4 }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       className="group"
     >
       <div
         className={cn(
-          "relative overflow-hidden rounded-xl border border-surface bg-bg-primary shadow-card transition-all duration-500",
-          "hover:border-accent/30 hover:shadow-card-hover",
+          "relative overflow-hidden rounded-xl border border-surface bg-bg-primary shadow-card transition-[border-color,box-shadow] duration-500",
+          "group-hover:border-accent/30 group-hover:shadow-card-hover",
           "lg:grid lg:grid-cols-12 lg:items-stretch",
         )}
       >
@@ -119,14 +125,23 @@ export function ServiceShowcaseCard({ service, index, Icon }: ServiceShowcaseCar
             aria-hidden="true"
           />
 
-          <div className="absolute left-4 top-4 flex items-center gap-2 sm:left-6 sm:top-6">
-            <span className="rounded-sm bg-accent px-2.5 py-1 font-mono text-xs font-bold text-accent-foreground">
+          <motion.div
+            className="absolute left-4 top-4 flex items-center gap-2 sm:left-6 sm:top-6"
+            initial={reduceMotion ? false : { opacity: 0, x: -12 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            <motion.span
+              className="rounded-sm bg-accent px-2.5 py-1 font-mono text-xs font-bold text-accent-foreground"
+              whileHover={reduceMotion ? undefined : { scale: 1.06 }}
+            >
               {String(service.orderIndex).padStart(2, "0")}
-            </span>
+            </motion.span>
             <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
               {tag}
             </span>
-          </div>
+          </motion.div>
 
           <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 lg:hidden">
             <p className="font-heading text-2xl text-white">{service.title}</p>
@@ -164,32 +179,55 @@ export function ServiceShowcaseCard({ service, index, Icon }: ServiceShowcaseCar
 
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Hizmet {service.orderIndex}</p>
           <h2 className="mt-2 font-heading text-2xl text-text-primary sm:text-3xl">
-            <Link href={`/hizmetler/${service.slug}`} className="transition-colors hover:text-accent">
-              {service.title}
+            <Link href={`/hizmetler/${service.slug}`} className="inline-block transition-colors hover:text-accent">
+              <motion.span whileHover={reduceMotion ? undefined : { x: 2 }} className="inline-block">
+                {service.title}
+              </motion.span>
             </Link>
           </h2>
-          <p className="mt-3 rounded-lg border border-surface bg-bg-secondary/70 px-4 py-3 text-sm leading-relaxed text-text-secondary">
+          <motion.p
+            className="mt-3 rounded-lg border border-surface bg-bg-secondary/70 px-4 py-3 text-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover:border-accent/20 group-hover:bg-bg-secondary"
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.08 }}
+          >
             {decisionNote}
-          </p>
+          </motion.p>
           <p className="mt-4 text-base leading-relaxed text-text-secondary">{service.shortDescription}</p>
 
-          <ul className="mt-5 flex flex-wrap gap-2">
+          <motion.ul
+            className="mt-5 flex flex-wrap gap-2"
+            variants={reduceMotion ? undefined : { hidden: {}, show: { transition: { staggerChildren: 0.05, delayChildren: 0.15 } } }}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
+            viewport={{ once: true }}
+          >
             {service.features.slice(0, 3).map((feature) => (
-              <li
+              <motion.li
                 key={feature}
-                className="rounded-full border border-surface bg-bg-secondary/80 px-3 py-1 text-xs font-medium text-text-secondary"
+                variants={reduceMotion ? undefined : featureVariants}
+                whileHover={reduceMotion ? undefined : { y: -2, scale: 1.03 }}
               >
-                {feature}
-              </li>
+                <span className="block rounded-full border border-surface bg-bg-secondary/80 px-3 py-1 text-xs font-medium text-text-secondary transition-colors duration-300 hover:border-accent/25 hover:text-text-primary">
+                  {feature}
+                </span>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
 
-          <div className="mt-8">
+          <motion.div
+            className="mt-8"
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+          >
             <AnimatedButton href={`/hizmetler/${service.slug}`} glow>
-              Bu Hizmet Icin Teklif Al
+              Bu Hizmet İçin Teklif Al
               <ArrowRight size={16} aria-hidden="true" />
             </AnimatedButton>
-          </div>
+          </motion.div>
 
           <div className="pointer-events-none absolute -right-8 top-1/2 hidden h-24 w-24 -translate-y-1/2 rounded-full border border-accent/20 lg:block">
             <motion.span

@@ -10,9 +10,9 @@ export function StickyMobileCta() {
   const pathname = usePathname();
   const quoteLabel =
     pathname.startsWith("/hizmetler/") && pathname !== "/hizmetler"
-      ? "Bu Is Icin Teklif Al"
+      ? "Bu İş İçin Teklif Al"
       : pathname === "/iletisim"
-        ? "Kesif Talebi Birak"
+        ? "Keşif Talebi Bırak"
         : ctaLinks.quote.label;
 
   return (
@@ -27,7 +27,7 @@ export function StickyMobileCta() {
           className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-md border border-surface bg-bg-primary text-sm font-semibold text-text-primary transition-colors hover:border-accent active:scale-[0.98]"
         >
           <Phone size={16} aria-hidden="true" />
-          Hemen Arayin
+          Hemen Arayın
         </Link>
         <Link
           href={ctaLinks.quote.href}

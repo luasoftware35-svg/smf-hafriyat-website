@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo_Black, Barlow, IBM_Plex_Mono } from "next/font/google";
 import { CookieConsent } from "@/components/layout/CookieConsent";
+import { GlobalCursorTrail } from "@/components/layout/GlobalCursorTrail";
+import { HashScroll } from "@/components/layout/HashScroll";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
@@ -96,12 +98,14 @@ export default function RootLayout({
         className={`${archivoBlack.variable} ${barlow.variable} ${ibmPlexMono.variable} min-h-screen bg-bg-primary text-text-primary antialiased`}
       >
         <ScrollProgress />
+        <HashScroll />
         <Header />
         <main className="pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] lg:pb-0">{children}</main>
         <Footer />
         <StickyMobileCta />
         <WhatsAppButton />
         <CookieConsent />
+        <GlobalCursorTrail />
       </body>
     </html>
   );

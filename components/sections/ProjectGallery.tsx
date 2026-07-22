@@ -32,6 +32,7 @@ export function ProjectGallery({ limit = 4, showFilters = true }: ProjectGallery
         <FadeIn>
           <div className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
+              variant="calm"
               eyebrow={brand.sections.projects.eyebrow}
               title={brand.sections.projects.title}
               description={brand.sections.projects.description}

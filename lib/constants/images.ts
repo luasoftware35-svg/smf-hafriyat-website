@@ -38,17 +38,21 @@ export const siteImages = {
   trustBg: core.buildingDemolition,
 
   fleet: [
-    { src: core.excavatorAerial, alt: "Ekskavatör — temel kazısı ve hafriyat" },
-    { src: core.excavatorDumpTruck, alt: "Kepçe ve damper — moloz hafriyat nakliyesi" },
-    { src: core.bulldozerDemolition, alt: "Dozer ile yıkım ve enkaz kaldırma" },
-    { src: core.rubbleExcavator, alt: "Mini kepçe — dar alan kanal kazısı" },
+    { src: core.excavatorDumpTruck, alt: "Ekskavatör ve damper — temel kazısı operasyonu" },
+    { src: core.siteExcavator, alt: "Saha iş makinesi — dolgu ve tesviye" },
+    { src: core.debrisLoading, alt: "Kepçe ile yükleme — moloz ve hafriyat nakliyesi" },
+    { src: core.rubbleExcavator, alt: "Dar alan kazısı — kanal ve mini ekskavatör operasyonu" },
+    { src: core.deepExcavator, alt: "Derin temel kazısı — fabrika ve sanayi sahası" },
+    { src: core.bulldozerDemolition, alt: "Dozer — dekapaj ve saha tesviye" },
+    { src: core.excavatorAerial, alt: "Havadan ekskavatör operasyonu — geniş saha kazısı" },
+    { src: core.buildingDemolition, alt: "Kontrollü yıkım — enkaz kaldırma sahası" },
   ],
 
   process: [
-    { src: core.siteExcavator, alt: "Keşif — hafriyat sahası analizi" },
-    { src: core.deepExcavator, alt: "Planlama — derin temel kazı projesi" },
-    { src: core.rubbleExcavator, alt: "Uygulama — kepçe ile saha kazısı" },
-    { src: core.debrisLoading, alt: "Teslim — enkaz kaldırma, temiz saha" },
+    { src: h(11), alt: "Keşif — hafriyat sahası genel değerlendirme" },
+    { src: h(10), alt: "Planlama — iş makinesi ve saha organizasyonu" },
+    { src: h(2), alt: "Uygulama — ekskavatör ve damper saha operasyonu" },
+    { src: h(16), alt: "Teslim — loder ile tesviye ve saha kapanışı" },
   ],
 
   aboutSections: {
@@ -76,16 +80,16 @@ export const siteImages = {
   ],
 
   services: {
-    "hafriyat-isleri": core.excavatorAerial,
-    "yikim-calismalari": core.buildingDemolition,
-    "altyapi-calismalari": core.rubbleExcavator,
-    "is-makinesi-kiralama": core.excavatorDumpTruck,
-    "derin-kazi": core.deepExcavator,
-    "moloz-nakliyesi": core.debrisLoading,
-    "kum-cakil-temini": core.siteExcavator,
-    "kanal-calismalari": core.bulldozerDemolition,
-    "su-tankeri-nakliyesi": core.enkazTurkey,
-    "toprak-moloz-tasima": core.excavatorDumpTruck,
+    "hafriyat-isleri": h(2),
+    "yikim-calismalari": h(6),
+    "altyapi-calismalari": h(4),
+    "is-makinesi-kiralama": h(10),
+    "derin-kazi": h(8),
+    "moloz-nakliyesi": h(14),
+    "kum-cakil-temini": h(11),
+    "kanal-calismalari": h(15),
+    "su-tankeri-nakliyesi": h(18),
+    "toprak-moloz-tasima": h(12),
   },
 
   serviceGallery: {
@@ -103,34 +107,34 @@ export const siteImages = {
 
   projects: {
     "denizli-osb-fabrika-temel-kazi": {
-      before: core.siteExcavator,
-      after: core.excavatorAerial,
-      gallery: [core.deepExcavator],
+      before: h(8),
+      after: h(16),
+      gallery: [h(2)],
     },
     "merkezefendi-konut-yikim": {
-      before: core.buildingDemolition,
-      after: core.enkazTurkey,
-      gallery: [core.rubbleExcavator],
+      before: h(6),
+      after: h(11),
+      gallery: [h(9)],
     },
     "pamukkale-kanalizasyon-hatti": {
-      before: core.bulldozerDemolition,
-      after: core.rubbleExcavator,
-      gallery: [core.deepExcavator],
+      before: h(4),
+      after: h(10),
+      gallery: [h(15)],
     },
     "sanayi-sitesi-dolgu-tesviye": {
-      before: core.siteExcavator,
-      after: core.excavatorAerial,
-      gallery: [core.deepExcavator],
+      before: h(8),
+      after: h(17),
+      gallery: [h(2)],
     },
     "camlik-depo-yikim": {
-      before: core.buildingDemolition,
-      after: core.debrisLoading,
-      gallery: [core.enkazTurkey],
+      before: h(3),
+      after: h(11),
+      gallery: [h(14)],
     },
     "acipayam-yagmur-suyu": {
-      before: core.bulldozerDemolition,
-      after: core.rubbleExcavator,
-      gallery: [core.excavatorDumpTruck],
+      before: h(15),
+      after: h(10),
+      gallery: [h(4)],
     },
   },
 } as const;
@@ -236,27 +240,49 @@ export const ctaPromoSlides: PromoSlide[] = [
   },
 ];
 
+/** Ana sayfa hizmet vitrini — 3 doğrulanmış saha görseli (haf-001…009) */
+export const servicesVisualPanels = [
+  {
+    src: h(2),
+    alt: "Ekskavatör ve damper — hafriyat saha operasyonu",
+    title: "Hafriyat & Temel Kazısı",
+    caption: "Dekapaj, dolgu ve büyük metraj saha çalışmaları",
+  },
+  {
+    src: h(6),
+    alt: "Bina yıkımı ekskavatör — kontrollü yıkım sahası",
+    title: "Yıkım & Enkaz",
+    caption: "Kontrollü yıkım ve saha temizliği",
+  },
+  {
+    src: h(8),
+    alt: "Derin temel kazısı — SMF Hafriyat",
+    title: "Derin Kazı & Filo",
+    caption: "Derin temel ve operatörlü makine koordinasyonu",
+  },
+] as const;
+
 export const whyUsSpotlightSlides: PromoSlide[] = [
   {
-    src: core.siteExcavator,
-    alt: "Saha ekskavatör operasyonu — SMF Hafriyat",
-    tag: "Kurumsal Model",
+    src: h(2),
+    alt: "Ekskavatör ve damper — SMF Hafriyat saha operasyonu",
+    tag: "Saha Operasyonu",
     title: "Kendi filomuz, kendi operatörlerimiz",
-    subtitle: "Taşeron yok — her saha operasyonunda doğrudan SMF kurumsal ekibi.",
+    subtitle: "Taşeron yok — keşiften teslime tek kurumsal ekip ve doğrudan saha yönetimi.",
   },
   {
-    src: core.enkazTurkey,
-    alt: "Yıkım sonrası enkaz kaldırma — SMF Hafriyat",
-    tag: "İş Güvenliği",
+    src: h(11),
+    alt: "Hafriyat sahası genel görünüm — SMF Hafriyat Denizli",
+    tag: "Denizli Merkez",
+    title: "1998'den bu yana aynı saha disiplini",
+    subtitle: "Merkezefendi merkezli planlama, belgeli süreç ve şeffaf metraj yaklaşımı.",
+  },
+  {
+    src: h(19),
+    alt: "Ekskavatör kepçe detay — profesyonel saha uygulaması",
+    tag: "Kurumsal Standart",
     title: "İSG ve mevzuat uyumu vazgeçilmez standart",
-    subtitle: "Ruhsata uygun, belgeli ve emniyet odaklı hafriyat operasyonları.",
-  },
-  {
-    src: core.excavatorDumpTruck,
-    alt: "Ekskavatör damper yükleme — hızlı sevkiyat",
-    tag: "Operasyonel Çeviklik",
-    title: "Büyük metrajda hızlı filo sevkiyatı",
-    subtitle: "Derin temel, yıkım enkazı ve moloz nakliyesinde proaktif saha koordinasyonu.",
+    subtitle: "Ruhsata uygun, emniyet odaklı hafriyat ve yıkım operasyonları.",
   },
 ];
 
@@ -302,7 +328,7 @@ export const heroBanners = [
     src: core.buildingDemolition,
     alt: "Kontrollü bina yıkımı — SMF Hafriyat enkaz kaldırma",
     tag: "Kontrollü Yıkım",
-    slogan: "Planlı yıkım, belgeli teslim, sürdürülebilir saha yönetimi",
+    slogan: "Denizli hafriyat, kazı ve yıkımda kurumsal saha ekibi",
     highlight: "Mühendis onaylı süreç — enkaz kaldırma ve kurumsal İSG standartları",
   },
   {
@@ -323,10 +349,13 @@ export const heroBanners = [
     src: core.enkazTurkey,
     alt: "Yıkım sonrası enkaz kaldırma — SMF Hafriyat Türkiye sahası",
     tag: "1998'den Beri",
-    slogan: "21 yıllık kurumsal tecrübe, 900+ referans proje",
+    slogan: "28 yıllık kurumsal tecrübe, 900+ referans proje",
     highlight: "Denizli merkezli — Ege Bölgesi'nde stratejik saha ortağı",
   },
 ] as const;
+
+/** Ana sayfa hero — en fazla 2 slide */
+export const homeHeroBanners = heroBanners.slice(0, 2);
 
 export const marqueeImages = [
   { src: core.excavatorAerial, alt: "Ekskavatör hafriyat kazısı" },
