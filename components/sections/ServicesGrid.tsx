@@ -8,22 +8,23 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { brand } from "@/lib/constants/brand";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { services, type Service } from "@/lib/constants/services";
+import { services as defaultServices, type Service } from "@/lib/constants/services";
 import { getServiceImage } from "@/lib/constants/images";
 import { cn } from "@/lib/utils";
 
 type ServicesGridProps = {
   limit?: number;
   showAllLink?: boolean;
+  items?: Service[];
 };
 
-export function ServicesGrid({ limit, showAllLink = false }: ServicesGridProps) {
+export function ServicesGrid({ limit, showAllLink = false, items = defaultServices }: ServicesGridProps) {
   const reduceMotion = useReducedMotion();
-  const displayedServices = [...services]
+  const displayedServices = [...items]
     .sort((a, b) => a.orderIndex - b.orderIndex)
-    .slice(0, limit ?? services.length);
+    .slice(0, limit ?? items.length);
 
-  const [activeService, setActiveService] = useState(displayedServices[0]?.slug ?? services[0].slug);
+  const [activeService, setActiveService] = useState(displayedServices[0]?.slug ?? items[0]?.slug ?? "");
 
   return (
     <section

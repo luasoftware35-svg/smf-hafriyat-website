@@ -5,13 +5,16 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { Card } from "@/components/ui/Card";
-import { services } from "@/lib/constants/services";
+import { services as defaultServices, type Service } from "@/lib/constants/services";
 import { getServiceImage } from "@/lib/constants/images";
 
-type RelatedServicesProps = { currentSlug: string };
+type RelatedServicesProps = {
+  currentSlug: string;
+  items?: Service[];
+};
 
-export function RelatedServices({ currentSlug }: RelatedServicesProps) {
-  const related = services.filter((s) => s.slug !== currentSlug).slice(0, 3);
+export function RelatedServices({ currentSlug, items = defaultServices }: RelatedServicesProps) {
+  const related = items.filter((s) => s.slug !== currentSlug).slice(0, 3);
 
   return (
     <div className="mt-20">

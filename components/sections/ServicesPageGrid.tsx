@@ -21,7 +21,7 @@ import { TextReveal } from "@/components/motion/TextReveal";
 import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { ServiceShowcaseCard } from "@/components/sections/ServiceShowcaseCard";
 import { brand } from "@/lib/constants/brand";
-import { services } from "@/lib/constants/services";
+import { services as defaultServices, type Service } from "@/lib/constants/services";
 
 const iconMap: Record<string, LucideIcon> = {
   Shovel,
@@ -41,9 +41,9 @@ const pillVariants: Variants = {
   show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
-export function ServicesGridAnimated() {
+export function ServicesGridAnimated({ items = defaultServices }: { items?: Service[] }) {
   const reduceMotion = useReducedMotion();
-  const sorted = [...services].sort((a, b) => a.orderIndex - b.orderIndex);
+  const sorted = [...items].sort((a, b) => a.orderIndex - b.orderIndex);
 
   return (
     <div className="relative overflow-hidden border-b border-surface mesh-muted">

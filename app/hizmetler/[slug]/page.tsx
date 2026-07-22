@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/Card";
 import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/seo/JsonLd";
 import { RelatedServices } from "@/components/sections/RelatedServices";
-import { getServiceBySlug, services } from "@/lib/constants/services";
+import { getServiceBySlug, getServices } from "@/lib/data/services";
 import { getServiceImage, getServiceGallery } from "@/lib/constants/images";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo, serviceSeoDescription, serviceSeoTitle } from "@/lib/seo/local";
@@ -17,12 +17,13 @@ import { contactInfo, ctaLinks } from "@/lib/constants/site";
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
+  const services = await getServices();
   return services.map((service) => ({ slug: service.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlug(slug);
   if (!service) return {};
   return createPageMetadata({
     title: serviceSeoTitle(service.title),
@@ -35,7 +36,8 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlug(slug);
+  const allServices = await getServices();
   if (!service) notFound();
 
   const image = getServiceImage(slug);
@@ -181,7 +183,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
         </div>
 
-        <RelatedServices currentSlug={slug} />
+        <RelatedServices currentSlug={slug} items={allServices} />
       </Container>
     </>
   );

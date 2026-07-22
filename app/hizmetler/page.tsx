@@ -1,5 +1,5 @@
 import { PageHero } from "@/components/ui/PageHero";
-import { ServicesGridAnimated } from "@/components/sections/ServicesPageGrid";
+import { ServicesPageSection } from "@/components/sections/ServicesPageSection";
 import { BreadcrumbJsonLd, ServicesItemListJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo, pageSeoDescription } from "@/lib/seo/local";
@@ -26,7 +26,7 @@ export default function ServicesPage() {
         image={siteImages.hero}
         imageAlt="Ekskavatör kepçe ile hafriyat kazısı — SMF Hafriyat"
       />
-      <ServicesGridAnimated />
+      <ServicesPageSection />
     </>
   );
 }

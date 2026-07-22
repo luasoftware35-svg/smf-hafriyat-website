@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { contactFormSchema } from "@/lib/validations/contact-schema";
 import { sendContactNotification } from "@/lib/email/send-contact-notification";
-import { createServerClient } from "@/lib/supabase/server";
+import { createServiceRoleClient, isServiceRoleConfigured } from "@/lib/supabase/server";
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT = 5;
@@ -46,8 +46,9 @@ export async function POST(request: Request) {
     let saved = false;
 
     try {
-      const supabase = createServerClient();
-      const { error } = await supabase.from("contact_submissions").insert({
+      if (isServiceRoleConfigured()) {
+        const supabase = createServiceRoleClient();
+        const { error } = await supabase.from("contact_submissions").insert({
         name: data.name.trim(),
         phone: data.phone.trim(),
         email: data.email?.trim() || null,
@@ -59,10 +60,11 @@ export async function POST(request: Request) {
         status: "yeni",
       });
 
-      if (!error) {
-        saved = true;
-      } else {
-        console.error("Supabase insert error:", error.message);
+        if (!error) {
+          saved = true;
+        } else {
+          console.error("Supabase insert error:", error.message);
+        }
       }
     } catch {
       console.info("Supabase not configured — trying email notification");

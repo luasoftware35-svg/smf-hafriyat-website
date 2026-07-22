@@ -1,8 +1,8 @@
 import { PageHero } from "@/components/ui/PageHero";
 import { ClientReferencesSection } from "@/components/sections/ClientReferencesSection";
-import { TeamGrid } from "@/components/sections/TeamGrid";
+import { StatsCounterSection } from "@/components/sections/StatsCounterSection";
+import { TeamGridSection } from "@/components/sections/TeamGridSection";
 import { CertificatesSection } from "@/components/sections/CertificatesSection";
-import { StatsCounter } from "@/components/sections/StatsCounter";
 import { AboutStoryGrid } from "@/components/sections/AboutStoryGrid";
 import { ImageMarquee } from "@/components/sections/ImageMarquee";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
@@ -30,11 +30,11 @@ export default function AboutPage() {
         image={siteImages.about}
         imageAlt="Ekskavatör hafriyat sahası — SMF Hafriyat Denizli"
       />
-      <StatsCounter />
+      <StatsCounterSection />
       <AboutStoryGrid />
       <ClientReferencesSection />
       <ImageMarquee />
-      <TeamGrid />
+      <TeamGridSection />
       <CertificatesSection />
     </>
   );

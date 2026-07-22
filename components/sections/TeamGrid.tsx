@@ -7,9 +7,20 @@ import { Card } from "@/components/ui/Card";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { teamMembers } from "@/lib/constants/content";
+import { teamMembers as defaultTeamMembers } from "@/lib/constants/content";
 
-export function TeamGrid() {
+type TeamMember = {
+  name: string;
+  role: string;
+  bio: string;
+  photo: string;
+};
+
+type TeamGridProps = {
+  members?: readonly TeamMember[];
+};
+
+export function TeamGrid({ members = defaultTeamMembers }: TeamGridProps) {
   return (
     <Section id="ekip">
       <Container>
@@ -23,7 +34,7 @@ export function TeamGrid() {
         </FadeIn>
 
         <StaggerGrid className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {teamMembers.map((member) => (
+          {members.map((member) => (
             <StaggerItem key={member.name}>
               <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }}>
                 <Card className="group">

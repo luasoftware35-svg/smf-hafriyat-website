@@ -4,10 +4,21 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { AnimatedCounter } from "@/components/motion/AnimatedCounter";
-import { stats } from "@/lib/constants/content";
+import { stats as defaultStats } from "@/lib/constants/content";
 import { siteImages } from "@/lib/constants/images";
 
-export function StatsCounter() {
+type StatItem = {
+  label: string;
+  value: number;
+  suffix: string;
+  orderIndex?: number;
+};
+
+type StatsCounterProps = {
+  stats?: readonly StatItem[];
+};
+
+export function StatsCounter({ stats = defaultStats }: StatsCounterProps) {
   return (
     <div className="relative overflow-hidden border-b border-surface">
       <div className="absolute inset-0">

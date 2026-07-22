@@ -1,6 +1,6 @@
 import { DiggerHero } from "@/components/hero/DiggerHero";
 import { WhyUsSection } from "@/components/sections/WhyUsSection";
-import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { ServicesGridSection } from "@/components/sections/ServicesGridSection";
 import { FleetMiniSection } from "@/components/sections/FleetMiniSection";
 import { ServiceAreasBand } from "@/components/sections/ServiceAreasBand";
 import { SocialProofSection } from "@/components/sections/SocialProofSection";
@@ -27,7 +27,7 @@ export default function HomePage() {
       <DiggerHero />
       <HomeSeoIntro />
       <WhyUsSection />
-      <ServicesGrid limit={6} showAllLink />
+      <ServicesGridSection limit={6} showAllLink />
       <FleetMiniSection />
       <ServiceAreasBand />
       <SocialProofSection />
