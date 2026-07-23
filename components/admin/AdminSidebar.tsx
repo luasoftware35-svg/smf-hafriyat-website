@@ -27,9 +27,10 @@ const navItems = [
 
 type AdminSidebarProps = {
   userEmail?: string | null;
+  onNavigate?: () => void;
 };
 
-export function AdminSidebar({ userEmail }: AdminSidebarProps) {
+export function AdminSidebar({ userEmail, onNavigate }: AdminSidebarProps) {
   const pathname = usePathname();
 
   return (
@@ -48,6 +49,7 @@ export function AdminSidebar({ userEmail }: AdminSidebarProps) {
             <Link
               key={href}
               href={href}
+              onClick={onNavigate}
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
                 active ? "bg-accent text-accent-foreground" : "text-white/75 hover:bg-white/8 hover:text-white",
@@ -71,7 +73,7 @@ export function AdminSidebar({ userEmail }: AdminSidebarProps) {
             Çıkış Yap
           </button>
         </form>
-        <Link href="/" className="mt-2 block text-center text-xs text-white/45 hover:text-accent">
+        <Link href="/" onClick={onNavigate} className="mt-2 block text-center text-xs text-white/45 hover:text-accent">
           Siteye dön →
         </Link>
       </div>

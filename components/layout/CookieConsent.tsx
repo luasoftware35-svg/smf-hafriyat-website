@@ -27,7 +27,7 @@ export function CookieConsent() {
     <div
       role="dialog"
       aria-label="Çerez onayı"
-      className="fixed inset-x-3 bottom-safe-offset z-50 rounded-md border border-surface bg-bg-secondary/95 p-4 shadow-card backdrop-blur-md sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-md sm:pb-4 lg:bottom-6"
+      className="fixed inset-x-3 bottom-safe-offset z-50 rounded-md border border-surface bg-bg-secondary/95 p-4 shadow-card backdrop-blur-md lg:inset-x-auto lg:bottom-6 lg:left-6 lg:max-w-md lg:pb-4"
     >
       <p className="text-sm leading-relaxed text-text-secondary">
         Deneyiminizi iyileştirmek için çerezler kullanıyoruz. Siteyi kullanmaya devam ederek{" "}

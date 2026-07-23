@@ -9,6 +9,7 @@ import { Interactive3DBlock } from "@/components/motion/Interactive3DBlock";
 import { InteractiveKeyword } from "@/components/motion/InteractiveKeyword";
 import { WebGLFoundationField } from "@/components/motion/WebGLFoundationField";
 import { siteConfig } from "@/lib/constants/site";
+import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
 
 const scriptFont = Caveat({
@@ -52,6 +53,9 @@ function SloganWord({ word, index, reduceMotion }: { word: string; index: number
 
 export function HomeSeoIntro() {
   const reduceMotion = useReducedMotion();
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const hasFinePointer = useMediaQuery("(pointer: fine)");
+  const showWebGL = isDesktop && hasFinePointer && !reduceMotion;
   const sectionRef = useRef<HTMLElement>(null);
   const mouseRef = useRef({ x: 0.5, y: 0.5, active: false });
 
@@ -73,7 +77,14 @@ export function HomeSeoIntro() {
       onPointerMove={(event) => syncPointer(event.clientX, event.clientY, true)}
       onPointerLeave={() => syncPointer(0, 0, false)}
     >
-      <WebGLFoundationField className="pointer-events-none absolute inset-0 h-full w-full opacity-90" mouseRef={mouseRef} />
+      {showWebGL ? (
+        <WebGLFoundationField className="pointer-events-none absolute inset-0 h-full w-full opacity-90" mouseRef={mouseRef} />
+      ) : (
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(245,160,32,0.08),transparent_60%)]"
+          aria-hidden="true"
+        />
+      )}
 
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-24 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-transparent"

@@ -71,7 +71,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         />
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
-            <div className="grid gap-3 sm:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border border-surface bg-bg-secondary/75 px-4 py-3 text-sm text-text-secondary">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">Keşif</p>
                 <p className="mt-2 font-medium text-text-primary">Aynı gün geri dönüş</p>
@@ -168,7 +168,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         <div className="mt-16">
           <h2 className="font-heading text-2xl text-text-primary">Saha Görselleri</h2>
           <div className="mt-2 h-1 w-16 gradient-accent-bar" />
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
             {gallery.map((src, i) => (
               <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-md border border-surface shadow-card">
                 <Image

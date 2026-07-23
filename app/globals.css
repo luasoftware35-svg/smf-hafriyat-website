@@ -134,8 +134,17 @@
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .pr-safe {
+    padding-right: env(safe-area-inset-right, 0px);
+  }
   .bottom-safe-offset {
-    bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+    bottom: calc(6.25rem + env(safe-area-inset-bottom, 0px));
+  }
+  .scroll-mt-sticky {
+    scroll-margin-top: calc(5rem + env(safe-area-inset-top, 0px));
   }
 }
 

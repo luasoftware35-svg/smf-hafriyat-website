@@ -28,10 +28,11 @@ export function Header() {
 
   return (
     <>
+      <div className="sticky top-0 z-40 pt-safe">
       <TopBar />
       <header
         className={cn(
-          "sticky top-0 z-40 border-b transition-all duration-300",
+          "border-b transition-all duration-300",
           scrolled ? "glass shadow-header" : "border-transparent bg-bg-primary/80 backdrop-blur-md",
         )}
       >
@@ -88,6 +89,7 @@ export function Header() {
           </button>
         </Container>
       </header>
+      </div>
 
       <MobileNav isOpen={mobileOpen} onClose={() => setMobileOpen(false)} pathname={pathname} />
     </>

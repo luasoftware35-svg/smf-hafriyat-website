@@ -54,7 +54,11 @@ export function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className={cn("relative aspect-[4/3] cursor-ew-resize overflow-hidden rounded-sm border border-surface select-none touch-pan-y sm:aspect-[16/10]", className)}
+      className={cn(
+        "relative aspect-[4/3] cursor-ew-resize overflow-hidden rounded-sm border border-surface select-none sm:aspect-[16/10]",
+        isDragging ? "touch-none" : "touch-pan-y",
+        className,
+      )}
       onPointerDown={(event) => {
         setIsDragging(true);
         updatePosition(event.clientX);
@@ -64,6 +68,7 @@ export function BeforeAfterSlider({
         if (isDragging) updatePosition(event.clientX);
       }}
       onPointerUp={() => setIsDragging(false)}
+      onPointerCancel={() => setIsDragging(false)}
       role="slider"
       aria-label="Öncesi ve sonrası karşılaştırma"
       aria-valuenow={Math.round(position)}

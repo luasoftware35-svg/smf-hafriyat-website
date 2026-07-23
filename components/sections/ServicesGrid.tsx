@@ -79,7 +79,7 @@ export function ServicesGrid({ limit, showAllLink = false, items = defaultServic
           ))}
         </div>
 
-        <div className="mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 lg:hidden">
+        <div className="-mx-4 mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 lg:mx-0 lg:hidden lg:px-0">
           {displayedServices.map((service) => (
             <MobileServiceCard key={service.slug} service={service} />
           ))}

@@ -52,7 +52,7 @@ export function PageHero({
         <TextReveal
           as="h1"
           text={title}
-          className="mt-4 max-w-3xl font-heading text-3xl leading-tight text-text-primary sm:text-4xl md:text-5xl lg:text-6xl"
+          className="mt-4 max-w-3xl text-balance font-heading text-[1.75rem] leading-tight text-text-primary sm:text-4xl md:text-5xl lg:text-6xl"
           delay={0.08}
         />
         <motion.div

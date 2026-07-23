@@ -96,6 +96,11 @@ export function FaqSection({ limit, showContactLink = false }: FaqSectionProps) 
                 </div>
               </FadeIn>
             )}
+            <FadeIn delay={0.12} className="lg:hidden">
+              <div className="pt-6">
+                <FaqContactActions reduceMotion={!!reduceMotion} />
+              </div>
+            </FadeIn>
           </motion.div>
         </div>
       </Container>

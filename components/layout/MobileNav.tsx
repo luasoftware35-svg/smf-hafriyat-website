@@ -56,7 +56,7 @@ export function MobileNav({ isOpen, onClose, pathname }: MobileNavProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 280 }}
-            className="absolute right-0 top-0 flex h-full w-[min(100%,340px)] flex-col glass p-6 shadow-2xl"
+            className="absolute right-0 top-0 flex h-full w-[min(100%,340px)] flex-col glass p-6 pt-safe pb-safe shadow-2xl"
           >
             <div className="mb-8 flex items-center justify-between">
               <span className="font-heading text-lg text-text-primary">Menü</span>

@@ -57,7 +57,7 @@ export function TopBar() {
                 exit={{ y: "-100%", opacity: 0, rotateX: 68 }}
                 transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
                 style={{ transformOrigin: "50% 100%" }}
-                className="absolute inset-0 flex items-center justify-center px-3 text-center text-[11px] font-medium tracking-[0.04em] text-white/88 sm:text-xs"
+                className="absolute inset-0 flex items-center justify-center px-3 text-center text-[11px] font-medium tracking-[0.04em] text-white/88 sm:px-6 sm:text-xs"
               >
                 {activeLine}
               </motion.p>
@@ -67,7 +67,7 @@ export function TopBar() {
 
         <Link
           href={contactInfo.phoneHref}
-          className="relative z-10 flex shrink-0 items-center gap-1.5 border-l border-white/10 px-3 font-mono text-[11px] font-medium text-white/90 transition-colors hover:text-accent sm:px-4 sm:text-xs"
+          className="relative z-10 hidden shrink-0 items-center gap-1.5 border-l border-white/10 px-3 font-mono text-[11px] font-medium text-white/90 transition-colors hover:text-accent sm:flex sm:px-4 sm:text-xs"
         >
           {contactInfo.phoneDisplay}
           <ArrowRight size={12} className="text-accent" aria-hidden="true" />

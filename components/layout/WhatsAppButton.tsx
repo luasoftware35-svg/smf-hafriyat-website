@@ -5,7 +5,7 @@ import { contactInfo } from "@/lib/constants/site";
 
 export function WhatsAppButton() {
   return (
-    <div className="fixed bottom-[5.5rem] right-4 z-50 pb-safe sm:right-5 lg:bottom-6 lg:pb-0">
+    <div className="fixed bottom-[calc(6.25rem+env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] z-50 pb-safe lg:bottom-6 lg:right-5 lg:pb-0">
       <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ring-pulse" aria-hidden="true" />
       <a
         href={contactInfo.whatsappHref}

@@ -16,6 +16,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { fleet, fleetHighlights } from "@/lib/constants/content";
 import { getFleetImage } from "@/lib/constants/images";
+import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
 
 const AUTO_MS = 4200;
@@ -23,6 +24,7 @@ const CARD_SPACING = 168;
 
 export function FleetMiniSection() {
   const reduceMotion = useReducedMotion();
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [active, setActive] = useState(0);
   const stageRef = useRef<HTMLDivElement>(null);
   const pointerX = useMotionValue(0);
@@ -63,7 +65,7 @@ export function FleetMiniSection() {
   const glowY = useTransform(springY, [-0.5, 0.5], ["25%", "75%"]);
   const glowBackground = useMotionTemplate`radial-gradient(circle at ${glowX} ${glowY}, rgba(245,160,32,0.1), transparent 62%)`;
 
-  if (reduceMotion) {
+  if (reduceMotion || !isDesktop) {
     return (
       <section id="filo-ozet" aria-labelledby="fleet-heading" className="border-b border-surface bg-bg-primary py-16">
         <Container>
