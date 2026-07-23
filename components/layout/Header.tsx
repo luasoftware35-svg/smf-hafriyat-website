@@ -46,9 +46,9 @@ export function Header() {
             <Image
               src={siteConfig.logo}
               alt={siteConfig.logoAlt}
-              width={56}
-              height={56}
-              className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-14 sm:w-14"
+              width={72}
+              height={72}
+              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-16"
               priority
             />
           </Link>
