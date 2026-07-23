@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { TopBar } from "@/components/layout/TopBar";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { NavDropdown } from "@/components/layout/NavDropdown";
+import { HeaderBrandText } from "@/components/layout/HeaderBrandText";
 import { ctaLinks, navLinks, siteConfig } from "@/lib/constants/site";
 import { cn } from "@/lib/utils";
 
@@ -40,18 +41,20 @@ export function Header() {
         <Container as="nav" aria-label="Ana navigasyon" className="relative flex h-[5.25rem] items-center lg:h-28">
           <Link
             href="/"
-            className="group relative z-10 shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="group relative z-10 flex shrink-0 items-center gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:gap-3"
             aria-label={`${siteConfig.name} ana sayfa`}
           >
             <Image
               src={siteConfig.logo}
-              alt={siteConfig.logoAlt}
+              alt=""
               width={320}
               height={240}
               className="h-[4.25rem] w-auto max-w-none object-contain transition-transform duration-300 group-hover:scale-[1.02] sm:h-20 lg:h-24"
               priority
               sizes="(min-width: 1024px) 240px, (min-width: 640px) 200px, 170px"
+              aria-hidden="true"
             />
+            <HeaderBrandText />
           </Link>
 
           <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 lg:flex">
