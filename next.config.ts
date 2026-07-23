@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: "smfhafriyat.com" }],
         destination: `https://${CANONICAL_HOST}/:path*`,
-        permanent: true,
+        statusCode: 301,
       },
     ];
   },
