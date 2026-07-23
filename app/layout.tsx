@@ -59,10 +59,6 @@ export const metadata: Metadata = {
   creator: siteConfig.name,
   publisher: siteConfig.name,
   formatDetection: { telephone: true, email: true, address: true },
-  icons: {
-    icon: [{ url: siteConfig.logo, type: "image/png", sizes: "1024x1024" }],
-    apple: [{ url: siteConfig.logo, type: "image/png", sizes: "1024x1024" }],
-  },
   robots: { index: true, follow: true },
   other: {
     "geo.region": "TR-20",
