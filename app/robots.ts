@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/constants/site";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://smfhafriyat.com";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/"],
     },
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

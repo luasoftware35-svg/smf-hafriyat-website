@@ -1,52 +1,65 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/constants/site";
-import { services } from "@/lib/constants/services";
-import { projects } from "@/lib/constants/projects";
 import { districtPages } from "@/lib/constants/districts";
+import { projects } from "@/lib/constants/projects";
 import { seoLandingPages } from "@/lib/constants/seo-pages";
+import { services } from "@/lib/constants/services";
 
-const BUILD_DATE = new Date("2026-07-22");
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://smfhafriyat.com";
+
+function entry(
+  path: string,
+  options: {
+    lastModified?: Date;
+    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+    priority: number;
+  },
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: `${SITE_URL}${path}`,
+    lastModified: options.lastModified ?? new Date(),
+    changeFrequency: options.changeFrequency,
+    priority: options.priority,
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = siteConfig.url;
-
   const corePages: MetadataRoute.Sitemap = [
-    { url: `${base}`, lastModified: BUILD_DATE, changeFrequency: "weekly", priority: 1 },
-    { url: `${base}/hizmetler`, lastModified: BUILD_DATE, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/filo`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/projeler`, lastModified: BUILD_DATE, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/hizmet-bolgeleri`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.95 },
-    { url: `${base}/hakkimizda`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/iletisim`, lastModified: BUILD_DATE, changeFrequency: "monthly", priority: 0.95 },
+    entry("/", { changeFrequency: "weekly", priority: 1 }),
+    entry("/hakkimizda", { changeFrequency: "monthly", priority: 0.8 }),
+    entry("/hizmetler", { changeFrequency: "weekly", priority: 0.9 }),
+    entry("/filo", { changeFrequency: "monthly", priority: 0.8 }),
+    entry("/projeler", { changeFrequency: "weekly", priority: 0.8 }),
+    entry("/hizmet-bolgeleri", { changeFrequency: "monthly", priority: 0.8 }),
+    entry("/iletisim", { changeFrequency: "monthly", priority: 0.9 }),
   ];
 
-  const seoPages = seoLandingPages.map((page) => ({
-    url: `${base}${page.path}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: "monthly" as const,
-    priority: 0.92,
-  }));
+  const seoPages = seoLandingPages.map((page) =>
+    entry(page.path, { changeFrequency: "monthly", priority: 0.85 }),
+  );
 
-  const districtLandingPages = districtPages.map((district) => ({
-    url: `${base}/hizmet-bolgeleri/${district.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: "monthly" as const,
-    priority: 0.88,
-  }));
+  const servicePages = services.map((service) =>
+    entry(`/hizmetler/${service.slug}`, { changeFrequency: "monthly", priority: 0.8 }),
+  );
 
-  const servicePages = services.map((service) => ({
-    url: `${base}/hizmetler/${service.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
+  const districtLandingPages = districtPages.map((district) =>
+    entry(`/hizmet-bolgeleri/${district.slug}`, { changeFrequency: "monthly", priority: 0.75 }),
+  );
 
-  const projectPages = projects.map((project) => ({
-    url: `${base}/projeler/${project.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  const projectPages = projects.map((project) =>
+    entry(`/projeler/${project.slug}`, { changeFrequency: "monthly", priority: 0.7 }),
+  );
 
-  return [...corePages, ...seoPages, ...districtLandingPages, ...servicePages, ...projectPages];
+  const legalPages: MetadataRoute.Sitemap = [
+    entry("/gizlilik-politikasi", { changeFrequency: "yearly", priority: 0.5 }),
+    entry("/kvkk", { changeFrequency: "yearly", priority: 0.5 }),
+  ];
+
+  return [
+    ...corePages,
+    ...seoPages,
+    ...servicePages,
+    ...districtLandingPages,
+    ...projectPages,
+    ...legalPages,
+  ];
 }
