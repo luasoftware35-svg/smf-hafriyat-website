@@ -5,6 +5,7 @@ const h = (n: number) => `/images/hafriyat/haf-${String(n).padStart(3, "0")}.jpg
 
 /** Gerçek SMF saha fotoğrafları — markalı filo ve operasyon görselleri */
 const real = {
+  kepceBw: "/images/smf/real/smf-kepce-bw.jpg",
   damperLogo: "/images/smf/real/smf-saha-01.png",
   kaziToz: "/images/smf/real/smf-saha-02.png",
   havadanFilo: "/images/smf/real/smf-saha-03.png",
@@ -13,6 +14,7 @@ const real = {
 } as const;
 
 const realAlt = {
+  kepceBw: "Siyah beyaz ekskavatör kepçe detay — SMF Hafriyat hafriyat operasyonu, Denizli",
   damperLogo: "SMF Hafriyat damper kamyonu ve ekskavatör — hafriyat toprağı taşıma, Denizli",
   kaziToz: "SMF Hafriyat ekskavatör ile kazı operasyonu — saha tozu, Denizli",
   havadanFilo: "SMF Hafriyat filo operasyonu — havadan ekskavatör ve damper kamyonları, Denizli",
@@ -22,15 +24,15 @@ const realAlt = {
 
 /** Stok yedek görseller — gerçek fotoğrafların yetmediği slotlar için */
 const core = {
-  excavatorAerial: h(1),      // 10421754 — havadan ekskavatör kazısı
-  excavatorDumpTruck: h(2),   // 10421760 — ekskavatör + damper
-  bulldozerDemolition: h(3),  // 11555191 — dozer yıkım
-  siteExcavator: h(4),        // 16227436 — saha ekskavatör
-  enkazTurkey: h(5),          // 17727622 — enkaz yıkım Türkiye
-  buildingDemolition: h(6),   // 12879116 — bina yıkımı ekskavatör
-  rubbleExcavator: h(7),      // 29281411 — enkaz arası kepçe
-  deepExcavator: h(8),        // 25559747 — derin kazı
-  debrisLoading: h(9),        // 9373714 — enkaz yükleme
+  excavatorAerial: real.havadanFilo,
+  excavatorDumpTruck: real.yuklemeDamper,
+  bulldozerDemolition: h(3),
+  siteExcavator: real.kaziToz,
+  enkazTurkey: h(5),
+  buildingDemolition: h(6),
+  rubbleExcavator: h(7),
+  deepExcavator: real.derinSaha,
+  debrisLoading: real.damperLogo,
 } as const;
 
 const smf = {
@@ -43,9 +45,9 @@ const smf = {
 } as const;
 
 export const siteImages = {
-  hero: real.havadanFilo,
-  heroAlt: realAlt.havadanFilo,
-  og: real.havadanFilo,
+  hero: real.kepceBw,
+  heroAlt: realAlt.kepceBw,
+  og: real.kepceBw,
   about: real.derinSaha,
   contact: real.damperLogo,
   fleetHero: real.havadanFilo,
@@ -336,8 +338,8 @@ export const actionSpotlights = [
 
 export const heroBanners = [
   {
-    src: real.havadanFilo,
-    alt: realAlt.havadanFilo,
+    src: real.kepceBw,
+    alt: realAlt.kepceBw,
     tag: "Denizli Hafriyat",
     slogan: "Denizli'nin güvenilir hafriyat ve yıkım markası",
     highlight: "Yeni Mah. Menderes Bulvarı merkezli — ekskavatör ile temel kazısı, yıkım ve derin kazı",
@@ -372,8 +374,8 @@ export const heroBanners = [
   },
 ] as const;
 
-/** Ana sayfa hero — en fazla 2 slide */
-export const homeHeroBanners = heroBanners.slice(0, 2);
+/** Ana sayfa hero — net siyah beyaz kepçe + SMF saha görseli */
+export const homeHeroBanners = [heroBanners[0], heroBanners[1]] as const;
 
 export const marqueeImages = [
   { src: real.havadanFilo, alt: "SMF Hafriyat havadan filo operasyonu" },

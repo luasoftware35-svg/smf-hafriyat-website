@@ -74,13 +74,13 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     type: "website",
     siteName: `${siteConfig.name} — Denizli Hafriyat`,
-    images: [{ url: absoluteUrl("/images/smf/real/smf-saha-03.png"), width: 1200, height: 630, alt: "SMF Hafriyat Denizli — hafriyat filo operasyonu" }],
+    images: [{ url: absoluteUrl("/images/smf/real/smf-kepce-bw.jpg"), width: 1200, height: 630, alt: "SMF Hafriyat — ekskavatör kepçe hafriyat operasyonu" }],
   },
   twitter: {
     card: "summary_large_image",
     title: localSeo.homeTitle,
     description: localSeo.homeDescription,
-    images: [absoluteUrl("/images/smf/real/smf-saha-03.png")],
+    images: [absoluteUrl("/images/smf/real/smf-kepce-bw.jpg")],
   },
   alternates: { canonical: siteConfig.url },
 };

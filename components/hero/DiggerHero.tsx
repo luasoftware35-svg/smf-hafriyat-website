@@ -67,7 +67,7 @@ export function DiggerHero() {
                 alt={slide.alt}
                 fill
                 priority={active === 0}
-                className="object-cover"
+                className="object-cover object-[center_45%] sm:object-[center_40%]"
                 sizes="100vw"
               />
             </motion.div>
