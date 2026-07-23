@@ -1,0 +1,235 @@
+{
+  "brand": {
+    "company": "SMF Hafriyat",
+    "location": "Denizli, Türkiye — Ege Bölgesi",
+    "visualSeries": "SMF saha fotoğraf serisi 2026"
+  },
+  "model": "nano_banana_2",
+  "aspectRatio": "16:9",
+  "resolution": "2k",
+  "referenceAnchor": "hero-main",
+  "styleSuffix": "Authentic Turkish construction site documentary photo for SMF Hafriyat Denizli. Same visual series: Aegean dry climate, limestone-beige dusty soil typical of Denizli, Honaz industrial plain horizon, late afternoon warm natural light, consistent warm earth-tone color grade, slight airborne dust, 35mm photojournalism lens, sharp focus on machinery, realistic imperfect saha details. Yellow excavators and orange-white Turkish damper trucks (BMC/Mercedes style), Turkish workers in orange safety vests and white helmets, red-white traffic cones, blurred Turkish plates and signage. NOT stock photography, NOT staged corporate shoot, NOT American/European suburb, NOT oversaturated HDR, NOT lush green lawns, NO text, NO logos, NO watermarks, NO AI artifacts",
+  "images": [
+    {
+      "id": "hero-main",
+      "output": "public/images/hafriyat/haf-001.jpg",
+      "prompt": "Master reference shot: wide aerial-ish angle of active hafriyat sahası in Denizli OSB area, yellow 20-ton excavator digging foundation trench in beige limestone soil, two orange damper trucks waiting, dry Aegean sky, authentic Turkish construction operation"
+    },
+    {
+      "id": "hero-fleet",
+      "output": "public/images/hafriyat/haf-002.jpg",
+      "prompt": "Same SMF saha: excavator loading beige soil into orange Turkish damper truck, coordinated fleet moment, dust rising, Denizli industrial background"
+    },
+    {
+      "id": "service-demolition",
+      "output": "public/images/hafriyat/haf-003.jpg",
+      "prompt": "Same SMF visual world: dozer pushing concrete rubble on controlled yıkım sahası near Denizli, collapsed Turkish apartment block debris, safety tape and cones"
+    },
+    {
+      "id": "service-infrastructure",
+      "output": "public/images/hafriyat/haf-004.jpg",
+      "prompt": "Same SMF saha style: excavator opening kanalizasyon trench on Denizli district street, PVC pipes stacked beside trench, asphalt edge, municipal altyapı work"
+    },
+    {
+      "id": "service-rubble",
+      "output": "public/images/hafriyat/haf-005.jpg",
+      "prompt": "Same series: excavator bucket sorting yıkım enkazı on dusty Denizli plot, mixed concrete and rebar, realistic messy saha not clean studio"
+    },
+    {
+      "id": "service-building-demo",
+      "output": "public/images/hafriyat/haf-006.jpg",
+      "prompt": "Same SMF operation: excavator arm breaking reinforced concrete wall during kontrollü bina yıkımı, Merkezefendi urban Denizli context, dust cloud"
+    },
+    {
+      "id": "service-canal",
+      "output": "public/images/hafriyat/haf-007.jpg",
+      "prompt": "Same visual series: excavator working inside narrow storm drain trench, precise kanal kazısı, wet beige soil walls, Pamukkale district street"
+    },
+    {
+      "id": "service-deep-excavation",
+      "output": "public/images/hafriyat/haf-008.jpg",
+      "prompt": "Same SMF saha: deep factory temel kazısı pit 4 meters depth, large excavator at bottom, shoring plates, Honaz OSB scale project"
+    },
+    {
+      "id": "service-debris-loading",
+      "output": "public/images/hafriyat/haf-009.jpg",
+      "prompt": "Same series: close dynamic shot of excavator loading moloz into damper, flying debris particles, Turkish truck side visible, hafriyat logistics"
+    },
+    {
+      "id": "service-machine-rental",
+      "output": "public/images/hafriyat/haf-010.jpg",
+      "prompt": "Same SMF fleet yard in Denizli: lined up excavators, loder and damper trucks ready for dispatch, morning light, well-used but maintained Turkish iş makineleri"
+    },
+    {
+      "id": "process-survey",
+      "output": "public/images/hafriyat/haf-011.jpg",
+      "prompt": "Same visual world: keşif moment on open Denizli plot, site manager with clipboard near excavator, measuring stakes in beige soil, planning phase"
+    },
+    {
+      "id": "service-soil-transport",
+      "output": "public/images/hafriyat/haf-012.jpg",
+      "prompt": "Same SMF saha: excavator filling damper with kireçtaşlı hafriyat toprağı, earth moving chain, dusty road inside construction site"
+    },
+    {
+      "id": "project-residential-demo",
+      "output": "public/images/hafriyat/haf-013.jpg",
+      "prompt": "Same series: five-floor Turkish betonarme apartment block mid-demolition by excavator, Merkezefendi neighborhood, realistic urban yıkım"
+    },
+    {
+      "id": "service-waste-truck",
+      "output": "public/images/hafriyat/haf-014.jpg",
+      "prompt": "Same SMF world: loaded damper truck leaving hafriyat sahası on industrial Denizli road, beige dust trail, moloz taşıma"
+    },
+    {
+      "id": "service-mini-excavator",
+      "output": "public/images/hafriyat/haf-015.jpg",
+      "prompt": "Same visual series: mini ekskavatör in narrow Acıpayam street digging yağmursuyu channel, tight urban Turkish alley, careful operation"
+    },
+    {
+      "id": "process-finish-grade",
+      "output": "public/images/hafriyat/haf-016.jpg",
+      "prompt": "Same SMF saha: loder tesviye finishing graded plot after kazı, smooth beige surface ready for construction, late afternoon light"
+    },
+    {
+      "id": "process-compaction",
+      "output": "public/images/hafriyat/haf-017.jpg",
+      "prompt": "Same series: silindir compacting dolgu soil on large Denizli sanayi parseli, fresh graded earth, final saha hazırlığı"
+    },
+    {
+      "id": "service-water-truck",
+      "output": "public/images/hafriyat/haf-018.jpg",
+      "prompt": "Same SMF operation: su tankeri spraying dust suppression on active kazı sahası, water mist in dry Denizli air, environmental safety"
+    },
+    {
+      "id": "service-bucket-detail",
+      "output": "public/images/hafriyat/haf-019.jpg",
+      "prompt": "Same visual series: macro detail of excavator bucket teeth cutting through Denizli limestone soil, sharp tactile texture, no blur gimmicks"
+    },
+    {
+      "id": "proj-osb-before",
+      "output": "public/images/projects/osb-fabrika-before.jpg",
+      "prompt": "BEFORE photo same SMF series: empty Honaz OSB factory parcel, flat undeveloped beige land, boundary stakes, no excavation yet, documentary proof photo"
+    },
+    {
+      "id": "proj-osb-after",
+      "output": "public/images/projects/osb-fabrika-after.jpg",
+      "prompt": "AFTER photo same SMF series: completed deep fabrika temel kazısı on same Honaz OSB parcel, clean graded walls, excavator finishing edge, documentary proof photo"
+    },
+    {
+      "id": "proj-konut-before",
+      "output": "public/images/projects/konut-yikim-before.jpg",
+      "prompt": "BEFORE same series: intact five-story Merkezefendi konut building before yıkım, Turkish balconies, surrounding neighborhood visible"
+    },
+    {
+      "id": "proj-konut-after",
+      "output": "public/images/projects/konut-yikim-after.jpg",
+      "prompt": "AFTER same series: same Merkezefendi lot cleared after yıkım, flat graded soil, no debris piles, ready for new construction"
+    },
+    {
+      "id": "proj-kanal-before",
+      "output": "public/images/projects/kanalizasyon-before.jpg",
+      "prompt": "BEFORE same SMF series: Pamukkale street before kanalizasyon trench, intact asphalt, manhole covers in place, no open dig"
+    },
+    {
+      "id": "proj-kanal-after",
+      "output": "public/images/projects/kanalizasyon-after.jpg",
+      "prompt": "AFTER same series: same Pamukkale street restored after sewer line installation, fresh asphalt patch, finished infrastructure"
+    },
+    {
+      "id": "proj-sanayi-before",
+      "output": "public/images/projects/sanayi-dolgu-before.jpg",
+      "prompt": "BEFORE same series: uneven Denizli sanayi parseli with scattered earth mounds before dolgu tesviye, rough terrain"
+    },
+    {
+      "id": "proj-sanayi-after",
+      "output": "public/images/projects/sanayi-dolgu-after.jpg",
+      "prompt": "AFTER same series: same sanayi parcel perfectly leveled and compacted, smooth beige platform, professional finish"
+    },
+    {
+      "id": "proj-depo-before",
+      "output": "public/images/projects/depo-yikim-before.jpg",
+      "prompt": "BEFORE same SMF series: large Çamlık warehouse building intact before yıkım, corrugated metal and concrete, industrial Denizli"
+    },
+    {
+      "id": "proj-depo-after",
+      "output": "public/images/projects/depo-yikim-after.jpg",
+      "prompt": "AFTER same series: same Çamlık warehouse site cleared, flat graded land, enkaz removed, clean saha"
+    },
+    {
+      "id": "proj-yagmur-before",
+      "output": "public/images/projects/yagmur-suyu-before.jpg",
+      "prompt": "BEFORE same series: Acıpayam district road before yağmursuyu installation, mini excavator parked, no open trench yet"
+    },
+    {
+      "id": "proj-yagmur-after",
+      "output": "public/images/projects/yagmur-suyu-after.jpg",
+      "prompt": "AFTER same series: same Acıpayam road with completed storm drain channel and restored surface, functional drainage"
+    },
+    {
+      "id": "page-about",
+      "output": "public/images/pages/hakkimizda-hero.jpg",
+      "prompt": "Same SMF Denizli series: experienced Turkish saha ekibi near excavator on large hafriyat project, authentic leadership moment, hakkımızda hero"
+    },
+    {
+      "id": "page-contact",
+      "output": "public/images/pages/iletisim-hero.jpg",
+      "prompt": "Same visual world: site coordinator on phone near fleet at Denizli hafriyat sahası, approachable professional moment, iletişim hero"
+    },
+    {
+      "id": "page-fleet",
+      "output": "public/images/pages/filo-hero.jpg",
+      "prompt": "Same SMF series: impressive lineup of company excavators dozers and damper trucks at Denizli depot, filo hero wide shot"
+    },
+    {
+      "id": "page-areas",
+      "output": "public/images/pages/hizmet-bolgeleri-hero.jpg",
+      "prompt": "Same series: excavator working on Denizli outskirts with distant Aegean hills and Honaz silhouette, regional hizmet bölgeleri hero"
+    },
+    {
+      "id": "page-legal",
+      "output": "public/images/pages/yasal-hero.jpg",
+      "prompt": "Same SMF saha series: calm orderly excavation overview, subtle corporate background, clean safe organized Turkish construction site"
+    },
+    {
+      "id": "page-not-found",
+      "output": "public/images/pages/404-bg.jpg",
+      "prompt": "Same visual series: excavator digging empty trench in Denizli soil, slightly moody overcast Aegean light, metaphorical missing-page scene but still realistic saha photo"
+    },
+    {
+      "id": "smf-proje-1",
+      "output": "public/images/smf/12-proje-1.jpg",
+      "aspectRatio": "1:1",
+      "prompt": "Same SMF series square crop: large Honaz OSB fabrika temel kazısı with multiple excavators, deep pit, documentary project showcase"
+    },
+    {
+      "id": "smf-proje-2",
+      "output": "public/images/smf/13-proje-2.jpg",
+      "aspectRatio": "1:1",
+      "prompt": "Same series square crop: kontrollü bina yıkımı with excavator removing concrete wall, Merkezefendi context, dramatic authentic dust"
+    },
+    {
+      "id": "smf-proje-3",
+      "output": "public/images/smf/14-proje-3.jpg",
+      "aspectRatio": "1:1",
+      "prompt": "Same series square crop: derin bodrum kazısı with shoring in Denizli sanayi project, vertical pit walls, technical depth"
+    },
+    {
+      "id": "smf-proje-4",
+      "output": "public/images/smf/15-proje-4.jpg",
+      "aspectRatio": "1:1",
+      "prompt": "Same series square crop: kanalizasyon trench on Denizli street with stacked pipes, municipal altyapı showcase"
+    },
+    {
+      "id": "smf-proje-5",
+      "output": "public/images/smf/16-proje-5.jpg",
+      "aspectRatio": "1:1",
+      "prompt": "Same series square crop: damper convoy leaving SMF hafriyat sahası loaded with moloz, logistics chain"
+    },
+    {
+      "id": "smf-proje-6",
+      "output": "public/images/smf/17-proje-6.jpg",
+      "aspectRatio": "1:1",
+      "prompt": "Same series square crop: mini ekskavatör in narrow Acıpayam kanal dig, tight urban Turkish infrastructure expertise"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-/** Hafriyat / yıkım / kazı — yalnızca doğrulanmış ekskavatör görselleri (haf-001 … haf-009) */
+/** SMF Hafriyat görsel serisi — Higgsfield ile üretilmiş, Denizli/Ege tutarlı saha fotoğrafları */
 import { teamMembers } from "@/lib/constants/content";
 
 const h = (n: number) => `/images/hafriyat/haf-${String(n).padStart(3, "0")}.jpg`;
@@ -35,6 +35,7 @@ export const siteImages = {
   areasHero: core.deepExcavator,
   faqSide: core.rubbleExcavator,
   legal: core.deepExcavator,
+  notFound: core.buildingDemolition,
   trustBg: core.buildingDemolition,
 
   fleet: [
