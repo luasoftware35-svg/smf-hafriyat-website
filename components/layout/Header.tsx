@@ -40,18 +40,17 @@ export function Header() {
         <Container as="nav" aria-label="Ana navigasyon" className="relative flex h-16 items-center lg:h-[4.5rem]">
           <Link
             href="/"
-            className="group flex shrink-0 items-center gap-3 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="group shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             aria-label={`${siteConfig.name} ana sayfa`}
           >
-            <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-md bg-bg-primary ring-1 ring-surface/80">
-              <Image src={siteConfig.logo} alt="" width={44} height={44} className="h-11 w-11 object-contain" aria-hidden="true" />
-            </span>
-            <span className="flex flex-col leading-tight">
-              <span className="font-heading text-base tracking-wide text-text-primary group-hover:text-accent lg:text-lg">
-                {siteConfig.name}
-              </span>
-              <span className="hidden text-xs text-text-secondary sm:block">Denizli · Ege Bölgesi</span>
-            </span>
+            <Image
+              src={siteConfig.logo}
+              alt={siteConfig.logoAlt}
+              width={56}
+              height={56}
+              className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-14 sm:w-14"
+              priority
+            />
           </Link>
 
           <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 lg:flex">
