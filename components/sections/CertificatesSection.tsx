@@ -9,6 +9,7 @@ import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { trustPrinciples } from "@/lib/constants/content";
+import { corporateCredentials, insuranceNote } from "@/lib/constants/site";
 import { getCertificateImage, siteImages } from "@/lib/constants/images";
 
 const icons = [Shield, Award, FileCheck, Leaf];
@@ -33,8 +34,8 @@ export function CertificatesSection() {
             <FadeIn>
               <SectionHeading
                 eyebrow="Güven & Uyum"
-                title="İş güvenliği ve yasal mevzuata bağlılık"
-                description="SMF Hafriyat olarak yasal gerekliliklerden taviz vermeden, çevreye saygılı şekilde çalışıyoruz."
+                title="Sıfır kaza hedefi, belgeli saha"
+                description="Sertifikalı operatör, ruhsat koordinasyonu ve sigortalı filo — yasal mevzuattan taviz vermeden çalışıyoruz."
                 className="mb-10"
               />
             </FadeIn>
@@ -61,6 +62,18 @@ export function CertificatesSection() {
                 );
               })}
             </StaggerGrid>
+
+            <div className="mt-8 rounded-lg border border-surface bg-bg-primary/60 p-4">
+              <p className="text-xs font-medium uppercase tracking-wider text-text-primary">Kurumsal belgeler</p>
+              <ul className="mt-3 space-y-2">
+                {corporateCredentials.map((cred) => (
+                  <li key={cred.label} className="text-sm text-text-secondary">
+                    <span className="font-medium text-text-primary">{cred.label}:</span> {cred.note}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3 text-xs text-text-secondary">{insuranceNote}</p>
+            </div>
           </div>
         </div>
       </Container>

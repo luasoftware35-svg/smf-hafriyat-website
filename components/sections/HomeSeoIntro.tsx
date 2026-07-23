@@ -134,8 +134,8 @@ export function HomeSeoIntro() {
                   {siteConfig.name}
                 </InteractiveKeyword>
                 , {siteConfig.foundedYear} yılından bu yana yıkım, hafriyat ve altyapı alanında faaliyet gösteren,{" "}
-                {siteConfig.companyRegisteredYear} yılında {siteConfig.legalName} unvanıyla Denizli Merkezefendi&apos;de kurumsal
-                kimliğine kavuşan bir inşaat hizmetleri firmasıdır. Ege Bölgesi&apos;nin önemli projelerinde yer alan firmamız,{" "}
+                {siteConfig.companyRegisteredYear} yılında {siteConfig.legalName} unvanıyla Denizli Merkezefendi&apos;de tescil edilen
+                bir hafriyat firmasıdır. Ege Bölgesi&apos;nin önemli projelerinde yer alan firmamız,{" "}
                 {siteConfig.yearsInBusiness} yılı aşkın sektör tecrübesiyle bugüne kadar 150&apos;nin üzerinde firmaya, 900&apos;ün
                 üzerinde projede destek vermiştir.
               </p>

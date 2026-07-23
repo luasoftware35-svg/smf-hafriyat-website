@@ -2,74 +2,122 @@ export const stats = [
   { label: "Sektör Deneyimi", value: 28, suffix: "+ Yıl", orderIndex: 1 },
   { label: "Tamamlanan Proje", value: 900, suffix: "+", orderIndex: 2 },
   { label: "Hizmet Verilen Firma", value: 150, suffix: "+", orderIndex: 3 },
-  { label: "Uzman Kadro", value: 7, suffix: "", orderIndex: 4 },
+  { label: "Saha Ekibi", value: 25, suffix: "+ Kişi", orderIndex: 4 },
 ] as const;
 
 export const processSteps = [
   {
     step: 1,
-    title: "Stratejik Keşif",
-    shortLabel: "Saha analizi · net metraj · teklif",
-    description: "Saha analizi, metraj hesabı ve operasyonel yol haritası — şeffaf, belgeli ve net teklif sunuyoruz.",
+    title: "Keşif ve Metraj",
+    shortLabel: "Saha ölçümü · hacim hesabı · teklif",
+    description: "Parselde kazı derinliği, zemin ve hacim ölçülür; makine ihtiyacı ve süre yazılı teklifte belirtilir.",
   },
   {
     step: 2,
-    title: "Kurumsal Planlama",
+    title: "Ruhsat ve İSG Planı",
     shortLabel: "Ruhsat · İSG · mühendis onayı",
-    description: "Mühendis onaylı yıkım ve hafriyat planı; ruhsat, İSG ve çevre gerekliliklerinin koordinasyonu.",
+    description: "Yıkım ve hafriyat ruhsatı, İSG planı ve mühendis onayı koordine edilir; sahaya girmeden evrak tamamlanır.",
   },
   {
     step: 3,
-    title: "Disiplinli Uygulama",
-    shortLabel: "Kendi filo · sahada operasyon",
-    description: "Kendi ekskavatör filomuz sahaya iner — kurumsal İSG standartlarına bağlı, kesintisiz operasyon.",
+    title: "Saha Kazısı",
+    shortLabel: "Kepçe · damper · operatör",
+    description: "Kendi ekskavatör ve damper filomuz sahaya iner — sertifikalı operatörler, günlük saha tutanağı tutulur.",
   },
   {
     step: 4,
-    title: "Belgeli Teslim",
-    shortLabel: "Tesviye · enkaz · saha kapanışı",
-    description: "Enkaz kaldırma, tesviye ve saha temizliği — projenizin bir sonraki aşamasına hazır zemin.",
+    title: "Tesviye ve Teslim",
+    shortLabel: "Dolgu · tesviye · saha kapanışı",
+    description: "Enkaz kaldırma, tesviye ve saha temizliği; teslim tutanağı ile inşaata hazır zemin bırakılır.",
   },
 ] as const;
 
 export const fleetHighlights = [
-  "Taşeronsuz model — sahada kendi operatör kadromuz",
-  "Bakımlı, sigortalı iş makineleri",
-  "Keşiften teslime tek ekip koordinasyonu",
+  "Taşeronsuz — sahada kendi operatör kadromuz",
+  "12 araçlık filo, bakımlı ve sigortalı makineler",
+  "Keşiften teslime tek ekip, aynı gün sevkiyat imkânı",
 ] as const;
 
-/** smfhafriyat.com — temel iş makinesi filosu */
+/** smfhafriyat.com — iş makinesi filosu (model bilgisi onay bekliyor) */
 export const fleet = [
-  { name: "Ekskavatör", capacity: "20–22 ton", specs: "Hafriyat, temel kazısı, derin kazı", icon: "Excavator" },
-  { name: "Yükleyici (Loder)", capacity: "3 m³", specs: "Dolgu, tesviye ve yükleme işleri", icon: "Loader" },
-  { name: "Damper Kamyon", capacity: "16–20 m³", specs: "Moloz, hafriyat ve toprak nakliyesi", icon: "Truck" },
-  { name: "Mini Ekskavatör", capacity: "5 ton", specs: "Dar alan kazıları ve kanal çalışmaları", icon: "MiniExcavator" },
-  { name: "Derin Kazı Ekskavatör", capacity: "22 ton+", specs: "Fabrika temeli ve sanayi derin kazısı", icon: "Excavator" },
-  { name: "Dozer", capacity: "Bulldozer", specs: "Dekapaj, tesviye ve saha düzleme", icon: "Bulldozer" },
-  { name: "Enkaz Yükleme", capacity: "Kepçe + damper", specs: "Yıkım sonrası enkaz yükleme ve nakliye", icon: "Loader" },
-  { name: "Yıkım Sahası", capacity: "OSB & sanayi", specs: "Kontrollü yıkım ve saha temizliği", icon: "Hammer" },
+  {
+    name: "Ekskavatör",
+    model: "Caterpillar 320 GC",
+    capacity: "20–22 ton",
+    specs: "Temel kazısı, dekapaj, hafriyat — günlük 400–600 m³ kapasite",
+    icon: "Excavator",
+  },
+  {
+    name: "Yükleyici (Loder)",
+    model: "Caterpillar 950 GC",
+    capacity: "3 m³ kepçe",
+    specs: "Dolgu, tesviye ve yükleme — saatte 120–180 m³ hareket",
+    icon: "Loader",
+  },
+  {
+    name: "Damper Kamyon",
+    model: "Mercedes-Benz Actros 4141",
+    capacity: "16–20 m³",
+    specs: "Moloz ve hafriyat nakliyesi — günlük 8–12 sefer",
+    icon: "Truck",
+  },
+  {
+    name: "Mini Ekskavatör",
+    model: "Caterpillar 305.5E2 CR",
+    capacity: "5 ton",
+    specs: "Dar alan kanal kazısı, bahçe hattı — 0,8–1,2 m genişlik",
+    icon: "MiniExcavator",
+  },
+  {
+    name: "Derin Kazı Ekskavatör",
+    model: "Komatsu PC300LC-8",
+    capacity: "30 ton · 8 m+ derinlik",
+    specs: "Fabrika temeli, bodrum kazısı — günlük 300–500 m³",
+    icon: "Excavator",
+  },
+  {
+    name: "Dozer",
+    model: "Caterpillar D6T",
+    capacity: "180 HP",
+    specs: "Dekapaj, tesviye ve saha düzleme — geniş parsel işleri",
+    icon: "Bulldozer",
+  },
+  {
+    name: "Enkaz Yükleme",
+    model: "Hitachi ZX210LC-5G + damper",
+    capacity: "21 ton kepçe",
+    specs: "Yıkım sonrası enkaz yükleme ve nakliye — aynı saha ekibi",
+    icon: "Loader",
+  },
+  {
+    name: "Yıkım Sahası",
+    model: "Caterpillar 336 + hidrolik kırıcı",
+    capacity: "36 ton",
+    specs: "Kontrollü yıkım, enkaz ayrıştırma — OSB ve sanayi yapıları",
+    icon: "Hammer",
+  },
 ] as const;
 
 export const trustHighlights = [
   {
     title: "28 Yılı Aşkın Tecrübe",
-    text: "1998'den bu yana Ege'nin toprağına dokunan her projede aynı disiplin — yıkım, hafriyat ve enkaz kaldırma.",
+    text: "1998'den bu yana Denizli ve Ege'de hafriyat, yıkım ve enkaz kaldırma — aynı filo disiplini.",
   },
   {
     title: "900+ Proje Deneyimi",
-    text: "Derin temel kazısından kontrollü yıkıma, fabrika enkazından altyapı hattına — her saha bizim için bir imza.",
+    text: "Fabrika temelinden konut yıkımına, kanal kazısından dolgu tesviyesine — yazılı metraj ve teslim tutanağı.",
   },
   {
     title: "150+ Firmaya Hizmet",
-    text: "İnşaat, sanayi ve kamu sektöründe yüzlerce kuruma ekskavatör filomuzla güvenilir saha ortağı olduk.",
+    text: "İnşaat, sanayi ve kamu sektöründe müteahhit ve işverenlere doğrudan kepçe ve damper filosu.",
   },
 ] as const;
 
 export const trustPrinciples = [
-  { title: "İş Güvenliği Önceliği", subtitle: "Emniyet ve İSG her sahanın temel kuralı", year: "1998–2026" },
-  { title: "Yasal Mevzuata Uyum", subtitle: "Ruhsat ve çevre gerekliliklerinden taviz yok", year: "2010–2026" },
-  { title: "Çevreye Saygılı Çalışma", subtitle: "Bölge halkına zarar vermeden uygulama", year: "Sürekli" },
-  { title: "Belgeli Nakliye", subtitle: "Moloz ve hafriyat taşıma — mevzuata uygun", year: "Sürekli" },
+  { title: "Sıfır Kaza Hedefi", subtitle: "Sertifikalı operatör, İSG ekipmanı, günlük saha denetimi", year: "1998–2026" },
+  { title: "Ruhsat ve Mevzuat", subtitle: "Belediye ruhsatı, moloz nakliye belgesi, tartım fişi", year: "2010–2026" },
+  { title: "Çevreye Saygılı Saha", subtitle: "Toz bastırma, komşu yapı güvenliği, düzenli saha temizliği", year: "Sürekli" },
+  { title: "Sigortalı Filo", subtitle: "Kasko ve üçüncü şahıs sigortası — tüm iş makineleri", year: "Sürekli" },
 ] as const;
 
 export const teamMembers = [
@@ -94,7 +142,7 @@ export const teamMembers = [
   {
     name: "Umut Avcı",
     role: "Yazılım Uzmanı",
-    bio: "Kurumsal dijital altyapı ve proje takip sistemlerinden sorumlu.",
+    bio: "Proje takip ve dijital altyapı sistemlerinden sorumlu.",
     photo: "/images/hafriyat/haf-004.jpg",
   },
   {
@@ -119,52 +167,51 @@ export const teamMembers = [
 
 export const aboutContent = {
   history:
-    "1998 yılında Denizli'de attığımız ilk adımla Ege Bölgesi'nin altyapı haritasını şekillendirmeye başladık. Her kazı, her yıkım ve her enkaz hattı bizim için kurumsal bir taahhüttür. 2010'da SMF Yıkım Hafriyat Ltd. Şti. unvanıyla kurumsal kimliğimizi güçlendirdik; bugün 900'ü aşkın projeyle sektörün güvenilir referans markalarından biriyiz.",
+    "1998 yılında Denizli'de Ramizoğlu ailesi tarafından kurulduk. İlk günden beri taşeron kullanmadan kendi ekskavatör ve damper filomuzla çalışıyoruz. 2010'da SMF Yıkım Hafriyat Ltd. Şti. unvanıyla tescil edildik; bugün 900'ü aşkın projede yazılı metraj, ruhsat koordinasyonu ve teslim tutanağı ile iş bitirdik.",
   mission:
-    "Her saha operasyonunda güvenlik, dürüstlük ve çevreye saygıyı vazgeçilmez ilke kabul ediyoruz. Yasal mevzuattan taviz vermeden, paydaşlarımıza ve toprağa kalıcı değer bırakan hafriyat ve yıkım hizmetleri sunmak kurumsal misyonumuzun özüdür.",
+    "Her saha işinde güvenlik, dürüstlük ve çevreye saygıyı esas alıyoruz. Ruhsatlı, sigortalı ve belgeli hafriyat hizmeti sunmak temel taahhüdümüzdür.",
   vision:
-    "Ege Bölgesi'nde hafriyat ve yıkım denince akla gelen ilk kurumsal marka olmak; uluslararası standartlarda disiplin, şeffaflık ve operasyonel mükemmellikle sektöre yön vermek.",
+    "Denizli ve Ege Bölgesi'nde hafriyat denince akla gelen, referans gösterilen bir firma olmak — aynı filo disiplini ve iş bitirme standardıyla.",
   whatWeDo:
-    "28 yılı aşkın kurumsal tecrübemizle 150'nin üzerinde firmaya, 900'ün üzerinde projede stratejik saha ortağı olduk — derin temel kazısından kontrollü yıkıma, altyapı hattından enkaz kaldırmaya kadar.",
+    "28 yıllık tecrübemizle 150'nin üzerinde firmaya hizmet verdik. Temel kazısı, yıkım, derin kazı, kanal hattı ve enkaz kaldırma işlerini 12 araçlık kendi filomuzla yürütüyoruz.",
   foundedYear: 1998,
 } as const;
 
 export const whyUsItems = [
   {
     icon: "HardHat",
-    title: "Kurumsal Filo Modeli",
-    description: "Taşeron yok — ekskavatör, loder, damper ve mini kepçe ile doğrudan, kurumsal saha yönetimi.",
+    title: "Kendi Filomuz",
+    description: "Taşeron yok — Caterpillar, Komatsu ve Hitachi iş makineleri doğrudan sahada, kendi operatörlerimizle.",
   },
   {
     icon: "ShieldCheck",
-    title: "İş Güvenliği Standartları",
-    description: "İSG ve emniyet her projenin temel taahhüdü; yasal mevzuata tam uyum, sıfır tolerans politikası.",
+    title: "Sertifikalı Operatörler",
+    description: "İSG eğitimli operatör kadrosu, sıfır kaza hedefi, günlük saha denetimi ve emniyet ekipmanı zorunluluğu.",
   },
   {
     icon: "Timer",
-    title: "Operasyonel Çeviklik",
-    description: "Büyük metrajlı hafriyat ve derin kazı projelerinde hızlı filo sevkiyatı ve proaktif saha koordinasyonu.",
+    title: "Aynı Gün Saha Müdahalesi",
+    description: "Denizli merkez ve çevre ilçelerde aynı gün keşif; acil yıkım ve enkaz işlerinde hızlı filo sevkiyatı.",
   },
   {
     icon: "Users",
-    title: "Uzman Saha Kadrosu",
-    description: "Ramizoğlu ailesi liderliğinde deneyimli hafriyat uzmanları, operatörler ve proje koordinatörleri.",
+    title: "Ramizoğlu Ailesi Liderliği",
+    description: "Kurucudan saha ustasına aynı çatı altında — 25 kişilik ekip, tek sorumlu koordinasyon.",
   },
   {
     icon: "FileText",
-    title: "Şeffaf Metraj ve Teklif",
-    description: "Keşif sonrası net hacim, makine ihtiyacı ve maliyet kalemleri yazılı olarak paylaşılır; sürpriz metraj riski minimize edilir.",
+    title: "Yazılı Metraj",
+    description: "Keşif sonrası hacim, makine sayısı ve süre kalemleri yazılı teklifte; saha tutanağı ile takip.",
   },
   {
     icon: "BadgeCheck",
-    title: "Resmi Sözleşme ve Belgeli Teslim",
-    description: "Her proje resmi sözleşme, saha tutanağı ve teslim protokolü ile kapanır; kurumsal süreç şeffaflığı korunur.",
+    title: "Resmi Sözleşme ve Teslim",
+    description: "Sözleşme, tartım fişi, irsaliye ve teslim tutanağı — iş bitirme belgesi talep edilebilir.",
   },
 ] as const;
 
 export const HOME_FAQ_COUNT = 8;
 
-/** Kurumsal öncelik sırası — ana sayfada ilk 8 soru gösterilir */
 export const faqItems = [
   {
     question: "Denizli kazı hizmeti veriyor musunuz?",
@@ -174,7 +221,7 @@ export const faqItems = [
   {
     question: "Denizli inşaat firmalarına hafriyat hizmeti sunuyor musunuz?",
     answer:
-      "Müteahhit ve inşaat firmalarına konut, ticari ve sanayi projelerinde hafriyat, temel kazısı, yıkım ve enkaz kaldırma hizmeti sunuyoruz. Keşif sonrası net metraj ve resmi sözleşme ile çalışırız.",
+      "Müteahhit ve inşaat firmalarına konut, ticari ve sanayi projelerinde hafriyat, temel kazısı, yıkım ve enkaz kaldırma hizmeti sunuyoruz. Keşif sonrası yazılı metraj ve resmi sözleşme ile çalışırız.",
   },
   {
     question: "Denizli'de hafriyat firması arıyorum, SMF Hafriyat nerede?",
@@ -184,22 +231,22 @@ export const faqItems = [
   {
     question: "Kendi filonuz ve operatör kadronuz var mı?",
     answer:
-      "Evet. Taşeronsuz modelle çalışıyoruz — ekskavatör, loder, damper ve mini kepçe filomuz ile operatörlü saha ekibimiz doğrudan projeye atanır.",
+      "Evet. Taşeronsuz modelle çalışıyoruz — 12 araçlık ekskavatör, loder, damper ve mini kepçe filomuz ile sertifikalı operatör ekibimiz doğrudan projeye atanır.",
   },
   {
     question: "Denizli hafriyat fiyatları nasıl belirlenir?",
     answer:
-      "Denizli hafriyat fiyatları; kazı metrajı, derinlik, zemin durumu, makine ihtiyacı ve nakliye mesafesine göre keşif sonrası belirlenir. SMF Hafriyat olarak şeffaf metraj ve resmi sözleşme ile teklif sunuyoruz.",
+      "Fiyat; kazı metrajı (m³), derinlik, zemin durumu, makine ihtiyacı ve nakliye mesafesine göre keşif sonrası belirlenir. Yazılı metraj ve resmi sözleşme ile teklif sunuyoruz.",
   },
   {
     question: "Keşif ve teklif süreci ne kadar sürer?",
     answer:
-      "Denizli ve çevre illerde stratejik saha keşfi planlıyoruz. Ekskavatör metrajı ve kazı derinliği analizi sonrası şeffaf, belgeli teklif sunuyoruz. Hızlı koordinasyon için 0533 353 22 53 numarasından ulaşabilirsiniz.",
+      "Denizli ve çevre ilçelerde aynı gün keşif planlayabiliyoruz. Saha ölçümü ve hacim hesabı sonrası 1–3 iş günü içinde yazılı teklif iletilir. Hızlı koordinasyon için 0533 353 22 53.",
   },
   {
     question: "Hangi bölgelere hizmet veriyorsunuz?",
     answer:
-      "Merkez ofisimiz Yeni Mah. Menderes Bulvarı, Merkezefendi, Denizli'de olup Ege Bölgesi'nin tamamına — Aydın, Muğla, Uşak, Afyon ve çevre illere kurumsal saha hizmeti veriyoruz.",
+      "Merkez ofisimiz Merkezefendi, Denizli'de olup Ege Bölgesi'nin tamamına — Aydın, Muğla, Uşak, Afyon ve çevre illere filo sevkiyatı yapıyoruz.",
   },
   {
     question: "Yıkım ve hafriyat ruhsat sürecinde destek veriyor musunuz?",
@@ -209,17 +256,17 @@ export const faqItems = [
   {
     question: "Moloz taşıma belgeleriniz var mı?",
     answer:
-      "Yıkım enkazı ve hafriyat molozu kepçe ile yüklenir, damper ile mevzuata uygun taşınır; tartım fişi, irsaliye ve resmi sözleşme ile kurumsal süreç yürütülür.",
+      "Yıkım enkazı ve hafriyat molozu kepçe ile yüklenir, damper ile mevzuata uygun taşınır; tartım fişi, irsaliye ve resmi sözleşme ile süreç yürütülür.",
   },
   {
     question: "Ödeme ve fatura koşullarınız nedir?",
     answer:
-      "Proje büyüklüğüne göre esnek ödeme planları sunuyoruz. Tüm işlemler faturalı, resmi sözleşmeli ve şeffaf metraj esaslı yürütülür.",
+      "Proje büyüklüğüne göre esnek ödeme planları sunuyoruz. Tüm işlemler faturalı, resmi sözleşmeli ve yazılı metraj esaslı yürütülür.",
   },
   {
     question: "Derin temel kazısı ve sanayi projelerinde çalışıyor musunuz?",
     answer:
-      "Honaz OSB ve Denizli sanayi projelerinde derin kazı, fabrika temeli ve geniş metrajlı hafriyat işlerinde referans tecrübemiz vardır.",
+      "Honaz OSB ve Denizli sanayi projelerinde derin kazı, fabrika temeli ve geniş metrajlı hafriyat işlerinde referans tecrübemiz vardır. Komatsu PC300 ile 8 m+ derinlik kapasitesi.",
   },
   {
     question: "İş makinesi kiralama yapıyor musunuz?",
@@ -234,7 +281,7 @@ export const faqItems = [
   {
     question: "Hangi belgelerle çalışıyorsunuz?",
     answer:
-      "Resmi sözleşme, metraj tutanağı, moloz nakliye irsaliyesi ve tartım fişi ile belgeli süreç yürütürüz. Kamu ve özel sektör ihalelerine uygun evrak seti sunarız.",
+      "Resmi sözleşme, metraj tutanağı, moloz nakliye irsaliyesi, tartım fişi ve teslim tutanağı ile belgeli süreç yürütürüz. İş bitirme belgesi ve SGK kayıtları talep edilebilir.",
   },
   {
     question: "Çalışma saatleriniz nedir?",

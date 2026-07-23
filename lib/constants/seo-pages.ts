@@ -27,7 +27,7 @@ export const seoLandingPages: SeoLandingPage[] = [
       "Denizli kazı ihtiyaçlarınız için SMF Hafriyat; konut temel kazısından fabrika derin kazısına, kanalizasyon hattından sanayi tesviyesine kadar operatörlü ekskavatör filosu ile hizmet verir.",
     paragraphs: [
       "Denizli'de kazı projelerinde metraj, derinlik, zemin durumu ve makine seçimi keşif sonrası netleştirilir. Taşeronsuz modelimizle ekskavatör, mini kepçe, loder ve damper aynı saha ekibi altında koordine edilir.",
-      "Merkezefendi, Pamukkale, Honaz OSB ve Ege Bölgesi'nde müteahhit, inşaat firması ve sanayi yatırımcıları için resmi sözleşme, İSG standartları ve belgeli moloz nakliyesi ile kurumsal süreç yürütürüz.",
+      "Merkezefendi, Pamukkale, Honaz OSB ve Ege Bölgesi'nde müteahhit ve sanayi yatırımcıları için resmi sözleşme, İSG planı ve belgeli moloz nakliyesi ile çalışırız.",
       "Acil saha müdahalesi ve aynı gün keşif için 0533 353 22 53 numarasından veya WhatsApp üzerinden bize ulaşabilirsiniz.",
     ],
     highlights: [
@@ -59,7 +59,7 @@ export const seoLandingPages: SeoLandingPage[] = [
     paragraphs: [
       "İnşaat projelerinin başlangıç aşamasında dekapaj, temel kazısı, dolgu-tecrit ve tesviye işlerini proje takvimine uygun planlıyoruz. Metraj tutanağı ve yazılı teklif ile şeffaf süreç yürütürüz.",
       "Konut, karma proje, fabrika ve OSB yatırımlarında yıkım, hafriyat ve moloz nakliyesini aynı saha ekibiyle koordine ederek müteahhitlerin zaman kaybını minimize ediyoruz.",
-      "150'den fazla firmaya hizmet veren kurumsal kadromuz; ruhsat, İSG ve belgeli teslim süreçlerinde inşaat firmalarının yanında stratejik saha ortağıdır.",
+      "150'den fazla müteahhite hizmet verdik. Ruhsat, İSG ve teslim tutanağı süreçlerinde 28 yıllık saha tecrübesi ve 12 araçlık kendi filomuzla yanınızdayız.",
     ],
     highlights: [
       "Müteahhit temel kazısı",

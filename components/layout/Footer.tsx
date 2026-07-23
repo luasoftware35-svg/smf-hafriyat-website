@@ -11,6 +11,8 @@ import {
   socialLinks,
   ctaLinks,
   companyLegal,
+  corporateCredentials,
+  insuranceNote,
 } from "@/lib/constants/site";
 import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
@@ -78,6 +80,15 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+            <div className="mt-5 space-y-2 border-t border-surface pt-4">
+              <p className="text-xs font-medium uppercase tracking-wider text-text-primary">Belgeler</p>
+              {corporateCredentials.map((cred) => (
+                <p key={cred.label} className="text-xs text-text-secondary">
+                  <span className="font-medium text-text-primary">{cred.label}:</span> {cred.note}
+                </p>
+              ))}
+              <p className="text-xs text-text-secondary">{insuranceNote}</p>
+            </div>
           </div>
 
           <div>

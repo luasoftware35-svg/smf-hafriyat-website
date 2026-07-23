@@ -20,16 +20,16 @@ export const services: Service[] = [
     fullDescription:
       "Denizli ve Ege Bölgesi'nde 1998'den bu yana kendi ekskavatör filomuz ve operatör kadromuzla hafriyat, dekapaj ve temel kazısı hizmeti sunuyoruz.",
     detailParagraphs: [
-      "SMF Hafriyat olarak hafriyat işlerini yalnızca kazı yapmak olarak değil; projenizin güvenli, planlı ve zamanında ilerlemesi olarak ele alıyoruz. Denizli Merkezefendi merkezli filomuzla fabrika, konut, sanayi ve kamu projelerinde temel kazısı, dekapaj, dolgu ve saha tesviye operasyonlarını kendi ekibimizle yürütüyoruz.",
-      "Keşif aşamasında saha analizi, metraj hesabı ve ekskavatör ihtiyacını netleştiriyor; ruhsat ve mevzuat gerekliliklerine uygun çalışma planı oluşturuyoruz. Taşeron kullanmadan, operatörlü kepçe filomuzla sahada kesintisiz ve kontrollü ilerliyoruz.",
-      "900'ü aşkın tamamlanan proje deneyimimizle büyük metrajlı hafriyat işlerinde de aynı disiplini koruyor; proje sonunda temiz, tesviye edilmiş ve teslim edilmeye hazır bir saha bırakıyoruz.",
+      "SMF Hafriyat olarak hafriyat işlerini kazı, dolgu ve tesviye olarak planlıyoruz. Denizli Merkezefendi merkezli 12 araçlık filomuzla fabrika, konut, sanayi ve kamu projelerinde temel kazısı, dekapaj ve saha tesviyesini kendi ekibimizle yürütüyoruz.",
+      "Keşif aşamasında parsel ölçümü, hacim hesabı (m³) ve ekskavatör ihtiyacını netleştiriyoruz. Caterpillar 320 ile günlük 400–600 m³, büyük metrajda 2 kepçe ile 800–1.200 m³ kapasite sunuyoruz.",
+      "900'ü aşkın tamamlanan projede aynı disiplini koruyoruz — tesviye edilmiş, temiz ve teslim tutanağı ile kapanan saha.",
     ],
     trustPoints: [
       "1998'den bu yana Denizli ve Ege Bölgesi'nde faaliyet",
-      "Kendi ekskavatör, loder ve damper filosu — taşeron yok",
+      "12 araçlık ekskavatör, loder ve damper filosu — taşeron yok",
       "Ruhsat ve mevzuata uygun, belgeli hafriyat süreci",
-      "Keşif sonrası şeffaf metraj ve net teklif",
-      "150'den fazla kuruma hizmet verilmiş saha tecrübesi",
+      "Keşif sonrası yazılı metraj (m³) ve net teklif",
+      "150'den fazla müteahhite hizmet — 25 kişilik saha ekibi",
     ],
     features: ["Temel kazı ve dolgu", "Kepçe ile tesviye", "Ruhsat uyumlu hafriyat", "Hızlı saha koordinasyonu", "Gece çalışma imkânı"],
     orderIndex: 1,
@@ -112,7 +112,7 @@ export const services: Service[] = [
     detailParagraphs: [
       "Derin kazı projelerinde güvenlik marjı ve zemin bilimi bizim için vazgeçilmezdir. Bodrum kat, otopark, fabrika temeli ve endüstriyel tesis projelerinde geoteknik etüt raporlarına uygun kazı derinliği planlanır; iksa ve drenaj gereksinimleri koordine edilir.",
       "Derin temelli enkaz kaldırma, yan kaymayı önleyici çalışma disiplini ve günlük saha denetimi ile operasyonları yönetiyoruz. Komşu yapılara ve altyapı hatlarına zarar vermeden, kontrollü ilerliyoruz.",
-      "Denizli OSB, sanayi ve konut projelerinde tamamladığımız derin kazı referanslarımızla güven veren bir saha ortağı olmayı hedefliyoruz.",
+      "Denizli OSB, sanayi ve konut projelerinde tamamladığımız derin kazı referanslarımız mevcuttur. Komatsu PC300 ile 8 m+ derinlik, günlük 300–500 m³ kapasite.",
     ],
     trustPoints: [
       "Geoteknik raporlara uygun kazı planlaması",
@@ -200,13 +200,13 @@ export const services: Service[] = [
     detailParagraphs: [
       "Kuru hafriyat ve yıkım sahalarında toz kontrolü hem iş güvenliği hem de çevresel sorumluluk açısından zorunludur. Su tankeri hizmetimizle saha sulama, toz bastırma ve geçici su temini sağlıyoruz.",
       "Kepçe çalışması sırasında zemin nemlendirme, yıkım sonrası enkaz alanı sulama ve inşaat sahası geçici su ihtiyacı için Denizli ve çevre ilçelere günlük sevkiyat yapıyoruz.",
-      "Hafriyat operasyonunuzla entegre planlama yaparak gereksiz bekleme sürelerini ortadan kaldırıyoruz.",
+      "Hafriyat operasyonunuzla aynı takvimde tanker sevkiyatı planlayarak saha bekleme süresini kısaltıyoruz.",
     ],
     trustPoints: [
       "Hafriyat sahası toz bastırma uzmanlığı",
       "Günlük ve acil su tankeri sevkiyatı",
       "Denizli ve çevre ilçelere hızlı ulaşım",
-      "Hafriyat operasyonu ile entegre planlama",
+      "Hafriyat operasyonu ile eşzamanlı tanker planlaması",
       "Çevreye duyarlı saha yönetimi",
     ],
     features: ["Hafriyat sahası toz bastırma", "Kazı sahası sulama", "Acil su temini", "Günlük sevkiyat", "Yıkım sahası nemlendirme"],

@@ -43,7 +43,8 @@ export function FleetGrid() {
                     </span>
                   </div>
                   <div className="p-5">
-                    <h3 className="font-heading text-base text-text-primary">{item.name}</h3>
+                    <p className="font-mono text-xs text-accent">{item.model}</p>
+                    <h3 className="mt-1 font-heading text-base text-text-primary">{item.name}</h3>
                     <p className="mt-2 text-sm text-text-secondary">{item.specs}</p>
                   </div>
                 </Card>

@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "SMF Hafriyat",
   legalName: "SMF Yıkım Hafriyat Ltd. Şti.",
   tradeName: "SMF Hafriyat ve Nakliyat Ltd. Şti.",
-  tagline: "Denizli merkezli kurumsal hafriyat ve yıkım",
+  tagline: "Denizli merkezli hafriyat, yıkım ve derin kazı",
   description:
-    "Denizli hafriyat firması SMF Hafriyat; 1998'den bu yana Yeni Mah. Menderes Bulvarı merkezli olarak ekskavatör ile temel kazısı, yıkım, derin kazı ve enkaz kaldırma hizmeti sunar. Denizli ve Ege Bölgesi'nde kendi filomuzla kurumsal saha operasyonları.",
+    "SMF Hafriyat; 1998'den bu yana Yeni Mah. Menderes Bulvarı merkezli ekskavatör ile temel kazısı, yıkım, derin kazı ve enkaz kaldırma yapar. 12 araçlık kendi filomuz, taşeronsuz model.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.smfhafriyat.com",
   locale: "tr_TR",
   foundedYear: 1998,
@@ -18,6 +18,16 @@ export const companyLegal = {
   taxOffice: "Denizli Vergi Dairesi",
   tradeRegistry: "Denizli Ticaret Sicili — 2010",
 } as const;
+
+/** Footer ve hakkımızda — kullanıcı belge detaylarını dolduracak */
+export const corporateCredentials = [
+  { label: "İş Bitirme Belgesi", note: "[Belge no / kapsam — eklenecek]" },
+  { label: "ISO Sertifikası", note: "[ISO 9001 veya ilgili standart — eklenecek]" },
+  { label: "SGK & Vergi Levhası", note: "[Güncel kayıt bilgisi — eklenecek]" },
+] as const;
+
+export const insuranceNote =
+  "Tüm iş makinelerimiz kasko ve üçüncü şahıs mali mesuliyet sigortası kapsamındadır.";
 
 export const contactInfo = {
   phone: "+90 533 353 22 53",
@@ -89,12 +99,12 @@ export const navLinks: NavLink[] = [
       {
         label: "Vizyonumuz",
         href: "/hakkimizda#vizyon",
-        description: "Ege'nin kurumsal referans hafriyat markası",
+        description: "Ege'de hafriyat denince akla gelen firma hedefi",
       },
       {
         label: "Tarihçemiz",
         href: "/hakkimizda#tarihce",
-        description: "1998'den bugüne stratejik saha ortağı",
+        description: "1998'den bugüne Ramizoğlu ailesi liderliğinde",
       },
     ],
   },

@@ -89,7 +89,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <p className="mt-2 font-medium text-text-primary">Belgeli ve resmi ilerleyiş</p>
               </div>
             </div>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Kurumsal Hizmet Tanımı</p>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Hizmet Detayı</p>
             <p className="mt-4 text-xl leading-relaxed text-text-primary">{service.fullDescription}</p>
 
             <div className="mt-8 space-y-5">

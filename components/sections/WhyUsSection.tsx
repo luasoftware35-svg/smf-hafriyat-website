@@ -111,7 +111,7 @@ export function WhyUsSection() {
               href="/hakkimizda"
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-text-primary transition-colors hover:text-accent"
             >
-              Kurumsal profilimizi inceleyin
+              Firmamızı inceleyin
               <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </FadeIn>

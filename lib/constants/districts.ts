@@ -55,7 +55,7 @@ export const districtPages: DistrictPage[] = [
       "Honaz organize sanayi ve fabrika yatırımlarında derin kazı, geniş metrajlı hafriyat ve sanayi tesviye projelerinde uzman saha ekibimiz görev alır.",
     paragraphs: [
       "Fabrika temeli, depo ve üretim tesisi projelerinde derin kazı ekskavatör filomuz ve operatör kadromuzla planlı operasyon yürütüyoruz.",
-      "OSB projelerinde İSG, ruhsat koordinasyonu ve belgeli moloz nakliyesi ile kurumsal süreç standartlarımızı koruyoruz.",
+      "OSB projelerinde İSG, ruhsat koordinasyonu ve belgeli moloz nakliyesi ile yazılı metraj ve teslim tutanağı standardını koruyoruz.",
     ],
     services: ["Derin kazı", "Sanayi hafriyatı", "Dolgu ve tesviye", "Moloz nakliyesi"],
     keywords: ["honaz hafriyat", "honaz osb kazı", "denizli honaz hafriyat"],
@@ -87,7 +87,7 @@ export const districtPages: DistrictPage[] = [
       "Acıpayam ve çevre mahallelerde yağmur suyu hattı, kırsal hafriyat kazısı ve dolgu-tesviye işlerinde SMF Hafriyat saha ekibi görev alır.",
     paragraphs: [
       "Kırsal altyapı ve geniş parsel projelerinde ekskavatör filomuzla keşif, metraj planı ve operatörlü saha uygulaması sunuyoruz.",
-      "Belediye ve müteahhit projelerinde belgeli moloz nakliyesi ve resmi süreç yönetimi ile kurumsal standartlarımızı koruyoruz.",
+      "Belediye ve müteahhit projelerinde belgeli moloz nakliyesi ve resmi süreç yönetimi ile aynı saha disiplinini koruyoruz.",
     ],
     services: ["Altyapı kazısı", "Hafriyat işleri", "Dolgu ve tesviye", "Moloz nakliyesi"],
     keywords: ["acıpayam hafriyat", "acıpayam kazı", "denizli acıpayam hafriyat"],
@@ -119,7 +119,7 @@ export const districtPages: DistrictPage[] = [
       "Aydın ili genelinde sanayi yıkımı, enkaz kaldırma, temel kazısı ve moloz nakliye projelerinde Ege Bölgesi deneyimimizle hizmet sunuyoruz.",
     paragraphs: [
       "Organize sanayi, konut ve altyapı projelerinde ekskavatör, loder ve damper filomuzla taşeronsuz saha operasyonu yürütüyoruz.",
-      "Keşif, metraj tutanağı ve resmi sözleşme süreçlerinde kurumsal standartlarımızı koruyoruz.",
+      "Keşif, metraj tutanağı ve resmi sözleşme süreçlerinde yazılı kayıt ve teslim standardını koruyoruz.",
     ],
     services: ["Yıkım çalışmaları", "Hafriyat işleri", "Moloz nakliyesi", "Derin kazı"],
     keywords: ["aydın hafriyat", "aydın kazı", "efeler hafriyat", "nazilli hafriyat"],

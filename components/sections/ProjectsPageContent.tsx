@@ -92,7 +92,7 @@ export function ProjectsPageContent() {
                         Teslim çıktıları görünür
                       </span>
                       <span className="rounded-full border border-surface bg-bg-secondary/70 px-3 py-1 text-xs font-medium text-text-secondary">
-                        Kurumsal saha uygulaması
+                        Saha uygulaması
                       </span>
                     </div>
                     <div className="mt-5 flex items-center gap-4">

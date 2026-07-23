@@ -1,60 +1,60 @@
-/** Kurumsal marka dili — slogan, vizyon ve bölüm metinleri */
+/** SMF Hafriyat — saha dili, bölüm metinleri */
 export const brand = {
   tagline: "Denizli merkezli hafriyat, yıkım ve derin kazı",
   description:
-    "1998'den bu yana kendi ekskavatör filomuz ve uzman kadromuzla hafriyat, yıkım, derin temel kazısı ve altyapı operasyonlarında Ege Bölgesi'nin kurumsal referans markası.",
-  topBar: "Gelecek, sağlam temeller üzerinde.",
-  topBarTicker: ["Gelecek, sağlam temeller üzerinde.", "Sektörde öncü."],
-  heroTrustPoints: ["Stratejik keşif", "Kurumsal filo", "Belgeli operasyon", "Zamanında teslim"],
-  trustPills: ["1998'den beri", "Kendi filomuz", "Taşeronsuz model", "Belgeli teslim"],
+    "1998'den bu yana kendi ekskavatör filomuz ve saha ekibimizle hafriyat, yıkım, derin temel kazısı ve altyapı işlerinde Denizli ve Ege Bölgesi'nde faaliyet gösteriyoruz.",
+  topBar: "1998'den beri Denizli'de hafriyat ve kazı.",
+  topBarTicker: ["1998'den beri Denizli'de hafriyat ve kazı.", "Kendi filomuz · Taşeronsuz."],
+  heroTrustPoints: ["Keşif ve metraj", "Kendi filo", "Ruhsatlı iş", "Teslim tutanağı"],
+  trustPills: ["1998'den beri", "Kendi filomuz", "Taşeronsuz", "İş bitirme belgeli"],
   proofStrip: [
-    "Denizli merkezli kurumsal firma",
-    "Keşif sonrası net metraj ve teklif",
-    "Resmi sözleşme ve belgeli süreç",
+    "Denizli Merkezefendi merkezli 28 yıllık firma",
+    "Keşif sonrası yazılı metraj ve teklif",
+    "Resmi sözleşme, tartım fişi, teslim tutanağı",
   ],
   responsePromises: [
     "Aynı gün geri dönüş",
-    "Telefon ve WhatsApp ile hızlı koordinasyon",
-    "Denizli merkezli saha planlaması",
+    "Telefon ve WhatsApp ile saha koordinasyonu",
+    "Denizli merkezli filo sevkiyatı",
   ],
   contactPromises: [
     "Genelde aynı gün geri dönüş yapılır",
-    "Keşif öncesi temel bilgiler teklif için yeterlidir",
-    "Tüm talepler resmi ve şeffaf süreçle ele alınır",
+    "Keşif için parsel konumu ve kazı derinliği yeterli",
+    "Tüm işler sözleşme ve saha tutanağı ile yürütülür",
   ],
 
   sections: {
     fieldShowcase: {
       eyebrow: "Denizli Hafriyat",
-      title: "Denizli ve Ege'de operasyonel mükemmellik",
+      title: "Denizli ve Ege'de saha işleri",
       description:
-        "Denizli merkezli SMF Hafriyat; derin temel kazısından kontrollü yıkıma — her metrekarede disiplin, şeffaflık ve kurumsal sorumluluk.",
+        "Temel kazısından kontrollü yıkıma — metraj, ruhsat, İSG ve tesviye aynı ekip tarafından yürütülür.",
     },
     actionSpotlight: {
-      eyebrow: "Stratejik Erişim",
-      title: "Teklif kararını hızlandıran net hizmet başlıkları",
+      eyebrow: "Hızlı Erişim",
+      title: "Teklif için doğrudan hizmet başlıkları",
     },
     whyUs: {
       eyebrow: "Neden biz",
-      title: "Denizli'de güvenilir saha ekibi",
-      description: "Kendi filomuz ve operatörlerimizle; planlama, İSG ve teslim aynı standartta.",
+      title: "Denizli'de tanıdık saha ekibi",
+      description: "Ramizoğlu ailesi liderliğinde kendi filomuz ve sertifikalı operatörlerimizle çalışıyoruz.",
     },
     services: {
       eyebrow: "Hizmetler",
-      title: "Hafriyat ve yıkım çözümleri",
-      description: "Keşiften teslime tek ekip, net süreç.",
+      title: "Hafriyat ve yıkım işleri",
+      description: "Keşiften teslime tek ekip, yazılı metraj.",
     },
     servicesPage: {
       eyebrow: "10 Hizmet Kategorisi",
-      title: "Vizyoner saha operasyonları, ölçülebilir sonuçlar",
+      title: "Kazı, yıkım, dolgu — net kapasite, net süreç",
       description:
-        "Her hizmet kategorisinde belgeli süreç, deneyimli kadro ve kendi filomuzla kurumsal güvence.",
+        "Her kategoride kendi filomuz, ruhsat koordinasyonu ve yazılı metraj ile çalışırız.",
     },
     process: {
-      eyebrow: "Operasyonel Mükemmellik",
-      title: "Keşiften teslime kurumsal dört aşama",
+      eyebrow: "İş Akışı",
+      title: "Keşiften teslime dört adım",
       description:
-        "Şeffaf iletişim, mühendis onaylı planlama ve belgeli teslim — projenizin her aşamasında yanınızdayız.",
+        "Saha keşfi, ruhsat planı, kepçe operasyonu ve tesviye — her aşamada yazılı kayıt tutulur.",
     },
     projects: {
       eyebrow: "Projeler",
@@ -67,43 +67,43 @@ export const brand = {
       description: "Hafriyat ve yıkım süreçlerine dair kısa yanıtlar.",
     },
     aboutStory: {
-      eyebrow: "Kurumsal Kimlik",
-      title: "Toprağın altında kalıcı değer yaratıyoruz",
+      eyebrow: "Firmamız",
+      title: "1998'den beri aynı saha disiplini",
       description:
-        "Hafriyat bir operasyon değil, kurumsal sorumluluk alanıdır. Her kazıda, her yıkımda aynı vizyon.",
+        "Ramizoğlu ailesi liderliğinde hafriyat, kazı ve yıkım işlerini kendi filomuzla yürütüyoruz.",
     },
     footerCta: {
-      eyebrow: "Stratejik Ortaklık",
-      title: "Projeniz için kurumsal keşif planlayın",
-      description: "Denizli ve Ege Bölgesi'nde aynı gün geri dönüş · Şeffaf metraj · Resmi sözleşme",
+      eyebrow: "Keşif Talebi",
+      title: "Parseliniz için keşif planlayın",
+      description: "Denizli ve Ege Bölgesi'nde aynı gün geri dönüş · Yazılı metraj · Resmi sözleşme",
     },
   },
 
   pages: {
     about: {
-      title: "Toprağın altında kalıcı değer",
+      title: "28 yıllık hafriyat tecrübesi",
       description:
-        "1998'den bu yana Ege Bölgesi'nde hafriyat ve yıkım alanında kurumsal referans marka — kendi filomuz, kendi standartlarımız.",
+        "1998'den bu yana Denizli merkezli — kendi ekskavatör filomuz, kendi operatör kadromuz, taşeronsuz model.",
     },
     services: {
-      title: "Entegre hafriyat ve yıkım hizmetleri",
+      title: "Hafriyat, yıkım ve kazı hizmetleri",
       description:
-        "10 hizmet kategorisinde operatörlü filo, belgeli süreç ve kurumsal proje yönetimi — Denizli'den Ege'ye.",
+        "10 hizmet kategorisinde operatörlü filo, ruhsat koordinasyonu ve yazılı metraj — Denizli'den Ege'ye.",
     },
     fleet: {
-      title: "Kurumsal filo, operasyonel güvence",
+      title: "12 araçlık kendi filomuz",
       description:
-        "Bakımlı, sigortalı ekskavatör ve damper filomuz — hafriyat projelerinizin kesintisiz ilerlemesi için.",
+        "Caterpillar, Komatsu ve Hitachi iş makineleri — bakımlı, sigortalı, operatörlü sevkiyat.",
     },
     projects: {
       title: "Referans projelerimiz",
       description:
-        "900'ü aşkın tamamlanan saha deneyimi — öncesi ve sonrası ile kanıtlanmış kurumsal performans.",
+        "900'ü aşkın tamamlanan saha işi — fabrika temeli, yıkım, kanal kazısı ve dolgu projeleri.",
     },
     contact: {
-      title: "Kurumsal teklif ve keşif",
+      title: "Keşif ve teklif",
       description:
-        "Projenizi birlikte değerlendirelim — hafriyat, yıkım ve derin kazı için stratejik saha planlaması.",
+        "Parsel konumu, kazı derinliği ve metraj bilgisi paylaşın — aynı gün saha keşfi planlayalım.",
     },
   },
 } as const;
