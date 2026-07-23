@@ -1,20 +1,20 @@
 import { createServerClient as createSupabaseServerClient } from "@supabase/ssr";
 import { createClient as createSupabaseJsClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
+import { getSupabasePublicEnv, isSupabasePublicConfigured } from "@/lib/supabase/env";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const { url: supabaseUrl, key: supabaseKey } = getSupabasePublicEnv();
 
 export async function createClient() {
-  if (!supabaseUrl || !supabaseAnonKey) {
+  if (!supabaseUrl || !supabaseKey) {
     throw new Error(
-      "Supabase ortam değişkenleri eksik. NEXT_PUBLIC_SUPABASE_URL ve NEXT_PUBLIC_SUPABASE_ANON_KEY değerlerini .env dosyasına ekleyin.",
+      "Supabase ortam değişkenleri eksik. NEXT_PUBLIC_SUPABASE_URL ve NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY değerlerini .env.local dosyasına ekleyin.",
     );
   }
 
   const cookieStore = await cookies();
 
-  return createSupabaseServerClient(supabaseUrl, supabaseAnonKey, {
+  return createSupabaseServerClient(supabaseUrl, supabaseKey, {
     cookies: {
       getAll() {
         return cookieStore.getAll();
@@ -34,13 +34,13 @@ export async function createClient() {
 
 /** @deprecated Use createClient() for session-aware server access */
 export function createServerClient() {
-  if (!supabaseUrl || !supabaseAnonKey) {
+  if (!supabaseUrl || !supabaseKey) {
     throw new Error(
-      "Supabase ortam değişkenleri eksik. NEXT_PUBLIC_SUPABASE_URL ve NEXT_PUBLIC_SUPABASE_ANON_KEY değerlerini .env dosyasına ekleyin.",
+      "Supabase ortam değişkenleri eksik. NEXT_PUBLIC_SUPABASE_URL ve NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY değerlerini .env.local dosyasına ekleyin.",
     );
   }
 
-  return createSupabaseJsClient(supabaseUrl, supabaseAnonKey, {
+  return createSupabaseJsClient(supabaseUrl, supabaseKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,
@@ -66,7 +66,7 @@ export function createServiceRoleClient() {
 }
 
 export function isSupabaseConfigured() {
-  return Boolean(supabaseUrl && supabaseAnonKey);
+  return isSupabasePublicConfigured();
 }
 
 export function isServiceRoleConfigured() {
