@@ -36,15 +36,17 @@ export function SocialProofSection() {
     <section
       id="referanslar"
       aria-labelledby="referanslar-heading"
-      className="border-b border-surface bg-bg-primary py-14 lg:py-16"
+      className="relative overflow-hidden border-b border-surface bg-bg-primary py-14 lg:py-16"
     >
-      <Container>
+      <SectionAmbientMotion reduceMotion={!!reduceMotion} />
+
+      <Container className="relative">
         <FadeIn className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">Referanslar</p>
             <h2 id="referanslar-heading" className="mt-2 font-heading text-3xl leading-tight text-text-primary sm:text-4xl">
               Denizli&apos;de kanıtlanmış{" "}
-              <span className="text-accent">tecrübe</span>
+              <span className={cn(!reduceMotion && "text-gradient-accent")}>tecrübe</span>
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-text-secondary">
               <span className="font-medium text-text-primary">1998&apos;den bu yana</span> Ege Bölgesi&apos;nde tamamlanan saha
@@ -56,12 +58,20 @@ export function SocialProofSection() {
         </FadeIn>
 
         <motion.dl
-          className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-surface bg-surface lg:grid-cols-4"
+          className="relative mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-surface bg-surface lg:grid-cols-4"
           variants={reduceMotion ? undefined : statGridVariants}
           initial={reduceMotion ? undefined : "hidden"}
           whileInView={reduceMotion ? undefined : "show"}
           viewport={{ once: true, margin: "-60px" }}
         >
+          {!reduceMotion && (
+            <motion.span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent"
+              animate={{ opacity: [0.35, 0.9, 0.35], scaleX: [0.65, 1, 0.65] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          )}
           {stats.map((item) => (
             <StatCell key={item.label} item={item} reduceMotion={!!reduceMotion} />
           ))}
@@ -93,6 +103,37 @@ export function SocialProofSection() {
         </FadeIn>
       </Container>
     </section>
+  );
+}
+
+function SectionAmbientMotion({ reduceMotion }: { reduceMotion: boolean }) {
+  if (reduceMotion) {
+    return <div className="pointer-events-none absolute inset-0 mesh-muted opacity-50" aria-hidden="true" />;
+  }
+
+  return (
+    <>
+      <div className="pointer-events-none absolute inset-0 mesh-muted opacity-70" aria-hidden="true" />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-20 top-8 h-64 w-64 rounded-full bg-accent/12 blur-3xl"
+        animate={{ x: [0, 36, 0], y: [0, 18, 0], opacity: [0.45, 0.72, 0.45] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-16 bottom-4 h-56 w-56 rounded-full bg-accent-secondary/10 blur-3xl"
+        animate={{ x: [0, -28, 0], y: [0, -14, 0], opacity: [0.35, 0.6, 0.35] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,transparent_0%,rgba(245,160,32,0.05)_50%,transparent_100%)]"
+        animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+        style={{ backgroundSize: "200% 100%" }}
+      />
+    </>
   );
 }
 
@@ -176,18 +217,26 @@ function ProjectCard({
             }
       }
       className={cn(
-        "group rounded-lg border border-surface bg-bg-secondary/40 px-5 py-5",
+        "group relative overflow-hidden rounded-lg border border-surface bg-bg-secondary/40 px-5 py-5",
         "transition-[border-color,box-shadow] hover:border-accent/30 hover:shadow-card",
       )}
     >
-      <div className="flex items-center justify-between gap-3">
+      {!reduceMotion && (
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(245,160,32,0.14),transparent_55%)]"
+          animate={{ opacity: [0.05, 0.14, 0.05] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: index * 0.35 }}
+        />
+      )}
+      <div className="relative flex items-center justify-between gap-3">
         <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
           {String(index + 1).padStart(2, "0")}
         </span>
         <span className="text-[11px] text-text-secondary">{item.sector}</span>
       </div>
-      <p className="mt-3 font-heading text-lg leading-snug text-text-primary">{item.project}</p>
-      <p className="mt-1.5 text-sm text-text-secondary">{item.type}</p>
+      <p className="relative mt-3 font-heading text-lg leading-snug text-text-primary">{item.project}</p>
+      <p className="relative mt-1.5 text-sm text-text-secondary">{item.type}</p>
     </motion.li>
   );
 }
