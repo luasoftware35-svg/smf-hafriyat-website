@@ -345,11 +345,11 @@ export const heroBanners = [
     highlight: "Yeni Mah. Menderes Bulvarı merkezli — ekskavatör ile temel kazısı, yıkım ve derin kazı",
   },
   {
-    src: real.yuklemeDamper,
-    alt: realAlt.yuklemeDamper,
+    src: real.havadanFilo,
+    alt: realAlt.havadanFilo,
     tag: "Kurumsal Filo",
     slogan: "Entegre filo, kesintisiz operasyon, tek sorumlu ekip",
-    highlight: "Taşeronsuz model — operatörlü ekskavatör, loder ve damper filosu",
+    highlight: "SMF markalı ekskavatör ve damper filosu — Denizli sahasında koordineli hafriyat operasyonu",
   },
   {
     src: real.derinSaha,
@@ -374,7 +374,7 @@ export const heroBanners = [
   },
 ] as const;
 
-/** Ana sayfa hero — net siyah beyaz kepçe + SMF saha görseli */
+/** Ana sayfa hero — siyah beyaz kepçe + havadan SMF filo operasyonu */
 export const homeHeroBanners = [heroBanners[0], heroBanners[1]] as const;
 
 export const marqueeImages = [

@@ -45,7 +45,7 @@ export function JsonLd() {
     description: siteConfig.description,
     url: siteConfig.url,
     image: ogImage,
-    logo: absoluteUrl("/logo.svg"),
+    logo: absoluteUrl(siteConfig.logo),
     telephone: contactInfo.phone,
     email: contactInfo.email,
     priceRange: "$$",

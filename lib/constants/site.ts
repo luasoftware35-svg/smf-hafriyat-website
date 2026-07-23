@@ -10,6 +10,8 @@ export const siteConfig = {
   foundedYear: 1998,
   companyRegisteredYear: 2010,
   yearsInBusiness: new Date().getFullYear() - 1998,
+  logo: "/logo.png",
+  logoAlt: "SMF Hafriyat logo",
 } as const;
 
 export const companyLegal = {

@@ -57,8 +57,8 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   formatDetection: { telephone: true, email: true, address: true },
   icons: {
-    icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    icon: [{ url: siteConfig.logo, type: "image/png", sizes: "1024x1024" }],
+    apple: [{ url: siteConfig.logo, type: "image/png", sizes: "1024x1024" }],
   },
   robots: { index: true, follow: true },
   other: {

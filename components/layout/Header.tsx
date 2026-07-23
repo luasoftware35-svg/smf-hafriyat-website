@@ -43,8 +43,8 @@ export function Header() {
             className="group flex shrink-0 items-center gap-3 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             aria-label={`${siteConfig.name} ana sayfa`}
           >
-            <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-md bg-accent shadow-glow transition-transform duration-300 group-hover:scale-105">
-              <Image src="/logo.svg" alt="" width={44} height={44} className="h-9 w-9 object-contain" aria-hidden="true" />
+            <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-md bg-bg-primary ring-1 ring-surface/80">
+              <Image src={siteConfig.logo} alt="" width={44} height={44} className="h-11 w-11 object-contain" aria-hidden="true" />
             </span>
             <span className="flex flex-col leading-tight">
               <span className="font-heading text-base tracking-wide text-text-primary group-hover:text-accent lg:text-lg">
