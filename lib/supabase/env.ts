@@ -6,7 +6,16 @@ export function getSupabasePublicEnv() {
   return { url, key };
 }
 
+export function getSupabaseServiceRoleKey() {
+  return process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_SECRET_KEY;
+}
+
 export function isSupabasePublicConfigured() {
   const { url, key } = getSupabasePublicEnv();
   return Boolean(url && key);
+}
+
+export function isSupabaseServiceRoleConfigured() {
+  const { url } = getSupabasePublicEnv();
+  return Boolean(url && getSupabaseServiceRoleKey());
 }

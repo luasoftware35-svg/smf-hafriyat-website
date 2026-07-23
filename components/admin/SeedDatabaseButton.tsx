@@ -13,14 +13,15 @@ export function SeedDatabaseButton() {
       disabled={pending}
       onClick={() =>
         startTransition(async () => {
-          try {
-            const result = await seedStaticContentAction();
-            alert(
-              `Aktarım tamamlandı.\nHizmet: ${result.result.services}\nProje: ${result.result.projects}\nEkip: ${result.result.team}\nİstatistik: ${result.result.stats}`,
-            );
-          } catch (error) {
-            alert(error instanceof Error ? error.message : "Aktarım başarısız.");
+          const response = await seedStaticContentAction();
+          if (!response.ok) {
+            alert(response.error);
+            return;
           }
+
+          alert(
+            `Aktarım tamamlandı.\nHizmet: ${response.result.services}\nProje: ${response.result.projects}\nEkip: ${response.result.team}\nİstatistik: ${response.result.stats}`,
+          );
         })
       }
     >

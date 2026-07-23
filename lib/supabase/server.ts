@@ -1,7 +1,7 @@
 import { createServerClient as createSupabaseServerClient } from "@supabase/ssr";
 import { createClient as createSupabaseJsClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
-import { getSupabasePublicEnv, isSupabasePublicConfigured } from "@/lib/supabase/env";
+import { getSupabasePublicEnv, getSupabaseServiceRoleKey, isSupabasePublicConfigured, isSupabaseServiceRoleConfigured } from "@/lib/supabase/env";
 
 const { url: supabaseUrl, key: supabaseKey } = getSupabasePublicEnv();
 
@@ -49,11 +49,11 @@ export function createServerClient() {
 }
 
 export function createServiceRoleClient() {
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceRoleKey = getSupabaseServiceRoleKey();
 
   if (!supabaseUrl || !serviceRoleKey) {
     throw new Error(
-      "Supabase service role anahtarı eksik. SUPABASE_SERVICE_ROLE_KEY değerini .env dosyasına ekleyin.",
+      "Supabase service role anahtarı eksik. SUPABASE_SERVICE_ROLE_KEY veya SUPABASE_SECRET_KEY değerini .env dosyasına ekleyin.",
     );
   }
 
@@ -70,5 +70,5 @@ export function isSupabaseConfigured() {
 }
 
 export function isServiceRoleConfigured() {
-  return Boolean(supabaseUrl && process.env.SUPABASE_SERVICE_ROLE_KEY);
+  return isSupabaseServiceRoleConfigured();
 }

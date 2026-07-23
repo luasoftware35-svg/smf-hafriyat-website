@@ -30,9 +30,17 @@ export async function signOutAdmin() {
 
 export async function seedStaticContentAction() {
   await requireAdmin();
-  const result = await seedDatabaseFromStaticContent();
-  revalidatePublicContent();
-  return { ok: true as const, result };
+
+  try {
+    const result = await seedDatabaseFromStaticContent();
+    revalidatePublicContent();
+    return { ok: true as const, result };
+  } catch (error) {
+    return {
+      ok: false as const,
+      error: error instanceof Error ? error.message : "Aktarım başarısız.",
+    };
+  }
 }
 
 export async function updateSubmissionAction(formData: FormData) {

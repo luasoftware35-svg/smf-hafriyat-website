@@ -36,7 +36,11 @@ export default async function AdminSettingsPage() {
                 {`insert into admin_users (user_id, email)\nvalues ('USER_UUID', 'admin@smfhafriyat.com');`}
               </pre>
             </li>
-            <li>Vercel/local `.env` dosyasına Supabase anahtarlarını ekleyin.</li>
+            <li>
+              Supabase → Project Settings → <strong>API Keys</strong> → <strong>Secret key</strong> (
+              `sb_secret_...`) değerini Vercel&apos;de `SUPABASE_SERVICE_ROLE_KEY` olarak kaydedin. Legacy JWT
+              service_role çalışmıyorsa bunu kullanın.
+            </li>
             <li>Aşağıdaki butonla statik site içeriğini veritabanına aktarın.</li>
           </ol>
         </AdminCard>
