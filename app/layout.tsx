@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
+import Script from "next/script";
 import { Archivo_Black, Barlow, IBM_Plex_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { CookieConsent } from "@/components/layout/CookieConsent";
 import { GlobalCursorTrail } from "@/components/layout/GlobalCursorTrail";
 import { HashScroll } from "@/components/layout/HashScroll";
@@ -90,6 +93,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const isProduction = process.env.NODE_ENV === "production";
+
   return (
     <html lang="tr">
       <head>
@@ -98,6 +104,25 @@ export default function RootLayout({
       <body
         className={`${archivoBlack.variable} ${barlow.variable} ${ibmPlexMono.variable} min-h-screen bg-bg-primary text-text-primary antialiased`}
       >
+        {isProduction && gaId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}');
+              `}
+            </Script>
+            <Suspense fallback={null}>
+              <GoogleAnalytics />
+            </Suspense>
+          </>
+        ) : null}
         <ScrollProgress />
         <HashScroll />
         <SiteChrome>
