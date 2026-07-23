@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowUpRight, ChevronDown, MessageCircle, Phone, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -34,20 +35,38 @@ const pillVariants: Variants = {
 };
 
 export function HomeContactSection() {
-  const [open, setOpen] = useState(true);
+  return (
+    <Suspense fallback={null}>
+      <HomeContactSectionInner />
+    </Suspense>
+  );
+}
+
+function HomeContactSectionInner() {
+  const searchParams = useSearchParams();
+  const [open, setOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const hasPrefill =
+      searchParams.has("hizmet") ||
+      searchParams.has("bolge") ||
+      searchParams.has("proje") ||
+      searchParams.has("mesaj");
+    if (hasPrefill) setOpen(true);
+  }, [searchParams]);
 
   return (
     <Section id="kesif-formu" variant="muted" className="py-14 lg:py-16">
       <Container>
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-5xl">
           <FadeIn className="text-center">
-            <p className="text-sm font-medium text-text-secondary">İletişim</p>
-            <h2 className="mt-2 font-heading text-2xl leading-snug text-text-primary sm:text-3xl">
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">Keşif & Teklif</p>
+            <h2 className="mt-3 font-heading text-3xl leading-snug text-text-primary sm:text-4xl">
               <TextReveal text="Ücretsiz keşif planlayın" highlightLast={1} />
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-text-secondary sm:text-base">
-              Aynı gün geri dönüş — formu doldurun, ekibimiz sizi arasın.
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-text-primary/85 sm:text-lg">
+              Aynı gün geri dönüş — formu açın, ekibimiz sizi arasın.
             </p>
           </FadeIn>
 
@@ -60,18 +79,28 @@ export function HomeContactSection() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className={cn(
                 "relative overflow-hidden rounded-2xl border bg-bg-primary shadow-card transition-[border-color,box-shadow] duration-500",
-                open ? "border-accent/25 shadow-card-hover" : "border-surface",
+                open
+                  ? "border-accent/35 shadow-card-hover"
+                  : "border-accent/25 shadow-[0_12px_40px_rgba(245,160,32,0.08)]",
               )}
             >
+              {!open ? (
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-accent via-amber-300 to-accent-secondary"
+                  aria-hidden="true"
+                />
+              ) : null}
+
               <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+                <div className="absolute inset-0 mesh-muted opacity-80" />
                 <motion.div
-                  className="absolute -left-16 top-0 h-40 w-40 rounded-full bg-accent/[0.07] blur-3xl"
-                  animate={reduceMotion ? undefined : { x: [0, 12, 0], y: [0, 8, 0] }}
+                  className="absolute -left-16 top-0 h-44 w-44 rounded-full bg-accent/15 blur-3xl"
+                  animate={reduceMotion ? undefined : { x: [0, 16, 0], y: [0, 10, 0] }}
                   transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div
-                  className="absolute -right-10 bottom-0 h-32 w-32 rounded-full bg-bg-secondary blur-2xl"
-                  animate={reduceMotion ? undefined : { x: [0, -10, 0], y: [0, -6, 0] }}
+                  className="absolute -right-10 bottom-0 h-36 w-36 rounded-full bg-accent-secondary/10 blur-3xl"
+                  animate={reduceMotion ? undefined : { x: [0, -12, 0], y: [0, -8, 0] }}
                   transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
                 />
               </div>
@@ -85,39 +114,61 @@ export function HomeContactSection() {
               />
 
               <motion.div
-                className="relative p-5 sm:p-6"
+                className="relative p-6 sm:p-7 lg:p-8"
                 variants={reduceMotion ? undefined : cardVariants}
                 initial={reduceMotion ? undefined : "hidden"}
                 whileInView={reduceMotion ? undefined : "show"}
                 viewport={{ once: true, margin: "-30px" }}
               >
-                <motion.div variants={reduceMotion ? undefined : rowVariants} className="flex items-start gap-3">
-                  <span className="relative mt-0.5 shrink-0">
-                    {!open && !reduceMotion ? (
-                      <span
-                        className="pointer-events-none absolute inset-0 rounded-full border border-accent/30 animate-ring-pulse"
-                        aria-hidden="true"
-                      />
+                <button
+                  type="button"
+                  onClick={() => !open && setOpen(true)}
+                  disabled={open}
+                  aria-label={open ? undefined : "Keşif formunu aç"}
+                  className={cn(
+                    "w-full text-left",
+                    !open && "cursor-pointer rounded-xl transition-colors hover:bg-accent/[0.04]",
+                  )}
+                >
+                  <motion.div variants={reduceMotion ? undefined : rowVariants} className="flex items-start gap-4">
+                    <span className="relative mt-0.5 shrink-0">
+                      {!open && !reduceMotion ? (
+                        <span
+                          className="pointer-events-none absolute inset-0 rounded-full border border-accent/40 animate-ring-pulse"
+                          aria-hidden="true"
+                        />
+                      ) : null}
+                      <motion.span
+                        className="relative flex h-11 w-11 items-center justify-center rounded-full border border-accent/30 bg-accent/15 text-accent shadow-glow"
+                        animate={reduceMotion ? undefined : { rotate: open ? 0 : [0, -6, 6, 0] }}
+                        transition={{
+                          duration: 0.6,
+                          ease: "easeInOut",
+                          repeat: open || reduceMotion ? 0 : Infinity,
+                          repeatDelay: 4,
+                        }}
+                      >
+                        <Sparkles size={18} aria-hidden="true" />
+                      </motion.span>
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-heading text-xl text-text-primary sm:text-2xl">Hızlı keşif koordinasyonu</p>
+                      <p className="mt-2 text-sm leading-relaxed text-text-primary/80 sm:text-base">
+                        Önce arayın veya WhatsApp yazın; detaylı teklif için{" "}
+                        <span className="font-semibold text-accent">keşif formunu açın</span>.
+                      </p>
+                    </div>
+                    {!open ? (
+                      <span className="hidden shrink-0 rounded-full border border-accent/25 bg-accent/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-accent sm:inline-flex">
+                        Tıkla & Aç
+                      </span>
                     ) : null}
-                    <motion.span
-                      className="relative flex h-9 w-9 items-center justify-center rounded-full border border-accent/20 bg-accent/[0.08] text-accent"
-                      animate={reduceMotion ? undefined : { rotate: open ? 0 : [0, -6, 6, 0] }}
-                      transition={{ duration: 0.6, ease: "easeInOut", repeat: open || reduceMotion ? 0 : Infinity, repeatDelay: 4 }}
-                    >
-                      <Sparkles size={16} aria-hidden="true" />
-                    </motion.span>
-                  </span>
-                  <div>
-                    <p className="font-heading text-lg text-text-primary sm:text-xl">Hızlı keşif koordinasyonu</p>
-                    <p className="mt-1 text-sm leading-relaxed text-text-secondary">
-                      Önce arayın veya WhatsApp yazın; detaylı teklif için formu genişletin.
-                    </p>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </button>
 
                 <motion.div
                   variants={reduceMotion ? undefined : rowVariants}
-                  className="mt-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between"
+                  className="mt-7 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"
                 >
                   <div className="flex flex-1 flex-wrap gap-2">
                     <ContactChip
@@ -147,7 +198,7 @@ export function HomeContactSection() {
                     aria-expanded={open}
                     aria-controls="kesif-form-panel"
                     className={cn(
-                      "group relative inline-flex w-full shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full px-5 py-2.5 text-sm font-semibold lg:w-auto",
+                      "group relative inline-flex w-full shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-bold lg:w-auto lg:min-w-[15rem]",
                       open
                         ? "border border-surface bg-bg-secondary text-text-primary"
                         : "bg-accent text-accent-foreground shadow-glow",
@@ -178,14 +229,14 @@ export function HomeContactSection() {
 
                 <motion.ul
                   variants={reduceMotion ? undefined : pillListVariants}
-                  className="mt-5 flex flex-wrap gap-2"
+                  className="mt-6 flex flex-wrap gap-2.5"
                 >
                   {brand.contactPromises.map((item) => (
                     <motion.li
                       key={item}
                       variants={reduceMotion ? undefined : pillVariants}
                       whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
-                      className="rounded-full border border-surface bg-bg-secondary/50 px-3 py-1 text-[11px] text-text-secondary transition-colors duration-300 hover:border-accent/20 hover:text-text-primary"
+                      className="rounded-full border border-accent/20 bg-accent/[0.08] px-3.5 py-1.5 text-xs font-medium text-text-primary transition-colors duration-300 hover:border-accent/35 hover:bg-accent/[0.12]"
                     >
                       {item}
                     </motion.li>
@@ -211,7 +262,7 @@ export function HomeContactSection() {
                       animate={{ y: 0, opacity: 1 }}
                       exit={reduceMotion ? undefined : { y: 10, opacity: 0 }}
                       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                      className="relative border-t border-surface bg-bg-secondary/20 px-5 pb-6 pt-5 sm:px-6"
+                      className="relative border-t border-accent/15 bg-gradient-to-b from-accent/[0.06] to-bg-secondary/30 px-6 pb-7 pt-6 sm:px-7 lg:px-8"
                     >
                       <motion.div
                         className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"
@@ -252,7 +303,7 @@ function ContactChip({
   reduceMotion: boolean;
 }) {
   const className = cn(
-    "group inline-flex min-w-[9.5rem] flex-1 items-center gap-3 rounded-xl border border-surface bg-bg-secondary/30 px-3.5 py-2.5 transition-all duration-300 sm:flex-none",
+    "group inline-flex min-w-[10.5rem] flex-1 items-center gap-3 rounded-xl border border-accent/15 bg-bg-primary/90 px-4 py-3 shadow-sm transition-all duration-300 sm:flex-none",
     hoverClass,
   );
 
