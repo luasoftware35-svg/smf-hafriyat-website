@@ -75,8 +75,8 @@ export function MobileNav({ isOpen, onClose, pathname }: MobileNavProps) {
             <nav aria-label="Mobil navigasyon" className="flex-1 overflow-y-auto">
               <div className="mb-5 rounded-xl border border-surface bg-bg-secondary/75 p-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Denizli Hafriyat</p>
-                <p className="mt-2 text-sm font-medium text-text-primary">Yeni Mah. Menderes Bulvari No:7/A D:3</p>
-                <p className="mt-1 text-sm text-text-secondary">Ayni gun kesif · Kendi filo · Belgeli surec</p>
+                <p className="mt-2 text-sm font-medium text-text-primary">{contactInfo.address.street}</p>
+                <p className="mt-1 text-sm text-text-secondary">Aynı gün keşif · Kendi filo · Belgeli süreç</p>
                 <div className="mt-3 flex items-start gap-2 text-sm text-text-secondary">
                   <MapPin size={16} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
                   <span>{contactInfo.address.district}, {contactInfo.address.city}</span>

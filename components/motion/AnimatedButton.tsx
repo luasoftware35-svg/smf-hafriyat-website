@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +20,16 @@ export function AnimatedButton({
   children,
   glow = variant === "primary",
 }: AnimatedButtonProps) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return (
+      <Button href={href} variant={variant} className={className}>
+        {children}
+      </Button>
+    );
+  }
+
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -2 }}

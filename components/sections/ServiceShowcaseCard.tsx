@@ -26,16 +26,16 @@ const serviceTags: Record<string, string> = {
 };
 
 const serviceDecisionNotes: Record<string, string> = {
-  "hafriyat-isleri": "Temel kazisi, dekapaj ve saha tesviyesi gereken projeler icin uygundur.",
-  "yikim-calismalari": "Kontrollu yikim ve enkaz yonetimi gereken yapilar icin planlanir.",
-  "altyapi-calismalari": "Kanal, yagmursuyu ve altyapi hatlarinda hassas saha koordinasyonu sunar.",
-  "is-makinesi-kiralama": "Operatörlü makine ve saha destegi gereken kisa veya uzun sureli isler icindir.",
-  "derin-kazi": "Bodrum, otopark ve endustriyel temel projelerinde derin kazi disiplini sunar.",
-  "moloz-nakliyesi": "Belgeli tasima ve hizli saha bosaltimi gereken projelere uygundur.",
-  "kum-cakil-temini": "Dolgu ve saha hazirligi icin duzenli malzeme akisi saglar.",
-  "kanal-calismalari": "Dar alanlarda mini kepce ile kontrollu kanal kazisi icin uygundur.",
-  "su-tankeri-nakliyesi": "Santiye sulama ve saha toz kontrolu gereken alanlara yoneliktir.",
-  "toprak-moloz-tasima": "Yuksek hacimli toprak ve moloz sevkiyatinda zaman kazandirir.",
+  "hafriyat-isleri": "Temel kazısı, dekapaj ve saha tesviyesi gereken projeler için uygundur.",
+  "yikim-calismalari": "Kontrollü yıkım ve enkaz yönetimi gereken yapılar için planlanır.",
+  "altyapi-calismalari": "Kanal, yağmur suyu ve altyapı hatlarında hassas saha koordinasyonu sunar.",
+  "is-makinesi-kiralama": "Operatörlü makine ve saha desteği gereken kısa veya uzun süreli işler içindir.",
+  "derin-kazi": "Bodrum, otopark ve endüstriyel temel projelerinde derin kazı disiplini sunar.",
+  "moloz-nakliyesi": "Belgeli taşıma ve hızlı saha boşaltımı gereken projelere uygundur.",
+  "kum-cakil-temini": "Dolgu ve saha hazırlığı için düzenli malzeme akışı sağlar.",
+  "kanal-calismalari": "Dar alanlarda mini kepçe ile kontrollü kanal kazısı için uygundur.",
+  "su-tankeri-nakliyesi": "Şantiye sulama ve saha toz kontrolü gereken alanlara yöneliktir.",
+  "toprak-moloz-tasima": "Yüksek hacimli toprak ve moloz sevkiyatında zaman kazandırır.",
 };
 
 type ServiceShowcaseCardProps = {

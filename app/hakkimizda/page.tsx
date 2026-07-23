@@ -4,6 +4,7 @@ import { StatsCounterSection } from "@/components/sections/StatsCounterSection";
 import { TeamGridSection } from "@/components/sections/TeamGridSection";
 import { CertificatesSection } from "@/components/sections/CertificatesSection";
 import { AboutStoryGrid } from "@/components/sections/AboutStoryGrid";
+import { CtaBanner } from "@/components/sections/CtaBanner";
 import { ImageMarquee } from "@/components/sections/ImageMarquee";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
@@ -36,6 +37,7 @@ export default function AboutPage() {
       <ImageMarquee />
       <TeamGridSection />
       <CertificatesSection />
+      <CtaBanner />
     </>
   );
 }

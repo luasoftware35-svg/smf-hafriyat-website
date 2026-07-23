@@ -34,7 +34,7 @@ const pillVariants: Variants = {
 };
 
 export function HomeContactSection() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const reduceMotion = useReducedMotion();
 
   return (
@@ -47,7 +47,7 @@ export function HomeContactSection() {
               <TextReveal text="Ücretsiz keşif planlayın" highlightLast={1} />
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-text-secondary sm:text-base">
-              Aynı gün geri dönüş — formu istediğinizde açın.
+              Aynı gün geri dönüş — formu doldurun, ekibimiz sizi arasın.
             </p>
           </FadeIn>
 

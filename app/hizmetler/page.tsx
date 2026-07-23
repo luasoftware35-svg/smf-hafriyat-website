@@ -1,5 +1,7 @@
 import { PageHero } from "@/components/ui/PageHero";
 import { ServicesPageSection } from "@/components/sections/ServicesPageSection";
+import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
+import { CtaBanner } from "@/components/sections/CtaBanner";
 import { BreadcrumbJsonLd, ServicesItemListJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo, pageSeoDescription } from "@/lib/seo/local";
@@ -27,6 +29,8 @@ export default function ServicesPage() {
         imageAlt="Ekskavatör kepçe ile hafriyat kazısı — SMF Hafriyat"
       />
       <ServicesPageSection />
+      <ProcessTimeline />
+      <CtaBanner />
     </>
   );
 }

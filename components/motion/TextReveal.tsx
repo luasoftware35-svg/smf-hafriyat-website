@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 type TextRevealProps = {
   text: string;
@@ -19,9 +19,18 @@ export function TextReveal({
   highlightLast = 0,
   highlightClassName = "text-gradient-accent",
 }: TextRevealProps) {
+  const reduceMotion = useReducedMotion();
   const words = text.split(" ");
   const normalWords = highlightLast > 0 ? words.slice(0, -highlightLast) : words;
   const highlightWords = highlightLast > 0 ? words.slice(-highlightLast) : [];
+
+  if (reduceMotion) {
+    return (
+      <Tag className={className}>
+        {text}
+      </Tag>
+    );
+  }
 
   return (
     <Tag className={className}>

@@ -5,6 +5,7 @@ import { FleetMiniSection } from "@/components/sections/FleetMiniSection";
 import { ServiceAreasBand } from "@/components/sections/ServiceAreasBand";
 import { SocialProofSection } from "@/components/sections/SocialProofSection";
 import { ProjectGallery } from "@/components/sections/ProjectGallery";
+import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { HomeContactSection } from "@/components/sections/HomeContactSection";
 import { HomeSeoIntro } from "@/components/sections/HomeSeoIntro";
@@ -31,8 +32,9 @@ export default function HomePage() {
       <FleetMiniSection />
       <ServiceAreasBand />
       <SocialProofSection />
+      <ProcessTimeline />
       <ProjectGallery limit={2} showFilters={false} />
-      <FaqSection limit={HOME_FAQ_COUNT} showContactLink={false} />
+      <FaqSection limit={HOME_FAQ_COUNT} showContactLink />
       <HomeContactSection />
     </>
   );

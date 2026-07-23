@@ -61,7 +61,7 @@ export function ContactSection() {
                 <div className="p-6">
                   <h3 className="font-heading text-lg text-text-primary">İletişim Bilgileri</h3>
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                    Denizli merkezli ekibimiz; hafriyat, yikim ve derin kazi taleplerinizi dogru makine ve surec planiyla hizli sekilde degerlendirir.
+                    Denizli merkezli ekibimiz; hafriyat, yıkım ve derin kazı taleplerinizi doğru makine ve süreç planıyla hızlı şekilde değerlendirir.
                   </p>
                   <ul className="mt-4 space-y-4 text-sm text-text-secondary">
                     <li className="flex items-start gap-3">
@@ -97,7 +97,7 @@ export function ContactSection() {
                       </div>
                     </li>
                     <li className="rounded-lg border border-surface bg-bg-secondary/70 px-4 py-3">
-                      Kesif, resmi teklif ve proje koordinasyonu ayni iletisim hatti uzerinden yonetilir.
+                      Keşif, resmi teklif ve proje koordinasyonu aynı iletişim hattı üzerinden yönetilir.
                     </li>
                   </ul>
                 </div>

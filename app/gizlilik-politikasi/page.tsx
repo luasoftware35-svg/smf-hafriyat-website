@@ -17,7 +17,7 @@ export default function PrivacyPage() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Ana Sayfa", path: "/" }, { name: "Gizlilik Politikası", path: "/gizlilik-politikasi" }]} />
-      <PageHero eyebrow="Yasal" title="Gizlilik Politikası" image={siteImages.legal} imageAlt="Gizlilik politikası" />
+      <PageHero eyebrow="Yasal" title="Gizlilik Politikası" image={siteImages.legal} imageAlt="Gizlilik politikası" variant="legal" />
       <Container className="max-w-3xl py-16 lg:py-24">
         <div className="space-y-6 text-text-secondary">
           <p>

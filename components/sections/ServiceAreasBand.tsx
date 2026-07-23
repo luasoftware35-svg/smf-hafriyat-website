@@ -8,19 +8,22 @@ import { districtLinkMap } from "@/lib/constants/districts";
 
 const MARQUEE_DURATION_S = 85;
 
-const pillClassName =
+const pillLinkClassName =
   "inline-block whitespace-nowrap rounded-full border border-surface/90 bg-bg-primary px-3.5 py-1.5 text-xs text-text-secondary shadow-sm transition-[transform,box-shadow,border-color,color] duration-200 motion-safe:hover:scale-105 motion-safe:hover:border-accent/35 motion-safe:hover:text-text-primary motion-safe:hover:shadow-card";
+
+const pillStaticClassName =
+  "inline-block whitespace-nowrap rounded-full border border-surface/60 bg-bg-secondary/70 px-3.5 py-1.5 text-xs text-text-secondary/80";
 
 function AreaPill({ label }: { label: string }) {
   const href = districtLinkMap[label];
   if (href) {
     return (
-      <Link href={href} className={pillClassName}>
+      <Link href={href} className={pillLinkClassName}>
         {label}
       </Link>
     );
   }
-  return <span className={pillClassName}>{label}</span>;
+  return <span className={pillStaticClassName}>{label}</span>;
 }
 
 export function ServiceAreasBand() {

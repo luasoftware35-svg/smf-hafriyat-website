@@ -76,6 +76,70 @@ export const districtPages: DistrictPage[] = [
     services: ["Altyapı kazısı", "Dere ıslah hafriyatı", "Hafriyat işleri", "Toprak nakliyesi"],
     keywords: ["sarayköy hafriyat", "buldan hafriyat", "denizli sarayköy kazı"],
   },
+  {
+    slug: "acipayam",
+    name: "Acıpayam",
+    region: "Denizli",
+    districts: "Acıpayam, Yeşilyuva, Çameli",
+    shortDescription:
+      "Acıpayam hafriyat ve kazı — yağmur suyu hattı, kırsal altyapı ve geniş parsel tesviye projeleri.",
+    intro:
+      "Acıpayam ve çevre mahallelerde yağmur suyu hattı, kırsal hafriyat kazısı ve dolgu-tesviye işlerinde SMF Hafriyat saha ekibi görev alır.",
+    paragraphs: [
+      "Kırsal altyapı ve geniş parsel projelerinde ekskavatör filomuzla keşif, metraj planı ve operatörlü saha uygulaması sunuyoruz.",
+      "Belediye ve müteahhit projelerinde belgeli moloz nakliyesi ve resmi süreç yönetimi ile kurumsal standartlarımızı koruyoruz.",
+    ],
+    services: ["Altyapı kazısı", "Hafriyat işleri", "Dolgu ve tesviye", "Moloz nakliyesi"],
+    keywords: ["acıpayam hafriyat", "acıpayam kazı", "denizli acıpayam hafriyat"],
+  },
+  {
+    slug: "civril",
+    name: "Çivril",
+    region: "Denizli",
+    districts: "Çivril, Tavas, Baklan, Beyağaç",
+    shortDescription:
+      "Çivril ve Tavas hattında geniş parsel dolgu, kepçe tesviye ve kırsal hafriyat kazı projeleri.",
+    intro:
+      "Çivril, Tavas ve çevre ilçelerde geniş metrajlı hafriyat, dolgu-tesviye ve altyapı kazı projelerinde SMF Hafriyat hizmet verir.",
+    paragraphs: [
+      "Tarım ve sanayi yatırımlarında geniş parsel tesviye, dolgu ve temel kazısı operasyonlarını kendi filomuzla yürütüyoruz.",
+      "Keşif sonrası net metraj, resmi sözleşme ve belgeli teslim süreci ile projeleri planlı şekilde tamamlıyoruz.",
+    ],
+    services: ["Hafriyat işleri", "Dolgu ve tesviye", "Altyapı kazısı", "Toprak nakliyesi"],
+    keywords: ["çivril hafriyat", "tavas hafriyat", "denizli çivril kazı"],
+  },
+  {
+    slug: "aydin",
+    name: "Aydın",
+    region: "Aydın",
+    districts: "Efeler, Nazilli, Söke, Kuşadası",
+    shortDescription:
+      "Aydın ve çevresinde sanayi yıkımı, enkaz kaldırma ve moloz nakliye projeleri — SMF Hafriyat.",
+    intro:
+      "Aydın ili genelinde sanayi yıkımı, enkaz kaldırma, temel kazısı ve moloz nakliye projelerinde Ege Bölgesi deneyimimizle hizmet sunuyoruz.",
+    paragraphs: [
+      "Organize sanayi, konut ve altyapı projelerinde ekskavatör, loder ve damper filomuzla taşeronsuz saha operasyonu yürütüyoruz.",
+      "Keşif, metraj tutanağı ve resmi sözleşme süreçlerinde kurumsal standartlarımızı koruyoruz.",
+    ],
+    services: ["Yıkım çalışmaları", "Hafriyat işleri", "Moloz nakliyesi", "Derin kazı"],
+    keywords: ["aydın hafriyat", "aydın kazı", "efeler hafriyat", "nazilli hafriyat"],
+  },
+  {
+    slug: "mugla",
+    name: "Muğla",
+    region: "Muğla",
+    districts: "Menteşe, Fethiye, Milas, Bodrum",
+    shortDescription:
+      "Muğla ve turizm bölgelerinde villa temel kazısı, hafriyat ve enkaz kaldırma — SMF Hafriyat.",
+    intro:
+      "Muğla ili genelinde turizm, konut ve villa projelerinde temel kazısı, hafriyat ve enkaz kaldırma hizmeti sunuyoruz.",
+    paragraphs: [
+      "Dar alan ve geniş metrajlı projelerde mini ekskavatör ve 20 ton sınıfı kepçe filomuzu planlı şekilde sevk ediyoruz.",
+      "Keşif sonrası makine planı, metraj ve belgeli teslim protokolü ile projeleri güvenli şekilde tamamlıyoruz.",
+    ],
+    services: ["Temel kazısı", "Hafriyat işleri", "Yıkım çalışmaları", "Moloz nakliyesi"],
+    keywords: ["muğla hafriyat", "bodrum kazı", "fethiye hafriyat", "milas hafriyat"],
+  },
 ];
 
 export function getDistrictBySlug(slug: string): DistrictPage | undefined {
@@ -90,5 +154,18 @@ export const districtLinkMap: Record<string, string> = {
   Sarayköy: "/hizmet-bolgeleri/saraykoy",
   Buldan: "/hizmet-bolgeleri/saraykoy",
   Babadağ: "/hizmet-bolgeleri/saraykoy",
+  Acıpayam: "/hizmet-bolgeleri/acipayam",
+  Çivril: "/hizmet-bolgeleri/civril",
+  Tavas: "/hizmet-bolgeleri/civril",
+  Baklan: "/hizmet-bolgeleri/civril",
+  Beyağaç: "/hizmet-bolgeleri/civril",
+  Efeler: "/hizmet-bolgeleri/aydin",
+  Nazilli: "/hizmet-bolgeleri/aydin",
+  Söke: "/hizmet-bolgeleri/aydin",
+  Kuşadası: "/hizmet-bolgeleri/aydin",
+  Menteşe: "/hizmet-bolgeleri/mugla",
+  Fethiye: "/hizmet-bolgeleri/mugla",
+  Milas: "/hizmet-bolgeleri/mugla",
+  Bodrum: "/hizmet-bolgeleri/mugla",
   Denizli: "/hizmet-bolgeleri",
 };

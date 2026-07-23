@@ -91,13 +91,17 @@ export function WhyUsSection() {
                       key={item.src}
                       type="button"
                       onClick={() => goTo(index)}
-                      className={cn(
-                        "h-px flex-1 transition-colors duration-300",
-                        index === active ? "bg-accent" : "bg-surface hover:bg-accent/40",
-                      )}
+                      className="flex min-h-11 flex-1 items-center justify-center rounded-md"
                       aria-label={`Görsel ${index + 1}`}
                       aria-current={index === active ? "true" : undefined}
-                    />
+                    >
+                      <span
+                        className={cn(
+                          "h-1 w-full rounded-full transition-colors duration-300",
+                          index === active ? "bg-accent" : "bg-surface hover:bg-accent/40",
+                        )}
+                      />
+                    </button>
                   ))}
                 </div>
               </div>

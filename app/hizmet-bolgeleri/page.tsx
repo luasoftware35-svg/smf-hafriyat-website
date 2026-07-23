@@ -4,7 +4,7 @@ import { MapPin } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { Card } from "@/components/ui/Card";
-import { ContactSection } from "@/components/sections/ContactSection";
+import { Button } from "@/components/ui/Button";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { createPageMetadata } from "@/lib/seo/metadata";
@@ -23,10 +23,14 @@ export const metadata = createPageMetadata({
   keywords: ["denizli hafriyat bölgeleri", "merkezefendi hafriyat", "denizli kazı", "denizli hafriyat firması", ...localSeo.defaultKeywords],
 });
 
-function getDistrictHref(areaName: string): string | undefined {
+function getDistrictHref(areaName: string): string {
   if (areaName.includes("Sarayköy") || areaName.includes("Buldan")) return "/hizmet-bolgeleri/saraykoy";
+  if (areaName.includes("Acıpayam")) return "/hizmet-bolgeleri/acipayam";
+  if (areaName.includes("Çivril") || areaName.includes("Tavas")) return "/hizmet-bolgeleri/civril";
+  if (areaName === "Aydın") return "/hizmet-bolgeleri/aydin";
+  if (areaName === "Muğla") return "/hizmet-bolgeleri/mugla";
   const match = districtPages.find((district) => areaName.includes(district.name));
-  return match ? `/hizmet-bolgeleri/${match.slug}` : undefined;
+  return match ? `/hizmet-bolgeleri/${match.slug}` : `/iletisim?bolge=${encodeURIComponent(areaName)}`;
 }
 
 export default function ServiceAreasPage() {
@@ -59,7 +63,7 @@ export default function ServiceAreasPage() {
             const img = getServiceAreaImage(index);
             const districtHref = getDistrictHref(area.name);
             return (
-              <Card key={area.name} hover={Boolean(districtHref)} className="group overflow-hidden">
+              <Card key={area.name} hover className="group overflow-hidden">
                 <div className="grid sm:grid-cols-2">
                   <div className="relative aspect-[4/3] sm:aspect-auto sm:min-h-[200px]">
                     <Image
@@ -73,7 +77,7 @@ export default function ServiceAreasPage() {
                   <div className="flex flex-col justify-center p-6">
                     <div className="flex items-center gap-2 text-accent">
                       <MapPin size={18} aria-hidden="true" />
-                      {districtHref ? (
+                      {districtHref.startsWith("/hizmet-bolgeleri/") ? (
                         <Link href={districtHref} className="font-heading text-xl text-text-primary transition-colors hover:text-accent">
                           <h2>{area.name}</h2>
                         </Link>
@@ -83,11 +87,9 @@ export default function ServiceAreasPage() {
                     </div>
                     <p className="mt-2 text-sm font-medium text-text-secondary">{area.districts}</p>
                     <p className="mt-3 text-sm leading-relaxed text-text-secondary">{area.description}</p>
-                    {districtHref ? (
-                      <Link href={districtHref} className="mt-4 text-sm font-medium text-accent hover:underline">
-                        {area.name} hafriyat detayı →
-                      </Link>
-                    ) : null}
+                    <Link href={districtHref} className="mt-4 text-sm font-medium text-accent hover:underline">
+                      {districtHref.startsWith("/hizmet-bolgeleri/") ? `${area.name} hafriyat detayı →` : "Keşif talep et →"}
+                    </Link>
                   </div>
                 </div>
               </Card>
@@ -104,20 +106,16 @@ export default function ServiceAreasPage() {
               <h2 className="font-heading text-2xl text-text-primary">Merkez Ofis</h2>
               <p className="mt-3 text-text-secondary">{contactInfo.address.full}</p>
               <p className="mt-2 text-sm text-text-secondary">{contactInfo.workingHours.weekdays}</p>
-              <iframe
-                src={contactInfo.mapEmbedUrl}
-                title="SMF Hafriyat Denizli konum haritası"
-                className="mt-6 h-56 w-full rounded-md border border-surface sm:h-64 lg:h-48"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Button href="/iletisim">Keşif Formu</Button>
+                <Button href={contactInfo.phoneHref} variant="secondary">
+                  {contactInfo.phoneDisplay}
+                </Button>
+              </div>
             </div>
           </div>
         </Card>
       </Container>
-
-      <ContactSection />
     </>
   );
 }

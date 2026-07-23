@@ -8,11 +8,14 @@ import { Card } from "@/components/ui/Card";
 import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/seo/JsonLd";
 import { RelatedServices } from "@/components/sections/RelatedServices";
+import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
+import { CtaBanner } from "@/components/sections/CtaBanner";
 import { getServiceBySlug, getServices } from "@/lib/data/services";
 import { getServiceImage, getServiceGallery } from "@/lib/constants/images";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo, serviceSeoDescription, serviceSeoTitle } from "@/lib/seo/local";
-import { contactInfo, ctaLinks } from "@/lib/constants/site";
+import { contactInfo } from "@/lib/constants/site";
+import { buildQuoteHref } from "@/lib/utils/contact-link";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -42,6 +45,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   const image = getServiceImage(slug);
   const gallery = getServiceGallery(slug);
+  const quoteHref = buildQuoteHref({ hizmet: slug });
 
   return (
     <>
@@ -78,11 +82,11 @@ export default async function ServiceDetailPage({ params }: Props) {
               </div>
               <div className="rounded-lg border border-surface bg-bg-secondary/75 px-4 py-3 text-sm text-text-secondary">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">Filo</p>
-                <p className="mt-2 font-medium text-text-primary">Kendi operator ve makinelerimiz</p>
+                <p className="mt-2 font-medium text-text-primary">Kendi operatör ve makinelerimiz</p>
               </div>
               <div className="rounded-lg border border-surface bg-bg-secondary/75 px-4 py-3 text-sm text-text-secondary">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">Surec</p>
-                <p className="mt-2 font-medium text-text-primary">Belgeli ve resmi ilerleyis</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">Süreç</p>
+                <p className="mt-2 font-medium text-text-primary">Belgeli ve resmi ilerleyiş</p>
               </div>
             </div>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Kurumsal Hizmet Tanımı</p>
@@ -124,13 +128,13 @@ export default async function ServiceDetailPage({ params }: Props) {
             </ul>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <AnimatedButton href={ctaLinks.quote.href} glow>
+              <AnimatedButton href={quoteHref} glow>
                 Bu İş İçin Teklif Al
                 <ArrowRight size={18} aria-hidden="true" />
               </AnimatedButton>
               <AnimatedButton href={contactInfo.phoneHref} variant="secondary" glow={false}>
                 <Phone size={18} aria-hidden="true" />
-                Hemen Arayin
+                Hemen Arayın
               </AnimatedButton>
             </div>
           </div>
@@ -185,6 +189,8 @@ export default async function ServiceDetailPage({ params }: Props) {
 
         <RelatedServices currentSlug={slug} items={allServices} />
       </Container>
+      <ProcessTimeline />
+      <CtaBanner />
     </>
   );
 }

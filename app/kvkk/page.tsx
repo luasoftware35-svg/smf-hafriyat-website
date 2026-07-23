@@ -17,7 +17,7 @@ export default function KvkkPage() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Ana Sayfa", path: "/" }, { name: "KVKK", path: "/kvkk" }]} />
-      <PageHero eyebrow="Yasal" title="KVKK Aydınlatma Metni" image={siteImages.legal} imageAlt="KVKK aydınlatma metni" />
+      <PageHero eyebrow="Yasal" title="KVKK Aydınlatma Metni" image={siteImages.legal} imageAlt="KVKK aydınlatma metni" variant="legal" />
       <Container className="max-w-3xl py-16 lg:py-24">
         <div className="space-y-6 text-text-secondary">
           <p>

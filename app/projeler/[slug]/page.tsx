@@ -1,15 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
 import { BreadcrumbJsonLd, ProjectJsonLd } from "@/components/seo/JsonLd";
 import { getProjectBySlug, projects } from "@/lib/constants/projects";
 import { getProjectImages } from "@/lib/constants/images";
 import { createPageMetadata } from "@/lib/seo/metadata";
-import { ctaLinks } from "@/lib/constants/site";
+import { buildQuoteHref } from "@/lib/utils/contact-link";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -62,6 +65,21 @@ export default async function ProjectDetailPage({ params }: Props) {
         imageAlt={`${project.title} — ${project.location}`}
       />
       <Container className="py-16 lg:py-24">
+        <Breadcrumbs
+          className="mb-8"
+          items={[
+            { name: "Ana Sayfa", path: "/" },
+            { name: "Projeler", path: "/projeler" },
+            { name: project.title },
+          ]}
+        />
+        <Link
+          href="/projeler"
+          className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-text-secondary transition-colors hover:text-accent"
+        >
+          <ArrowLeft size={16} aria-hidden="true" />
+          Projelere dön
+        </Link>
         <BeforeAfterSlider
           beforeSrc={imgs.before}
           afterSrc={imgs.after}
@@ -105,7 +123,9 @@ export default async function ProjectDetailPage({ params }: Props) {
             <dd className="mt-1 font-mono text-text-primary">{project.completedDate}</dd>
           </div>
         </div>
-        <Button href={ctaLinks.quote.href} className="mt-10">{ctaLinks.quote.label}</Button>
+        <Button href={buildQuoteHref({ proje: project.title, mesaj: `${project.title} benzeri proje için teklif talebi` })} className="mt-10">
+          Benzer Proje İçin Teklif Al
+        </Button>
       </Container>
       <CtaBanner />
     </>

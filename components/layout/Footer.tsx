@@ -57,8 +57,8 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-md bg-accent font-heading text-sm font-black text-accent-foreground shadow-glow">
-                SMF
+              <span className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-md bg-accent shadow-glow">
+                <Image src="/logo.svg" alt="" width={44} height={44} className="h-9 w-9 object-contain" aria-hidden="true" />
               </span>
               <div>
                 <p className="font-heading text-lg text-text-primary">{siteConfig.name}</p>

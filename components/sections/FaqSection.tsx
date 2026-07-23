@@ -195,10 +195,10 @@ function FaqContactActions({ reduceMotion }: { reduceMotion: boolean }) {
                   }
             }
             whileTap={reduceMotion ? undefined : { scale: 0.9 }}
-            className="group relative flex flex-col items-center gap-1.5"
+            className="group relative flex min-h-11 flex-col items-center justify-center gap-1.5 px-1"
             aria-label={channel.label}
           >
-            <span className="relative flex h-8 w-8 items-center justify-center">
+            <span className="relative flex h-11 w-11 items-center justify-center">
               {!reduceMotion ? (
                 <motion.span
                   className={cn(

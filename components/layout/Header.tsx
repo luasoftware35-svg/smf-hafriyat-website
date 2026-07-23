@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, Phone } from "lucide-react";
@@ -42,11 +43,8 @@ export function Header() {
             className="group flex shrink-0 items-center gap-3 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             aria-label={`${siteConfig.name} ana sayfa`}
           >
-            <span
-              className="flex h-11 w-11 items-center justify-center rounded-md bg-accent font-heading text-sm font-black text-accent-foreground shadow-glow transition-transform duration-300 group-hover:scale-105"
-              aria-hidden="true"
-            >
-              SMF
+            <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-md bg-accent shadow-glow transition-transform duration-300 group-hover:scale-105">
+              <Image src="/logo.svg" alt="" width={44} height={44} className="h-9 w-9 object-contain" aria-hidden="true" />
             </span>
             <span className="flex flex-col leading-tight">
               <span className="font-heading text-base tracking-wide text-text-primary group-hover:text-accent lg:text-lg">

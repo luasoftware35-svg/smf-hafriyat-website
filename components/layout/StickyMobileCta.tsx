@@ -8,6 +8,10 @@ import { ctaLinks } from "@/lib/constants/site";
 
 export function StickyMobileCta() {
   const pathname = usePathname();
+
+  if (pathname === "/iletisim" || pathname.startsWith("/admin")) {
+    return null;
+  }
   const quoteLabel =
     pathname.startsWith("/hizmetler/") && pathname !== "/hizmetler"
       ? "Teklif Al"

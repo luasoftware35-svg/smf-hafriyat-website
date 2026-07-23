@@ -63,7 +63,18 @@ export type NavLink = {
 
 export const navLinks: NavLink[] = [
   { label: "Ana Sayfa", href: "/" },
-  { label: "Hizmetler", href: "/hizmetler" },
+  {
+    label: "Hizmetler",
+    href: "/hizmetler",
+    children: [
+      { label: "Hafriyat İşleri", href: "/hizmetler/hafriyat-isleri", description: "Temel kazısı, dekapaj ve saha tesviyesi" },
+      { label: "Yıkım Çalışmaları", href: "/hizmetler/yikim-calismalari", description: "Kontrollü yıkım ve enkaz kaldırma" },
+      { label: "Altyapı Çalışmaları", href: "/hizmetler/altyapi-calismalari", description: "Kanal, isale ve altyapı kazısı" },
+      { label: "Derin Kazı", href: "/hizmetler/derin-kazi", description: "Bodrum ve endüstriyel temel kazısı" },
+      { label: "İş Makinesi Kiralama", href: "/hizmetler/is-makinesi-kiralama", description: "Operatörlü kepçe ve damper" },
+      { label: "Tüm hizmetler", href: "/hizmetler", description: "10 hizmetin tamamını görüntüle" },
+    ],
+  },
   {
     label: "Hakkımızda",
     href: "/hakkimizda",
@@ -98,6 +109,10 @@ export const footerServices = [
   { label: "İş Makinesi Kiralama", href: "/hizmetler/is-makinesi-kiralama" },
   { label: "Moloz Nakliyesi", href: "/hizmetler/moloz-nakliyesi" },
   { label: "Derin Kazı", href: "/hizmetler/derin-kazi" },
+  { label: "Kum-Çakıl Temini", href: "/hizmetler/kum-cakil-temini" },
+  { label: "Kanal Çalışmaları", href: "/hizmetler/kanal-calismalari" },
+  { label: "Su Tankeri Nakliyesi", href: "/hizmetler/su-tankeri-nakliyesi" },
+  { label: "Toprak & Moloz Taşıma", href: "/hizmetler/toprak-moloz-tasima" },
 ] as const;
 
 export const footerPages = [
@@ -114,7 +129,6 @@ export const footerPages = [
 ] as const;
 
 export const socialLinks = [
-  { label: "Web Sitesi", href: "https://www.smfhafriyat.com" },
   { label: "Instagram", href: contactInfo.instagram },
   { label: "Google Haritalar", href: contactInfo.mapLink },
 ] as const;

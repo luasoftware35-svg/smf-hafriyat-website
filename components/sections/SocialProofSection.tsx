@@ -70,15 +70,13 @@ export function SocialProofSection() {
         <FadeIn delay={0.1} className="mt-12">
           <div className="flex items-baseline justify-between gap-4 border-b border-surface pb-4">
             <h3 className="font-heading text-xl text-text-primary sm:text-2xl">Saha referansları</h3>
-            <motion.span
-              className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-secondary"
-              initial={reduceMotion ? false : { opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.4 }}
+            <Link
+              href="/projeler"
+              className="inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent-secondary"
             >
-              {clientProof.length} proje
-            </motion.span>
+              Tüm referans projeler
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </Link>
           </div>
 
           <motion.ul

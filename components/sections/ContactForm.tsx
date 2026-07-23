@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Send, CheckCircle2, MessageCircle } from "lucide-react";
@@ -15,13 +16,48 @@ import {
   projectTypeOptions,
   type ContactFormData,
 } from "@/lib/validations/contact-schema";
+import { projectTypeFromServiceSlug } from "@/lib/utils/contact-link";
 
 type ContactFormProps = {
   className?: string;
   variant?: "default" | "compact";
 };
 
-export function ContactForm({ className, variant = "default" }: ContactFormProps) {
+export function ContactForm(props: ContactFormProps) {
+  return (
+    <Suspense fallback={<div className="py-8 text-sm text-text-secondary">Form yükleniyor...</div>}>
+      <ContactFormInner {...props} />
+    </Suspense>
+  );
+}
+
+function ContactFormInner({ className, variant = "default" }: ContactFormProps) {
+  const searchParams = useSearchParams();
+  const defaults = useMemo(() => {
+    const hizmet = searchParams.get("hizmet");
+    const bolge = searchParams.get("bolge");
+    const proje = searchParams.get("proje");
+    const mesaj = searchParams.get("mesaj");
+    const projectType = hizmet ? projectTypeFromServiceSlug(hizmet) ?? "" : "";
+    const projectAddress = bolge ?? "";
+    const messageParts = [
+      proje ? `İlgili proje: ${proje}` : "",
+      hizmet ? `İlgili hizmet: ${hizmet.replace(/-/g, " ")}` : "",
+      mesaj ?? "",
+    ].filter(Boolean);
+
+    return {
+      name: "",
+      phone: "",
+      email: "",
+      projectType,
+      projectAddress,
+      volume: "",
+      siteVisitDate: "",
+      message: messageParts.join("\n") || "",
+    };
+  }, [searchParams]);
+
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null);
@@ -33,7 +69,12 @@ export function ContactForm({ className, variant = "default" }: ContactFormProps
     formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
+    defaultValues: defaults,
   });
+
+  useEffect(() => {
+    reset(defaults);
+  }, [defaults, reset]);
 
   const onSubmit = async (data: ContactFormData) => {
     setStatus("loading");
@@ -114,7 +155,7 @@ export function ContactForm({ className, variant = "default" }: ContactFormProps
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Input label="E-posta" type="email" autoComplete="email" error={errors.email?.message} {...register("email")} />
-        <Select label="Proje Türü *" defaultValue="" error={errors.projectType?.message} {...register("projectType")}>
+        <Select label="Proje Türü *" defaultValue={defaults.projectType} error={errors.projectType?.message} {...register("projectType")}>
           <option value="" disabled>Seçiniz</option>
           {projectTypeOptions.map((option) => (
             <option key={option.value} value={option.value}>{option.label}</option>

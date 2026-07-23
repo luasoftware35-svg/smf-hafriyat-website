@@ -66,6 +66,21 @@ export function ProjectGallery({ limit = 4, showFilters = true }: ProjectGallery
         )}
 
         <AnimatePresence mode="wait">
+          {filtered.length === 0 ? (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="rounded-lg border border-dashed border-surface bg-bg-primary px-6 py-14 text-center"
+            >
+              <p className="font-heading text-xl text-text-primary">Bu kategoride proje yok</p>
+              <p className="mt-2 text-sm text-text-secondary">Farklı bir filtre deneyin veya tüm projelere göz atın.</p>
+              <AnimatedButton href="/projeler" variant="secondary" glow={false} className="mt-6">
+                Tüm projeler
+              </AnimatedButton>
+            </motion.div>
+          ) : (
           <motion.div
             key={filter}
             initial={{ opacity: 0, y: 16 }}
@@ -102,10 +117,10 @@ export function ProjectGallery({ limit = 4, showFilters = true }: ProjectGallery
                       <p className="mt-2 text-sm leading-relaxed text-text-secondary">{project.description}</p>
                       <div className="mt-4 flex flex-wrap gap-2">
                         <span className="rounded-full border border-surface bg-bg-primary px-3 py-1 text-xs font-medium text-text-secondary">
-                          Oncesi / sonrasi sonuc
+                          Öncesi / sonrası sonuç
                         </span>
                         <span className="rounded-full border border-surface bg-bg-primary px-3 py-1 text-xs font-medium text-text-secondary">
-                          Denizli ve cevresi
+                          Denizli ve çevresi
                         </span>
                       </div>
                       <div className="mt-5">
@@ -113,7 +128,7 @@ export function ProjectGallery({ limit = 4, showFilters = true }: ProjectGallery
                           href={`/projeler/${project.slug}`}
                           className="inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent-secondary"
                         >
-                          Proje detayini incele
+                          Proje detayını incele
                           <ArrowRight size={14} aria-hidden="true" />
                         </Link>
                       </div>
@@ -123,6 +138,7 @@ export function ProjectGallery({ limit = 4, showFilters = true }: ProjectGallery
               );
             })}
           </motion.div>
+          )}
         </AnimatePresence>
       </Container>
     </Section>

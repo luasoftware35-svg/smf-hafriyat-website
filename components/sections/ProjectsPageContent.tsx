@@ -37,6 +37,25 @@ export function ProjectsPageContent() {
       </FadeIn>
 
       <AnimatePresence mode="wait">
+        {filtered.length === 0 ? (
+          <motion.div
+            key="empty"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="rounded-lg border border-dashed border-surface bg-bg-secondary/40 px-6 py-16 text-center"
+          >
+            <p className="font-heading text-xl text-text-primary">Bu kategoride proje bulunamadı</p>
+            <p className="mt-2 text-sm text-text-secondary">Farklı bir filtre seçin veya tüm projelere dönün.</p>
+            <button
+              type="button"
+              onClick={() => setFilter("all")}
+              className="mt-6 min-h-11 rounded-md border border-surface bg-bg-primary px-5 text-sm font-medium text-text-primary transition-colors hover:border-accent"
+            >
+              Tüm projeleri göster
+            </button>
+          </motion.div>
+        ) : (
         <motion.div
           key={filter}
           initial={{ opacity: 0 }}
@@ -70,10 +89,10 @@ export function ProjectsPageContent() {
                     <p className="mt-2 text-sm text-text-secondary">{project.description}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       <span className="rounded-full border border-surface bg-bg-secondary/70 px-3 py-1 text-xs font-medium text-text-secondary">
-                        Teslim ciktilari gorunur
+                        Teslim çıktıları görünür
                       </span>
                       <span className="rounded-full border border-surface bg-bg-secondary/70 px-3 py-1 text-xs font-medium text-text-secondary">
-                        Kurumsal saha uygulamasi
+                        Kurumsal saha uygulaması
                       </span>
                     </div>
                     <div className="mt-5 flex items-center gap-4">
@@ -81,14 +100,14 @@ export function ProjectsPageContent() {
                         href={`/projeler/${project.slug}`}
                         className="inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent-secondary"
                       >
-                        Proje detayini gor
+                        Proje detayını gör
                         <ArrowRight size={14} aria-hidden="true" />
                       </Link>
                       <Link
-                        href="/iletisim"
+                        href={`/iletisim?proje=${encodeURIComponent(project.title)}`}
                         className="text-sm font-medium text-text-secondary transition-colors hover:text-accent"
                       >
-                        Benzer proje icin teklif iste
+                        Benzer proje için teklif iste
                       </Link>
                     </div>
                   </div>
@@ -97,6 +116,7 @@ export function ProjectsPageContent() {
             );
           })}
         </motion.div>
+        )}
       </AnimatePresence>
     </Container>
   );

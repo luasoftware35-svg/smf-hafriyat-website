@@ -1,6 +1,5 @@
 import { ContactSection } from "@/components/sections/ContactSection";
 import { PageHero } from "@/components/ui/PageHero";
-import { ImageMarquee } from "@/components/sections/ImageMarquee";
 import { BreadcrumbJsonLd, ContactPageJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo, pageSeoDescription } from "@/lib/seo/local";
@@ -26,9 +25,9 @@ export default function ContactPage() {
         description={brand.pages.contact.description}
         image={siteImages.contact}
         imageAlt="Kepçe ile enkaz kaldırma — SMF Hafriyat iletişim"
+        variant="legal"
       />
       <ContactSection />
-      <ImageMarquee />
     </>
   );
 }
