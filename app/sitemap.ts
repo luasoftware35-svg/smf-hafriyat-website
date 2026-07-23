@@ -3,8 +3,9 @@ import { districtPages } from "@/lib/constants/districts";
 import { projects } from "@/lib/constants/projects";
 import { seoLandingPages } from "@/lib/constants/seo-pages";
 import { services } from "@/lib/constants/services";
+import { siteConfig } from "@/lib/constants/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://smfhafriyat.com";
+const SITE_URL = siteConfig.url;
 
 function entry(
   path: string,
