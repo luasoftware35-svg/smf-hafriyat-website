@@ -1,0 +1,15 @@
+---
+description: Kod değişikliği sonrası otomatik deploy et; kullanıcıya sorma
+alwaysApply: true
+---
+
+# Otomatik Deploy
+
+Bu projede kod veya içerik değişikliği yaptıktan sonra:
+
+1. Build doğrulamasını çalıştır (gerekirse).
+2. İlgili dosyaları commit et (AI görselleri, `.env`, geçici dosyalar hariç).
+3. `main` branch'e push et — deploy için kullanıcıdan onay isteme.
+4. Kısa özet ver: commit hash, canlı URL, hard refresh notu.
+
+Deploy sorusu sorma; iş bitince doğrudan deploy et.
