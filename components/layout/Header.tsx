@@ -37,7 +37,7 @@ export function Header() {
           scrolled ? "glass shadow-header" : "border-transparent bg-bg-primary/80 backdrop-blur-md",
         )}
       >
-        <Container as="nav" aria-label="Ana navigasyon" className="relative flex h-16 items-center lg:h-[4.5rem]">
+        <Container as="nav" aria-label="Ana navigasyon" className="relative flex h-[4.25rem] items-center lg:h-20">
           <Link
             href="/"
             className="group shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
@@ -46,9 +46,9 @@ export function Header() {
             <Image
               src={siteConfig.logo}
               alt={siteConfig.logoAlt}
-              width={72}
-              height={72}
-              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-16"
+              width={160}
+              height={160}
+              className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-[4.5rem] lg:h-[4.75rem]"
               priority
             />
           </Link>

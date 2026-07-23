@@ -60,9 +60,9 @@ export function Footer() {
               <Image
                 src={siteConfig.logo}
                 alt={siteConfig.logoAlt}
-                width={64}
-                height={64}
-                className="h-14 w-auto object-contain"
+                width={120}
+                height={120}
+                className="h-16 w-auto object-contain sm:h-[4.5rem]"
               />
               <div>
                 <p className="font-heading text-lg text-text-primary">{siteConfig.name}</p>
