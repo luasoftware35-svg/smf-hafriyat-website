@@ -29,8 +29,8 @@ export const projects: Project[] = [
     location: "Honaz, Denizli",
     completedDate: "2025-11",
     beforeImage: "/images/hafriyat/haf-008.jpg",
-    afterImage: "/images/hafriyat/haf-016.jpg",
-    galleryImages: ["/images/hafriyat/haf-002.jpg"],
+    afterImage: "/images/smf/real/smf-saha-05.png",
+    galleryImages: ["/images/smf/real/smf-saha-05.png"],
   },
   {
     slug: "merkezefendi-konut-yikim",
@@ -41,8 +41,8 @@ export const projects: Project[] = [
     location: "Merkezefendi, Denizli",
     completedDate: "2025-09",
     beforeImage: "/images/hafriyat/haf-006.jpg",
-    afterImage: "/images/hafriyat/haf-011.jpg",
-    galleryImages: ["/images/hafriyat/haf-009.jpg"],
+    afterImage: "/images/smf/real/smf-saha-02.png",
+    galleryImages: ["/images/smf/real/smf-saha-01.png"],
   },
   {
     slug: "pamukkale-kanalizasyon-hatti",
@@ -53,8 +53,8 @@ export const projects: Project[] = [
     location: "Pamukkale, Denizli",
     completedDate: "2025-06",
     beforeImage: "/images/hafriyat/haf-004.jpg",
-    afterImage: "/images/hafriyat/haf-010.jpg",
-    galleryImages: ["/images/hafriyat/haf-015.jpg"],
+    afterImage: "/images/smf/real/smf-saha-02.png",
+    galleryImages: ["/images/smf/real/smf-saha-04.png"],
   },
   {
     slug: "sanayi-sitesi-dolgu-tesviye",
@@ -65,8 +65,8 @@ export const projects: Project[] = [
     location: "Organize Sanayi, Denizli",
     completedDate: "2025-03",
     beforeImage: "/images/hafriyat/haf-008.jpg",
-    afterImage: "/images/hafriyat/haf-017.jpg",
-    galleryImages: ["/images/hafriyat/haf-002.jpg"],
+    afterImage: "/images/smf/real/smf-saha-05.png",
+    galleryImages: ["/images/smf/real/smf-saha-03.png"],
   },
   {
     slug: "camlik-depo-yikim",
@@ -77,8 +77,8 @@ export const projects: Project[] = [
     location: "Çamlık, Denizli",
     completedDate: "2024-12",
     beforeImage: "/images/hafriyat/haf-003.jpg",
-    afterImage: "/images/hafriyat/haf-011.jpg",
-    galleryImages: ["/images/hafriyat/haf-014.jpg"],
+    afterImage: "/images/smf/real/smf-saha-02.png",
+    galleryImages: ["/images/smf/real/smf-saha-01.png"],
   },
   {
     slug: "acipayam-yagmur-suyu",
@@ -88,9 +88,9 @@ export const projects: Project[] = [
       "Acıpayam ilçesinde mini ekskavatör ile 1,8 km yağmur suyu kanal kazısı ve baca bağlantıları — altyapının sessiz gücü.",
     location: "Acıpayam, Denizli",
     completedDate: "2024-08",
-    beforeImage: "/images/hafriyat/haf-015.jpg",
-    afterImage: "/images/hafriyat/haf-010.jpg",
-    galleryImages: ["/images/hafriyat/haf-004.jpg"],
+    beforeImage: "/images/smf/real/smf-saha-02.png",
+    afterImage: "/images/smf/real/smf-saha-04.png",
+    galleryImages: ["/images/smf/real/smf-saha-02.png"],
   },
 ];
 

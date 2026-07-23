@@ -1,9 +1,26 @@
-/** SMF Hafriyat görsel serisi — Higgsfield ile üretilmiş, Denizli/Ege tutarlı saha fotoğrafları */
+/** SMF Hafriyat — doğrulanmış saha fotoğrafları (Denizli operasyonları) */
 import { teamMembers } from "@/lib/constants/content";
 
 const h = (n: number) => `/images/hafriyat/haf-${String(n).padStart(3, "0")}.jpg`;
 
-/** Pexels doğrulanmış: ekskavatör, yıkım, enkaz, damper — dışında görsel kullanılmaz */
+/** Gerçek SMF saha fotoğrafları — markalı filo ve operasyon görselleri */
+const real = {
+  damperLogo: "/images/smf/real/smf-saha-01.png",
+  kaziToz: "/images/smf/real/smf-saha-02.png",
+  havadanFilo: "/images/smf/real/smf-saha-03.png",
+  yuklemeDamper: "/images/smf/real/smf-saha-04.png",
+  derinSaha: "/images/smf/real/smf-saha-05.png",
+} as const;
+
+const realAlt = {
+  damperLogo: "SMF Hafriyat damper kamyonu ve ekskavatör — hafriyat toprağı taşıma, Denizli",
+  kaziToz: "SMF Hafriyat ekskavatör ile kazı operasyonu — saha tozu, Denizli",
+  havadanFilo: "SMF Hafriyat filo operasyonu — havadan ekskavatör ve damper kamyonları, Denizli",
+  yuklemeDamper: "SMF Hafriyat ekskavatör ile damper yükleme — hafriyat sahası, Denizli",
+  derinSaha: "SMF Hafriyat derin kazı sahası — ekskavatör ve damper, Denizli inşaat projesi",
+} as const;
+
+/** Stok yedek görseller — gerçek fotoğrafların yetmediği slotlar için */
 const core = {
   excavatorAerial: h(1),      // 10421754 — havadan ekskavatör kazısı
   excavatorDumpTruck: h(2),   // 10421760 — ekskavatör + damper
@@ -17,171 +34,171 @@ const core = {
 } as const;
 
 const smf = {
-  p1: "/images/smf/12-proje-1.png",
-  p2: "/images/smf/13-proje-2.png",
-  p3: "/images/smf/14-proje-3.png",
-  p4: "/images/smf/15-proje-4.png",
-  p5: "/images/smf/16-proje-5.png",
-  p6: "/images/smf/17-proje-6.png",
+  p1: real.havadanFilo,
+  p2: real.kaziToz,
+  p3: real.derinSaha,
+  p4: real.yuklemeDamper,
+  p5: real.damperLogo,
+  p6: real.derinSaha,
 } as const;
 
 export const siteImages = {
-  hero: core.excavatorAerial,
-  heroAlt: "Ekskavatör kepçe ile hafriyat kazısı — SMF Hafriyat Denizli",
-  og: core.excavatorDumpTruck,
-  about: core.siteExcavator,
-  contact: core.debrisLoading,
-  fleetHero: core.excavatorAerial,
-  areasHero: core.deepExcavator,
-  faqSide: core.rubbleExcavator,
-  legal: core.deepExcavator,
-  notFound: core.buildingDemolition,
-  trustBg: core.buildingDemolition,
+  hero: real.havadanFilo,
+  heroAlt: realAlt.havadanFilo,
+  og: real.havadanFilo,
+  about: real.derinSaha,
+  contact: real.damperLogo,
+  fleetHero: real.havadanFilo,
+  areasHero: real.kaziToz,
+  faqSide: real.yuklemeDamper,
+  legal: real.kaziToz,
+  notFound: real.kaziToz,
+  trustBg: real.kaziToz,
 
   fleet: [
-    { src: core.excavatorDumpTruck, alt: "Ekskavatör ve damper — temel kazısı operasyonu" },
-    { src: core.siteExcavator, alt: "Saha iş makinesi — dolgu ve tesviye" },
-    { src: core.debrisLoading, alt: "Kepçe ile yükleme — moloz ve hafriyat nakliyesi" },
-    { src: core.rubbleExcavator, alt: "Dar alan kazısı — kanal ve mini ekskavatör operasyonu" },
-    { src: core.deepExcavator, alt: "Derin temel kazısı — fabrika ve sanayi sahası" },
+    { src: real.havadanFilo, alt: realAlt.havadanFilo },
+    { src: real.yuklemeDamper, alt: realAlt.yuklemeDamper },
+    { src: real.damperLogo, alt: realAlt.damperLogo },
+    { src: real.kaziToz, alt: realAlt.kaziToz },
+    { src: real.derinSaha, alt: realAlt.derinSaha },
     { src: core.bulldozerDemolition, alt: "Dozer — dekapaj ve saha tesviye" },
-    { src: core.excavatorAerial, alt: "Havadan ekskavatör operasyonu — geniş saha kazısı" },
+    { src: core.rubbleExcavator, alt: "Dar alan kazısı — kanal operasyonu" },
     { src: core.buildingDemolition, alt: "Kontrollü yıkım — enkaz kaldırma sahası" },
   ],
 
   process: [
-    { src: h(11), alt: "Keşif — hafriyat sahası genel değerlendirme" },
-    { src: h(10), alt: "Planlama — iş makinesi ve saha organizasyonu" },
-    { src: h(2), alt: "Uygulama — ekskavatör ve damper saha operasyonu" },
-    { src: h(16), alt: "Teslim — loder ile tesviye ve saha kapanışı" },
+    { src: real.kaziToz, alt: "Keşif — SMF hafriyat sahası değerlendirme" },
+    { src: real.havadanFilo, alt: "Planlama — SMF filo ve saha organizasyonu" },
+    { src: real.yuklemeDamper, alt: "Uygulama — ekskavatör ve damper saha operasyonu" },
+    { src: real.derinSaha, alt: "Teslim — tesviye ve saha kapanışı" },
   ],
 
   aboutSections: {
-    history: core.enkazTurkey,
-    mission: core.buildingDemolition,
-    vision: core.excavatorAerial,
+    history: real.kaziToz,
+    mission: real.yuklemeDamper,
+    vision: real.havadanFilo,
   },
 
-  certificates: [core.excavatorAerial, core.buildingDemolition, core.debrisLoading, core.bulldozerDemolition],
+  certificates: [real.havadanFilo, real.derinSaha, real.damperLogo, real.yuklemeDamper],
 
   serviceAreas: [
-    { src: core.excavatorAerial, alt: "Denizli ekskavatör hafriyat kazısı" },
-    { src: core.deepExcavator, alt: "Honaz OSB derin temel kazısı" },
-    { src: core.rubbleExcavator, alt: "Pamukkale kanal kazısı — kepçe" },
-    { src: core.siteExcavator, alt: "Acıpayam hafriyat sahası" },
-    { src: core.excavatorDumpTruck, alt: "Aydın moloz ve hafriyat nakliyesi" },
-    { src: core.enkazTurkey, alt: "Muğla dolgu ve tesviye kazısı" },
+    { src: real.havadanFilo, alt: "Denizli ekskavatör hafriyat kazısı — SMF saha" },
+    { src: real.derinSaha, alt: "Honaz OSB derin temel kazısı — SMF operasyonu" },
+    { src: real.yuklemeDamper, alt: "Pamukkale hafriyat — kepçe ve damper" },
+    { src: real.kaziToz, alt: "Acıpayam hafriyat sahası — SMF filo" },
+    { src: real.damperLogo, alt: "Aydın moloz ve hafriyat nakliyesi — SMF damper" },
+    { src: real.derinSaha, alt: "Muğla dolgu ve tesviye — SMF saha ekibi" },
   ],
 
   clients: [
-    { src: core.deepExcavator, alt: "Fabrika derin temel kazısı" },
-    { src: core.buildingDemolition, alt: "Yıkım sahası enkaz kaldırma" },
-    { src: core.rubbleExcavator, alt: "Altyapı kanal kazısı" },
-    { src: core.debrisLoading, alt: "Kontrollü yıkım ve moloz nakliyesi" },
+    { src: real.derinSaha, alt: "Fabrika derin temel kazısı — SMF referans" },
+    { src: real.kaziToz, alt: "Hafriyat sahası operasyonu — SMF" },
+    { src: real.yuklemeDamper, alt: "Moloz yükleme ve nakliye — SMF filo" },
+    { src: real.damperLogo, alt: "Hafriyat toprağı taşıma — SMF damper" },
   ],
 
   services: {
-    "hafriyat-isleri": h(2),
-    "yikim-calismalari": h(6),
-    "altyapi-calismalari": h(4),
-    "is-makinesi-kiralama": h(10),
-    "derin-kazi": h(8),
-    "moloz-nakliyesi": h(14),
-    "kum-cakil-temini": h(11),
-    "kanal-calismalari": h(15),
-    "su-tankeri-nakliyesi": h(18),
-    "toprak-moloz-tasima": h(12),
+    "hafriyat-isleri": real.kaziToz,
+    "yikim-calismalari": core.buildingDemolition,
+    "altyapi-calismalari": core.rubbleExcavator,
+    "is-makinesi-kiralama": real.havadanFilo,
+    "derin-kazi": real.derinSaha,
+    "moloz-nakliyesi": real.damperLogo,
+    "kum-cakil-temini": real.yuklemeDamper,
+    "kanal-calismalari": real.kaziToz,
+    "su-tankeri-nakliyesi": core.enkazTurkey,
+    "toprak-moloz-tasima": real.yuklemeDamper,
   },
 
   serviceGallery: {
-    "hafriyat-isleri": [core.excavatorAerial, core.siteExcavator, smf.p1],
-    "yikim-calismalari": [core.buildingDemolition, core.enkazTurkey, smf.p2],
-    "altyapi-calismalari": [core.rubbleExcavator, core.deepExcavator, smf.p4],
-    "is-makinesi-kiralama": [core.excavatorDumpTruck, core.excavatorAerial, core.bulldozerDemolition],
-    "derin-kazi": [core.deepExcavator, core.rubbleExcavator, smf.p3],
-    "moloz-nakliyesi": [core.debrisLoading, core.excavatorDumpTruck, smf.p5],
-    "kum-cakil-temini": [core.siteExcavator, core.excavatorAerial, smf.p1],
-    "kanal-calismalari": [core.bulldozerDemolition, core.rubbleExcavator, smf.p6],
-    "su-tankeri-nakliyesi": [core.enkazTurkey, core.siteExcavator, smf.p4],
-    "toprak-moloz-tasima": [core.debrisLoading, core.excavatorDumpTruck, smf.p3],
+    "hafriyat-isleri": [real.kaziToz, real.havadanFilo, real.yuklemeDamper],
+    "yikim-calismalari": [core.buildingDemolition, real.kaziToz, smf.p2],
+    "altyapi-calismalari": [real.kaziToz, core.rubbleExcavator, smf.p4],
+    "is-makinesi-kiralama": [real.havadanFilo, real.yuklemeDamper, real.damperLogo],
+    "derin-kazi": [real.derinSaha, real.kaziToz, smf.p3],
+    "moloz-nakliyesi": [real.damperLogo, real.yuklemeDamper, smf.p5],
+    "kum-cakil-temini": [real.yuklemeDamper, real.havadanFilo, smf.p1],
+    "kanal-calismalari": [real.kaziToz, core.rubbleExcavator, smf.p6],
+    "su-tankeri-nakliyesi": [real.kaziToz, core.enkazTurkey, smf.p4],
+    "toprak-moloz-tasima": [real.yuklemeDamper, real.damperLogo, smf.p3],
   } as Record<string, string[]>,
 
   projects: {
     "denizli-osb-fabrika-temel-kazi": {
-      before: h(8),
-      after: h(16),
-      gallery: [h(2)],
+      before: core.deepExcavator,
+      after: real.derinSaha,
+      gallery: [real.havadanFilo],
     },
     "merkezefendi-konut-yikim": {
-      before: h(6),
-      after: h(11),
-      gallery: [h(9)],
+      before: core.buildingDemolition,
+      after: real.kaziToz,
+      gallery: [real.damperLogo],
     },
     "pamukkale-kanalizasyon-hatti": {
-      before: h(4),
-      after: h(10),
-      gallery: [h(15)],
+      before: core.rubbleExcavator,
+      after: real.kaziToz,
+      gallery: [real.yuklemeDamper],
     },
     "sanayi-sitesi-dolgu-tesviye": {
-      before: h(8),
-      after: h(17),
-      gallery: [h(2)],
+      before: core.deepExcavator,
+      after: real.derinSaha,
+      gallery: [real.havadanFilo],
     },
     "camlik-depo-yikim": {
-      before: h(3),
-      after: h(11),
-      gallery: [h(14)],
+      before: core.buildingDemolition,
+      after: real.kaziToz,
+      gallery: [real.damperLogo],
     },
     "acipayam-yagmur-suyu": {
-      before: h(15),
-      after: h(10),
-      gallery: [h(4)],
+      before: real.kaziToz,
+      after: real.yuklemeDamper,
+      gallery: [real.kaziToz],
     },
   },
 } as const;
 
 export const showcaseSlides = [
   {
-    src: core.excavatorAerial,
-    alt: "Ekskavatör ile havadan hafriyat kazısı — SMF Hafriyat",
+    src: real.havadanFilo,
+    alt: realAlt.havadanFilo,
     tag: "Hafriyat Operasyonları",
     title: "Stratejik temel kazısı ve saha hafriyatı",
     subtitle: "Dekapaj, dolgu ve büyük metrajlı projelerde kurumsal filo disiplini ve ölçülebilir performans.",
   },
   {
-    src: core.buildingDemolition,
-    alt: "Kontrollü bina yıkımı — ekskavatör enkaz kaldırma",
-    tag: "Kontrollü Yıkım",
-    title: "Mühendis onaylı yıkım ve enkaz yönetimi",
-    subtitle: "Planlı yıkım, ayrıştırma ve belgeli damper nakliyesi — kurumsal İSG standartlarıyla.",
+    src: real.yuklemeDamper,
+    alt: realAlt.yuklemeDamper,
+    tag: "Entegre Filo",
+    title: "Ekskavatör ve damper — tek saha ekibi",
+    subtitle: "Yükleme, taşıma ve teslim aynı operasyon zincirinde — taşeronsuz SMF modeli.",
   },
   {
-    src: core.deepExcavator,
-    alt: "Derin temel kazısı — ekskavatör hafriyat",
+    src: real.derinSaha,
+    alt: realAlt.derinSaha,
     tag: "Derin Kazı",
     title: "Derin temelli altyapı operasyonları",
     subtitle: "Bodrum, otopark ve endüstriyel temellerde iksa destekli, güvenli hafriyat çözümleri.",
   },
   {
-    src: core.excavatorDumpTruck,
-    alt: "Ekskavatör moloz yükleme — damper nakliyesi",
+    src: real.damperLogo,
+    alt: realAlt.damperLogo,
     tag: "Lojistik Entegrasyon",
     title: "Entegre yükleme ve belgeli nakliye",
     subtitle: "Hafriyat molozu ve yıkım enkazında şeffaf tartım, irsaliye ve mevzuata uygun taşıma.",
   },
   {
-    src: core.rubbleExcavator,
-    alt: "Enkaz arasında kepçe operasyonu — kanal kazısı",
-    tag: "Altyapı",
-    title: "Altyapı hatlarında kurumsal saha gücü",
-    subtitle: "Kanalizasyon, yağmursuyu ve isale projelerinde ekskavatör ile hassas kazı operasyonları.",
+    src: real.kaziToz,
+    alt: realAlt.kaziToz,
+    tag: "Saha Operasyonu",
+    title: "Denizli'de aktif hafriyat sahası",
+    subtitle: "Gerçek saha deneyimi — 1998'den bu yana aynı filo disiplini ve kurumsal standart.",
   },
   {
-    src: core.bulldozerDemolition,
-    alt: "Dozer ile yıkım sahası tesviye — SMF Hafriyat",
-    tag: "Filo Kapasitesi",
-    title: "Çok disiplinli iş makinesi filosu",
-    subtitle: "Dar alan ve geniş metraj projelerinde operatörlü dozer, loder ve mini kepçe desteği.",
+    src: real.havadanFilo,
+    alt: realAlt.havadanFilo,
+    tag: "Kurumsal Filo",
+    title: "SMF markalı iş makinesi parkı",
+    subtitle: "Ekskavatör, damper ve saha ekibi — Denizli merkezli kesintisiz operasyon.",
   },
 ] as const;
 
@@ -195,69 +212,69 @@ export type PromoSlide = {
 
 export const midPagePromoSlides: PromoSlide[] = [
   {
-    src: core.bulldozerDemolition,
-    alt: "Dozer ile yıkım sahası — SMF Hafriyat filo",
+    src: real.havadanFilo,
+    alt: realAlt.havadanFilo,
     tag: "Kurumsal Filo",
     title: "Operatörlü ekskavatör, dozer ve damper — tek çatı",
     subtitle: "Taşeron modeli yerine kendi filomuzla hafriyat, yıkım ve enkaz yönetiminde kurumsal güvence.",
   },
   {
-    src: core.debrisLoading,
-    alt: "Enkaz yükleme kepçe — moloz nakliyesi",
+    src: real.damperLogo,
+    alt: realAlt.damperLogo,
     tag: "Belgeli Süreç",
     title: "Enkaz yönetiminde şeffaflık ve mevzuat uyumu",
     subtitle: "Yıkım ve hafriyat molozunda tartım fişi, irsaliye ve resmi sözleşme ile kurumsal teslim.",
   },
   {
-    src: core.rubbleExcavator,
-    alt: "Kanal kazısı ekskavatör — altyapı hafriyat",
-    tag: "Altyapı Ortaklığı",
-    title: "Altyapı projelerinde stratejik saha ortağı",
-    subtitle: "Kanal, isale ve yağmursuyu hatlarında mini kepçe ve büyük ekskavatör kapasitesi.",
+    src: real.kaziToz,
+    alt: realAlt.kaziToz,
+    tag: "Denizli Saha Ekibi",
+    title: "Gerçek saha operasyonu, gerçek referans",
+    subtitle: "SMF markalı filo ile Denizli ve Ege Bölgesi'nde kurumsal hafriyat hizmeti.",
   },
 ];
 
 export const ctaPromoSlides: PromoSlide[] = [
   {
-    src: core.excavatorAerial,
-    alt: "Havadan hafriyat kazısı — SMF Hafriyat teklif",
+    src: real.havadanFilo,
+    alt: realAlt.havadanFilo,
     tag: "Stratejik Ortaklık",
     title: "Projeniz için kurumsal keşif planlayın",
     subtitle: "Denizli ve Ege Bölgesi'nde aynı gün geri dönüş — şeffaf metraj, resmi sözleşme.",
   },
   {
-    src: core.buildingDemolition,
-    alt: "Kontrollü yıkım sahası — SMF Hafriyat",
+    src: real.yuklemeDamper,
+    alt: realAlt.yuklemeDamper,
     tag: "Keşif Talep Edin",
     title: "Sahaya inmeden net metraj, net plan",
     subtitle: "Keşif sonrası ekskavatör ihtiyacınızı mühendis onaylı süreçle planlıyoruz.",
   },
   {
-    src: core.deepExcavator,
-    alt: "Derin temel kazısı — SMF Hafriyat",
+    src: real.derinSaha,
+    alt: realAlt.derinSaha,
     tag: "0533 353 22 53",
     title: "Büyük metraj ve derin kazı projelerinde yanınızdayız",
     subtitle: "Telefon veya WhatsApp ile hızlı koordinasyon — Pzt–Cmt 08:00–18:00.",
   },
 ];
 
-/** Ana sayfa hizmet vitrini — 3 doğrulanmış saha görseli (haf-001…009) */
+/** Ana sayfa hizmet vitrini — gerçek SMF saha fotoğrafları */
 export const servicesVisualPanels = [
   {
-    src: h(2),
-    alt: "Ekskavatör ve damper — hafriyat saha operasyonu",
+    src: real.yuklemeDamper,
+    alt: realAlt.yuklemeDamper,
     title: "Hafriyat & Temel Kazısı",
     caption: "Dekapaj, dolgu ve büyük metraj saha çalışmaları",
   },
   {
-    src: h(6),
-    alt: "Bina yıkımı ekskavatör — kontrollü yıkım sahası",
-    title: "Yıkım & Enkaz",
-    caption: "Kontrollü yıkım ve saha temizliği",
+    src: real.kaziToz,
+    alt: realAlt.kaziToz,
+    title: "Saha Operasyonu",
+    caption: "SMF filo ile aktif kazı ve yükleme",
   },
   {
-    src: h(8),
-    alt: "Derin temel kazısı — SMF Hafriyat",
+    src: real.derinSaha,
+    alt: realAlt.derinSaha,
     title: "Derin Kazı & Filo",
     caption: "Derin temel ve operatörlü makine koordinasyonu",
   },
@@ -265,22 +282,22 @@ export const servicesVisualPanels = [
 
 export const whyUsSpotlightSlides: PromoSlide[] = [
   {
-    src: h(2),
-    alt: "Ekskavatör ve damper — SMF Hafriyat saha operasyonu",
+    src: real.yuklemeDamper,
+    alt: realAlt.yuklemeDamper,
     tag: "Saha Operasyonu",
     title: "Kendi filomuz, kendi operatörlerimiz",
     subtitle: "Taşeron yok — keşiften teslime tek kurumsal ekip ve doğrudan saha yönetimi.",
   },
   {
-    src: h(11),
-    alt: "Hafriyat sahası genel görünüm — SMF Hafriyat Denizli",
+    src: real.havadanFilo,
+    alt: realAlt.havadanFilo,
     tag: "Denizli Merkez",
     title: "1998'den bu yana aynı saha disiplini",
     subtitle: "Merkezefendi merkezli planlama, belgeli süreç ve şeffaf metraj yaklaşımı.",
   },
   {
-    src: h(19),
-    alt: "Ekskavatör kepçe detay — profesyonel saha uygulaması",
+    src: real.derinSaha,
+    alt: realAlt.derinSaha,
     tag: "Kurumsal Standart",
     title: "İSG ve mevzuat uyumu vazgeçilmez standart",
     subtitle: "Ruhsata uygun, emniyet odaklı hafriyat ve yıkım operasyonları.",
@@ -289,8 +306,8 @@ export const whyUsSpotlightSlides: PromoSlide[] = [
 
 export const actionSpotlights = [
   {
-    src: core.excavatorAerial,
-    alt: "Hafriyat kazısı ekskavatör — SMF hizmetler",
+    src: real.kaziToz,
+    alt: realAlt.kaziToz,
     tag: "Hizmet Portföyü",
     title: "Entegre hafriyat ve yıkım çözümleri",
     subtitle: "10 kategoride kurumsal saha operasyonları.",
@@ -298,8 +315,8 @@ export const actionSpotlights = [
     ctaLabel: "Portföyü incele",
   },
   {
-    src: core.bulldozerDemolition,
-    alt: "Dozer filo — SMF ekipman",
+    src: real.havadanFilo,
+    alt: realAlt.havadanFilo,
     tag: "Kurumsal Filo",
     title: "Operasyonel güvence sunan makine parkı",
     subtitle: "Operatörlü kiralama ve proje bazlı saha desteği.",
@@ -307,8 +324,8 @@ export const actionSpotlights = [
     ctaLabel: "Filoyu keşfet",
   },
   {
-    src: core.debrisLoading,
-    alt: "Enkaz kaldırma sahası — SMF projeler",
+    src: real.derinSaha,
+    alt: realAlt.derinSaha,
     tag: "Referanslar",
     title: "900+ tamamlanan kurumsal proje",
     subtitle: "Öncesi/sonrası ile kanıtlanmış saha performansı.",
@@ -319,36 +336,36 @@ export const actionSpotlights = [
 
 export const heroBanners = [
   {
-    src: core.excavatorAerial,
-    alt: "Denizli hafriyat ekskavatör kazısı — SMF Hafriyat",
+    src: real.havadanFilo,
+    alt: realAlt.havadanFilo,
     tag: "Denizli Hafriyat",
     slogan: "Denizli'nin güvenilir hafriyat ve yıkım markası",
     highlight: "Yeni Mah. Menderes Bulvarı merkezli — ekskavatör ile temel kazısı, yıkım ve derin kazı",
   },
   {
-    src: core.buildingDemolition,
-    alt: "Kontrollü bina yıkımı — SMF Hafriyat enkaz kaldırma",
-    tag: "Kontrollü Yıkım",
-    slogan: "Denizli hafriyat, kazı ve yıkımda kurumsal saha ekibi",
-    highlight: "Mühendis onaylı süreç — enkaz kaldırma ve kurumsal İSG standartları",
-  },
-  {
-    src: core.deepExcavator,
-    alt: "Derin temel kazısı — ekskavatör hafriyat sahası",
-    tag: "Derin Kazı",
-    slogan: "Derin temellerde operasyonel mükemmellik",
-    highlight: "Bodrum, otopark ve endüstriyel temellerde iksa destekli kurumsal hafriyat",
-  },
-  {
-    src: core.excavatorDumpTruck,
-    alt: "Ekskavatör ve damper — moloz nakliyesi SMF Hafriyat",
+    src: real.yuklemeDamper,
+    alt: realAlt.yuklemeDamper,
     tag: "Kurumsal Filo",
     slogan: "Entegre filo, kesintisiz operasyon, tek sorumlu ekip",
     highlight: "Taşeronsuz model — operatörlü ekskavatör, loder ve damper filosu",
   },
   {
-    src: core.enkazTurkey,
-    alt: "Yıkım sonrası enkaz kaldırma — SMF Hafriyat Türkiye sahası",
+    src: real.derinSaha,
+    alt: realAlt.derinSaha,
+    tag: "Derin Kazı",
+    slogan: "Derin temellerde operasyonel mükemmellik",
+    highlight: "Bodrum, otopark ve endüstriyel temellerde iksa destekli kurumsal hafriyat",
+  },
+  {
+    src: real.damperLogo,
+    alt: realAlt.damperLogo,
+    tag: "Moloz Nakliyesi",
+    slogan: "Belgeli hafriyat toprağı ve moloz taşıma",
+    highlight: "SMF damper filosu ile mevzuata uygun nakliye ve saha koordinasyonu",
+  },
+  {
+    src: real.kaziToz,
+    alt: realAlt.kaziToz,
     tag: "1998'den Beri",
     slogan: "28 yıllık kurumsal tecrübe, 900+ referans proje",
     highlight: "Denizli merkezli — Ege Bölgesi'nde stratejik saha ortağı",
@@ -359,14 +376,11 @@ export const heroBanners = [
 export const homeHeroBanners = heroBanners.slice(0, 2);
 
 export const marqueeImages = [
-  { src: core.excavatorAerial, alt: "Ekskavatör hafriyat kazısı" },
-  { src: core.buildingDemolition, alt: "Yıkım sahası kepçe çalışması" },
-  { src: core.excavatorDumpTruck, alt: "Damper ile moloz taşıma" },
-  { src: core.deepExcavator, alt: "Derin temel kazısı" },
-  { src: core.debrisLoading, alt: "Enkaz kaldırma — kepçe yükleme" },
-  { src: core.rubbleExcavator, alt: "Enkaz arasında kepçe operasyonu" },
-  { src: core.enkazTurkey, alt: "Yıkım sonrası saha temizliği" },
-  { src: core.bulldozerDemolition, alt: "Dozer ile yıkım hafriyatı" },
+  { src: real.havadanFilo, alt: "SMF Hafriyat havadan filo operasyonu" },
+  { src: real.yuklemeDamper, alt: "Ekskavatör damper yükleme — SMF saha" },
+  { src: real.damperLogo, alt: "SMF damper kamyonu — hafriyat taşıma" },
+  { src: real.derinSaha, alt: "Derin kazı sahası — SMF Hafriyat" },
+  { src: real.kaziToz, alt: "Aktif kazı operasyonu — SMF Denizli" },
 ];
 
 export function getServiceImage(slug: string): string {
