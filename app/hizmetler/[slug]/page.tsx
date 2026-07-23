@@ -14,7 +14,7 @@ import { getServiceBySlug, getServices } from "@/lib/data/services";
 import { getServiceImage, getServiceGallery } from "@/lib/constants/images";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo, serviceSeoDescription, serviceSeoTitle } from "@/lib/seo/local";
-import { contactInfo } from "@/lib/constants/site";
+import { getContactInfo } from "@/lib/data/contact-settings";
 import { buildQuoteHref } from "@/lib/utils/contact-link";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -43,6 +43,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const allServices = await getServices();
   if (!service) notFound();
 
+  const contactInfo = await getContactInfo();
   const image = getServiceImage(slug);
   const gallery = getServiceGallery(slug);
   const quoteHref = buildQuoteHref({ hizmet: slug });

@@ -5,11 +5,14 @@ import { usePathname } from "next/navigation";
 import {
   BarChart3,
   FolderKanban,
+  HelpCircle,
   Inbox,
   LayoutDashboard,
   LogOut,
+  Phone,
   Settings,
   Shovel,
+  Truck,
   Users,
 } from "lucide-react";
 import { signOutAdmin } from "@/lib/admin/actions";
@@ -22,6 +25,9 @@ const navItems = [
   { href: "/admin/projects", label: "Projeler", icon: FolderKanban },
   { href: "/admin/team", label: "Ekip", icon: Users },
   { href: "/admin/stats", label: "İstatistikler", icon: BarChart3 },
+  { href: "/admin/faq", label: "SSS", icon: HelpCircle },
+  { href: "/admin/fleet", label: "Filo", icon: Truck },
+  { href: "/admin/contact", label: "İletişim", icon: Phone },
   { href: "/admin/settings", label: "Ayarlar", icon: Settings },
 ];
 

@@ -6,11 +6,13 @@ import { Card } from "@/components/ui/Card";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { fleet } from "@/lib/constants/content";
+import { fleet as staticFleet } from "@/lib/constants/content";
+import type { FleetItem } from "@/lib/data/fleet";
 import { brand } from "@/lib/constants/brand";
 import { getFleetImage } from "@/lib/constants/images";
 
-export function FleetGrid() {
+export function FleetGrid({ items }: { items?: readonly FleetItem[] }) {
+  const fleet = items ?? staticFleet;
   return (
     <Section id="filo" variant="muted">
       <PageContainer>

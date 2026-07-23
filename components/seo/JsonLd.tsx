@@ -1,7 +1,8 @@
 import { faqItems } from "@/lib/constants/content";
 import { services } from "@/lib/constants/services";
 import { projects } from "@/lib/constants/projects";
-import { contactInfo, siteConfig } from "@/lib/constants/site";
+import { contactInfo as staticContactInfo, siteConfig } from "@/lib/constants/site";
+import type { ContactInfoData } from "@/lib/data/contact-settings";
 import { siteImages } from "@/lib/constants/images";
 import { localSeo } from "@/lib/seo/local";
 import { absoluteUrl } from "@/lib/seo/urls";
@@ -31,7 +32,7 @@ export function FaqJsonLd({ items = faqItems }: { items?: readonly FaqJsonLdItem
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }
 
-export function JsonLd() {
+export function JsonLd({ contactInfo = staticContactInfo }: { contactInfo?: ContactInfoData }) {
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "GeneralContractor"],
@@ -243,11 +244,15 @@ export function ProjectJsonLd({ title, description, slug, location, image, compl
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }
 
-export function ProjectsItemListJsonLd() {
+export function ProjectsItemListJsonLd({
+  items = projects,
+}: {
+  items?: { title: string; slug: string; description: string }[];
+}) {
   return (
     <ItemListJsonLd
       name="SMF Hafriyat Denizli Projeleri"
-      items={projects.map((p) => ({
+      items={items.map((p) => ({
         name: p.title,
         url: `/projeler/${p.slug}`,
         description: p.description,

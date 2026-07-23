@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Phone, FileText, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ctaLinks, navLinks, contactInfo } from "@/lib/constants/site";
+import { navLinks } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { brand } from "@/lib/constants/brand";
 import { Button } from "@/components/ui/Button";
 import { handleHashLinkClick } from "@/lib/utils/hash";
@@ -17,6 +18,7 @@ type MobileNavProps = {
 };
 
 export function MobileNav({ isOpen, onClose, pathname }: MobileNavProps) {
+  const { contactInfo, ctaLinks } = useSiteContact();
   const [expandedHref, setExpandedHref] = useState<string | null>(null);
 
   useEffect(() => {

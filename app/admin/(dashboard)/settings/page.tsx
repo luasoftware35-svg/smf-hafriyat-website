@@ -28,7 +28,7 @@ export default async function AdminSettingsPage() {
         <AdminCard>
           <h2 className="font-heading text-lg text-white">İlk kurulum adımları</h2>
           <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-white/70">
-            <li>Supabase SQL Editor&apos;da `supabase/migrations/001_admin_cms.sql` dosyasını çalıştırın.</li>
+            <li>Supabase SQL Editor&apos;da `supabase/migrations/001_admin_cms.sql` ve ardından `002_cms_extended.sql` dosyalarını çalıştırın.</li>
             <li>Authentication → Users bölümünden admin kullanıcısı oluşturun.</li>
             <li>
               SQL ile admin yetkisi verin:
@@ -48,7 +48,7 @@ export default async function AdminSettingsPage() {
         <AdminCard className="lg:col-span-2">
           <h2 className="font-heading text-lg text-white">İçerik aktarımı</h2>
           <p className="mt-2 text-sm text-white/60">
-            Mevcut `lib/constants` içindeki hizmetler, projeler, ekip ve istatistikleri Supabase tablolarına yükler. Var olan slug kayıtları güncellenir.
+            Mevcut `lib/constants` içindeki hizmetler, projeler, ekip, istatistik, SSS, filo ve iletişim ayarlarını Supabase tablolarına yükler. Var olan slug/kayıtlar güncellenir.
           </p>
           <div className="mt-4">
             <SeedDatabaseButton />

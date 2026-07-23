@@ -2,7 +2,8 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { createPageMetadata } from "@/lib/seo/metadata";
-import { siteConfig, contactInfo } from "@/lib/constants/site";
+import { siteConfig } from "@/lib/constants/site";
+import { getContactInfo } from "@/lib/data/contact-settings";
 import { siteImages } from "@/lib/constants/images";
 
 export const metadata = createPageMetadata({
@@ -13,7 +14,8 @@ export const metadata = createPageMetadata({
   noIndex: true,
 });
 
-export default function KvkkPage() {
+export default async function KvkkPage() {
+  const contactInfo = await getContactInfo();
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Ana Sayfa", path: "/" }, { name: "KVKK", path: "/kvkk" }]} />

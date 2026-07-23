@@ -19,6 +19,8 @@ function revalidatePublicContent() {
   revalidatePath("/hizmetler");
   revalidatePath("/projeler");
   revalidatePath("/hakkimizda");
+  revalidatePath("/filo");
+  revalidatePath("/iletisim");
   revalidatePath("/admin");
 }
 
@@ -236,4 +238,161 @@ export async function deleteSiteStatAction(id: string) {
   revalidatePublicContent();
   revalidatePath("/admin/stats");
   redirect("/admin/stats");
+}
+
+export async function saveFaqAction(formData: FormData) {
+  await requireAdmin();
+  const supabase = await createClient();
+  const id = String(formData.get("id") ?? "");
+  const payload = {
+    question: String(formData.get("question") ?? "").trim(),
+    answer: String(formData.get("answer") ?? "").trim(),
+    order_index: Number(formData.get("order_index") ?? 0),
+    is_published: formData.get("is_published") === "on",
+  };
+
+  if (id) {
+    const { error } = await supabase.from("faq_items").update(payload).eq("id", id);
+    if (error) throw new Error(error.message);
+    revalidatePublicContent();
+    revalidatePath("/admin/faq");
+    redirect(`/admin/faq/${id}`);
+  }
+
+  const { data, error } = await supabase.from("faq_items").insert(payload).select("id").single();
+  if (error) throw new Error(error.message);
+  revalidatePublicContent();
+  revalidatePath("/admin/faq");
+  redirect(`/admin/faq/${data.id}`);
+}
+
+export async function deleteFaqAction(id: string) {
+  await requireAdmin();
+  const supabase = await createClient();
+  const { error } = await supabase.from("faq_items").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePublicContent();
+  revalidatePath("/admin/faq");
+  redirect("/admin/faq");
+}
+
+export async function saveFleetItemAction(formData: FormData) {
+  await requireAdmin();
+  const supabase = await createClient();
+  const id = String(formData.get("id") ?? "");
+  const payload = {
+    name: String(formData.get("name") ?? "").trim(),
+    model: String(formData.get("model") ?? "").trim(),
+    capacity: String(formData.get("capacity") ?? "").trim(),
+    specs: String(formData.get("specs") ?? "").trim(),
+    icon: String(formData.get("icon") ?? "Excavator"),
+    order_index: Number(formData.get("order_index") ?? 0),
+    is_published: formData.get("is_published") === "on",
+  };
+
+  if (id) {
+    const { error } = await supabase.from("fleet_items").update(payload).eq("id", id);
+    if (error) throw new Error(error.message);
+    revalidatePublicContent();
+    revalidatePath("/admin/fleet");
+    redirect(`/admin/fleet/${id}`);
+  }
+
+  const { data, error } = await supabase.from("fleet_items").insert(payload).select("id").single();
+  if (error) throw new Error(error.message);
+  revalidatePublicContent();
+  revalidatePath("/admin/fleet");
+  redirect(`/admin/fleet/${data.id}`);
+}
+
+export async function deleteFleetItemAction(id: string) {
+  await requireAdmin();
+  const supabase = await createClient();
+  const { error } = await supabase.from("fleet_items").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePublicContent();
+  revalidatePath("/admin/fleet");
+  redirect("/admin/fleet");
+}
+
+export async function saveContactSettingsAction(formData: FormData) {
+  await requireAdmin();
+  const supabase = await createClient();
+  const payload = {
+    key: "contact",
+    value: {
+      phone: String(formData.get("phone") ?? "").trim(),
+      phoneDisplay: String(formData.get("phoneDisplay") ?? "").trim(),
+      phoneHref: String(formData.get("phoneHref") ?? "").trim(),
+      phoneSecondary: String(formData.get("phoneSecondary") ?? "").trim(),
+      phoneSecondaryHref: String(formData.get("phoneSecondaryHref") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      emailHref: String(formData.get("emailHref") ?? "").trim(),
+      whatsapp: String(formData.get("whatsapp") ?? "").trim(),
+      whatsappHref: String(formData.get("whatsappHref") ?? "").trim(),
+      contactPerson: String(formData.get("contactPerson") ?? "").trim(),
+      addressFull: String(formData.get("addressFull") ?? "").trim(),
+      addressStreet: String(formData.get("addressStreet") ?? "").trim(),
+      workingHoursWeekdays: String(formData.get("workingHoursWeekdays") ?? "").trim(),
+      workingHoursSunday: String(formData.get("workingHoursSunday") ?? "").trim(),
+      instagram: String(formData.get("instagram") ?? "").trim(),
+      mapLink: String(formData.get("mapLink") ?? "").trim(),
+    },
+  };
+  const { error } = await supabase.from("site_settings").upsert(payload, { onConflict: "key" });
+  if (error) throw new Error(error.message);
+  revalidatePublicContent();
+  revalidatePath("/admin/contact");
+  redirect("/admin/contact?saved=1");
+}
+
+export async function saveCredentialsSettingsAction(formData: FormData) {
+  await requireAdmin();
+  const supabase = await createClient();
+  const labels = formData.getAll("cred_label").map(String);
+  const notes = formData.getAll("cred_note").map(String);
+  const credentials = labels
+    .map((label, index) => ({ label: label.trim(), note: (notes[index] ?? "").trim() }))
+    .filter((item) => item.label);
+
+  const payload = {
+    key: "credentials",
+    value: {
+      credentials,
+      insuranceNote: String(formData.get("insuranceNote") ?? "").trim(),
+    },
+  };
+  const { error } = await supabase.from("site_settings").upsert(payload, { onConflict: "key" });
+  if (error) throw new Error(error.message);
+  revalidatePublicContent();
+  revalidatePath("/admin/contact");
+  redirect("/admin/contact?saved=1");
+}
+
+export async function uploadMediaAction(formData: FormData): Promise<{ ok: true; url: string } | { ok: false; error: string }> {
+  await requireAdmin();
+
+  const file = formData.get("file");
+  if (!(file instanceof File) || file.size === 0) {
+    return { ok: false, error: "Dosya seçilmedi." };
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    return { ok: false, error: "Dosya 5 MB'dan küçük olmalı." };
+  }
+
+  const supabase = await createClient();
+  const ext = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
+  const path = `uploads/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+
+  const { error } = await supabase.storage.from("site-media").upload(path, file, {
+    cacheControl: "3600",
+    upsert: false,
+    contentType: file.type,
+  });
+
+  if (error) return { ok: false, error: error.message };
+
+  const { data } = supabase.storage.from("site-media").getPublicUrl(path);
+  return { ok: true, url: data.publicUrl };
 }

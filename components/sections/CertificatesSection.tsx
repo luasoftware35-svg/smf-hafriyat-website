@@ -8,13 +8,14 @@ import { Card } from "@/components/ui/Card";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { trustPrinciples } from "@/lib/constants/content";
-import { corporateCredentials, insuranceNote } from "@/lib/constants/site";
 import { getCertificateImage, siteImages } from "@/lib/constants/images";
 
 const icons = [Shield, Award, FileCheck, Leaf];
 
 export function CertificatesSection() {
+  const { corporateCredentials, insuranceNote } = useSiteContact();
   return (
     <Section id="sertifikalar" variant="muted">
       <Container>

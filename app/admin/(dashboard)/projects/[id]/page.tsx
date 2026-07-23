@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { AdminShell } from "@/components/admin/AdminShell";
+import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import { AdminButton, AdminCard, AdminField, adminInputClassName, adminTextareaClassName } from "@/components/admin/AdminTable";
 import { deleteProjectAction, saveProjectAction } from "@/lib/admin/actions";
 import { requireAdmin } from "@/lib/admin/auth";
@@ -53,12 +54,8 @@ export default async function AdminProjectEditPage({ params }: { params: Promise
               <textarea name="description" defaultValue={project.description} required className={adminTextareaClassName} />
             </AdminField>
           </div>
-          <AdminField label="Önce görseli">
-            <input name="before_image" defaultValue={project.before_image} required className={adminInputClassName} />
-          </AdminField>
-          <AdminField label="Sonra görseli">
-            <input name="after_image" defaultValue={project.after_image} required className={adminInputClassName} />
-          </AdminField>
+          <ImageUploadField name="before_image" label="Önce görseli" defaultValue={project.before_image} />
+          <ImageUploadField name="after_image" label="Sonra görseli" defaultValue={project.after_image} />
           <div className="lg:col-span-2">
             <AdminField label="Galeri görselleri" hint="Her satır bir görsel yolu">
               <textarea name="gallery_images" defaultValue={arrayToLines(project.gallery_images)} className={adminTextareaClassName} />

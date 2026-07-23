@@ -1,9 +1,10 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
-import { contactInfo } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 
 export function WhatsAppButton() {
+  const { contactInfo } = useSiteContact();
   return (
     <div className="fixed bottom-[calc(6.25rem+env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] z-50 pb-safe lg:bottom-6 lg:right-5 lg:pb-0">
       <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ring-pulse" aria-hidden="true" />

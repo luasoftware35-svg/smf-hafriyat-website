@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { brand } from "@/lib/constants/brand";
-import { contactInfo, siteConfig } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
+import { siteConfig } from "@/lib/constants/site";
 
 const TICKER_INTERVAL_MS = 4800;
 
 export function TopBar() {
   const reduceMotion = useReducedMotion();
+  const { contactInfo } = useSiteContact();
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {

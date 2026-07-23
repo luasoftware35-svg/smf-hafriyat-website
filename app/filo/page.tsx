@@ -2,6 +2,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { FleetGrid } from "@/components/sections/FleetGrid";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { getFleetItems } from "@/lib/data/fleet";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo, pageSeoDescription } from "@/lib/seo/local";
 import { brand } from "@/lib/constants/brand";
@@ -15,7 +16,9 @@ export const metadata = createPageMetadata({
   keywords: ["denizli ekskavatör kiralama", "denizli hafriyat filo", ...localSeo.defaultKeywords],
 });
 
-export default function FleetPage() {
+export default async function FleetPage() {
+  const fleetItems = await getFleetItems();
+
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Ana Sayfa", path: "/" }, { name: "Filo", path: "/filo" }]} />
@@ -26,7 +29,7 @@ export default function FleetPage() {
         image={siteImages.fleetHero}
         imageAlt="Ekskavatör hafriyat filosu — SMF Hafriyat"
       />
-      <FleetGrid />
+      <FleetGrid items={fleetItems} />
       <CtaBanner />
     </>
   );

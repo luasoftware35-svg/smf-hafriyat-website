@@ -1,23 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import {
-  contactInfo,
-  footerPages,
-  footerServices,
-  siteConfig,
-  socialLinks,
-  ctaLinks,
-  companyLegal,
-  corporateCredentials,
-  insuranceNote,
-} from "@/lib/constants/site";
+import { footerPages, footerServices, siteConfig, companyLegal } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export function Footer() {
+  const { contactInfo, ctaLinks, socialLinks, corporateCredentials, insuranceNote } = useSiteContact();
   const currentYear = new Date().getFullYear();
 
   return (

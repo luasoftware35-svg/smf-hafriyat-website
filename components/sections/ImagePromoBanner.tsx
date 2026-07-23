@@ -7,7 +7,7 @@ import { ArrowRight, Phone, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { TextReveal } from "@/components/motion/TextReveal";
-import { ctaLinks } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { cn } from "@/lib/utils";
 import type { PromoSlide } from "@/lib/constants/images";
 
@@ -37,13 +37,18 @@ export function ImagePromoBanner({
   align = "left",
   interval = 5500,
   className,
-  primaryHref = ctaLinks.quote.href,
-  primaryLabel = ctaLinks.quote.label,
-  secondaryHref = ctaLinks.call.href,
-  secondaryLabel = ctaLinks.call.label,
+  primaryHref,
+  primaryLabel,
+  secondaryHref,
+  secondaryLabel,
   showDots = true,
   primaryIcon: PrimaryIcon = ArrowRight,
 }: ImagePromoBannerProps) {
+  const { ctaLinks } = useSiteContact();
+  const resolvedPrimaryHref = primaryHref ?? ctaLinks.quote.href;
+  const resolvedPrimaryLabel = primaryLabel ?? ctaLinks.quote.label;
+  const resolvedSecondaryHref = secondaryHref ?? ctaLinks.call.href;
+  const resolvedSecondaryLabel = secondaryLabel ?? ctaLinks.call.label;
   const [active, setActive] = useState(0);
   const slideCount = slides.length;
   const reduceMotion = useReducedMotion();
@@ -130,18 +135,18 @@ export function ImagePromoBanner({
               viewport={{ once: true }}
               className={cn("mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4", centered && "justify-center")}
             >
-              <AnimatedButton href={primaryHref} glow>
-                {primaryLabel}
+              <AnimatedButton href={resolvedPrimaryHref} glow>
+                {resolvedPrimaryLabel}
                 <PrimaryIcon size={18} aria-hidden="true" />
               </AnimatedButton>
               <AnimatedButton
-                href={secondaryHref}
+                href={resolvedSecondaryHref}
                 variant="secondary"
                 glow={false}
                 className="border-white/20 bg-white/8 text-white/92 hover:border-accent hover:bg-white/12 hover:text-white"
               >
                 <Phone size={18} aria-hidden="true" />
-                {secondaryLabel}
+                {resolvedSecondaryLabel}
               </AnimatedButton>
             </motion.div>
           </div>

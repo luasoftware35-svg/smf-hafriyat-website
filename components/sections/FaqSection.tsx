@@ -9,14 +9,16 @@ import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { brand } from "@/lib/constants/brand";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { faqItems } from "@/lib/constants/content";
-import { quickContactChannels } from "@/lib/constants/site";
+import { faqItems as staticFaqItems } from "@/lib/constants/content";
+import type { FaqItem } from "@/lib/data/faq";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { siteImages } from "@/lib/constants/images";
 import { cn } from "@/lib/utils";
 
 type FaqSectionProps = {
   limit?: number;
   showContactLink?: boolean;
+  items?: readonly FaqItem[];
 };
 
 const listVariants: Variants = {
@@ -29,9 +31,11 @@ const itemVariants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
 };
 
-export function FaqSection({ limit, showContactLink = false }: FaqSectionProps) {
+export function FaqSection({ limit, showContactLink = false, items }: FaqSectionProps) {
   const reduceMotion = useReducedMotion();
+  const { quickContactChannels } = useSiteContact();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const faqItems = items ?? staticFaqItems;
   const displayedFaq = limit ? faqItems.slice(0, limit) : faqItems;
 
   return (
@@ -67,7 +71,7 @@ export function FaqSection({ limit, showContactLink = false }: FaqSectionProps) 
               </div>
             </motion.div>
 
-            <FaqContactActions reduceMotion={!!reduceMotion} />
+            <FaqContactActions reduceMotion={!!reduceMotion} channels={quickContactChannels} />
           </FadeIn>
 
           <motion.div
@@ -98,7 +102,7 @@ export function FaqSection({ limit, showContactLink = false }: FaqSectionProps) 
             )}
             <FadeIn delay={0.12} className="lg:hidden">
               <div className="pt-6">
-                <FaqContactActions reduceMotion={!!reduceMotion} />
+                <FaqContactActions reduceMotion={!!reduceMotion} channels={quickContactChannels} />
               </div>
             </FadeIn>
           </motion.div>
@@ -153,7 +157,13 @@ function InstagramIcon({ className, size = 20 }: { className?: string; size?: nu
   );
 }
 
-function FaqContactActions({ reduceMotion }: { reduceMotion: boolean }) {
+function FaqContactActions({
+  reduceMotion,
+  channels,
+}: {
+  reduceMotion: boolean;
+  channels: ReturnType<typeof useSiteContact>["quickContactChannels"];
+}) {
   return (
     <motion.div
       className="flex items-center justify-center gap-2.5"
@@ -165,7 +175,7 @@ function FaqContactActions({ reduceMotion }: { reduceMotion: boolean }) {
         show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
       }}
     >
-      {quickContactChannels.map((channel) => {
+      {channels.map((channel) => {
         const style = channelStyles[channel.icon];
         const Icon = style.icon;
         const external = channel.icon !== "phone";
@@ -258,7 +268,7 @@ function FaqItem({
   onToggle,
   reduceMotion,
 }: {
-  item: (typeof faqItems)[number];
+  item: FaqItem;
   index: number;
   isOpen: boolean;
   onToggle: () => void;

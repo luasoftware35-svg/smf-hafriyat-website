@@ -8,7 +8,8 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Card } from "@/components/ui/Card";
 import { ContactSection } from "@/components/sections/ContactSection";
 import type { SeoLandingPage } from "@/lib/constants/seo-pages";
-import { contactInfo, ctaLinks } from "@/lib/constants/site";
+import { getContactInfo } from "@/lib/data/contact-settings";
+import { buildCtaLinks } from "@/lib/contact/derive";
 
 type SeoLandingLayoutProps = {
   page: SeoLandingPage;
@@ -16,7 +17,9 @@ type SeoLandingLayoutProps = {
   imageAlt: string;
 };
 
-export function SeoLandingLayout({ page, image, imageAlt }: SeoLandingLayoutProps) {
+export async function SeoLandingLayout({ page, image, imageAlt }: SeoLandingLayoutProps) {
+  const contactInfo = await getContactInfo();
+  const ctaLinks = buildCtaLinks(contactInfo);
   return (
     <>
       <PageHero

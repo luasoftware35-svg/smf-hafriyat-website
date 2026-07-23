@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { AdminShell } from "@/components/admin/AdminShell";
+import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import { AdminButton, AdminCard, AdminField, adminInputClassName, adminTextareaClassName } from "@/components/admin/AdminTable";
 import { deleteTeamMemberAction, saveTeamMemberAction } from "@/lib/admin/actions";
 import { requireAdmin } from "@/lib/admin/auth";
@@ -27,9 +28,7 @@ export default async function AdminTeamEditPage({ params }: { params: Promise<{ 
           <AdminField label="Rol">
             <input name="role" defaultValue={member.role} required className={adminInputClassName} />
           </AdminField>
-          <AdminField label="Fotoğraf yolu">
-            <input name="photo" defaultValue={member.photo} required className={adminInputClassName} />
-          </AdminField>
+          <ImageUploadField name="photo" label="Fotoğraf" defaultValue={member.photo} />
           <AdminField label="Sıra">
             <input name="order_index" type="number" defaultValue={member.order_index} className={adminInputClassName} />
           </AdminField>

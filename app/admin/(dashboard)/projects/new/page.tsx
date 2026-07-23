@@ -1,4 +1,5 @@
 import { AdminShell } from "@/components/admin/AdminShell";
+import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import { AdminButton, AdminCard, AdminField, adminInputClassName, adminTextareaClassName } from "@/components/admin/AdminTable";
 import { saveProjectAction } from "@/lib/admin/actions";
 import { requireAdmin } from "@/lib/admin/auth";
@@ -42,12 +43,8 @@ export default async function AdminProjectNewPage() {
               <textarea name="description" required className={adminTextareaClassName} />
             </AdminField>
           </div>
-          <AdminField label="Önce görseli">
-            <input name="before_image" required placeholder="/images/hafriyat/haf-001.jpg" className={adminInputClassName} />
-          </AdminField>
-          <AdminField label="Sonra görseli">
-            <input name="after_image" required placeholder="/images/hafriyat/haf-002.jpg" className={adminInputClassName} />
-          </AdminField>
+          <ImageUploadField name="before_image" label="Önce görseli" hint="Yükle veya /images/... yolu girin" />
+          <ImageUploadField name="after_image" label="Sonra görseli" hint="Yükle veya /images/... yolu girin" />
           <div className="lg:col-span-2">
             <AdminField label="Galeri görselleri" hint="Her satır bir görsel yolu">
               <textarea name="gallery_images" className={adminTextareaClassName} />

@@ -11,15 +11,19 @@ import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { brand } from "@/lib/constants/brand";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
-import { projectCategories, projects, type ProjectCategory } from "@/lib/constants/projects";
-import { getProjectImagesByIndex } from "@/lib/constants/images";
+import { projectCategories, projects as staticProjects, type Project, type ProjectCategory } from "@/lib/constants/projects";
 
 type ProjectGalleryProps = {
   limit?: number;
   showFilters?: boolean;
 };
 
-export function ProjectGallery({ limit = 4, showFilters = true }: ProjectGalleryProps) {
+export function ProjectGallery({
+  limit = 4,
+  showFilters = true,
+  projects: projectItems,
+}: ProjectGalleryProps & { projects?: readonly Project[] }) {
+  const projects = projectItems ?? staticProjects;
   const [filter, setFilter] = useState<ProjectCategory | "all">("all");
   const filtered =
     filter === "all"
@@ -90,8 +94,8 @@ export function ProjectGallery({ limit = 4, showFilters = true }: ProjectGallery
             className="grid gap-8 lg:grid-cols-2"
           >
             {filtered.map((project, index) => {
-              const projectIndex = projects.findIndex((p) => p.slug === project.slug);
-              const imgs = getProjectImagesByIndex(projectIndex >= 0 ? projectIndex : index);
+              const beforeSrc = project.beforeImage;
+              const afterSrc = project.afterImage;
               return (
                 <motion.div
                   key={project.slug}
@@ -101,8 +105,8 @@ export function ProjectGallery({ limit = 4, showFilters = true }: ProjectGallery
                 >
                   <Card hover={false} className="overflow-hidden">
                     <BeforeAfterSlider
-                      beforeSrc={imgs.before}
-                      afterSrc={imgs.after}
+                      beforeSrc={beforeSrc}
+                      afterSrc={afterSrc}
                       beforeAlt={`${project.title} — öncesi`}
                       afterAlt={`${project.title} — sonrası`}
                       autoDemo={index === 0}

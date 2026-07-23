@@ -20,7 +20,7 @@ export function SeedDatabaseButton() {
           }
 
           alert(
-            `Aktarım tamamlandı.\nHizmet: ${response.result.services}\nProje: ${response.result.projects}\nEkip: ${response.result.team}\nİstatistik: ${response.result.stats}`,
+            `Aktarım tamamlandı.\nHizmet: ${response.result.services}\nProje: ${response.result.projects}\nEkip: ${response.result.team}\nİstatistik: ${response.result.stats}\nSSS: ${response.result.faq}\nFilo: ${response.result.fleet}\nAyar: ${response.result.settings}`,
           );
         })
       }

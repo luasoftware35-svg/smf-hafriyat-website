@@ -11,7 +11,7 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { brand } from "@/lib/constants/brand";
-import { contactInfo } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { cn } from "@/lib/utils";
 
 const cardVariants: Variants = {
@@ -43,6 +43,7 @@ export function HomeContactSection() {
 }
 
 function HomeContactSectionInner() {
+  const { contactInfo } = useSiteContact();
   const searchParams = useSearchParams();
   const [open, setOpen] = useState(false);
   const reduceMotion = useReducedMotion();

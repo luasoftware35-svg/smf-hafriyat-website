@@ -12,7 +12,7 @@ import { localSeo } from "@/lib/seo/local";
 import { serviceAreas } from "@/lib/constants/content";
 import { districtPages } from "@/lib/constants/districts";
 import { getServiceAreaImage, siteImages } from "@/lib/constants/images";
-import { contactInfo } from "@/lib/constants/site";
+import { getContactInfo } from "@/lib/data/contact-settings";
 
 export const metadata = createPageMetadata({
   title: "Denizli Hafriyat Hizmet Bölgeleri",
@@ -33,7 +33,8 @@ function getDistrictHref(areaName: string): string {
   return match ? `/hizmet-bolgeleri/${match.slug}` : `/iletisim?bolge=${encodeURIComponent(areaName)}`;
 }
 
-export default function ServiceAreasPage() {
+export default async function ServiceAreasPage() {
+  const contactInfo = await getContactInfo();
   return (
     <>
       <BreadcrumbJsonLd

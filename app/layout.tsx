@@ -12,7 +12,9 @@ import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { StickyMobileCta } from "@/components/layout/StickyMobileCta";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
-import { JsonLd } from "@/components/seo/JsonLd";
+import { SiteContactProvider } from "@/components/providers/SiteContactProvider";
+import { JsonLdServer } from "@/components/seo/JsonLdServer";
+import { getContactInfo, getCorporateCredentials } from "@/lib/data/contact-settings";
 import { siteConfig } from "@/lib/constants/site";
 import { absoluteUrl } from "@/lib/seo/urls";
 import { localSeo } from "@/lib/seo/local";
@@ -84,22 +86,28 @@ export const metadata: Metadata = {
   alternates: { canonical: siteConfig.url },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
   const isProduction = process.env.NODE_ENV === "production";
+  const [contactInfo, credentialsData] = await Promise.all([getContactInfo(), getCorporateCredentials()]);
 
   return (
     <html lang="tr">
       <head>
-        <JsonLd />
+        <JsonLdServer />
       </head>
       <body
         className={`${archivoBlack.variable} ${barlow.variable} ${ibmPlexMono.variable} min-h-screen bg-bg-primary text-text-primary antialiased`}
       >
+        <SiteContactProvider
+          contactInfo={contactInfo}
+          corporateCredentials={credentialsData.credentials}
+          insuranceNote={credentialsData.insuranceNote}
+        >
         {isProduction && gaId ? (
           <>
             <Script
@@ -132,6 +140,7 @@ export default function RootLayout({
           <CookieConsent />
           <GlobalCursorTrail />
         </SiteChrome>
+        </SiteContactProvider>
       </body>
     </html>
   );

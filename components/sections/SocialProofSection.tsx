@@ -6,7 +6,8 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { AnimatedCounter } from "@/components/motion/AnimatedCounter";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { clientProof, googleBusiness, stats } from "@/lib/constants/content";
+import { clientProof, googleBusiness, stats as staticStats } from "@/lib/constants/content";
+import type { SiteStat } from "@/lib/data/stats";
 import { cn } from "@/lib/utils";
 
 const statGridVariants: Variants = {
@@ -29,7 +30,8 @@ const projectCardVariants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] } },
 };
 
-export function SocialProofSection() {
+export function SocialProofSection({ stats }: { stats?: readonly SiteStat[] }) {
+  const resolvedStats = stats ?? staticStats;
   const reduceMotion = useReducedMotion();
 
   return (
@@ -72,7 +74,7 @@ export function SocialProofSection() {
               transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
             />
           )}
-          {stats.map((item) => (
+          {resolvedStats.map((item) => (
             <StatCell key={item.label} item={item} reduceMotion={!!reduceMotion} />
           ))}
         </motion.dl>
@@ -162,7 +164,7 @@ function StatCell({
   item,
   reduceMotion,
 }: {
-  item: (typeof stats)[number];
+  item: SiteStat;
   reduceMotion: boolean;
 }) {
   return (

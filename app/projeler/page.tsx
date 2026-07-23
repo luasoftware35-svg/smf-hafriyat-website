@@ -2,6 +2,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { ProjectsPageContent } from "@/components/sections/ProjectsPageContent";
 import { ImageMarquee } from "@/components/sections/ImageMarquee";
 import { BreadcrumbJsonLd, ProjectsItemListJsonLd } from "@/components/seo/JsonLd";
+import { getProjects } from "@/lib/data/projects";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo, pageSeoDescription } from "@/lib/seo/local";
 import { brand } from "@/lib/constants/brand";
@@ -15,11 +16,13 @@ export const metadata = createPageMetadata({
   keywords: ["denizli hafriyat projeleri", ...localSeo.defaultKeywords],
 });
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
+
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Ana Sayfa", path: "/" }, { name: "Projeler", path: "/projeler" }]} />
-      <ProjectsItemListJsonLd />
+      <ProjectsItemListJsonLd items={projects} />
       <PageHero
         eyebrow="Projeler"
         title={brand.pages.projects.title}
@@ -27,7 +30,7 @@ export default function ProjectsPage() {
         image={siteImages.fleetHero}
         imageAlt="Ekskavatör hafriyat projesi — SMF Hafriyat"
       />
-      <ProjectsPageContent />
+      <ProjectsPageContent projects={projects} />
       <ImageMarquee />
     </>
   );

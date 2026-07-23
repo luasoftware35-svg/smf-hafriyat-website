@@ -8,7 +8,8 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Card } from "@/components/ui/Card";
 import { ContactSection } from "@/components/sections/ContactSection";
 import type { DistrictPage } from "@/lib/constants/districts";
-import { contactInfo, ctaLinks } from "@/lib/constants/site";
+import { getContactInfo } from "@/lib/data/contact-settings";
+import { buildCtaLinks } from "@/lib/contact/derive";
 
 type DistrictLandingLayoutProps = {
   district: DistrictPage;
@@ -16,7 +17,9 @@ type DistrictLandingLayoutProps = {
   imageAlt: string;
 };
 
-export function DistrictLandingLayout({ district, image, imageAlt }: DistrictLandingLayoutProps) {
+export async function DistrictLandingLayout({ district, image, imageAlt }: DistrictLandingLayoutProps) {
+  const contactInfo = await getContactInfo();
+  const ctaLinks = buildCtaLinks(contactInfo);
   return (
     <>
       <PageHero

@@ -14,7 +14,8 @@ import {
 } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { fleet, fleetHighlights } from "@/lib/constants/content";
+import { fleet as staticFleet, fleetHighlights } from "@/lib/constants/content";
+import type { FleetItem } from "@/lib/data/fleet";
 import { getFleetImage } from "@/lib/constants/images";
 import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
@@ -22,10 +23,11 @@ import { cn } from "@/lib/utils";
 const AUTO_MS = 4200;
 const CARD_SPACING = 168;
 
-export function FleetMiniSection() {
+export function FleetMiniSection({ items }: { items?: readonly FleetItem[] }) {
   const reduceMotion = useReducedMotion();
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [active, setActive] = useState(0);
+  const fleet = items ?? staticFleet;
   const stageRef = useRef<HTMLDivElement>(null);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);

@@ -7,11 +7,12 @@ import { Card } from "@/components/ui/Card";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { contactInfo } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export function ContactSection() {
+  const { contactInfo } = useSiteContact();
   return (
     <Section id="iletisim" variant="muted">
       <Container>

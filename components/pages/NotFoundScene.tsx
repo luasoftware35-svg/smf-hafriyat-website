@@ -9,7 +9,7 @@ import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { contactInfo, ctaLinks } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { siteImages } from "@/lib/constants/images";
 import { cn } from "@/lib/utils";
 
@@ -137,6 +137,7 @@ function Digit404({ char, index, reduceMotion }: { char: string; index: number; 
 }
 
 export function NotFoundScene() {
+  const { contactInfo, ctaLinks } = useSiteContact();
   const reduceMotion = useReducedMotion();
 
   return (

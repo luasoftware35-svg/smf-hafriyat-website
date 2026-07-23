@@ -4,9 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Phone, FileText } from "lucide-react";
 import { brand } from "@/lib/constants/brand";
-import { ctaLinks } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 
 export function StickyMobileCta() {
+  const { ctaLinks } = useSiteContact();
   const pathname = usePathname();
 
   if (pathname === "/iletisim" || pathname.startsWith("/admin")) {

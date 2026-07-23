@@ -8,13 +8,15 @@ import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { TextReveal } from "@/components/motion/TextReveal";
 import { Container } from "@/components/ui/Container";
 import { brand } from "@/lib/constants/brand";
-import { ctaLinks, contactInfo, siteConfig } from "@/lib/constants/site";
+import { siteConfig } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { homeHeroBanners } from "@/lib/constants/images";
 import { cn } from "@/lib/utils";
 
 const SLIDE_MS = 6000;
 
 export function DiggerHero() {
+  const { contactInfo, ctaLinks } = useSiteContact();
   const [active, setActive] = useState(0);
   const slideCount = homeHeroBanners.length;
   const reduceMotion = useReducedMotion();

@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Input, Textarea, Select } from "@/components/ui/Input";
 import { cn } from "@/lib/utils";
 import { brand } from "@/lib/constants/brand";
-import { contactInfo } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import {
   contactFormSchema,
   projectTypeOptions,
@@ -32,6 +32,7 @@ export function ContactForm(props: ContactFormProps) {
 }
 
 function ContactFormInner({ className, variant = "default" }: ContactFormProps) {
+  const { contactInfo } = useSiteContact();
   const searchParams = useSearchParams();
   const defaults = useMemo(() => {
     const hizmet = searchParams.get("hizmet");

@@ -8,10 +8,10 @@ import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider";
-import { projectCategories, projects, type ProjectCategory } from "@/lib/constants/projects";
-import { getProjectImagesByIndex } from "@/lib/constants/images";
+import { projectCategories, projects as staticProjects, type Project, type ProjectCategory } from "@/lib/constants/projects";
 
-export function ProjectsPageContent() {
+export function ProjectsPageContent({ projects: projectItems }: { projects?: readonly Project[] }) {
+  const projects = projectItems ?? staticProjects;
   const [filter, setFilter] = useState<ProjectCategory | "all">("all");
   const filtered = filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
@@ -64,8 +64,6 @@ export function ProjectsPageContent() {
           className="grid gap-10 lg:grid-cols-2"
         >
           {filtered.map((project, index) => {
-            const projectIndex = projects.findIndex((p) => p.slug === project.slug);
-            const imgs = getProjectImagesByIndex(projectIndex >= 0 ? projectIndex : index);
             return (
               <motion.div
                 key={project.slug}
@@ -75,8 +73,8 @@ export function ProjectsPageContent() {
               >
                 <Card hover={false} className="overflow-hidden">
                   <BeforeAfterSlider
-                    beforeSrc={imgs.before}
-                    afterSrc={imgs.after}
+                    beforeSrc={project.beforeImage}
+                    afterSrc={project.afterImage}
                     beforeAlt={`${project.title} — öncesi`}
                     afterAlt={`${project.title} — sonrası`}
                     autoDemo={index === 0}

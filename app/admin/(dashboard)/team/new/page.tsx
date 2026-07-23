@@ -1,4 +1,5 @@
 import { AdminShell } from "@/components/admin/AdminShell";
+import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import { AdminButton, AdminCard, AdminField, adminInputClassName, adminTextareaClassName } from "@/components/admin/AdminTable";
 import { saveTeamMemberAction } from "@/lib/admin/actions";
 import { requireAdmin } from "@/lib/admin/auth";
@@ -21,9 +22,7 @@ export default async function AdminTeamNewPage() {
           <AdminField label="Rol">
             <input name="role" required className={adminInputClassName} />
           </AdminField>
-          <AdminField label="Fotoğraf yolu">
-            <input name="photo" required placeholder="/images/hafriyat/haf-001.jpg" className={adminInputClassName} />
-          </AdminField>
+          <ImageUploadField name="photo" label="Fotoğraf" hint="Yükle veya /images/... yolu girin" />
           <AdminField label="Sıra">
             <input name="order_index" type="number" defaultValue={1} className={adminInputClassName} />
           </AdminField>

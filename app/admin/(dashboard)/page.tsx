@@ -29,6 +29,8 @@ export default async function AdminDashboardPage() {
         <AdminMetricCard label="Yayındaki proje" value={metrics.publishedProjects} />
         <AdminMetricCard label="Yayındaki ekip üyesi" value={metrics.publishedTeam} />
         <AdminMetricCard label="Yayındaki istatistik" value={metrics.publishedStats} />
+        <AdminMetricCard label="Yayındaki SSS" value={metrics.publishedFaq} />
+        <AdminMetricCard label="Yayındaki filo kaydı" value={metrics.publishedFleet} />
       </div>
 
       <div className="mt-8">

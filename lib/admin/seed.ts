@@ -1,6 +1,11 @@
 import { services } from "@/lib/constants/services";
 import { projects } from "@/lib/constants/projects";
-import { stats, teamMembers } from "@/lib/constants/content";
+import { faqItems, fleet, stats, teamMembers } from "@/lib/constants/content";
+import {
+  contactInfo,
+  corporateCredentials,
+  insuranceNote,
+} from "@/lib/constants/site";
 import { createServiceRoleClient, isServiceRoleConfigured } from "@/lib/supabase/server";
 
 export type SeedResult = {
@@ -8,6 +13,9 @@ export type SeedResult = {
   projects: number;
   team: number;
   stats: number;
+  faq: number;
+  fleet: number;
+  settings: number;
 };
 
 export async function seedDatabaseFromStaticContent(): Promise<SeedResult> {
@@ -60,6 +68,54 @@ export async function seedDatabaseFromStaticContent(): Promise<SeedResult> {
     is_published: true,
   }));
 
+  const faqRows = faqItems.map((item, index) => ({
+    question: item.question,
+    answer: item.answer,
+    order_index: index + 1,
+    is_published: true,
+  }));
+
+  const fleetRows = fleet.map((item, index) => ({
+    name: item.name,
+    model: item.model,
+    capacity: item.capacity,
+    specs: item.specs,
+    icon: item.icon,
+    order_index: index + 1,
+    is_published: true,
+  }));
+
+  const settingsRows = [
+    {
+      key: "contact",
+      value: {
+        phone: contactInfo.phone,
+        phoneDisplay: contactInfo.phoneDisplay,
+        phoneHref: contactInfo.phoneHref,
+        phoneSecondary: contactInfo.phoneSecondary,
+        phoneSecondaryHref: contactInfo.phoneSecondaryHref,
+        email: contactInfo.email,
+        emailHref: contactInfo.emailHref,
+        whatsapp: contactInfo.whatsapp,
+        whatsappHref: contactInfo.whatsappHref,
+        contactPerson: contactInfo.contactPerson,
+        addressFull: contactInfo.address.full,
+        addressStreet: contactInfo.address.street,
+        workingHoursWeekdays: contactInfo.workingHours.weekdays,
+        workingHoursSunday: contactInfo.workingHours.sunday,
+        instagram: contactInfo.instagram,
+        mapLink: contactInfo.mapLink,
+      },
+    },
+    {
+      key: "credentials",
+      value: {
+        credentials: corporateCredentials,
+        insuranceNote,
+      },
+    },
+  ];
+
   const { error: servicesError } = await supabase.from("services").upsert(serviceRows, { onConflict: "slug" });
   if (servicesError) throw new Error(`Hizmetler aktarılamadı: ${servicesError.message}`);
 
@@ -78,10 +134,26 @@ export async function seedDatabaseFromStaticContent(): Promise<SeedResult> {
   const { error: statsInsertError } = await supabase.from("site_stats").insert(statRows);
   if (statsInsertError) throw new Error(`İstatistikler aktarılamadı: ${statsInsertError.message}`);
 
+  const { error: faqDeleteError } = await supabase.from("faq_items").delete().neq("id", "00000000-0000-0000-0000-000000000000");
+  if (faqDeleteError) throw new Error(`SSS temizlenemedi: ${faqDeleteError.message}`);
+  const { error: faqInsertError } = await supabase.from("faq_items").insert(faqRows);
+  if (faqInsertError) throw new Error(`SSS aktarılamadı: ${faqInsertError.message}`);
+
+  const { error: fleetDeleteError } = await supabase.from("fleet_items").delete().neq("id", "00000000-0000-0000-0000-000000000000");
+  if (fleetDeleteError) throw new Error(`Filo temizlenemedi: ${fleetDeleteError.message}`);
+  const { error: fleetInsertError } = await supabase.from("fleet_items").insert(fleetRows);
+  if (fleetInsertError) throw new Error(`Filo aktarılamadı: ${fleetInsertError.message}`);
+
+  const { error: settingsError } = await supabase.from("site_settings").upsert(settingsRows, { onConflict: "key" });
+  if (settingsError) throw new Error(`Site ayarları aktarılamadı: ${settingsError.message}`);
+
   return {
     services: serviceRows.length,
     projects: projectRows.length,
     team: teamRows.length,
     stats: statRows.length,
+    faq: faqRows.length,
+    fleet: fleetRows.length,
+    settings: settingsRows.length,
   };
 }

@@ -10,7 +10,11 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { HomeContactSection } from "@/components/sections/HomeContactSection";
 import { HomeSeoIntro } from "@/components/sections/HomeSeoIntro";
 import { FaqJsonLd } from "@/components/seo/JsonLd";
-import { faqItems, HOME_FAQ_COUNT } from "@/lib/constants/content";
+import { HOME_FAQ_COUNT } from "@/lib/constants/content";
+import { getFaqItems } from "@/lib/data/faq";
+import { getFleetItems } from "@/lib/data/fleet";
+import { getProjects } from "@/lib/data/projects";
+import { getSiteStats } from "@/lib/data/stats";
 import { createPageMetadata } from "@/lib/seo/metadata";
 import { localSeo } from "@/lib/seo/local";
 
@@ -21,20 +25,28 @@ export const metadata = createPageMetadata({
   keywords: [...localSeo.defaultKeywords],
 });
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [stats, faqItems, fleetItems, projects] = await Promise.all([
+    getSiteStats(),
+    getFaqItems(),
+    getFleetItems(),
+    getProjects(),
+  ]);
+  const homeFaq = faqItems.slice(0, HOME_FAQ_COUNT);
+
   return (
     <>
-      <FaqJsonLd items={faqItems.slice(0, HOME_FAQ_COUNT)} />
+      <FaqJsonLd items={homeFaq} />
       <DiggerHero />
       <HomeSeoIntro />
       <WhyUsSection />
       <ServicesGridSection limit={6} showAllLink />
-      <FleetMiniSection />
+      <FleetMiniSection items={fleetItems} />
       <ServiceAreasBand />
-      <SocialProofSection />
+      <SocialProofSection stats={stats} />
       <ProcessTimeline />
-      <ProjectGallery limit={2} showFilters={false} />
-      <FaqSection limit={HOME_FAQ_COUNT} showContactLink />
+      <ProjectGallery limit={2} showFilters={false} projects={projects} />
+      <FaqSection limit={HOME_FAQ_COUNT} showContactLink items={faqItems} />
       <HomeContactSection />
     </>
   );

@@ -6,12 +6,14 @@ export async function getDashboardMetrics(): Promise<DashboardMetrics> {
   await requireAdmin();
   const supabase = await createClient();
 
-  const [submissions, services, projects, team, stats] = await Promise.all([
+  const [submissions, services, projects, team, stats, faq, fleet] = await Promise.all([
     supabase.from("contact_submissions").select("status", { count: "exact" }),
     supabase.from("services").select("id", { count: "exact" }).eq("is_published", true),
     supabase.from("projects").select("id", { count: "exact" }).eq("is_published", true),
     supabase.from("team_members").select("id", { count: "exact" }).eq("is_published", true),
     supabase.from("site_stats").select("id", { count: "exact" }).eq("is_published", true),
+    supabase.from("faq_items").select("id", { count: "exact" }).eq("is_published", true),
+    supabase.from("fleet_items").select("id", { count: "exact" }).eq("is_published", true),
   ]);
 
   const allSubmissions = submissions.data ?? [];
@@ -24,7 +26,23 @@ export async function getDashboardMetrics(): Promise<DashboardMetrics> {
     publishedProjects: projects.count ?? 0,
     publishedTeam: team.count ?? 0,
     publishedStats: stats.count ?? 0,
+    publishedFaq: faq.count ?? 0,
+    publishedFleet: fleet.count ?? 0,
   };
+}
+
+export async function getFaqItemById(id: string) {
+  await requireAdmin();
+  const supabase = await createClient();
+  const { data } = await supabase.from("faq_items").select("*").eq("id", id).maybeSingle();
+  return data;
+}
+
+export async function getFleetItemById(id: string) {
+  await requireAdmin();
+  const supabase = await createClient();
+  const { data } = await supabase.from("fleet_items").select("*").eq("id", id).maybeSingle();
+  return data;
 }
 
 export async function getRecentSubmissions(limit = 5): Promise<ContactSubmission[]> {

@@ -73,6 +73,35 @@ export type DbSiteStat = {
   updated_at: string;
 };
 
+export type DbFaqItem = {
+  id: string;
+  question: string;
+  answer: string;
+  order_index: number;
+  is_published: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type DbFleetItem = {
+  id: string;
+  name: string;
+  model: string;
+  capacity: string;
+  specs: string;
+  icon: string;
+  order_index: number;
+  is_published: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type DbSiteSetting = {
+  key: string;
+  value: Record<string, unknown>;
+  updated_at: string;
+};
+
 export type DashboardMetrics = {
   newSubmissions: number;
   totalSubmissions: number;
@@ -80,6 +109,8 @@ export type DashboardMetrics = {
   publishedProjects: number;
   publishedTeam: number;
   publishedStats: number;
+  publishedFaq: number;
+  publishedFleet: number;
 };
 
 export const submissionStatusLabels: Record<SubmissionStatus, string> = {
@@ -106,4 +137,17 @@ export const serviceIconOptions = [
   "Waves",
   "Droplets",
   "Container",
+  "Excavator",
+  "Loader",
+  "MiniExcavator",
+  "Bulldozer",
+] as const;
+
+export const fleetIconOptions = [
+  "Excavator",
+  "Loader",
+  "Truck",
+  "MiniExcavator",
+  "Bulldozer",
+  "Hammer",
 ] as const;

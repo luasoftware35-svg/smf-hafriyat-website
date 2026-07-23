@@ -10,10 +10,12 @@ import { Button } from "@/components/ui/Button";
 import { TopBar } from "@/components/layout/TopBar";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { NavDropdown } from "@/components/layout/NavDropdown";
-import { ctaLinks, navLinks, siteConfig } from "@/lib/constants/site";
+import { useSiteContact } from "@/components/providers/SiteContactProvider";
+import { navLinks, siteConfig } from "@/lib/constants/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
+  const { ctaLinks } = useSiteContact();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
