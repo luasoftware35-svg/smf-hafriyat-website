@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, type ComponentType } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
@@ -299,7 +299,7 @@ function ContactChip({
   href: string;
   label: string;
   subLabel: string;
-  icon: typeof Phone;
+  icon: ComponentType<{ className?: string; size?: number }>;
   external?: boolean;
   hoverClass: string;
   reduceMotion: boolean;
