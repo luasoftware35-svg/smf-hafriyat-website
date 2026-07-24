@@ -163,12 +163,6 @@ export const teamMembers = [
     photo: "/images/hafriyat/haf-001.jpg",
   },
   {
-    name: "Sedat Ramizoğlu",
-    role: "CEO",
-    bio: "Şirket yönetimi ve müşteri ilişkilerinden sorumlu. Denizli Merkezefendi merkezli operasyonları yönetir.",
-    photo: "/images/hafriyat/haf-002.jpg",
-  },
-  {
     name: "Ferhat Ramizoğlu",
     role: "Genel Müdür",
     bio: "Saha operasyonları, proje planlama ve ekip koordinasyonundan sorumludur.",
@@ -251,7 +245,7 @@ export const faqItems = [
   {
     question: "Denizli kazı hizmeti veriyor musunuz?",
     answer:
-      "Evet. Denizli kazı, temel kazısı, derin kazı ve altyapı hattı projelerinde operatörlü ekskavatör filomuzla hizmet veriyoruz. Detaylar için Denizli kazı sayfamızı inceleyebilir veya 0533 353 22 53 hattından bize ulaşabilirsiniz.",
+      "Evet. Denizli kazı, temel kazısı, derin kazı ve altyapı hattı projelerinde operatörlü ekskavatör filomuzla hizmet veriyoruz. Detaylar için Denizli kazı sayfamızı inceleyebilir veya 0258 377 80 80 merkez hattımızdan bize ulaşabilirsiniz.",
   },
   {
     question: "Denizli inşaat firmalarına hafriyat hizmeti sunuyor musunuz?",
@@ -261,7 +255,7 @@ export const faqItems = [
   {
     question: "Denizli'de hafriyat firması arıyorum, SMF Hafriyat nerede?",
     answer:
-      "Merkez ofisimiz Yeni Mah. Menderes Bulvarı No:7/A D:3, Merkezefendi, Denizli adresindedir. Denizli hafriyat, yıkım ve ekskavatör kazı ihtiyaçlarınız için 0533 353 22 53 numarasından, WhatsApp Business (0541 156 06 64) üzerinden veya smfhafriyatofis@hotmail.com adresinden bize ulaşabilirsiniz.",
+      "Merkez ofisimiz Yeni Mah. Menderes Bulvarı No:7/A D:3, Merkezefendi, Denizli adresindedir. Denizli hafriyat, yıkım ve ekskavatör kazı ihtiyaçlarınız için 0258 377 80 80 merkez hattından, WhatsApp & Muhasebe (0541 156 06 64) üzerinden, mobil hat (0533 353 22 53) veya smfhafriyatofis@hotmail.com adresinden bize ulaşabilirsiniz.",
   },
   {
     question: "Kendi filonuz ve operatör kadronuz var mı?",
@@ -276,7 +270,7 @@ export const faqItems = [
   {
     question: "Keşif ve teklif süreci ne kadar sürer?",
     answer:
-      "Denizli ve çevre ilçelerde aynı gün keşif planlayabiliyoruz. Saha ölçümü ve hacim hesabı sonrası 1–3 iş günü içinde yazılı teklif iletilir. Hızlı koordinasyon için 0533 353 22 53.",
+      "Denizli ve çevre ilçelerde aynı gün keşif planlayabiliyoruz. Saha ölçümü ve hacim hesabı sonrası 1–3 iş günü içinde yazılı teklif iletilir. Hızlı koordinasyon için 0258 377 80 80.",
   },
   {
     question: "Hangi bölgelere hizmet veriyorsunuz?",
@@ -311,7 +305,7 @@ export const faqItems = [
   {
     question: "Acil saha müdahalesi ve aynı gün keşif mümkün mü?",
     answer:
-      "Denizli merkez ve çevre ilçelerde aynı gün keşif planlayabiliyoruz. Acil yıkım, enkaz kaldırma ve saha müdahalesi için 0533 353 22 53 hattından ulaşın.",
+      "Denizli merkez ve çevre ilçelerde aynı gün keşif planlayabiliyoruz. Acil yıkım, enkaz kaldırma ve saha müdahalesi için 0258 377 80 80 merkez hattından ulaşın.",
   },
   {
     question: "Hangi belgelerle çalışıyorsunuz?",

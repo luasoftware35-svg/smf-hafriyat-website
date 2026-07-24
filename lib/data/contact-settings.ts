@@ -85,28 +85,27 @@ async function getSetting<T>(key: string): Promise<T | null> {
 }
 
 function mergeContactInfo(db: ContactSettingsValue | null): ContactInfoData {
-  const whatsapp = db?.whatsapp ?? staticContactInfo.whatsapp;
   const whatsappLinks = resolveWhatsAppContact({
-    whatsapp,
-    whatsappHref: db?.whatsappHref ?? staticContactInfo.whatsappHref,
+    whatsapp: staticContactInfo.whatsapp,
+    whatsappHref: staticContactInfo.whatsappHref,
     whatsappMessage: staticContactInfo.whatsappMessage,
   });
 
   return {
     ...staticContactInfo,
-    phone: db?.phone ?? staticContactInfo.phone,
-    phoneDisplay: db?.phoneDisplay ?? staticContactInfo.phoneDisplay,
-    phoneHref: db?.phoneHref ?? staticContactInfo.phoneHref,
-    phoneSecondary: db?.phoneSecondary ?? staticContactInfo.phoneSecondary,
-    phoneSecondaryHref: db?.phoneSecondaryHref ?? staticContactInfo.phoneSecondaryHref,
+    phone: staticContactInfo.phone,
+    phoneDisplay: staticContactInfo.phoneDisplay,
+    phoneHref: staticContactInfo.phoneHref,
+    phoneSecondary: staticContactInfo.phoneSecondary,
+    phoneSecondaryHref: staticContactInfo.phoneSecondaryHref,
     email: db?.email ?? staticContactInfo.email,
     emailHref: db?.emailHref ?? staticContactInfo.emailHref,
     emailSecondary: db?.emailSecondary ?? staticContactInfo.emailSecondary,
     emailSecondaryHref: db?.emailSecondaryHref ?? staticContactInfo.emailSecondaryHref,
-    whatsapp,
-    whatsappDisplay: db?.whatsappDisplay ?? staticContactInfo.whatsappDisplay,
+    whatsapp: staticContactInfo.whatsapp,
+    whatsappDisplay: staticContactInfo.whatsappDisplay,
     ...whatsappLinks,
-    contactPerson: db?.contactPerson ?? staticContactInfo.contactPerson,
+    contactPerson: "",
     instagram: db?.instagram ?? staticContactInfo.instagram,
     mapLink: db?.mapLink ?? staticContactInfo.mapLink,
     mapEmbedUrl: staticContactInfo.mapEmbedUrl,

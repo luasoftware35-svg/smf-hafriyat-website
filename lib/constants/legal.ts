@@ -1,3 +1,4 @@
+import { buildCorporatePhoneLines } from "@/lib/contact/phones";
 import { companyLegal, siteConfig } from "@/lib/constants/site";
 import type { ContactInfoData } from "@/lib/data/contact-settings";
 
@@ -18,13 +19,13 @@ export const legalRelatedLinks = [
 ] as const;
 
 export function buildDataControllerLines(contact: ContactInfoData): string[] {
+  const phones = buildCorporatePhoneLines(contact);
   return [
     `Ticari unvan: ${siteConfig.legalName}`,
     `Marka / işletme adı: ${siteConfig.name}`,
     `Adres: ${contact.address.full}`,
-    `Telefon: ${contact.phoneDisplay}${contact.phoneSecondary ? ` · ${contact.phoneSecondary}` : ""}`,
+    ...phones.map((line) => `${line.label}: ${line.display}`),
     `E-posta: ${contact.email}`,
-    `İletişim sorumlusu: ${contact.contactPerson}`,
     `Vergi dairesi: ${companyLegal.taxOffice}`,
     `Ticaret sicili: ${companyLegal.tradeRegistry}`,
   ];

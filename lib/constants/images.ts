@@ -254,7 +254,7 @@ export const ctaPromoSlides: PromoSlide[] = [
   {
     src: real.derinSaha,
     alt: realAlt.derinSaha,
-    tag: "0533 353 22 53",
+    tag: "0258 377 80 80",
     title: "Derin kazı ve büyük metraj işler",
     subtitle: "Telefon veya WhatsApp — Pzt–Cmt 08:00–18:00, acil sevkiyat mümkün.",
   },

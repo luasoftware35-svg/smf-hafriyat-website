@@ -35,7 +35,7 @@ export function WhatsAppButton({ variant = "dock" }: WhatsAppButtonProps) {
         <WhatsAppIcon size={24} className="text-white" />
       </span>
       <span className="min-w-0">
-        <span className="block text-sm font-semibold leading-tight">WhatsApp</span>
+        <span className="block text-sm font-semibold leading-tight">WhatsApp & Muhasebe</span>
         <span className="block text-[11px] leading-tight text-white/85">{contactInfo.whatsappDisplay}</span>
       </span>
     </a>

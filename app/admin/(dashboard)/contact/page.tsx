@@ -33,15 +33,15 @@ export default async function AdminContactPage({
               <input name="phone" defaultValue={contact.phone} className={adminInputClassName} />
             </AdminField>
             <AdminField label="Telefon (görünen)">
-              <input name="phoneDisplay" defaultValue={contact.phoneDisplay} className={adminInputClassName} />
+              <input name="phoneDisplay" defaultValue={contact.phoneDisplay} className={adminInputClassName} placeholder="0258 377 80 80" />
             </AdminField>
             <AdminField label="Telefon href">
               <input name="phoneHref" defaultValue={contact.phoneHref} className={adminInputClassName} />
             </AdminField>
-            <AdminField label="İkinci telefon">
+            <AdminField label="Mobil hat (ek)">
               <input name="phoneSecondary" defaultValue={contact.phoneSecondary} className={adminInputClassName} />
             </AdminField>
-            <AdminField label="İkinci telefon href">
+            <AdminField label="Mobil hat href">
               <input name="phoneSecondaryHref" defaultValue={contact.phoneSecondaryHref} className={adminInputClassName} />
             </AdminField>
             <AdminField label="E-posta">
@@ -60,13 +60,10 @@ export default async function AdminContactPage({
               <input name="whatsapp" defaultValue={contact.whatsapp} className={adminInputClassName} />
             </AdminField>
             <AdminField label="WhatsApp (görünen)">
-              <input name="whatsappDisplay" defaultValue={contact.whatsappDisplay} className={adminInputClassName} />
+              <input name="whatsappDisplay" defaultValue={contact.whatsappDisplay} className={adminInputClassName} placeholder="0541 156 06 64" />
             </AdminField>
             <AdminField label="WhatsApp köprü sayfası (otomatik)">
               <input name="whatsappHref" defaultValue="/whatsapp" readOnly className={adminInputClassName} />
-            </AdminField>
-            <AdminField label="İletişim sorumlusu">
-              <input name="contactPerson" defaultValue={contact.contactPerson} className={adminInputClassName} />
             </AdminField>
             <AdminField label="Adres (tam)">
               <textarea name="addressFull" defaultValue={contact.addressFull} className={adminTextareaClassName} rows={2} />

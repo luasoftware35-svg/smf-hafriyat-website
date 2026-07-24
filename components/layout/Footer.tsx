@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { buildCorporatePhoneLines } from "@/lib/contact/phones";
 import { footerPages, footerServices, siteConfig, companyLegal } from "@/lib/constants/site";
 import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { brand } from "@/lib/constants/brand";
@@ -12,6 +13,7 @@ import { siteImages } from "@/lib/constants/images";
 
 export function Footer() {
   const { contactInfo, ctaLinks, socialLinks, corporateCredentials, insuranceNote } = useSiteContact();
+  const phoneLines = buildCorporatePhoneLines(contactInfo);
   const currentYear = new Date().getFullYear();
 
   return (
@@ -118,12 +120,17 @@ export function Footer() {
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
                 <span>{contactInfo.address.full}</span>
               </li>
-              <li>
-                <Link href={contactInfo.phoneHref} className="inline-flex items-center gap-3 transition-colors hover:text-accent">
-                  <Phone size={16} className="shrink-0 text-accent" aria-hidden="true" />
-                  <span className="font-mono">{contactInfo.phoneDisplay}</span>
-                </Link>
-              </li>
+              {phoneLines.map((line) => (
+                <li key={line.label}>
+                  <Link href={line.href} className="inline-flex items-start gap-3 transition-colors hover:text-accent">
+                    <Phone size={16} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+                    <span>
+                      <span className="block text-[11px] uppercase tracking-[0.1em] text-text-secondary/80">{line.label}</span>
+                      <span className="font-mono">{line.display}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
               <li>
                 <Link href={contactInfo.emailHref} className="inline-flex items-center gap-3 transition-colors hover:text-accent">
                   <Mail size={16} className="shrink-0 text-accent" aria-hidden="true" />

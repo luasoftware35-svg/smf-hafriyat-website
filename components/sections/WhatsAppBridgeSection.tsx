@@ -62,7 +62,7 @@ export function WhatsAppBridgeSection({ contactInfo }: WhatsAppBridgeSectionProp
                   {companyLegal.tradeRegistry}
                 </p>
                 <p className="mt-4 text-lg font-semibold tracking-wide text-text-primary">{contactInfo.whatsappDisplay}</p>
-                <p className="mt-1 text-sm text-text-secondary">İletişim sorumlusu: {contactInfo.contactPerson}</p>
+                <p className="mt-1 text-sm text-text-secondary">WhatsApp & Muhasebe</p>
               </div>
 
               <div className="mt-8 rounded-2xl border border-surface bg-bg-secondary/70 p-4 sm:p-5">

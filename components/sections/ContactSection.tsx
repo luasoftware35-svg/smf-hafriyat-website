@@ -9,11 +9,13 @@ import { Section, SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { useSiteContact } from "@/components/providers/SiteContactProvider";
+import { buildCorporatePhoneLines } from "@/lib/contact/phones";
 import { brand } from "@/lib/constants/brand";
 import { siteImages } from "@/lib/constants/images";
 
 export function ContactSection() {
   const { contactInfo } = useSiteContact();
+  const phoneLines = buildCorporatePhoneLines(contactInfo);
   return (
     <Section id="iletisim" variant="muted">
       <Container>
@@ -70,21 +72,27 @@ export function ContactSection() {
                       <MapPin size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
                       <span>{contactInfo.address.full}</span>
                     </li>
-                    <li>
-                      <a href={contactInfo.phoneHref} className="flex items-center gap-3 hover:text-accent">
-                        <Phone size={18} className="shrink-0 text-accent" aria-hidden="true" />
-                        <span className="font-mono font-medium">{contactInfo.phoneDisplay}</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href={contactInfo.whatsappHref} className="flex items-center gap-3 hover:text-accent">
-                        <WhatsAppIcon size={18} className="shrink-0 text-[#25D366]" />
-                        <span className="font-mono font-medium">WhatsApp Business · {contactInfo.whatsappDisplay}</span>
-                      </a>
-                    </li>
-                    <li className="text-text-secondary">
-                      <span className="font-medium text-text-primary">{contactInfo.contactPerson}</span> — İletişim Sorumlusu
-                    </li>
+                    {phoneLines.map((line) => (
+                      <li key={line.label}>
+                        {line.label.startsWith("WhatsApp") ? (
+                          <a href={line.href} className="flex items-center gap-3 hover:text-accent">
+                            <WhatsAppIcon size={18} className="shrink-0 text-[#25D366]" />
+                            <span>
+                              <span className="block text-[11px] uppercase tracking-[0.12em] text-text-secondary">{line.label}</span>
+                              <span className="font-mono font-medium text-text-primary">{line.display}</span>
+                            </span>
+                          </a>
+                        ) : (
+                          <a href={line.href} className="flex items-center gap-3 hover:text-accent">
+                            <Phone size={18} className="shrink-0 text-accent" aria-hidden="true" />
+                            <span>
+                              <span className="block text-[11px] uppercase tracking-[0.12em] text-text-secondary">{line.label}</span>
+                              <span className="font-mono font-medium text-text-primary">{line.display}</span>
+                            </span>
+                          </a>
+                        )}
+                      </li>
+                    ))}
                     <li>
                       <a href={contactInfo.emailHref} className="flex items-center gap-3 hover:text-accent">
                         <Mail size={18} className="shrink-0 text-accent" aria-hidden="true" />

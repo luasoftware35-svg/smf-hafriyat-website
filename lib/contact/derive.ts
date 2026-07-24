@@ -3,7 +3,7 @@ import type { ContactInfoData } from "@/lib/data/contact-settings";
 export function buildCtaLinks(contactInfo: ContactInfoData) {
   return {
     quote: { label: "Keşif Talep Edin", href: "/iletisim" },
-    call: { label: "Hemen Ara", href: contactInfo.phoneHref },
+    call: { label: contactInfo.phoneDisplay, href: contactInfo.phoneHref },
   } as const;
 }
 

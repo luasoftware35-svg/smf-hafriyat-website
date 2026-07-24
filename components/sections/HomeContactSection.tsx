@@ -176,7 +176,7 @@ function HomeContactSectionInner() {
                     <ContactChip
                       href={contactInfo.phoneHref}
                       label={contactInfo.phoneDisplay}
-                      subLabel="Telefon"
+                      subLabel="Merkez Hat"
                       icon={Phone}
                       hoverClass="group-hover:text-accent group-hover:border-accent/30 group-hover:bg-accent/[0.06]"
                       reduceMotion={!!reduceMotion}
@@ -362,7 +362,7 @@ function WhatsappContactChip({
       </span>
       <span className="min-w-0 text-left">
         <span className="block truncate text-sm font-semibold text-text-primary transition-colors duration-300">{label}</span>
-        <span className="block text-[10px] uppercase tracking-[0.12em] text-text-secondary">WhatsApp Business</span>
+          <span className="block text-[10px] uppercase tracking-[0.12em] text-text-secondary">WhatsApp & Muhasebe</span>
       </span>
       {isExternal ? (
         <ArrowUpRight size={14} className="ml-auto shrink-0 text-text-secondary/50 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />

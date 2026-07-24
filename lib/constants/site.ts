@@ -33,11 +33,11 @@ export const insuranceNote =
   "Tüm iş makinelerimiz kasko ve üçüncü şahıs mali mesuliyet sigortası kapsamındadır.";
 
 export const contactInfo = {
-  phone: "+90 533 353 22 53",
-  phoneDisplay: "0533 353 22 53",
-  phoneHref: "tel:+905333532253",
-  phoneSecondary: "0551 124 53 06",
-  phoneSecondaryHref: "tel:+905511245306",
+  phone: "+90 258 377 80 80",
+  phoneDisplay: "0258 377 80 80",
+  phoneHref: "tel:+902583778080",
+  phoneSecondary: "0533 353 22 53",
+  phoneSecondaryHref: "tel:+905333532253",
   email: "smfhafriyatofis@hotmail.com",
   emailHref: "mailto:smfhafriyatofis@hotmail.com",
   emailSecondary: "hello@genuadigital.com",
@@ -47,7 +47,7 @@ export const contactInfo = {
   whatsappMessage: whatsappDefaultMessage,
   whatsappHref: whatsappBridgePath,
   whatsappDirectHref: buildWhatsAppDirectUrl("905411560664"),
-  contactPerson: "Sedat Ramizoğlu",
+  contactPerson: "",
   address: {
     street: "Yeni Mah. Menderes Bulvarı No:7/A D:3",
     neighborhood: "Yeni Mahalle",
