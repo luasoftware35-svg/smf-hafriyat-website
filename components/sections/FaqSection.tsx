@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
-import { ChevronDown, Phone } from "lucide-react";
-import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { ChevronDown, MessageCircle, Phone } from "lucide-react";
 import { AnimatedButton } from "@/components/motion/AnimatedButton";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
@@ -115,7 +114,7 @@ export function FaqSection({ limit, showContactLink = false, items }: FaqSection
 
 const channelStyles = {
   whatsapp: {
-    icon: WhatsAppIcon,
+    icon: MessageCircle,
     hoverIcon: "group-hover:text-[#25D366]",
     hoverRing: "group-hover:bg-[#25D366]/20",
     hoverSurface: "group-hover:border-[#25D366]/30 group-hover:bg-[#25D366]/10",
