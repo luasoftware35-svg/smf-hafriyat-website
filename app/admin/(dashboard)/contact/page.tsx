@@ -62,8 +62,8 @@ export default async function AdminContactPage({
             <AdminField label="WhatsApp (görünen)">
               <input name="whatsappDisplay" defaultValue={contact.whatsappDisplay} className={adminInputClassName} />
             </AdminField>
-            <AdminField label="WhatsApp link">
-              <input name="whatsappHref" defaultValue={contact.whatsappHref} className={adminInputClassName} />
+            <AdminField label="WhatsApp köprü sayfası (otomatik)">
+              <input name="whatsappHref" defaultValue="/whatsapp" readOnly className={adminInputClassName} />
             </AdminField>
             <AdminField label="İletişim sorumlusu">
               <input name="contactPerson" defaultValue={contact.contactPerson} className={adminInputClassName} />

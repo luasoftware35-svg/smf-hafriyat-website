@@ -77,7 +77,7 @@ export function ContactSection() {
                       </a>
                     </li>
                     <li>
-                      <a href={contactInfo.whatsappHref} className="flex items-center gap-3 hover:text-accent" target="_blank" rel="noopener noreferrer">
+                      <a href={contactInfo.whatsappHref} className="flex items-center gap-3 hover:text-accent">
                         <WhatsAppIcon size={18} className="shrink-0 text-[#25D366]" />
                         <span className="font-mono font-medium">WhatsApp Business · {contactInfo.whatsappDisplay}</span>
                       </a>

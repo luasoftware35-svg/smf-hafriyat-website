@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { contactFormSchema } from "@/lib/validations/contact-schema";
 import { sendContactNotification } from "@/lib/email/send-contact-notification";
 import { createServiceRoleClient, isServiceRoleConfigured } from "@/lib/supabase/server";
-import { contactInfo } from "@/lib/constants/site";
+import { buildWhatsAppDirectUrl } from "@/lib/contact/whatsapp";
+import { getContactInfo } from "@/lib/data/contact-settings";
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT = 5;
@@ -26,6 +27,8 @@ function isRateLimited(ip: string): boolean {
 }
 
 export async function POST(request: Request) {
+  const contactInfo = await getContactInfo();
+
   try {
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
 
@@ -101,9 +104,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       message: "Talebiniz başarıyla alındı. En kısa sürede sizinle iletişime geçeceğiz.",
-      whatsappUrl: `https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(
+      whatsappUrl: buildWhatsAppDirectUrl(
+        contactInfo.whatsapp,
         `Merhaba, web sitesinden teklif talebi gönderdim.\nAd: ${data.name}\nProje: ${data.projectType}\nAdres: ${data.projectAddress}`,
-      )}`,
+      ),
     });
   } catch {
     return NextResponse.json(

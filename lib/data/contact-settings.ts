@@ -1,3 +1,4 @@
+import { resolveWhatsAppContact } from "@/lib/contact/whatsapp";
 import {
   companyLegal,
   contactInfo as staticContactInfo,
@@ -20,6 +21,8 @@ export type ContactInfoData = {
   whatsapp: string;
   whatsappDisplay: string;
   whatsappHref: string;
+  whatsappDirectHref: string;
+  whatsappMessage: string;
   contactPerson: string;
   address: {
     street: string;
@@ -81,39 +84,48 @@ async function getSetting<T>(key: string): Promise<T | null> {
   }
 }
 
-export async function getContactInfo(): Promise<ContactInfoData> {
-  const db = await getSetting<ContactSettingsValue>("contact");
-  if (!db) return staticContactInfo;
+function mergeContactInfo(db: ContactSettingsValue | null): ContactInfoData {
+  const whatsapp = db?.whatsapp ?? staticContactInfo.whatsapp;
+  const whatsappLinks = resolveWhatsAppContact({
+    whatsapp,
+    whatsappHref: db?.whatsappHref ?? staticContactInfo.whatsappHref,
+    whatsappMessage: staticContactInfo.whatsappMessage,
+  });
 
   return {
     ...staticContactInfo,
-    phone: db.phone ?? staticContactInfo.phone,
-    phoneDisplay: db.phoneDisplay ?? staticContactInfo.phoneDisplay,
-    phoneHref: db.phoneHref ?? staticContactInfo.phoneHref,
-    phoneSecondary: db.phoneSecondary ?? staticContactInfo.phoneSecondary,
-    phoneSecondaryHref: db.phoneSecondaryHref ?? staticContactInfo.phoneSecondaryHref,
-    email: db.email ?? staticContactInfo.email,
-    emailHref: db.emailHref ?? staticContactInfo.emailHref,
-    emailSecondary: db.emailSecondary ?? staticContactInfo.emailSecondary,
-    emailSecondaryHref: db.emailSecondaryHref ?? staticContactInfo.emailSecondaryHref,
-    whatsapp: db.whatsapp ?? staticContactInfo.whatsapp,
-    whatsappDisplay: db.whatsappDisplay ?? staticContactInfo.whatsappDisplay,
-    whatsappHref: db.whatsappHref ?? staticContactInfo.whatsappHref,
-    contactPerson: db.contactPerson ?? staticContactInfo.contactPerson,
-    instagram: db.instagram ?? staticContactInfo.instagram,
-    mapLink: db.mapLink ?? staticContactInfo.mapLink,
+    phone: db?.phone ?? staticContactInfo.phone,
+    phoneDisplay: db?.phoneDisplay ?? staticContactInfo.phoneDisplay,
+    phoneHref: db?.phoneHref ?? staticContactInfo.phoneHref,
+    phoneSecondary: db?.phoneSecondary ?? staticContactInfo.phoneSecondary,
+    phoneSecondaryHref: db?.phoneSecondaryHref ?? staticContactInfo.phoneSecondaryHref,
+    email: db?.email ?? staticContactInfo.email,
+    emailHref: db?.emailHref ?? staticContactInfo.emailHref,
+    emailSecondary: db?.emailSecondary ?? staticContactInfo.emailSecondary,
+    emailSecondaryHref: db?.emailSecondaryHref ?? staticContactInfo.emailSecondaryHref,
+    whatsapp,
+    whatsappDisplay: db?.whatsappDisplay ?? staticContactInfo.whatsappDisplay,
+    ...whatsappLinks,
+    contactPerson: db?.contactPerson ?? staticContactInfo.contactPerson,
+    instagram: db?.instagram ?? staticContactInfo.instagram,
+    mapLink: db?.mapLink ?? staticContactInfo.mapLink,
     mapEmbedUrl: staticContactInfo.mapEmbedUrl,
     address: {
       ...staticContactInfo.address,
-      street: db.addressStreet ?? staticContactInfo.address.street,
-      full: db.addressFull ?? staticContactInfo.address.full,
+      street: db?.addressStreet ?? staticContactInfo.address.street,
+      full: db?.addressFull ?? staticContactInfo.address.full,
     },
     workingHours: {
       schedule: staticContactInfo.workingHours.schedule,
-      weekdays: db.workingHoursWeekdays ?? staticContactInfo.workingHours.weekdays,
-      sunday: db.workingHoursSunday ?? staticContactInfo.workingHours.sunday,
+      weekdays: db?.workingHoursWeekdays ?? staticContactInfo.workingHours.weekdays,
+      sunday: db?.workingHoursSunday ?? staticContactInfo.workingHours.sunday,
     },
   };
+}
+
+export async function getContactInfo(): Promise<ContactInfoData> {
+  const db = await getSetting<ContactSettingsValue>("contact");
+  return mergeContactInfo(db);
 }
 
 export async function getCorporateCredentials(): Promise<{

@@ -150,7 +150,7 @@ export function SiteChatWidget() {
                     action.whatsapp ? (
                       <a
                         key={action.label}
-                        href={contactInfo.whatsappHref}
+                        href={contactInfo.whatsappDirectHref}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98]"

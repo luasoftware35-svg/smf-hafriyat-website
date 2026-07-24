@@ -1,3 +1,5 @@
+import { buildWhatsAppDirectUrl, whatsappBridgePath, whatsappDefaultMessage } from "@/lib/contact/whatsapp";
+
 export const siteConfig = {
   name: "SMF Hafriyat",
   legalName: "SMF Yıkım Hafriyat Ltd. Şti.",
@@ -42,8 +44,9 @@ export const contactInfo = {
   emailSecondaryHref: "mailto:hello@genuadigital.com",
   whatsapp: "905411560664",
   whatsappDisplay: "0541 156 06 64",
-  whatsappHref:
-    "https://wa.me/905411560664?text=Merhaba%2C%20SMF%20Hafriyat%20%C3%BCzerinden%20yaz%C4%B1yorum.%20Hafriyat%20%2F%20y%C4%B1k%C4%B1m%20projem%20i%C3%A7in%20teklif%20almak%20istiyorum.",
+  whatsappMessage: whatsappDefaultMessage,
+  whatsappHref: whatsappBridgePath,
+  whatsappDirectHref: buildWhatsAppDirectUrl("905411560664"),
   contactPerson: "Sedat Ramizoğlu",
   address: {
     street: "Yeni Mah. Menderes Bulvarı No:7/A D:3",

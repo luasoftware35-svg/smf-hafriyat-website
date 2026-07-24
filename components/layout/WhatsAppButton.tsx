@@ -5,12 +5,12 @@ import { useSiteContact } from "@/components/providers/SiteContactProvider";
 
 export function WhatsAppButton() {
   const { contactInfo } = useSiteContact();
+  const isExternal = contactInfo.whatsappHref.startsWith("http");
 
   return (
     <a
       href={contactInfo.whatsappHref}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       aria-label={`WhatsApp Business — ${contactInfo.whatsappDisplay}`}
       className="flex w-full min-w-[11.5rem] items-center gap-3 rounded-xl bg-[#25D366] px-3 py-2.5 text-white shadow-[0_4px_16px_rgba(37,211,102,0.35)] transition-transform hover:scale-[1.02] active:scale-[0.98]"
     >
