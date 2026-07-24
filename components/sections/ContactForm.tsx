@@ -188,8 +188,14 @@ function ContactFormInner({ className, variant = "default" }: ContactFormProps) 
         <label className="flex items-start gap-3 rounded-md border border-surface bg-bg-secondary/50 p-4 text-sm text-text-secondary transition-colors hover:border-accent/30">
           <input type="checkbox" className="mt-1 h-5 w-5 shrink-0 rounded border-surface accent-accent" {...register("kvkkConsent")} />
           <span>
-            <Link href="/kvkk" className="font-medium text-accent hover:underline">KVKK Aydınlatma Metni</Link>
-            &apos;ni okudum, kişisel verilerimin işlenmesini kabul ediyorum. *
+            <Link href="/kvkk" className="font-medium text-accent hover:underline">
+              KVKK Aydınlatma Metni
+            </Link>
+            {" "}ve{" "}
+            <Link href="/gizlilik-politikasi" className="font-medium text-accent hover:underline">
+              Gizlilik Politikası
+            </Link>
+            &apos;nı okudum; kişisel verilerimin belirtilen amaçlarla işlenmesini kabul ediyorum. *
           </span>
         </label>
         {errors.kvkkConsent && <p className="mt-1.5 text-xs text-red-500">{errors.kvkkConsent.message}</p>}

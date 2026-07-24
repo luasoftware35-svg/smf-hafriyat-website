@@ -165,9 +165,11 @@ export function Footer() {
           <p className="text-xs text-text-secondary/80">
             {siteConfig.legalName} · {companyLegal.tradeRegistry}
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
             <Link href="/gizlilik-politikasi" className="transition-colors hover:text-accent">Gizlilik Politikası</Link>
-            <Link href="/kvkk" className="transition-colors hover:text-accent">KVKK Aydınlatma Metni</Link>
+            <Link href="/kvkk" className="transition-colors hover:text-accent">KVKK</Link>
+            <Link href="/cerez-politikasi" className="transition-colors hover:text-accent">Çerez Politikası</Link>
+            <Link href="/kullanim-kosullari" className="transition-colors hover:text-accent">Kullanım Koşulları</Link>
           </div>
         </Container>
       </div>

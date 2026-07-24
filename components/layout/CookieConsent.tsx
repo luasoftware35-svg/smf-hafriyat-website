@@ -27,14 +27,23 @@ export function CookieConsent() {
     <div
       role="dialog"
       aria-label="Çerez onayı"
-      className="fixed inset-x-3 bottom-safe-offset z-50 rounded-md border border-surface bg-bg-secondary/95 p-4 shadow-card backdrop-blur-md lg:inset-x-auto lg:bottom-6 lg:left-6 lg:max-w-md lg:pb-4"
+      className="fixed inset-x-3 bottom-safe-offset z-50 rounded-xl border border-surface bg-bg-primary/95 p-4 shadow-card backdrop-blur-md lg:inset-x-auto lg:bottom-6 lg:left-6 lg:max-w-md lg:pb-4"
     >
-      <p className="text-sm leading-relaxed text-text-secondary">
-        Deneyiminizi iyileştirmek için çerezler kullanıyoruz. Siteyi kullanmaya devam ederek{" "}
-        <Link href="/kvkk" className="text-accent hover:underline">
+      <p className="text-sm font-medium text-text-primary">Çerez Tercihleri</p>
+      <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+        Zorunlu çerezler site işlevselliği için kullanılır. Analitik çerezler yalnızca onayınızla etkinleştirilir. Ayrıntılar için{" "}
+        <Link href="/cerez-politikasi" className="font-medium text-accent hover:underline">
+          Çerez Politikası
+        </Link>
+        ,{" "}
+        <Link href="/gizlilik-politikasi" className="font-medium text-accent hover:underline">
+          Gizlilik Politikası
+        </Link>{" "}
+        ve{" "}
+        <Link href="/kvkk" className="font-medium text-accent hover:underline">
           KVKK Aydınlatma Metni
         </Link>
-        &apos;ni kabul etmiş olursunuz.
+        &apos;ne bakınız.
       </p>
       <div className="mt-4 flex gap-3">
         <Button onClick={accept} className="min-h-11 flex-1">

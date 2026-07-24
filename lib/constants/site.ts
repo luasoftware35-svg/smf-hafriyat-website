@@ -154,6 +154,8 @@ export const footerPages = [
   { label: "İletişim", href: "/iletisim" },
   { label: "Gizlilik Politikası", href: "/gizlilik-politikasi" },
   { label: "KVKK Aydınlatma Metni", href: "/kvkk" },
+  { label: "Çerez Politikası", href: "/cerez-politikasi" },
+  { label: "Kullanım Koşulları", href: "/kullanim-kosullari" },
 ] as const;
 
 export const socialLinks = [

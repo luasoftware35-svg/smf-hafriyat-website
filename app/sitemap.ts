@@ -55,6 +55,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const legalPages: MetadataRoute.Sitemap = [
     entry("/gizlilik-politikasi", { changeFrequency: "yearly", priority: 0.5 }),
     entry("/kvkk", { changeFrequency: "yearly", priority: 0.5 }),
+    entry("/cerez-politikasi", { changeFrequency: "yearly", priority: 0.5 }),
+    entry("/kullanim-kosullari", { changeFrequency: "yearly", priority: 0.5 }),
   ];
 
   return [
