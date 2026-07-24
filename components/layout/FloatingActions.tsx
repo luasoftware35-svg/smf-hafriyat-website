@@ -12,9 +12,11 @@ export function FloatingActions() {
   }
 
   return (
-    <div className="fixed bottom-[calc(6.25rem+env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] z-[60] flex flex-col items-end gap-3 pb-safe lg:bottom-6 lg:right-6 lg:pb-0">
-      <SiteChatWidget />
-      <WhatsAppButton />
+    <div className="fixed bottom-[calc(6.5rem+env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] z-[60] pb-safe lg:bottom-8 lg:right-8 lg:pb-0">
+      <div className="flex w-[min(100vw-2rem,12.5rem)] flex-col gap-2 overflow-hidden rounded-2xl border border-surface/80 bg-bg-primary/95 p-2 shadow-[0_16px_48px_rgba(0,0,0,0.18)] backdrop-blur-md">
+        <SiteChatWidget />
+        <WhatsAppButton />
+      </div>
     </div>
   );
 }

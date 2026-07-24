@@ -22,10 +22,6 @@ function createId() {
 }
 
 export function SiteChatWidget() {
-  return <SiteChatWidgetInner />;
-}
-
-function SiteChatWidgetInner() {
   const { contactInfo } = useSiteContact();
   const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
@@ -71,7 +67,7 @@ function SiteChatWidgetInner() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <AnimatePresence>
         {open ? (
           <motion.div
@@ -79,7 +75,7 @@ function SiteChatWidgetInner() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0, y: 12, scale: 0.96 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute bottom-[calc(100%+0.75rem)] right-0 flex w-[min(calc(100vw-2rem),22rem)] flex-col overflow-hidden rounded-2xl border border-surface bg-bg-primary shadow-[0_20px_60px_rgba(0,0,0,0.22)] sm:w-[22rem]"
+            className="absolute bottom-[calc(100%+0.75rem)] right-0 flex w-[min(calc(100vw-2.5rem),22rem)] flex-col overflow-hidden rounded-2xl border border-surface bg-bg-primary shadow-[0_20px_60px_rgba(0,0,0,0.22)] sm:w-[22rem]"
             role="dialog"
             aria-label="SMF Hafriyat sohbet asistanı"
           >
@@ -109,10 +105,7 @@ function SiteChatWidgetInner() {
 
             <div ref={scrollRef} className="max-h-[min(50vh,22rem)] space-y-3 overflow-y-auto bg-bg-secondary/60 px-3 py-4">
               {messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={cn("flex", message.role === "user" ? "justify-end" : "justify-start")}
-                >
+                <div key={message.id} className={cn("flex", message.role === "user" ? "justify-end" : "justify-start")}>
                   <div
                     className={cn(
                       "max-w-[88%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed shadow-sm",
@@ -203,39 +196,25 @@ function SiteChatWidgetInner() {
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        title={open ? "Sohbeti kapat" : "SMF Hafriyat sohbet asistanı"}
         aria-label={open ? "Sohbeti kapat" : "SMF Hafriyat sohbet asistanını aç"}
-        className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-accent/30 bg-white shadow-glow transition-transform hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        className={cn(
+          "flex w-full min-w-[11.5rem] items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors",
+          open ? "bg-accent text-accent-foreground" : "bg-bg-secondary/80 hover:bg-bg-secondary",
+        )}
       >
-        <AnimatePresence mode="wait" initial={false}>
+        <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-surface bg-white">
           {open ? (
-            <motion.span
-              key="close"
-              initial={reduceMotion ? false : { opacity: 0, rotate: -90 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              exit={reduceMotion ? undefined : { opacity: 0, rotate: 90 }}
-              className="flex h-full w-full items-center justify-center bg-accent text-accent-foreground"
-            >
-              <X size={24} strokeWidth={2.5} aria-hidden="true" />
-            </motion.span>
+            <X size={20} aria-hidden="true" />
           ) : (
-            <motion.span
-              key="logo"
-              initial={reduceMotion ? false : { opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={reduceMotion ? undefined : { opacity: 0, scale: 0.8 }}
-              className="relative h-full w-full"
-            >
-              <Image
-                src={siteConfig.logo}
-                alt={siteConfig.logoAlt}
-                fill
-                className="object-contain p-2.5"
-                sizes="56px"
-              />
-            </motion.span>
+            <Image src={siteConfig.logo} alt="" fill className="object-contain p-1.5" sizes="40px" />
           )}
-        </AnimatePresence>
+        </span>
+        <span className="min-w-0">
+          <span className="block text-sm font-semibold leading-tight">{open ? "Kapat" : "Sohbet"}</span>
+          <span className={cn("block text-[11px] leading-tight", open ? "text-accent-foreground/80" : "text-text-secondary")}>
+            SMF Asistan
+          </span>
+        </span>
       </button>
     </div>
   );
