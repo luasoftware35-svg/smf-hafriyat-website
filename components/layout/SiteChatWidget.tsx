@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -27,7 +28,24 @@ export function SiteChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [showMenu, setShowMenu] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [panelPos, setPanelPos] = useState({ bottom: 0, right: 16, width: 352 });
   const scrollRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const updatePanelPos = useCallback(() => {
+    if (!buttonRef.current) return;
+    const rect = buttonRef.current.getBoundingClientRect();
+    setPanelPos({
+      bottom: window.innerHeight - rect.top + 12,
+      right: Math.max(16, window.innerWidth - rect.right),
+      width: Math.min(window.innerWidth - 40, 352),
+    });
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -36,6 +54,17 @@ export function SiteChatWidget() {
       setShowMenu(true);
     }
   }, [open, messages.length]);
+
+  useEffect(() => {
+    if (!open) return;
+    updatePanelPos();
+    window.addEventListener("resize", updatePanelPos);
+    window.addEventListener("scroll", updatePanelPos, { passive: true });
+    return () => {
+      window.removeEventListener("resize", updatePanelPos);
+      window.removeEventListener("scroll", updatePanelPos);
+    };
+  }, [open, updatePanelPos]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: reduceMotion ? "auto" : "smooth" });
@@ -66,19 +95,26 @@ export function SiteChatWidget() {
     return topic?.actions ?? [{ label: "İletişim formu", href: "/iletisim" }];
   };
 
-  return (
-    <div className="relative w-full">
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 12, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={reduceMotion ? undefined : { opacity: 0, y: 12, scale: 0.96 }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute bottom-[calc(100%+0.75rem)] right-0 flex w-[min(calc(100vw-2.5rem),22rem)] flex-col overflow-hidden rounded-2xl border border-surface bg-bg-primary shadow-[0_20px_60px_rgba(0,0,0,0.22)] sm:w-[22rem]"
-            role="dialog"
-            aria-label="SMF Hafriyat sohbet asistanı"
-          >
+  const chatPanel = (
+    <AnimatePresence>
+      {open ? (
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 12, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={reduceMotion ? undefined : { opacity: 0, y: 12, scale: 0.96 }}
+          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            position: "fixed",
+            bottom: panelPos.bottom,
+            right: panelPos.right,
+            width: panelPos.width,
+            zIndex: 80,
+          }}
+          className="flex max-h-[min(78dvh,32rem)] flex-col overflow-hidden rounded-2xl border border-surface bg-bg-primary shadow-[0_20px_60px_rgba(0,0,0,0.22)]"
+          role="dialog"
+          aria-modal="true"
+          aria-label="SMF Hafriyat sohbet asistanı"
+        >
             <div className="flex items-center gap-3 border-b border-surface bg-accent-foreground px-4 py-3 text-white">
               <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-white/20 bg-white shadow-md">
                 <Image
@@ -188,13 +224,27 @@ export function SiteChatWidget() {
                 </button>
               ) : null}
             </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+
+  return (
+    <div className="relative w-full">
+      {mounted ? createPortal(chatPanel, document.body) : null}
 
       <button
+        ref={buttonRef}
         type="button"
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          setOpen((value) => {
+            const next = !value;
+            if (next) {
+              requestAnimationFrame(updatePanelPos);
+            }
+            return next;
+          });
+        }}
         aria-expanded={open}
         aria-label={open ? "Sohbeti kapat" : "SMF Hafriyat sohbet asistanını aç"}
         className={cn(
