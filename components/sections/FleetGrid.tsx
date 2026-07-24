@@ -29,7 +29,7 @@ export function FleetGrid({ items }: { items?: readonly FleetItem[] }) {
           {fleet.map((item, index) => {
             const img = getFleetImage(index);
             return (
-              <StaggerItem key={item.name}>
+              <StaggerItem key={`${item.name}-${item.model}-${index}`}>
                 <Card className="group">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image

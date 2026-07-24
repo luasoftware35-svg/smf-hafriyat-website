@@ -93,7 +93,7 @@ export const brand = {
     fleet: {
       title: "Filo & Ekipman",
       description:
-        "12 araçlık kendi filomuz — Caterpillar, Komatsu ve Hitachi iş makineleri; bakımlı, sigortalı, operatörlü sevkiyat.",
+        "13 araçlık kendi filomuz — Case, Volvo, Hyundai, Kobelco, JCB, Hidromek ve Youtop iş makineleri; bakımlı, sigortalı, operatörlü sevkiyat.",
     },
     projects: {
       title: "Referans projelerimiz",

@@ -77,7 +77,7 @@ export function FleetMiniSection({ items }: { items?: readonly FleetItem[] }) {
               const img = getFleetImage(index);
               return (
                 <Link
-                  key={item.name}
+                  key={`${item.name}-${item.model}-${index}`}
                   href="/filo"
                   className="flex overflow-hidden rounded-sm border border-surface bg-bg-secondary/50"
                 >
@@ -165,7 +165,7 @@ export function FleetMiniSection({ items }: { items?: readonly FleetItem[] }) {
 
               return (
                 <motion.button
-                  key={item.name}
+                  key={`${item.name}-${item.model}-${index}`}
                   type="button"
                   onClick={() => go(index)}
                   aria-current={isActive ? "true" : undefined}
@@ -227,7 +227,7 @@ export function FleetMiniSection({ items }: { items?: readonly FleetItem[] }) {
         <div className="mt-8 flex snap-x snap-mandatory gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {fleet.map((item, index) => (
             <button
-              key={item.name}
+              key={`${item.name}-${item.model}-${index}`}
               type="button"
               onClick={() => go(index)}
               className={cn(

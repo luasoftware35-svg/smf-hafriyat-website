@@ -34,67 +34,102 @@ export const processSteps = [
 
 export const fleetHighlights = [
   "Taşeronsuz — sahada kendi operatör kadromuz",
-  "12 araçlık filo, bakımlı ve sigortalı makineler",
+  "13 araçlık filo, bakımlı ve sigortalı makineler",
   "Keşiften teslime tek ekip, aynı gün sevkiyat imkânı",
 ] as const;
 
-/** smfhafriyat.com — iş makinesi filosu (model bilgisi onay bekliyor) */
+/** smfhafriyat.com — iş makinesi filosu */
 export const fleet = [
   {
-    name: "Ekskavatör",
-    model: "Caterpillar 320 GC",
-    capacity: "20–22 ton",
-    specs: "Temel kazısı, dekapaj, hafriyat — günlük 400–600 m³ kapasite",
-    icon: "Excavator",
-  },
-  {
-    name: "Yükleyici (Loder)",
-    model: "Caterpillar 950 GC",
-    capacity: "3 m³ kepçe",
-    specs: "Dolgu, tesviye ve yükleme — saatte 120–180 m³ hareket",
-    icon: "Loader",
-  },
-  {
-    name: "Damper Kamyon",
-    model: "Mercedes-Benz Actros 4141",
-    capacity: "16–20 m³",
-    specs: "Moloz ve hafriyat nakliyesi — günlük 8–12 sefer",
-    icon: "Truck",
-  },
-  {
-    name: "Mini Ekskavatör",
-    model: "Caterpillar 305.5E2 CR",
-    capacity: "5 ton",
-    specs: "Dar alan kanal kazısı, bahçe hattı — 0,8–1,2 m genişlik",
-    icon: "MiniExcavator",
-  },
-  {
-    name: "Derin Kazı Ekskavatör",
-    model: "Komatsu PC300LC-8",
-    capacity: "30 ton · 8 m+ derinlik",
-    specs: "Fabrika temeli, bodrum kazısı — günlük 300–500 m³",
-    icon: "Excavator",
-  },
-  {
-    name: "Dozer",
-    model: "Caterpillar D6T",
-    capacity: "180 HP",
-    specs: "Dekapaj, tesviye ve saha düzleme — geniş parsel işleri",
+    name: "Silindir",
+    model: "JCB VM115D-210",
+    capacity: "2016",
+    specs: "Silindir kompaktör — dolgu sıkıştırma ve saha tesviye",
     icon: "Bulldozer",
   },
   {
-    name: "Enkaz Yükleme",
-    model: "Hitachi ZX210LC-5G + damper",
-    capacity: "21 ton kepçe",
-    specs: "Yıkım sonrası enkaz yükleme ve nakliye — aynı saha ekibi",
+    name: "Ekskavatör",
+    model: "Case CX210B LC",
+    capacity: "2016",
+    specs: "Paletli ekskavatör — temel kazısı, hafriyat ve dekapaj",
+    icon: "Excavator",
+  },
+  {
+    name: "Ekskavatör",
+    model: "Volvo EC220DL",
+    capacity: "2014",
+    specs: "22 ton ekskavatör — derin kazı ve geniş saha hafriyatı",
+    icon: "Excavator",
+  },
+  {
+    name: "Ekskavatör",
+    model: "Hyundai HX130ALCR",
+    capacity: "2023",
+    specs: "13 ton ekskavatör — orta ölçekli kazı ve kanal hattı",
+    icon: "Excavator",
+  },
+  {
+    name: "Ekskavatör",
+    model: "Hyundai HX300LT3",
+    capacity: "2022",
+    specs: "30 ton ekskavatör — ağır hafriyat ve fabrika temeli kazısı",
+    icon: "Excavator",
+  },
+  {
+    name: "Ekskavatör",
+    model: "Hyundai HX210AL",
+    capacity: "2023",
+    specs: "21 ton ekskavatör — temel kazısı ve enkaz yükleme",
+    icon: "Excavator",
+  },
+  {
+    name: "Ekskavatör",
+    model: "Youtop TYT60",
+    capacity: "2023",
+    specs: "Kompakt ekskavatör — dar alan ve yardımcı saha kazısı",
+    icon: "Excavator",
+  },
+  {
+    name: "Kazıcı ve Yükleyici",
+    model: "Case 590SV",
+    capacity: "2026",
+    specs: "Kazıcı yükleyici — kanal açma, yükleme ve saha lojistiği",
     icon: "Loader",
   },
   {
-    name: "Yıkım Sahası",
-    model: "Caterpillar 336 + hidrolik kırıcı",
-    capacity: "36 ton",
-    specs: "Kontrollü yıkım, enkaz ayrıştırma — OSB ve sanayi yapıları",
-    icon: "Hammer",
+    name: "Kazıcı ve Yükleyici",
+    model: "Case 590SV",
+    capacity: "2026",
+    specs: "Kazıcı yükleyici — paralel saha operasyonu ve yükleme",
+    icon: "Loader",
+  },
+  {
+    name: "Kanal Kazıcı ve Yükleyici",
+    model: "Hidromek HMK102B",
+    capacity: "2021",
+    specs: "Kanal kazıcı yükleyici — altyapı hattı ve isale kazısı",
+    icon: "Loader",
+  },
+  {
+    name: "Mini Ekskavatör",
+    model: "Kobelco SK39SRX-7",
+    capacity: "2025",
+    specs: "3,9 ton mini ekskavatör — bahçe hattı ve dar alan kazısı",
+    icon: "MiniExcavator",
+  },
+  {
+    name: "Mini Ekskavatör",
+    model: "Kobelco SK17SR-3E",
+    capacity: "2024",
+    specs: "1,7 ton mini ekskavatör — iç avlu ve sık alan müdahalesi",
+    icon: "MiniExcavator",
+  },
+  {
+    name: "Beko Loder",
+    model: "Volvo BL71",
+    capacity: "2007",
+    specs: "Beko loder — yükleme, tesviye ve saha destek operasyonları",
+    icon: "Loader",
   },
 ] as const;
 
@@ -231,7 +266,7 @@ export const faqItems = [
   {
     question: "Kendi filonuz ve operatör kadronuz var mı?",
     answer:
-      "Evet. Taşeronsuz modelle çalışıyoruz — 12 araçlık ekskavatör, loder, damper ve mini kepçe filomuz ile sertifikalı operatör ekibimiz doğrudan projeye atanır.",
+      "Evet. Taşeronsuz modelle çalışıyoruz — Case, Volvo, Hyundai, Kobelco, JCB, Hidromek ve Youtop markalı 13 araçlık filomuz ile sertifikalı operatör ekibimiz doğrudan projeye atanır.",
   },
   {
     question: "Denizli hafriyat fiyatları nasıl belirlenir?",
