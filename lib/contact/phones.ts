@@ -1,3 +1,4 @@
+import { contactInfo } from "@/lib/constants/site";
 import type { ContactInfoData } from "@/lib/data/contact-settings";
 
 export type CorporatePhoneLine = {
@@ -14,8 +15,15 @@ export function buildCorporatePhoneLines(contact: ContactInfoData): CorporatePho
   ];
 }
 
-export const corporatePhoneCopy = {
-  main: "0258 377 80 80",
-  whatsappAccounting: "0541 156 06 64",
-  mobile: "0533 353 22 53",
-} as const;
+/** Metin içerikleri için tek kaynak — FAQ, SEO landing vb. */
+export function contactCopy() {
+  return {
+    main: contactInfo.phoneDisplay,
+    whatsappAccounting: contactInfo.whatsappDisplay,
+    mobile: contactInfo.phoneSecondary,
+    mainCall: `${contactInfo.phoneDisplay} merkez hattımızdan`,
+    mainCallShort: `${contactInfo.phoneDisplay} merkez hattından`,
+    fullChannels: `${contactInfo.phoneDisplay} merkez hattından, WhatsApp & Muhasebe (${contactInfo.whatsappDisplay}) üzerinden, mobil hat (${contactInfo.phoneSecondary})`,
+    urgentLine: `${contactInfo.phoneDisplay} merkez hattından veya WhatsApp & Muhasebe (${contactInfo.whatsappDisplay}) üzerinden`,
+  };
+}

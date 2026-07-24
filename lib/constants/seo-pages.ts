@@ -1,4 +1,8 @@
 /** Hedef anahtar kelime landing sayfaları */
+import { contactCopy } from "@/lib/contact/phones";
+
+const phones = contactCopy();
+
 export type SeoLandingPage = {
   slug: string;
   path: string;
@@ -28,7 +32,7 @@ export const seoLandingPages: SeoLandingPage[] = [
     paragraphs: [
       "Denizli'de kazı projelerinde metraj, derinlik, zemin durumu ve makine seçimi keşif sonrası netleştirilir. Taşeronsuz modelimizle ekskavatör, mini kepçe, loder ve damper aynı saha ekibi altında koordine edilir.",
       "Merkezefendi, Pamukkale, Honaz OSB ve Ege Bölgesi'nde müteahhit ve sanayi yatırımcıları için resmi sözleşme, İSG planı ve belgeli moloz nakliyesi ile çalışırız.",
-      "Acil saha müdahalesi ve aynı gün keşif için 0258 377 80 80 merkez hattından veya WhatsApp & Muhasebe (0541 156 06 64) üzerinden bize ulaşabilirsiniz.",
+      `Acil saha müdahalesi ve aynı gün keşif için ${phones.urgentLine} bize ulaşabilirsiniz.`,
     ],
     highlights: [
       "Temel ve derin kazı",

@@ -1,5 +1,6 @@
 /** SMF Hafriyat — doğrulanmış saha fotoğrafları (Denizli operasyonları) */
 import { teamMembers } from "@/lib/constants/content";
+import { contactCopy } from "@/lib/contact/phones";
 
 const h = (n: number) => `/images/hafriyat/haf-${String(n).padStart(3, "0")}.jpg`;
 
@@ -254,7 +255,7 @@ export const ctaPromoSlides: PromoSlide[] = [
   {
     src: real.derinSaha,
     alt: realAlt.derinSaha,
-    tag: "0258 377 80 80",
+    tag: contactCopy().main,
     title: "Derin kazı ve büyük metraj işler",
     subtitle: "Telefon veya WhatsApp — Pzt–Cmt 08:00–18:00, acil sevkiyat mümkün.",
   },

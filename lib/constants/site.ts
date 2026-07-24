@@ -20,13 +20,14 @@ export const siteConfig = {
 export const companyLegal = {
   taxOffice: "Denizli Vergi Dairesi",
   tradeRegistry: "Denizli Ticaret Sicili — 2010",
+  registeredYear: 2010,
 } as const;
 
-/** Footer ve hakkımızda — kullanıcı belge detaylarını dolduracak */
 export const corporateCredentials = [
-  { label: "İş Bitirme Belgesi", note: "[Belge no / kapsam — eklenecek]" },
-  { label: "ISO Sertifikası", note: "[ISO 9001 veya ilgili standart — eklenecek]" },
-  { label: "SGK & Vergi Levhası", note: "[Güncel kayıt bilgisi — eklenecek]" },
+  { label: "Ticaret Sicili", note: "SMF Yıkım Hafriyat Ltd. Şti. — Denizli Ticaret Sicili, 2010" },
+  { label: "Vergi Levhası", note: "Denizli Vergi Dairesi mükellefi" },
+  { label: "Resmi İş Süreci", note: "Yazılı sözleşme, saha tutanağı, tartım fişi ve teslim belgesi" },
+  { label: "Sigorta & İSG", note: "Kasko, üçüncü şahıs mali mesuliyet sigortası; İSG planlı saha operasyonu" },
 ] as const;
 
 export const insuranceNote =

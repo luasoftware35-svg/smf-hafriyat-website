@@ -6,12 +6,13 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { siteImages } from "@/lib/constants/images";
 
+import { contactCopy } from "@/lib/contact/phones";
 import { siteConfig } from "@/lib/constants/site";
 
 const items = [
   { icon: Shield, label: "1998'den Beri", sub: `${siteConfig.yearsInBusiness}+ yıl sektör deneyimi` },
   { icon: Truck, label: "Kendi Filomuz", sub: "Ekskavatör, loder, damper" },
-  { icon: Clock, label: "Hızlı Teklif", sub: "0258 377 80 80" },
+  { icon: Clock, label: "Hızlı Teklif", sub: contactCopy().main },
   { icon: Award, label: "900+ Proje", sub: "150+ firmaya hizmet" },
 ];
 
