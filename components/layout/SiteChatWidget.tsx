@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { MessageSquareText, X } from "lucide-react";
+import { X } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { chatbotMenuPrompt, chatbotTopics, chatbotWelcome, type ChatbotAction } from "@/lib/constants/chatbot";
@@ -83,8 +84,14 @@ function SiteChatWidgetInner() {
             aria-label="SMF Hafriyat sohbet asistanı"
           >
             <div className="flex items-center gap-3 border-b border-surface bg-accent-foreground px-4 py-3 text-white">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-md">
-                <MessageSquareText size={20} aria-hidden="true" />
+              <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-white/20 bg-white shadow-md">
+                <Image
+                  src={siteConfig.logo}
+                  alt={siteConfig.logoAlt}
+                  width={44}
+                  height={44}
+                  className="h-full w-full object-contain p-1.5"
+                />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="truncate font-heading text-sm">{siteConfig.name}</p>
@@ -196,9 +203,9 @@ function SiteChatWidgetInner() {
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        title={open ? "Sohbeti kapat" : "Sohbet asistanı"}
-        aria-label={open ? "Sohbeti kapat" : "Sohbet asistanını aç"}
-        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-glow transition-transform hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        title={open ? "Sohbeti kapat" : "SMF Hafriyat sohbet asistanı"}
+        aria-label={open ? "Sohbeti kapat" : "SMF Hafriyat sohbet asistanını aç"}
+        className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-accent/30 bg-white shadow-glow transition-transform hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         <AnimatePresence mode="wait" initial={false}>
           {open ? (
@@ -207,17 +214,25 @@ function SiteChatWidgetInner() {
               initial={reduceMotion ? false : { opacity: 0, rotate: -90 }}
               animate={{ opacity: 1, rotate: 0 }}
               exit={reduceMotion ? undefined : { opacity: 0, rotate: 90 }}
+              className="flex h-full w-full items-center justify-center bg-accent text-accent-foreground"
             >
               <X size={24} strokeWidth={2.5} aria-hidden="true" />
             </motion.span>
           ) : (
             <motion.span
-              key="chat"
+              key="logo"
               initial={reduceMotion ? false : { opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={reduceMotion ? undefined : { opacity: 0, scale: 0.8 }}
+              className="relative h-full w-full"
             >
-              <MessageSquareText size={24} aria-hidden="true" />
+              <Image
+                src={siteConfig.logo}
+                alt={siteConfig.logoAlt}
+                fill
+                className="object-contain p-2.5"
+                sizes="56px"
+              />
             </motion.span>
           )}
         </AnimatePresence>
