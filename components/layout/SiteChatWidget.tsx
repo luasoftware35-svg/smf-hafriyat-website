@@ -2,9 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Bot, MessageSquareText, X } from "lucide-react";
+import { MessageSquareText, X } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { useSiteContact } from "@/components/providers/SiteContactProvider";
 import { chatbotMenuPrompt, chatbotTopics, chatbotWelcome, type ChatbotAction } from "@/lib/constants/chatbot";
@@ -22,12 +21,6 @@ function createId() {
 }
 
 export function SiteChatWidget() {
-  const pathname = usePathname();
-
-  if (pathname.startsWith("/admin")) {
-    return null;
-  }
-
   return <SiteChatWidgetInner />;
 }
 
@@ -77,21 +70,21 @@ function SiteChatWidgetInner() {
   };
 
   return (
-    <>
+    <div className="relative">
       <AnimatePresence>
         {open ? (
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 16, scale: 0.96 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.96 }}
+            exit={reduceMotion ? undefined : { opacity: 0, y: 12, scale: 0.96 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-[calc(16rem+env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] z-50 flex w-[min(100vw-2rem,22rem)] flex-col overflow-hidden rounded-2xl border border-surface bg-bg-primary shadow-[0_20px_60px_rgba(0,0,0,0.22)] lg:bottom-[8.5rem] lg:w-[22rem]"
+            className="absolute bottom-[calc(100%+0.75rem)] right-0 flex w-[min(calc(100vw-2rem),22rem)] flex-col overflow-hidden rounded-2xl border border-surface bg-bg-primary shadow-[0_20px_60px_rgba(0,0,0,0.22)] sm:w-[22rem]"
             role="dialog"
             aria-label="SMF Hafriyat sohbet asistanı"
           >
             <div className="flex items-center gap-3 border-b border-surface bg-accent-foreground px-4 py-3 text-white">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-md">
-                <Bot size={24} aria-hidden="true" />
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-md">
+                <MessageSquareText size={20} aria-hidden="true" />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="truncate font-heading text-sm">{siteConfig.name}</p>
@@ -199,45 +192,36 @@ function SiteChatWidgetInner() {
         ) : null}
       </AnimatePresence>
 
-      <div className="fixed bottom-[calc(11.5rem+env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] z-50 pb-safe lg:bottom-[5.75rem] lg:right-5 lg:pb-0">
-        <span className="absolute inset-0 rounded-full bg-accent/40 animate-ring-pulse" aria-hidden="true" />
-        <button
-          type="button"
-          onClick={() => setOpen((value) => !value)}
-          aria-expanded={open}
-          aria-label={open ? "Sohbeti kapat" : "Sohbet asistanını aç"}
-          className="relative flex h-14 w-14 min-h-11 min-w-11 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-glow transition-transform hover:scale-110 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            {open ? (
-              <motion.span
-                key="close"
-                initial={reduceMotion ? false : { opacity: 0, rotate: -90 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={reduceMotion ? undefined : { opacity: 0, rotate: 90 }}
-              >
-                <X size={24} strokeWidth={2.5} aria-hidden="true" />
-              </motion.span>
-            ) : (
-              <motion.span
-                key="chat"
-                initial={reduceMotion ? false : { opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={reduceMotion ? undefined : { opacity: 0, scale: 0.8 }}
-              >
-                <MessageSquareText size={24} aria-hidden="true" />
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </button>
-
-        {!open ? (
-          <span className="pointer-events-none absolute -top-11 right-0 hidden items-center gap-1.5 rounded-full bg-accent-foreground px-3 py-1.5 text-xs font-semibold text-white shadow-lg lg:inline-flex">
-            <Bot size={14} aria-hidden="true" />
-            Sohbet
-          </span>
-        ) : null}
-      </div>
-    </>
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        title={open ? "Sohbeti kapat" : "Sohbet asistanı"}
+        aria-label={open ? "Sohbeti kapat" : "Sohbet asistanını aç"}
+        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-glow transition-transform hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          {open ? (
+            <motion.span
+              key="close"
+              initial={reduceMotion ? false : { opacity: 0, rotate: -90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              exit={reduceMotion ? undefined : { opacity: 0, rotate: 90 }}
+            >
+              <X size={24} strokeWidth={2.5} aria-hidden="true" />
+            </motion.span>
+          ) : (
+            <motion.span
+              key="chat"
+              initial={reduceMotion ? false : { opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={reduceMotion ? undefined : { opacity: 0, scale: 0.8 }}
+            >
+              <MessageSquareText size={24} aria-hidden="true" />
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </button>
+    </div>
   );
 }
