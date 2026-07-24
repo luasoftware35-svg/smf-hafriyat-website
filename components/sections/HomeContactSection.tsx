@@ -4,7 +4,8 @@ import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
-import { ArrowUpRight, ChevronDown, MessageCircle, Phone, Sparkles } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Phone, Sparkles } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/sections/ContactForm";
@@ -184,7 +185,7 @@ function HomeContactSectionInner() {
                       href={contactInfo.whatsappHref}
                       label={contactInfo.whatsappDisplay}
                       subLabel="WhatsApp Business"
-                      icon={MessageCircle}
+                      icon={WhatsAppIcon}
                       external
                       hoverClass="group-hover:text-[#25D366] group-hover:border-[#25D366]/30 group-hover:bg-[#25D366]/[0.06]"
                       reduceMotion={!!reduceMotion}

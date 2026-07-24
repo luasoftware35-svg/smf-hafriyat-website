@@ -5,7 +5,8 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2, Send, CheckCircle2, MessageCircle } from "lucide-react";
+import { Loader2, Send, CheckCircle2 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Button } from "@/components/ui/Button";
 import { Input, Textarea, Select } from "@/components/ui/Input";
 import { cn } from "@/lib/utils";
@@ -116,7 +117,7 @@ function ContactFormInner({ className, variant = "default" }: ContactFormProps) 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           {whatsappUrl && (
             <Button href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              <MessageCircle size={16} aria-hidden="true" />
+              <WhatsAppIcon size={16} className="text-white" />
               WhatsApp ile Devam Et
             </Button>
           )}

@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
@@ -77,7 +78,7 @@ export function ContactSection() {
                     </li>
                     <li>
                       <a href={contactInfo.whatsappHref} className="flex items-center gap-3 hover:text-accent" target="_blank" rel="noopener noreferrer">
-                        <MessageCircle size={18} className="shrink-0 text-accent" aria-hidden="true" />
+                        <WhatsAppIcon size={18} className="shrink-0 text-[#25D366]" />
                         <span className="font-mono font-medium">WhatsApp Business · {contactInfo.whatsappDisplay}</span>
                       </a>
                     </li>

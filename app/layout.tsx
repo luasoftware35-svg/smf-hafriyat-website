@@ -11,6 +11,7 @@ import { Header } from "@/components/layout/Header";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { StickyMobileCta } from "@/components/layout/StickyMobileCta";
+import { SiteChatWidget } from "@/components/layout/SiteChatWidget";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SiteContactProvider } from "@/components/providers/SiteContactProvider";
 import { JsonLdServer } from "@/components/seo/JsonLdServer";
@@ -136,6 +137,7 @@ export default async function RootLayout({
         <SiteChrome>
           <Footer />
           <StickyMobileCta />
+          <SiteChatWidget />
           <WhatsAppButton />
           <CookieConsent />
           <GlobalCursorTrail />
