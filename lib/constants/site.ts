@@ -10,6 +10,7 @@ export const siteConfig = {
   foundedYear: 1998,
   companyRegisteredYear: 2010,
   yearsInBusiness: new Date().getFullYear() - 1998,
+  employeeCount: { min: 20, max: 30, label: "20 – 30 kişi" },
   logo: "/logo.png",
   logoAlt: "SMF Hafriyat logo",
 } as const;
@@ -35,11 +36,14 @@ export const contactInfo = {
   phoneHref: "tel:+905333532253",
   phoneSecondary: "0551 124 53 06",
   phoneSecondaryHref: "tel:+905511245306",
-  email: "info@smfhafriyat.com",
-  emailHref: "mailto:info@smfhafriyat.com",
-  whatsapp: "905333532253",
+  email: "smfhafriyatofis@hotmail.com",
+  emailHref: "mailto:smfhafriyatofis@hotmail.com",
+  emailSecondary: "hello@genuadigital.com",
+  emailSecondaryHref: "mailto:hello@genuadigital.com",
+  whatsapp: "905411560664",
+  whatsappDisplay: "0541 156 06 64",
   whatsappHref:
-    "https://wa.me/905333532253?text=Merhaba%2C%20SMF%20Hafriyat%20%C3%BCzerinden%20yaz%C4%B1yorum.%20Hafriyat%20%2F%20y%C4%B1k%C4%B1m%20projem%20i%C3%A7in%20teklif%20almak%20istiyorum.",
+    "https://wa.me/905411560664?text=Merhaba%2C%20SMF%20Hafriyat%20%C3%BCzerinden%20yaz%C4%B1yorum.%20Hafriyat%20%2F%20y%C4%B1k%C4%B1m%20projem%20i%C3%A7in%20teklif%20almak%20istiyorum.",
   contactPerson: "Sedat Ramizoğlu",
   address: {
     street: "Yeni Mah. Menderes Bulvarı No:7/A D:3",
@@ -52,8 +56,17 @@ export const contactInfo = {
     full: "Yeni Mah. Menderes Bulvarı No:7/A D:3, Merkezefendi, 20000 Denizli",
   },
   workingHours: {
+    schedule: [
+      { day: "Pazartesi", hours: "08:00 – 18:00" },
+      { day: "Salı", hours: "08:00 – 18:00" },
+      { day: "Çarşamba", hours: "08:00 – 18:00" },
+      { day: "Perşembe", hours: "08:00 – 18:00" },
+      { day: "Cuma", hours: "08:00 – 18:00" },
+      { day: "Cumartesi", hours: "08:00 – 18:00" },
+      { day: "Pazar", hours: "Kapalı" },
+    ],
     weekdays: "Pazartesi – Cumartesi: 08:00 – 18:00",
-    sunday: "Pazar: Kapalı (Acil işler için WhatsApp)",
+    sunday: "Pazar: Kapalı",
   },
   mapEmbedUrl:
     "https://maps.google.com/maps?q=Yeni+Mah.+Menderes+Bulvar%C4%B1+7%2FA+Merkezefendi+Denizli&hl=tr&z=16&output=embed",

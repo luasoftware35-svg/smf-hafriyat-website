@@ -29,7 +29,7 @@ export const services: Service[] = [
       "12 araçlık ekskavatör, loder ve damper filosu — taşeron yok",
       "Ruhsat ve mevzuata uygun, belgeli hafriyat süreci",
       "Keşif sonrası yazılı metraj (m³) ve net teklif",
-      "150'den fazla müteahhite hizmet — 25 kişilik saha ekibi",
+      "150'den fazla müteahhite hizmet — 20–30 kişilik saha ekibi",
     ],
     features: ["Temel kazı ve dolgu", "Kepçe ile tesviye", "Ruhsat uyumlu hafriyat", "Hızlı saha koordinasyonu", "Gece çalışma imkânı"],
     orderIndex: 1,

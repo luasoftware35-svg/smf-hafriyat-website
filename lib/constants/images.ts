@@ -231,7 +231,7 @@ export const midPagePromoSlides: PromoSlide[] = [
     src: real.kaziToz,
     alt: realAlt.kaziToz,
     tag: "Denizli Saha Ekibi",
-    title: "28 yıl, 900+ proje, 25 kişilik ekip",
+    title: "28 yıl, 900+ proje, 20–30 kişilik ekip",
     subtitle: "Ramizoğlu ailesi liderliğinde Denizli ve Ege Bölgesi'nde hafriyat.",
   },
 ];

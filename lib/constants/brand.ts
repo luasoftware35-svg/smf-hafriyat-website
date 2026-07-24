@@ -91,9 +91,9 @@ export const brand = {
         "10 hizmet kategorisinde operatörlü filo, ruhsat koordinasyonu ve yazılı metraj — Denizli'den Ege'ye.",
     },
     fleet: {
-      title: "12 araçlık kendi filomuz",
+      title: "Filo & Ekipman",
       description:
-        "Caterpillar, Komatsu ve Hitachi iş makineleri — bakımlı, sigortalı, operatörlü sevkiyat.",
+        "12 araçlık kendi filomuz — Caterpillar, Komatsu ve Hitachi iş makineleri; bakımlı, sigortalı, operatörlü sevkiyat.",
     },
     projects: {
       title: "Referans projelerimiz",

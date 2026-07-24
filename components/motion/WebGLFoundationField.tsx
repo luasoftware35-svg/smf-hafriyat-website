@@ -222,7 +222,7 @@ export function WebGLFoundationField({ className, mouseRef: externalMouseRef }: 
       context.deleteBuffer(sizeBuffer);
       context.deleteBuffer(alphaBuffer);
     };
-  }, [externalMouseRef]);
+  }, [mouseRef]);
 
   return (
     <canvas

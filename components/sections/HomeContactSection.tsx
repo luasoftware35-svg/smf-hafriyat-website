@@ -182,8 +182,8 @@ function HomeContactSectionInner() {
                     />
                     <ContactChip
                       href={contactInfo.whatsappHref}
-                      label="WhatsApp"
-                      subLabel="Mesaj"
+                      label={contactInfo.whatsappDisplay}
+                      subLabel="WhatsApp Business"
                       icon={MessageCircle}
                       external
                       hoverClass="group-hover:text-[#25D366] group-hover:border-[#25D366]/30 group-hover:bg-[#25D366]/[0.06]"

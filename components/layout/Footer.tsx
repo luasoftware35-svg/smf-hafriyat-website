@@ -130,6 +130,12 @@ export function Footer() {
                   <span>{contactInfo.email}</span>
                 </Link>
               </li>
+              <li>
+                <Link href={contactInfo.emailSecondaryHref} className="inline-flex items-center gap-3 transition-colors hover:text-accent">
+                  <Mail size={16} className="shrink-0 text-accent" aria-hidden="true" />
+                  <span>{contactInfo.emailSecondary}</span>
+                </Link>
+              </li>
               <li className="rounded-lg border border-surface bg-bg-primary/60 px-4 py-3 text-xs leading-relaxed text-text-secondary">
                 Aynı gün geri dönüş, resmi sözleşme ve belgeli saha süreci ile çalışıyoruz.
               </li>

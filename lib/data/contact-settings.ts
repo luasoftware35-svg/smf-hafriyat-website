@@ -15,7 +15,10 @@ export type ContactInfoData = {
   phoneSecondaryHref: string;
   email: string;
   emailHref: string;
+  emailSecondary: string;
+  emailSecondaryHref: string;
   whatsapp: string;
+  whatsappDisplay: string;
   whatsappHref: string;
   contactPerson: string;
   address: {
@@ -29,6 +32,7 @@ export type ContactInfoData = {
     full: string;
   };
   workingHours: {
+    schedule: readonly { day: string; hours: string }[];
     weekdays: string;
     sunday: string;
   };
@@ -46,7 +50,10 @@ type ContactSettingsValue = Partial<{
   phoneSecondaryHref: string;
   email: string;
   emailHref: string;
+  emailSecondary: string;
+  emailSecondaryHref: string;
   whatsapp: string;
+  whatsappDisplay: string;
   whatsappHref: string;
   contactPerson: string;
   addressFull: string;
@@ -87,7 +94,10 @@ export async function getContactInfo(): Promise<ContactInfoData> {
     phoneSecondaryHref: db.phoneSecondaryHref ?? staticContactInfo.phoneSecondaryHref,
     email: db.email ?? staticContactInfo.email,
     emailHref: db.emailHref ?? staticContactInfo.emailHref,
+    emailSecondary: db.emailSecondary ?? staticContactInfo.emailSecondary,
+    emailSecondaryHref: db.emailSecondaryHref ?? staticContactInfo.emailSecondaryHref,
     whatsapp: db.whatsapp ?? staticContactInfo.whatsapp,
+    whatsappDisplay: db.whatsappDisplay ?? staticContactInfo.whatsappDisplay,
     whatsappHref: db.whatsappHref ?? staticContactInfo.whatsappHref,
     contactPerson: db.contactPerson ?? staticContactInfo.contactPerson,
     instagram: db.instagram ?? staticContactInfo.instagram,
@@ -99,6 +109,7 @@ export async function getContactInfo(): Promise<ContactInfoData> {
       full: db.addressFull ?? staticContactInfo.address.full,
     },
     workingHours: {
+      schedule: staticContactInfo.workingHours.schedule,
       weekdays: db.workingHoursWeekdays ?? staticContactInfo.workingHours.weekdays,
       sunday: db.workingHoursSunday ?? staticContactInfo.workingHours.sunday,
     },
@@ -129,7 +140,10 @@ export async function getDbContactSettings(): Promise<ContactSettingsValue> {
     phoneSecondaryHref: db?.phoneSecondaryHref ?? staticContactInfo.phoneSecondaryHref,
     email: db?.email ?? staticContactInfo.email,
     emailHref: db?.emailHref ?? staticContactInfo.emailHref,
+    emailSecondary: db?.emailSecondary ?? staticContactInfo.emailSecondary,
+    emailSecondaryHref: db?.emailSecondaryHref ?? staticContactInfo.emailSecondaryHref,
     whatsapp: db?.whatsapp ?? staticContactInfo.whatsapp,
+    whatsappDisplay: db?.whatsappDisplay ?? staticContactInfo.whatsappDisplay,
     whatsappHref: db?.whatsappHref ?? staticContactInfo.whatsappHref,
     contactPerson: db?.contactPerson ?? staticContactInfo.contactPerson,
     addressFull: db?.addressFull ?? staticContactInfo.address.full,

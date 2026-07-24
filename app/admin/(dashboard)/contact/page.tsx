@@ -50,8 +50,17 @@ export default async function AdminContactPage({
             <AdminField label="E-posta href">
               <input name="emailHref" defaultValue={contact.emailHref} className={adminInputClassName} />
             </AdminField>
+            <AdminField label="İkinci e-posta">
+              <input name="emailSecondary" defaultValue={contact.emailSecondary} className={adminInputClassName} />
+            </AdminField>
+            <AdminField label="İkinci e-posta href">
+              <input name="emailSecondaryHref" defaultValue={contact.emailSecondaryHref} className={adminInputClassName} />
+            </AdminField>
             <AdminField label="WhatsApp numarası">
               <input name="whatsapp" defaultValue={contact.whatsapp} className={adminInputClassName} />
+            </AdminField>
+            <AdminField label="WhatsApp (görünen)">
+              <input name="whatsappDisplay" defaultValue={contact.whatsappDisplay} className={adminInputClassName} />
             </AdminField>
             <AdminField label="WhatsApp link">
               <input name="whatsappHref" defaultValue={contact.whatsappHref} className={adminInputClassName} />

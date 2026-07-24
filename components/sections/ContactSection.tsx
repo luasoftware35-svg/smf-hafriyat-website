@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Section, SectionHeading } from "@/components/ui/SectionHeading";
@@ -76,9 +76,9 @@ export function ContactSection() {
                       </a>
                     </li>
                     <li>
-                      <a href={contactInfo.phoneSecondaryHref} className="flex items-center gap-3 hover:text-accent">
-                        <Phone size={18} className="shrink-0 text-accent" aria-hidden="true" />
-                        <span className="font-mono font-medium">{contactInfo.phoneSecondary}</span>
+                      <a href={contactInfo.whatsappHref} className="flex items-center gap-3 hover:text-accent" target="_blank" rel="noopener noreferrer">
+                        <MessageCircle size={18} className="shrink-0 text-accent" aria-hidden="true" />
+                        <span className="font-mono font-medium">WhatsApp Business · {contactInfo.whatsappDisplay}</span>
                       </a>
                     </li>
                     <li className="text-text-secondary">
@@ -90,11 +90,20 @@ export function ContactSection() {
                         <span>{contactInfo.email}</span>
                       </a>
                     </li>
+                    <li>
+                      <a href={contactInfo.emailSecondaryHref} className="flex items-center gap-3 hover:text-accent">
+                        <Mail size={18} className="shrink-0 text-accent" aria-hidden="true" />
+                        <span>{contactInfo.emailSecondary}</span>
+                      </a>
+                    </li>
                     <li className="flex items-start gap-3">
                       <Clock size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-                      <div>
-                        <p>{contactInfo.workingHours.weekdays}</p>
-                        <p>{contactInfo.workingHours.sunday}</p>
+                      <div className="space-y-1">
+                        {contactInfo.workingHours.schedule.map((item) => (
+                          <p key={item.day}>
+                            <span className="font-medium text-text-primary">{item.day}:</span> {item.hours}
+                          </p>
+                        ))}
                       </div>
                     </li>
                     <li className="rounded-lg border border-surface bg-bg-secondary/70 px-4 py-3">

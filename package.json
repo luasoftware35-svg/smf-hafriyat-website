@@ -10,7 +10,10 @@
     "lint": "eslint",
     "images:generate": "node scripts/generate-higgsfield-images.mjs",
     "images:generate:force": "node scripts/generate-higgsfield-images.mjs --force",
-    "images:dry-run": "node scripts/generate-higgsfield-images.mjs --dry-run"
+    "images:dry-run": "node scripts/generate-higgsfield-images.mjs --dry-run",
+    "cms:migrate": "tsx scripts/cms-migrate.ts",
+    "cms:seed": "tsx scripts/cms-seed.ts",
+    "cms:setup": "tsx scripts/cms-migrate.ts && tsx scripts/cms-seed.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
@@ -36,6 +39,8 @@
     "eslint": "^9.28.0",
     "eslint-config-next": "^15.3.3",
     "tailwindcss": "^4.1.8",
-    "typescript": "^5.8.3"
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "pg": "^8.16.0"
   }
 }

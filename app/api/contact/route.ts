@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { contactFormSchema } from "@/lib/validations/contact-schema";
 import { sendContactNotification } from "@/lib/email/send-contact-notification";
 import { createServiceRoleClient, isServiceRoleConfigured } from "@/lib/supabase/server";
+import { contactInfo } from "@/lib/constants/site";
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT = 5;
@@ -92,7 +93,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Talebiniz şu an kaydedilemedi. Lütfen doğrudan arayın: 0533 353 22 53 veya WhatsApp üzerinden yazın.",
+            `Talebiniz şu an kaydedilemedi. Lütfen doğrudan arayın: ${contactInfo.phoneDisplay} veya WhatsApp Business (${contactInfo.whatsappDisplay}) üzerinden yazın.`,
         },
         { status: 503 },
       );
@@ -100,11 +101,14 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       message: "Talebiniz başarıyla alındı. En kısa sürede sizinle iletişime geçeceğiz.",
-      whatsappUrl: `https://wa.me/905333532253?text=${encodeURIComponent(
+      whatsappUrl: `https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(
         `Merhaba, web sitesinden teklif talebi gönderdim.\nAd: ${data.name}\nProje: ${data.projectType}\nAdres: ${data.projectAddress}`,
       )}`,
     });
   } catch {
-    return NextResponse.json({ error: "Sunucu hatası. Lütfen tekrar deneyin veya 0533 353 22 53 numarasını arayın." }, { status: 500 });
+    return NextResponse.json(
+      { error: `Sunucu hatası. Lütfen tekrar deneyin veya ${contactInfo.phoneDisplay} numarasını arayın.` },
+      { status: 500 },
+    );
   }
 }

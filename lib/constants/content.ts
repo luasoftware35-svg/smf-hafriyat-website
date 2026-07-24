@@ -2,7 +2,7 @@ export const stats = [
   { label: "Sektör Deneyimi", value: 28, suffix: "+ Yıl", orderIndex: 1 },
   { label: "Tamamlanan Proje", value: 900, suffix: "+", orderIndex: 2 },
   { label: "Hizmet Verilen Firma", value: 150, suffix: "+", orderIndex: 3 },
-  { label: "Saha Ekibi", value: 25, suffix: "+ Kişi", orderIndex: 4 },
+  { label: "Saha Ekibi", value: 20, suffix: "–30 Kişi", orderIndex: 4 },
 ] as const;
 
 export const processSteps = [
@@ -196,7 +196,7 @@ export const whyUsItems = [
   {
     icon: "Users",
     title: "Ramizoğlu Ailesi Liderliği",
-    description: "Kurucudan saha ustasına aynı çatı altında — 25 kişilik ekip, tek sorumlu koordinasyon.",
+    description: "Kurucudan saha ustasına aynı çatı altında — 20–30 kişilik ekip, tek sorumlu koordinasyon.",
   },
   {
     icon: "FileText",
@@ -226,7 +226,7 @@ export const faqItems = [
   {
     question: "Denizli'de hafriyat firması arıyorum, SMF Hafriyat nerede?",
     answer:
-      "Merkez ofisimiz Yeni Mah. Menderes Bulvarı No:7/A D:3, Merkezefendi, Denizli adresindedir. Denizli hafriyat, yıkım ve ekskavatör kazı ihtiyaçlarınız için 0533 353 22 53 numarasından veya info@smfhafriyat.com adresinden bize ulaşabilirsiniz.",
+      "Merkez ofisimiz Yeni Mah. Menderes Bulvarı No:7/A D:3, Merkezefendi, Denizli adresindedir. Denizli hafriyat, yıkım ve ekskavatör kazı ihtiyaçlarınız için 0533 353 22 53 numarasından, WhatsApp Business (0541 156 06 64) üzerinden veya smfhafriyatofis@hotmail.com adresinden bize ulaşabilirsiniz.",
   },
   {
     question: "Kendi filonuz ve operatör kadronuz var mı?",
