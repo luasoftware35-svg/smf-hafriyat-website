@@ -351,21 +351,36 @@ function WhatsappContactChip({
   label: string;
   reduceMotion: boolean;
 }) {
+  const isExternal = href.startsWith("http");
   const className =
     "group inline-flex min-w-[10.5rem] flex-1 items-center gap-3 rounded-xl border border-accent/15 bg-bg-primary/90 px-4 py-3 shadow-sm transition-all duration-300 hover:text-[#25D366] hover:border-[#25D366]/30 hover:bg-[#25D366]/[0.06] sm:flex-none";
 
+  const content = (
+    <>
+      <span className="flex h-8 w-8 items-center justify-center rounded-full border border-surface bg-bg-primary text-[#25D366] transition-colors duration-300 group-hover:border-current">
+        <WhatsAppIcon size={15} />
+      </span>
+      <span className="min-w-0 text-left">
+        <span className="block truncate text-sm font-semibold text-text-primary transition-colors duration-300">{label}</span>
+        <span className="block text-[10px] uppercase tracking-[0.12em] text-text-secondary">WhatsApp Business</span>
+      </span>
+      {isExternal ? (
+        <ArrowUpRight size={14} className="ml-auto shrink-0 text-text-secondary/50 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+      ) : null}
+    </>
+  );
+
   return (
     <motion.div whileHover={reduceMotion ? undefined : { y: -2 }} whileTap={reduceMotion ? undefined : { scale: 0.98 }}>
-      <Link href={href} target="_blank" rel="noopener noreferrer" className={className}>
-        <span className="flex h-8 w-8 items-center justify-center rounded-full border border-surface bg-bg-primary text-[#25D366] transition-colors duration-300 group-hover:border-current">
-          <WhatsAppIcon size={15} />
-        </span>
-        <span className="min-w-0 text-left">
-          <span className="block truncate text-sm font-semibold text-text-primary transition-colors duration-300">{label}</span>
-          <span className="block text-[10px] uppercase tracking-[0.12em] text-text-secondary">WhatsApp Business</span>
-        </span>
-        <ArrowUpRight size={14} className="ml-auto shrink-0 text-text-secondary/50 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-      </Link>
+      {isExternal ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+          {content}
+        </a>
+      ) : (
+        <Link href={href} className={className}>
+          {content}
+        </Link>
+      )}
     </motion.div>
   );
 }
