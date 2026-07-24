@@ -91,7 +91,7 @@ export function DiggerHero() {
           aria-hidden="true"
         />
 
-        <Container className="relative z-10 flex min-h-[min(92vh,880px)] flex-col justify-end pb-8 pt-28 sm:min-h-[min(88vh,920px)] sm:justify-center sm:pb-12 sm:pt-32 lg:pb-16">
+        <Container className="relative z-10 flex min-h-[min(92vh,880px)] flex-col justify-end pb-10 pt-28 pr-16 sm:min-h-[min(88vh,920px)] sm:justify-center sm:pb-12 sm:pr-0 sm:pt-32 lg:pb-16">
           <h1 className="sr-only">
             Denizli hafriyat, Denizli kazı ve inşaat hafriyat hizmetleri — {siteConfig.name}
           </h1>

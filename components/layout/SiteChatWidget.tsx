@@ -22,7 +22,7 @@ function createId() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
-export function SiteChatWidget() {
+export function SiteChatWidget({ variant = "dock" }: { variant?: "dock" | "compact" }) {
   const { contactInfo } = useSiteContact();
   const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
@@ -230,7 +230,7 @@ export function SiteChatWidget() {
   );
 
   return (
-    <div className="relative w-full">
+    <div className={cn("relative", variant === "dock" && "w-full")}>
       {mounted ? createPortal(chatPanel, document.body) : null}
 
       <button
@@ -248,23 +248,33 @@ export function SiteChatWidget() {
         aria-expanded={open}
         aria-label={open ? "Sohbeti kapat" : "SMF Hafriyat sohbet asistanını aç"}
         className={cn(
-          "flex w-full min-w-[11.5rem] items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors",
-          open ? "bg-accent text-accent-foreground" : "bg-bg-secondary/80 hover:bg-bg-secondary",
+          variant === "compact"
+            ? "flex h-12 w-12 items-center justify-center rounded-full border border-surface bg-bg-primary shadow-[0_6px_20px_rgba(0,0,0,0.16)] transition-transform hover:scale-105 active:scale-95"
+            : "flex w-full min-w-[11.5rem] items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors",
+          variant === "dock" && (open ? "bg-accent text-accent-foreground" : "bg-bg-secondary/80 hover:bg-bg-secondary"),
+          variant === "compact" && open && "border-accent bg-accent text-accent-foreground",
         )}
       >
-        <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-surface bg-white">
+        <span
+          className={cn(
+            "relative flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-white",
+            variant === "compact" ? "h-9 w-9 border border-surface" : "h-10 w-10 border border-surface",
+          )}
+        >
           {open ? (
-            <X size={20} aria-hidden="true" />
+            <X size={variant === "compact" ? 18 : 20} aria-hidden="true" />
           ) : (
             <Image src={siteConfig.logo} alt="" fill className="object-contain p-1.5" sizes="40px" />
           )}
         </span>
-        <span className="min-w-0">
-          <span className="block text-sm font-semibold leading-tight">{open ? "Kapat" : "Sohbet"}</span>
-          <span className={cn("block text-[11px] leading-tight", open ? "text-accent-foreground/80" : "text-text-secondary")}>
-            SMF Asistan
+        {variant === "dock" ? (
+          <span className="min-w-0">
+            <span className="block text-sm font-semibold leading-tight">{open ? "Kapat" : "Sohbet"}</span>
+            <span className={cn("block text-[11px] leading-tight", open ? "text-accent-foreground/80" : "text-text-secondary")}>
+              SMF Asistan
+            </span>
           </span>
-        </span>
+        ) : null}
       </button>
     </div>
   );

@@ -3,9 +3,26 @@
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { useSiteContact } from "@/components/providers/SiteContactProvider";
 
-export function WhatsAppButton() {
+type WhatsAppButtonProps = {
+  variant?: "dock" | "compact";
+};
+
+export function WhatsAppButton({ variant = "dock" }: WhatsAppButtonProps) {
   const { contactInfo } = useSiteContact();
   const isExternal = contactInfo.whatsappHref.startsWith("http");
+
+  if (variant === "compact") {
+    return (
+      <a
+        href={contactInfo.whatsappHref}
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        aria-label={`WhatsApp Business — ${contactInfo.whatsappDisplay}`}
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_20px_rgba(37,211,102,0.4)] transition-transform hover:scale-105 active:scale-95"
+      >
+        <WhatsAppIcon size={26} className="text-white" />
+      </a>
+    );
+  }
 
   return (
     <a
