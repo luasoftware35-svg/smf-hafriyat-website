@@ -1,0 +1,58 @@
+[
+  {
+    "id": "hero-main",
+    "output": "public/images/hafriyat/haf-001.jpg",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2xi1aS2RDHjJ5hQGoU6KwdZftKE/hf_20260723_165959_62b71d79-4a5d-437d-96a1-7cbe2252c4ae.jpeg",
+    "status": "ok",
+    "at": "2026-07-23T17:00:33.615Z"
+  },
+  {
+    "id": "hero-fleet",
+    "output": "public/images/hafriyat/haf-002.jpg",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2xi1aS2RDHjJ5hQGoU6KwdZftKE/hf_20260723_170040_cb89f595-ff7e-410a-9b1c-1cb5d30bae15.jpeg",
+    "status": "ok",
+    "at": "2026-07-23T17:01:23.212Z"
+  },
+  {
+    "id": "service-demolition",
+    "output": "public/images/hafriyat/haf-003.jpg",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2xi1aS2RDHjJ5hQGoU6KwdZftKE/hf_20260723_170129_0184fdfe-1441-4af8-8fb2-51e0c53c8bcb.jpeg",
+    "status": "ok",
+    "at": "2026-07-23T17:02:03.355Z"
+  },
+  {
+    "id": "service-infrastructure",
+    "output": "public/images/hafriyat/haf-004.jpg",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2xi1aS2RDHjJ5hQGoU6KwdZftKE/hf_20260723_170209_08bdb4f4-31a8-469d-9690-4515c6cd8179.jpeg",
+    "status": "ok",
+    "at": "2026-07-23T17:05:49.855Z"
+  },
+  {
+    "id": "service-rubble",
+    "output": "public/images/hafriyat/haf-005.jpg",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2xi1aS2RDHjJ5hQGoU6KwdZftKE/hf_20260723_170555_eacefb89-ebd0-4940-bbbf-6ff955e4e99a.jpeg",
+    "status": "ok",
+    "at": "2026-07-23T17:06:26.946Z"
+  },
+  {
+    "id": "service-building-demo",
+    "output": "public/images/hafriyat/haf-006.jpg",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2xi1aS2RDHjJ5hQGoU6KwdZftKE/hf_20260723_170632_d01601e1-3b7a-4781-8153-80c5833141a5.jpeg",
+    "status": "ok",
+    "at": "2026-07-23T17:07:06.616Z"
+  },
+  {
+    "id": "service-canal",
+    "output": "public/images/hafriyat/haf-007.jpg",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2xi1aS2RDHjJ5hQGoU6KwdZftKE/hf_20260723_170711_b2d67b6c-1a4a-43a6-aa90-514511890e45.jpeg",
+    "status": "ok",
+    "at": "2026-07-23T17:07:48.821Z"
+  },
+  {
+    "id": "service-deep-excavation",
+    "output": "public/images/hafriyat/haf-008.jpg",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2xi1aS2RDHjJ5hQGoU6KwdZftKE/hf_20260723_170757_52a47a8e-b47f-495a-b8e9-e307cdfff8b0.jpeg",
+    "status": "ok",
+    "at": "2026-07-23T17:08:29.094Z"
+  }
+]
